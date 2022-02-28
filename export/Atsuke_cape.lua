@@ -1,0 +1,17 @@
+sets.exported={
+    main={ name="Grioavolr", augments={'Blood Pact Dmg.+5','Pet: INT+12','Pet: "Mag.Atk.Bns."+25',}},
+    sub="Elan Strap +1",
+    ammo="Sancus Sachet +1",
+    head={ name="Glyphic Horn +3", augments={'Enhances "Astral Flow" effect',}},
+    body={ name="Apo. Dalmatica +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}},
+    hands={ name="Merlinic Dastanas", augments={'Pet: Mag. Acc.+21','Blood Pact Dmg.+9','Pet: "Mag.Atk.Bns."+13',}},
+    legs={ name="Apogee Slacks +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}},
+    feet={ name="Apogee Pumps +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}},
+    neck={ name="Smn. Collar +2", augments={'Path: A',}},
+    waist="Regal Belt",
+    left_ear="Gelos Earring",
+    right_ear="Enmerkar Earring",
+    left_ring="Varar Ring +1",
+    right_ring="Varar Ring +1",
+    back={ name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Fast Cast"+10','Phys. dmg. taken-10%',}},
+}
