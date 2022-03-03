@@ -18,6 +18,19 @@ keybinds_off['key_bind_rage_cycle'] = ''
 keybinds_off['key_bind_ward_cycle'] = ''
 keybinds_off['key_bind_avatar'] = ''
 
+tools_off = {}
+tools_off['tool_1'] = ''
+tools_off['tool_2'] = ''
+tools_off['tool_3'] = ''
+tools_off['tool_4'] = ''
+
+
+-- tool1 = ''
+-- tool2 = ''
+-- tool3 = ''
+-- tool4 = ''
+
+
 textHideMode = M(false)
 textHideOptions = M(false)
 textHideJob = M(false)
@@ -25,6 +38,7 @@ textHideBattle = M(false)
 textHideHUD = M(false)
 useLightMode = M(false)
 keybinds = M(false)
+tools = M(false)
 
 hud_padding = 10
 
@@ -137,14 +151,6 @@ function construct_HUD_Categories( useLightMode )
 			hud_subWeapon = ''
 		end
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		if player.main_job == "RDM" or player.sub_job == "RDM" then
 			hud_convert_mode = [[        ${keybinds_color}${key_bind_convert_mode}${options_color}Convert:\cr ${selection_color}${current_convert_mode|Unset}]]
 		else
@@ -163,10 +169,6 @@ function construct_HUD_Categories( useLightMode )
 		else
 			hud_quickdraw_mode = ''
 		end
-		
-		
-		
-		
 		
 		if player.main_job == "BLM" or player.main_job == "SCH" or player.main_job == "RDM" or player.main_job == "NIN" or player.main_job == "WHM" or player.main_job == "SMN" or player.main_job == "GEO" then
 			hud_nukingElement = [[        ${keybinds_color}${key_bind_element_cycle}${options_color}Nuking:\cr ${element_color}${toggle_element_cycle|Unset}]]
@@ -248,7 +250,8 @@ function construct_HUD_Categories( useLightMode )
 		end
 		
 		if nukeModes ~= nil then
-			hud_nukingMode = [[\cr        ${keybinds_color}${key_bind_casting}${options_color}Nuking:\cr ${selection_color}${player_current_casting|Unset}]]
+			hud_nukingMode = [[\cr
+			        ${keybinds_color}${key_bind_casting}${options_color}Nuking:\cr ${selection_color}${player_current_casting|Unset}]]
 		else
 			hud_nukingMode = ''
 		end
@@ -370,10 +373,42 @@ function construct_HUD_Categories( useLightMode )
 		if player.main_job == 'DNC' or player.main_job == 'THF' or player.main_job == 'COR' then 
 			hud_handleSkillchains = ''
 			
-		end
+		end	
 		
+		if tools ~= nil and tools_on then
+			if tools_on['tool_1'] ~= nil then
+				tool_option_1 =  [[\cr 
+        				${options_color}${tool_1} ${tool1}\cr]]
+			else
+				tool_option_1 = ''
+			end
 			
+			if tools_on['tool_2'] ~= nil then
+				tool_option_2 =  [[   ${options_color}${tool_2} ${tool2}\cr]]
+			else
+				tool_option_2 = ''
+			end
+	
+			if tools_on['tool_3'] ~= nil then
+				tool_option_3 =  [[\cr
+				        ${options_color}${tool_3} ${tool3}\cr]]
+			else
+				tool_option_3 = ''
+			end
+
+			if tools_on['tool_4'] ~= nil then
+				tool_option_4 =  [[   ${options_color}${tool_4} ${tool4}\cr]]
+			else
+				tool_option_4 = ''
+			end
+			
+			hud_tools = tool_option_1..tool_option_2..tool_option_3..tool_option_4
+		
+		else
+			hud_tools = ''
+		end
 	end
+
 end
 
 function buildHUD( useLightMode )
@@ -386,7 +421,7 @@ function buildHUD( useLightMode )
 		
 	hud_job = [[${sections_color}${player_job}:]]..hud_nukingElement..hud_indiCycle..hud_geoCycle..hud_entrustCycle..hud_mainWeapon..
 		hud_subWeapon..hud_regenMode..hud_avatar..hud_rage..hud_ward..hud_makingSC..hud_Enspell..hud_treasure_hunter..
-		hud_bp_mode..hud_convert_mode..hud_quickdraw_mode..hud_luzaf_mode..
+		hud_bp_mode..hud_convert_mode..hud_quickdraw_mode..hud_luzaf_mode..hud_tools..
 		hud_endofline        
 	hud_battle = [[${sections_color}Battle Info:]]..hud_lastSC..hud_burstWindow..hud_magicBurst..hud_cardinalChant..hud_endofline 
 end
@@ -447,9 +482,26 @@ function validateTextInformation()
     if nukeModes ~= nil then
     	main_text_hud.player_current_casting = nukeModes.current
   	end
-  	if elements ~= nil then
-    	main_text_hud.toggle_element_cycle = elements.current
+  	if elements ~= nil or ninElements ~= nil then
+		
+		
+		
+		
+		if player.main_job == 'NIN' then
+			main_text_hud.toggle_element_cycle = ninElements.current
+		else
+    	
+		
+		
+			main_text_hud.toggle_element_cycle = elements.current
+	
+	
+		end
 	end
+	
+	
+	
+	
 	if rangedModes ~= nil then
     	main_text_hud.player_current_ranged = rangedModes.current
     end
@@ -587,13 +639,31 @@ function validateTextInformation()
 
     if keybinds.value then
         texts.update(main_text_hud, keybinds_on)
+		
     else 
         texts.update(main_text_hud, keybinds_off)
     end
-    main_text_hud.element_color = Colors[elements.current]
-    main_text_hud.enspell_color = Colors[enspellElements.current]
+	
+	if tools.value then
+        texts.update(main_text_hud, tools_on)
+		tool_tracker()
+		main_text_hud.tool1 = tool1
+		main_text_hud.tool2 = tool2
+		main_text_hud.tool3 = tool3
+		main_text_hud.tool4 = tool4
+    else 
+        texts.update(main_text_hud, tools_off)
+    end
+	
+	if player.main_job == 'NIN' then
+		main_text_hud.element_color = Colors[ninElements.current]
+	else
+		main_text_hud.element_color = Colors[elements.current]
+    end
+	main_text_hud.enspell_color = Colors[enspellElements.current]
     main_text_hud.sc_element_color = scColor
 	main_text_hud.avatar_element_color = avatarColors[avatars.current]
+	
 end
 
 --Default To Set Up the Text Window
@@ -731,6 +801,16 @@ function hud_command(command)
                     texts.update(main_text_hud, keybinds_on) --If ON then we pass in Table for keybinds to update the variables
                 else 
                     texts.update(main_text_hud, keybinds_off) --Otherwise we set them to blank
+                end
+
+                hideTextSections()
+			elseif commandArgs[2]:lower() == "tools" then --Hides/Show Keybinds
+                tools:toggle()
+
+                if tools.value then
+                    texts.update(main_text_hud, tools_on) --If ON then we pass in Table for keybinds to update the variables
+                else 
+                    texts.update(main_text_hud, tools_off) --Otherwise we set them to blank
                 end
 
                 hideTextSections()

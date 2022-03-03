@@ -378,6 +378,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		neck = { name="Etoile Gorget +2", augments={'Path: A',}},
 		waist = "Grunfeld Rope",
 	})
+	
+	sets.precast['Shark Bite'] = sets.precast["Rudra's Storm"]
 
     sets.precast['Aeolian Edge'] = set_combine(sets.precast.WS,{ 
 		body = Herc.Body.MAB,

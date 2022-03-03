@@ -251,7 +251,15 @@ if autorunspeed then
         end
     end)
 end
-    windower.register_event('prerender', function()
+   
+--[[
+	If you made changes to your lib files and keep getting 
+	errors in the helper function files try block commenting
+	this function out and then reloading your lua
+	you will probably get much more useful error messages. 
+]]
+
+   windower.register_event('prerender', function()
         --Items we want to check every second
         if os.time() > time_start then
             time_start = os.time()
@@ -473,4 +481,41 @@ function get_current_strategem_count()
     local currentCharges = math.floor(maxStrategems - maxStrategems * stratsRecast / fullRechargeTime)
 
     return currentCharges
+end
+
+function tool_tracker()
+	
+	
+	if tool_1 ~= '' then
+		if not(player.inventory[tool_1] or player.wardrobe[tool_1]) then
+			tool1 = 0
+		else
+			tool1 = (player.inventory[tool_1].count or player.wardrobe[tool_1].count)
+		end
+	end
+	
+	
+	if tool_2 ~= '' then
+		if not(player.inventory[tool_2] or player.wardrobe[tool_2]) then
+			tool2 = 0
+		else
+			tool2 = (player.inventory[tool_2].count or player.wardrobe[tool_2].count)
+		end
+	end
+	
+	if tool_3 ~= '' then
+		if not(player.inventory[tool_3] or player.wardrobe[tool_3]) then
+			tool3 = 0
+		else
+			tool3 = (player.inventory[tool_3].count or player.wardrobe[tool_3].count)
+		end
+	end
+	
+	if tool_4 ~= '' then
+		if not(player.inventory[tool_4] or player.wardrobe[tool_4]) then
+			tool4 = 0
+		else
+			tool4 = (player.inventory[tool_4].count or player.wardrobe[tool_4].count)
+		end
+	end
 end

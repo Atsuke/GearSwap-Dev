@@ -64,6 +64,8 @@ spell_maps = {
     ['Fire Maneuver']='Maneuver',['Ice Maneuver']='Maneuver',['Wind Maneuver']='Maneuver',['Earth Maneuver']='Maneuver',['Thunder Maneuver']='Maneuver',['Water Maneuver']='Maneuver',['Light Maneuver']='Maneuver',['Dark Maneuver']='Maneuver',
     ['Enstone']='Enspell',['Enwater']='Enspell',['Enaero']='Enspell',['Enfire']='Enspell',['Enblizzard']='Enspell',['Enthunder']='Enspell',
     ['Gain-AGI']='Gain',['Gain-CHR']='Gain',['Gain-DEX']='Gain',['Gain-INT']='Gain',['Gain-MND']='Gain',['Gain-STR']='Gain',['Gain-VIT']='Gain',
+	['Kurayami: Ichi'] = 'EnfeeblingNinjutsu', ['Hojo: Ichi'] = 'EnfeeblingNinjutsu', ['Dokumori: Ichi'] = 'EnfeeblingNinjutsu', ['Jubaku: Ichi'] = 'EnfeeblingNinjutsu',
+	['Kurayami: Ni'] = 'EnfeeblingNinjutsu', ['Hojo: Ni'] = 'EnfeeblingNinjutsu', ['Aisha: Ichi'] = 'EnfeeblingNinjutsu', ['Yurin: Ichi'] = 'EnfeeblingNinjutsu', 
 }
 
 enfeeb_maps = {
@@ -88,6 +90,7 @@ enfeeb_maps = {
 }
 
 elements =  M('Ice', 'Air', 'Dark', 'Light', 'Earth', 'Lightning', 'Water', 'Fire')
+ninElements = M('Earth', 'Air', 'Ice', 'Fire', 'Water', 'Lightning')
 
 element = {}
 element.weak_to = {['Light']='Dark', ['Dark']='Light', ['Fire']='Ice', ['Ice']='Wind', ['Wind']='Earth', ['Earth']='Lightning',
@@ -112,6 +115,12 @@ nukes.enspell = {['Earth']="Enstone", ['Water']="Enwater",  ['Air']="Enaero", ['
 nukes.ra1 = {['Earth']="Stonera",    ['Water']="Watera",    ['Air']="Aera",    ['Fire']="Fira",    ['Ice']="Blizzara",    ['Lightning']="Thundara",    ['Light']="Thundara",    ['Dark']="Blizzara"}
 nukes.ra2 = {['Earth']="Stonera II", ['Water']="Watera II", ['Air']="Aera II", ['Fire']="Fira II", ['Ice']="Blizzara II", ['Lightning']="Thundara II", ['Light']="Thundara II", ['Dark']="Blizzara II"}
 nukes.ra3 = {['Earth']="Stonera III",['Water']="Watera III",['Air']="Aera III",['Fire']="Fira III",['Ice']="Blizzara III",['Lightning']="Thundara III",['Light']="Thundara III",['Dark']="Blizzara III"}
+
+ninjaNukes = {}
+ninjaNukes.t1 = {['Earth']="Doton: Ichi",      ['Water']="Suiton: Ichi",      ['Air']="Huton: Ichi",     ['Fire']="Katon: Ichi",    ['Ice']="Hyoton: Ichi",     ['LightIching']="Raiton: Ichi"}
+ninjaNukes.t2 = {['Earth']="Doton: Ni",        ['Water']="Suiton: Ni",        ['Air']="Huton: Ni",       ['Fire']="Katon: Ni",      ['Ice']="Hyoton: Ni",       ['LightNing']="Raiton: Ni"}
+ninjaNukes.t3 = {['Earth']="Doton: San",       ['Water']="Suiton: San",       ['Air']="Huton: San",      ['Fire']="Katon: San",     ['Ice']="Hyoton: San",      ['LightSanng']="Raiton: San"}
+ 
 
 storms = S{"Aurorastorm", "Voidstorm", "Firestorm", "Sandstorm", "Rainstorm", "Windstorm", "Hailstorm", "Thunderstorm",
 		"Aurorastorm II", "Voidstorm II", "Firestorm II", "Sandstorm II", "Rainstorm II", "Windstorm II", "Hailstorm II", "Thunderstorm II"}

@@ -244,7 +244,7 @@ function get_sets()
     RELIC.Head  =   "Bagua Galero +3"
     RELIC.Body  =   "Bagua Tunic +3"
     RELIC.Hands =   "Bagua Mitaines +1"
-    RELIC.Legs  =   "Bagua Pants +3"
+    RELIC.Legs  =   "RELIC.Legs"
     RELIC.Feet  =   "Bagua Sandals +1"
 
     --Azimuth
@@ -253,7 +253,15 @@ function get_sets()
     EMPY.Hands  =   "Azimuth Gloves +1"
     EMPY.Legs   =   "Azimuth Tights +1"
     EMPY.Feet   =   "Azimuth Gaiters +1"
-
+	
+	Nantosuelta = {}
+	Lifestream =  {}
+	Lifestream.IndiDuration = { name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +18','Pet: Damage taken -5%',}}
+	Nantosuelta.PetRegen    = { name="Nantosuelta's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Pet: "Regen"+10','Phys. dmg. taken-10%',}}
+	Nantosuelta.MAB         = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}}
+	Nantosuelta.FC          = { name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}}
+	
+	
     -- Movespeed boots
     sets.me.movespeed = {feet=AF.Feet}
 
@@ -273,7 +281,7 @@ function get_sets()
 		right_ear="Etiolation Earring",
 		left_ring="Fortified Ring",
 		right_ring="Defending Ring",
-		back={ name="Nantosuelta's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Pet: "Regen"+10','Phys. dmg. taken-10%',}},
+		back=Nantosuelta.PetRegen,
     }
 	
     -- Your idle MasterDT set (Notice the sets.me, means no Luopan is out)
@@ -312,7 +320,7 @@ function get_sets()
 		right_ear="Etiolation Earring",
 		left_ring="Fortified Ring",
 		right_ring="Defending Ring",
-		back={ name="Nantosuelta's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Pet: "Regen"+10','Phys. dmg. taken-10%',}},
+		back=Nantosuelta.PetRegen,
     }
 	
 	-- This is when you have a Luopan out but want to sacrifice some slot for master DT, put those slots in.
@@ -334,19 +342,19 @@ function get_sets()
 	
     -- Luopan is out
 	sets.pan.melee = set_combine(sets.pan.idle[idleMode],{
-        range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-        head="Jhakri Coronal +1",
-        body="Jhakri Robe +2",
-        hands="Jhakri Cuffs +2",
-        legs="Jhakri Slops +2",
-        feet="Jhakri Pigaches +2",
-        neck="Sanctity Necklace",
-        waist="Windbuffet Belt +1",
-        left_ear="Mache Earring +1",
-        right_ear="Telos Earring",
-        left_ring="Jhakri Ring",
-        right_ring="Supershear Ring",
-        back={ name="Nantosuelta's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Pet: "Regen"+10','Damage taken-5%',}},
+        range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+        head = "Jhakri Coronal +1",
+        body = "Jhakri Robe +2",
+        hands = "Jhakri Cuffs +2",
+        legs = "Jhakri Slops +2",
+        feet = "Jhakri Pigaches +2",
+        neck = "Sanctity Necklace",
+        waist = "Windbuffet Belt +1",
+        left_ear = "Mache Earring +1",
+        right_ear = "Telos Earring",
+        left_ring = "Jhakri Ring",
+        right_ring = "Supershear Ring",
+        back =  Nantosuelta.PetRegen,
     }) 
     
     -- Weapon Skill sets
@@ -360,19 +368,19 @@ function get_sets()
     }
 	
     sets.me["Exudation"] = {
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head="Jhakri Coronal +1",
-		body="Mallquis Saio +2",
-		hands= AF.Hands,
-		legs= RELIC.Legs,
-		feet= Merl.Feet.MAB,
-		neck="Erra Pendant",
-		waist="Grunfeld Rope",
-		left_ear="Malignance Earring",
-		right_ear="Telos Earring",
-		left_ring="Excelsis Ring",
-		right_ring="Evanescence Ring",
-		back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = "Jhakri Coronal +1",
+		body = "Mallquis Saio +2",
+		hands =  AF.Hands,
+		legs = RELIC.Legs,
+		feet = Merl.Feet.MAB,
+		neck = "Erra Pendant",
+		waist = "Grunfeld Rope",
+		left_ear = "Malignance Earring",
+		right_ear = "Telos Earring",
+		left_ring = "Excelsis Ring",
+		right_ring = "Evanescence Ring",
+		back = Nantosuelta.MAB,
     } 
     -- Feel free to add new weapon skills, make sure you spell it the same as in game.
   
@@ -391,20 +399,20 @@ function get_sets()
       
     -- Generic Casting Set that all others take off of. Here you should add all your fast cast  
     sets.precast.casting = {
-        main="Idris",
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head="Welkin Crown",
-		body= Merl.Body.FC,
-		hands= RELIC.Hands,
-		legs= AF.Legs,
-		feet= Merl.MAB,
-		neck="Incanter's Torque",
-		waist="Embla Sash",
-		left_ear="Malignance Earring",
-		right_ear="Loquac. Earring",
-		left_ring="Prolix Ring",
-		right_ring="Kishar Ring",
-		back={ name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        main = "Idris",
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = "Welkin Crown",
+		body = Merl.Body.FC,
+		hands = RELIC.Hands,
+		legs = AF.Legs,
+		feet = Merl.MAB,
+		neck = "Incanter's Torque",
+		waist = "Embla Sash",
+		left_ear = "Malignance Earring",
+		right_ear = "Loquac. Earring",
+		left_ring = "Prolix Ring",
+		right_ring = "Kishar Ring",
+		back = Nantosuelta.FC,
     }   
 
     sets.precast.geomancy = set_combine(sets.precast.casting,{
@@ -412,31 +420,31 @@ function get_sets()
     })
     -- Enhancing Magic, eg. Siegal Sash, etc
     sets.precast.enhancing = set_combine(sets.precast.casting,{
-		waist= "Siegel Sash",
-        neck= "Incanter's Torque",
+		waist = "Siegel Sash",
+        neck = "Incanter's Torque",
     })
   
     -- Stoneskin casting time -, works off of enhancing -
     sets.precast.stoneskin = set_combine(sets.precast.enhancing,{
-		head="Umuthi Hat",
-		legs="Doyen Pants",
-		neck="Nodens Gorget",
-		waist="Siegel Sash",
+		head = "Umuthi Hat",
+		legs = "Doyen Pants",
+		neck = "Nodens Gorget",
+		waist = "Siegel Sash",
     })
       
     -- Curing Precast, Cure Spell Casting time -
     sets.precast.cure = set_combine(sets.precast.casting,{
-		main="Daybreak",
-		sub="Ammurapi Shield",
-		head= Van.Head.C,
-		legs="Doyen Pants",
-		feet= Merl.Feet.MAB,
-		neck="Incanter's Torque",
-		waist="Embla Sash",
-		left_ear="Mendi. Earring",
-		right_ear="Loquac. Earring",
-		left_ring="Prolix Ring",
-		back={ name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+		main = "Daybreak",
+		sub = "Ammurapi Shield",
+		head = Van.Head.C,
+		legs = "Doyen Pants",
+		feet = Merl.Feet.MAB,
+		neck = "Incanter's Torque",
+		waist = "Embla Sash",
+		left_ear = "Mendi. Earring",
+		right_ear = "Loquac. Earring",
+		left_ring = "Prolix Ring",
+		back = Nantosuelta.FC,
     })
     sets.precast.regen = set_combine(sets.precast.casting,{
 
@@ -477,71 +485,71 @@ function get_sets()
             
     -- Whatever you want to equip mid-cast as a catch all for all spells, and we'll overwrite later for individual spells
     sets.midcast.casting = {
-        range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head= RELIC.Head,
-		body= RELIC.Body,
-		hands="Jhakri Cuffs +2",
-		legs= RELIC.Legs,
-		feet= Merl.Feet.MAB,
-		neck="Sanctity Necklace",
-		waist="Eschan Stone",
-		left_ear="Malignance Earring",
-		right_ear="Friomisi Earring",
-		left_ring="Jhakri Ring",
-		right_ring="Fenrir Ring",
-		back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
+        range ={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = RELIC.Head,
+		body = RELIC.Body,
+		hands = "Jhakri Cuffs +2",
+		legs = RELIC.Legs,
+		feet = Merl.Feet.MAB,
+		neck = "Sanctity Necklace",
+		waist = "Eschan Stone",
+		left_ear = "Malignance Earring",
+		right_ear = "Friomisi Earring",
+		left_ring = "Jhakri Ring",
+		right_ring = "Fenrir Ring",
+		back = Nantosuelta.MAB,
     }
 	
 	-- For Geo spells /
     sets.midcast.geo = set_combine(sets.midcast.casting,{
-        main="Idris",
-		sub="Genbu's Shield",
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head= Van.Head.C,
-		body= Amal.Body.D,
-		hands= Van.Hands.C,
-		legs={ name="Bagua Pants +3", augments={'Enhances "Mending Halation" effect',}},
-		feet="Azimuth Gaiters +1",
-		neck={ name="Bagua Charm +2", augments={'Path: A',}},
-		waist="Austerity Belt",
-		left_ear="Gifted Earring",
-		right_ear="Fulla Earring",
-		left_ring="Stikini Ring",
-		right_ring="Kishar Ring",
-		back={ name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +18','Pet: Damage taken -5%',}},
+        main = "Idris",
+		sub = "Genbu's Shield",
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = Van.Head.C,
+		body = Amal.Body.D,
+		hands = Van.Hands.C,
+		legs = RELIC.Legs,
+		feet = "Azimuth Gaiters +1",
+		neck = { name="Bagua Charm +2", augments={'Path: A',}},
+		waist = "Austerity Belt",
+		left_ear = "Gifted Earring",
+		right_ear = "Fulla Earring",
+		left_ring = "Stikini Ring",
+		right_ring = "Kishar Ring",
+		back = Lifestream.IndiDuration,
     })
 	-- For Indi Spells
     sets.midcast.indi = set_combine(sets.midcast.geo,{
-        legs="Bagua Pants +1",
+        legs = RELIC.Legs,
     })
 	
 	-- For Entrusted Indi Spells
     sets.midcast.entrust = set_combine(sets.midcast.indi,{
-        main="Solstice",
-        legs="Bagua Pants +1",
+        main = "Solstice",
+        legs = RELIC.Legs,
     })
 
 	sets.midcast.Obi = {
-	    waist="Hachirin-no-Obi",
+	    waist = "Hachirin-no-Obi",
 	}
 	
 	-- Nuking
     sets.midcast.nuking.normal = set_combine(sets.midcast.casting,{
-        main="Daybreak",
-		sub="Ammurapi Shield",
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head= RELIC.Head,
-		body= RELIC.Body,
-		hands="Jhakri Cuffs +2",
-		legs= RELIC.Legs,
-		feet= Merl.Feet.MAB,
-		neck="Sanctity Necklace",
-		waist="Eschan Stone",
-		left_ear="Malignance Earring",
-		right_ear="Friomisi Earring",
-		left_ring="Jhakri Ring",
-		right_ring="Fenrir Ring",
-		back={ name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
+        main = "Daybreak",
+		sub = "Ammurapi Shield",
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = RELIC.Head,
+		body = RELIC.Body,
+		hands = "Jhakri Cuffs +2",
+		legs = RELIC.Legs,
+		feet = Merl.Feet.MAB,
+		neck = "Sanctity Necklace",
+		waist = "Eschan Stone",
+		left_ear = "Malignance Earring",
+		right_ear = "Friomisi Earring",
+		left_ring = "Jhakri Ring",
+		right_ring = "Fenrir Ring",
+		back = Nantosuelta.MAB,
     })
 	sets.midcast.MB.normal = set_combine(sets.midcast.nuking.normal, {
         
@@ -555,48 +563,48 @@ function get_sets()
 
 	-- Enfeebling
 	sets.midcast.IntEnfeebling = set_combine(sets.midcast.casting,{
-        main="Daybreak",
-		sub="Ammurapi Shield",
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head= RELIC.Head,
-		body= RELIC.Body,
-		hands= AF.Hands,
-		legs= RELIC.Legs,
-		feet= AF.Hands,
-		neck="Incanter's Torque",
-		waist="Eschan Stone",
-		left_ear="Malignance Earring",
-		right_ear="Mendi. Earring",
-		left_ring="Jhakri Ring",
-		right_ring="Stikini Ring",
-		back={ name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        main = "Daybreak",
+		sub = "Ammurapi Shield",
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = RELIC.Head,
+		body = RELIC.Body,
+		hands = AF.Hands,
+		legs = RELIC.Legs,
+		feet = AF.Hands,
+		neck = "Incanter's Torque",
+		waist = "Eschan Stone",
+		left_ear = "Malignance Earring",
+		right_ear = "Mendi. Earring",
+		left_ring = "Jhakri Ring",
+		right_ring = "Stikini Ring",
+		back = Nantosuelta.FC,
     })
-	sets.midcast.MndEnfeebling = set_combine(sets.midcast.casting,{
+	sets.midcast.MndEnfeebling = set_combine(sets.midcast.IntEnfeebling,{
         
     })
 	
     -- Enhancing
     sets.midcast.enhancing = set_combine(sets.midcast.casting,{
-        main="Daybreak",
-        head={ name="Telchine Cap", augments={'Enh. Mag. eff. dur. +8',}},
-		body= Merl.Body.FC,
-		hands= RELIC.Hands,
-		legs= Telchine.Legs.en,
-		feet= Telchine.Feet.en,
-		neck="Incanter's Torque",
-		waist="Embla Sash",
-		left_ear="Malignance Earring",
-		right_ear="Loquac. Earring",
-		left_ring="Prolix Ring",
-		right_ring="Jhakri Ring",
-		back={ name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        main = "Daybreak",
+        head = Telchine.Head.en ,
+		body = Merl.Body.FC,
+		hands = RELIC.Hands,
+		legs = Telchine.Legs.en,
+		feet = Telchine.Feet.en,
+		neck = "Incanter's Torque",
+		waist = "Embla Sash",
+		left_ear = "Andoaa Earring",
+		right_ear = "Loquac. Earring",
+		left_ring = "Stikini Ring",
+		right_ring = "Jhakri Ring",
+		back = Nantosuelta.FC,
     })
 	
     -- Stoneskin
     sets.midcast.stoneskin = set_combine(sets.midcast.enhancing,{
-		legs="Doyen Pants",
-		neck="Nodens Gorget",
-		waist="Siegel Sash",
+		legs = "Doyen Pants",
+		neck = "Nodens Gorget",
+		waist = "Siegel Sash",
     })
     sets.midcast.refresh = set_combine(sets.midcast.enhancing,{
 		
@@ -604,11 +612,11 @@ function get_sets()
     sets.midcast.aquaveil = sets.midcast.refresh
 	
 	sets.midcast["Drain"] = set_combine(sets.midcast.IntEnfeebling, {		
-		head="Pixie Hairpin +1",
-		neck="Erra Pendant",
-		waist="Fucho-no-Obi",
-		left_ring="Excelsis Ring",
-		right_ring="Evanescence Ring",
+		head = "Pixie Hairpin +1",
+		neck = "Erra Pendant",
+		waist = "Fucho-no-Obi",
+		left_ring = "Excelsis Ring",
+		right_ring = "Evanescence Ring",
         
 	})
 
@@ -617,21 +625,21 @@ function get_sets()
     sets.midcast.cure = {} -- Leave This Empty
     -- Cure Potency
     sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
-        main="Daybreak",
-		sub="Genbu's Shield",
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head= Van.Head.ConMP,
-		body= Merl.Body.FC,
-		hands="Jhakri Cuffs +2",
-		legs="Doyen Pants",
-		feet="Vanya Clogs",
-		neck="Nodens Gorget",
-		waist="Austerity Belt",
-		left_ear="Gifted Earring",
-		right_ear="Mendi. Earring",
-		left_ring="Stikini Ring",
-		right_ring="Kishar Ring",
-		back={ name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        main = "Daybreak",
+		sub = "Genmei Shield",
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = Van.Head.ConMP,
+		body = Merl.Body.FC,
+		hands ="Jhakri Cuffs +2",
+		legs = "Doyen Pants",
+		feet = "Vanya Clogs",
+		neck = "Nodens Gorget",
+		waist = "Austerity Belt",
+		left_ear = "Gifted Earring",
+		right_ear = "Mendi. Earring",
+		left_ring = "Stikini Ring",
+		right_ring = "Kishar Ring",
+		back = Nantosuelta.FC,
     })
     sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{
    
@@ -639,14 +647,14 @@ function get_sets()
 
     })    
     sets.midcast.regen = set_combine(sets.midcast.enhancing,{
-        main="Bolelabunga",
-        sub= "Ammurapi Shield",
-        head= Telchine.Head.en,
-        --body="Telchine Chas.",
-        --hands="Telchine Gloves",
-        legs= Telchine.Legs.en,
-        feet= Telchine.Feet.en,
-        neck="Incanter's Torque",
+        main = "Bolelabunga",
+        sub = "Ammurapi Shield",
+        head = Telchine.Head.en,
+        --body = Telchine.Body.en,
+        hands = Telchine.Hands.en,
+        legs = Telchine.Legs.en,
+        feet = Telchine.Feet.en,
+        neck = "Incanter's Torque",
         
     }) 
    

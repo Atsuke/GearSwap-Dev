@@ -70,6 +70,7 @@ textHideBattle:set(true)
 textHideHUD:set(false)
 useLightMode:set(false)
 keybinds:set(true)
+tools:set(true)
 
 -- Optional. Swap to your sch macro sheet / book
 -- set_macros(2,29) -- Sheet, Book   
@@ -80,9 +81,9 @@ keybinds:set(true)
 -- You can add or remove modes in the table below, they will get picked up in the cycle automatically. 
 -- to define sets for idle if you add more modes, name them: sets.idle.mymode and add 'mymode' in the group.
 
-idleModes   = M('Regain', 'Regen','DT')
-meleeModes  = M('TP', 'Hybrid', 'DT')
-treasureHunter = M('OFF', 'ON')
+idleModes   = M('Regen','DT')
+meleeModes  = M('TP', 'Hybrid', 'DT', 'Acc')
+nukeModes = M('Normal', 'Acc', 'Burst')
 enmityModes = M('Normal', 'Enmity')
 	
 	------------------------------------------------------------------------------------------------
@@ -90,7 +91,8 @@ enmityModes = M('Normal', 'Enmity')
     ------------------------------------------------------------------------------------------------
 	
 	-- Setup your Key Bindings here:
-    
+    windower.send_command('bind insert gs c nuke cycle')               -- Insert Cycles Nuke element
+    windower.send_command('bind !insert gs c nuke cycledown')          -- ALT+Insert Cycles Nuke element in reverse order 
     windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
 	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
@@ -98,7 +100,7 @@ enmityModes = M('Normal', 'Enmity')
 	windower.send_command('bind !f11 gs c toggle nukemode')     	   -- Alt-F11 to change Nuking Mode
 	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
     windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
-	windower.send_command('bind insert gs c toggle thMode')            -- insert to toggle Treasure Hunter Mode on or off
+	
 	
 
 	--[[
@@ -112,11 +114,26 @@ keybinds_on = {}
 keybinds_on['key_bind_idle'] = '(F9) '
 keybinds_on['key_bind_melee'] = '(F10) '
 keybinds_on['key_bind_enmity'] = '(F11) '
-keybinds_on['key_bind_'] = '(F11) '
-keybinds_on['key_bind_treasure_hunter'] = '(INSERT)'
+keybinds_on['key_bind_casting'] = '(Alt-F11) '
+keybinds_on['key_bind_element_cycle'] = '(INSERT)'
 keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
 keybinds_on['key_bind_lock_weapon'] = '(F12) '
 
+-- Set the tools you would like to track while tool tracker is set to on. 
+-- Tools can be in inventory or wardrobe.  
+-- Set value to empty string if you dont want to track a tool.  Ex. tool_4 = ''
+
+tool_1 = "Shihei"
+tool_2 = "Inoshishinofuda"
+tool_3 = "Chonofuda"
+tool_4 = "Shikanofuda"
+
+-- Set these values for the text displayed in the hud
+tools_on = {}
+tools_on['tool_1'] = 'Shihei: '
+tools_on['tool_2'] = "Inoshishinofuda: "
+tools_on['tool_3'] = "Chonofuda: "
+tools_on['tool_4'] = "Shikanofuda: "
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
@@ -127,6 +144,7 @@ function user_unload()
     send_command('unbind f9')
     send_command('unbind !f9')
 	send_command('unbind f10')
+	send_command('unbind !f11')
     send_command('unbind f12')
     send_command('unbind home')
     send_command('unbind !home')
@@ -138,7 +156,7 @@ function user_unload()
 end
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-include('/libs/THF_Lib.lua')            -- leave this as is. NO TOUCHEY!   
+include('/libs/NIN_Lib.lua')            -- leave this as is. NO TOUCHEY!   
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 
@@ -171,33 +189,33 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     EMPY = {}       -- leave this empty
 	
 	-- Fill this with your own JSE. 
-    --Pillager's
-    AF.Head  = "Pill. Bonnet +1"
-    AF.Body  = "Pillager's Vest +1"
-    AF.Hands = "Pill. Armlets +1"
-    AF.Legs  = "Pill. Culottes +1"
-    AF.Feet  = "Pill. Poulaines +1"
+    --Hachiya
+    AF.Head  = "Hachi. Hatsu. +1"
+    AF.Body  = "Hachi. Chain. +1"
+    AF.Hands = "Hachiya Tekko +1"
+    AF.Legs  = "Hachi. Hakama +1"
+    AF.Feet  = "Hachi. Kyahan +1"
 
-    --Plunderer's
-    RELIC.Head  ={ name="Plun. Bonnet +1", augments={'Enhances "Aura Steal" effect',}}
-    RELIC.Body  ={ name="Plunderer's Vest +1", augments={'Enhances "Ambush" effect',}}
-    RELIC.Hands ={ name="Plun. Armlets +3", augments={'Enhances "Perfect Dodge" effect',}}
-    RELIC.Legs  ={ name="Plun. Culottes +1", augments={'Enhances "Feint" effect',}}
-    RELIC.Feet  ={ name="Plun. Poulaines +3", augments={'Enhances "Assassin\'s Charge" effect',}}
+    --Mochizuki
+    RELIC.Head  = { name="Mochi. Hatsuburi +1", augments={'Enhances "Yonin" and "Innin" effect',}}
+    RELIC.Body  = { name="Mochi. Chainmail +1", augments={'Enhances "Sange" effect',}}
+    RELIC.Hands = { name="Mochizuki Tekko +1", augments={'Enh. "Ninja Tool Expertise" effect',}}
+    RELIC.Legs  = { name="Mochi. Hakama +1", augments={'Enhances "Mijin Gakure" effect',}}
+    RELIC.Feet  = { name="Mochi. Kyahan +1", augments={'Enh. Ninj. Mag. Acc/Cast Time Red.',}}
 	
-    --Skulker
-    EMPY.Head  ="Skulker's Bonnet +1"
-    EMPY.Body  ="Skulker's Vest +1"
-    EMPY.Hands ="Skulk. Armlets +1"
-    EMPY.Legs  ="Skulk. Culottes +1"
-    EMPY.Feet  ="Skulk. Poulaines +1"
+    --Hattori
+    EMPY.Head  = "Hattori Zukin +1"
+    EMPY.Body  = "Hattori Ningi +1"
+    EMPY.Hands = "Hattori Tekko +1"
+    EMPY.Legs  = "Hattori Hakama +1"
+    EMPY.Feet  = "Hattori Kyahan +1"
 	
 	-- Define your JSE Capes here. 
-	Toutatis = {} -- leave this empty
+	Andartia = {} -- leave this empty
 	
-	Toutatis.TP  ={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Damage taken-5%',}}
-	Toutatis.WSD ={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}}
-	
+	Andartia.TP     = { name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}}
+	Andartia.FC     = { name="Andartia's Mantle", augments={'Eva.+20 /Mag. Eva.+20','"Fast Cast"+10','Spell interruption rate down-10%',}}
+	Andartia.STRWSD = { name="Andartia's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}}
 	
 	------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
@@ -207,27 +225,40 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.precast.WS= {}	-- leave this empty
 	sets.buff = {}		-- leave this empty
 	
-	sets.precast['Utsusemi'] = {
+	
+	
+	
+	
+	
+	sets.precast.casting = {
 			
 		ammo = "Sapience Orb",
 		head = Herc.Head.WSD,
 		body = "Malignance Tabard",
 		hands = { name="Leyline Gloves", augments={'Accuracy+12','Mag. Acc.+10','"Mag.Atk.Bns."+1',}},
-		neck = "Magoraga Beads",
-		waist = "Sailfi Belt +1",
+		legs = "Malignance Tights",
+		feet = "Malignance Boots",
+		neck = "Voltsurge Torque",
+		waist = "Windbuffet Belt",
 		left_ear = "Etiolation Earring",
 		right_ear = "Loquac. Earring",
-		left_ring = "Gelatinous Ring +1",
+		left_ring = "Kishar Ring",
 		right_ring = "Prolix Ring",
-	
+		back = Andartia.FC
 	
 	}
-    sets.precast['No Foot Rise'] = {body = RELIC.Body}
+   
+   sets.precast['Utsusemi'] = set_combine(sets.precast.casting,{
+				
+		body = RELIC.Body,
+		neck = "Magoraga Beads",
+		
+	})
 	
 	sets.precast['Provoke'] = {
 	
 		ammo = "Sapience Orb",
-		head = RELIC.Head,
+		-- head = RELIC.Head,
 		body = "Emet Harness +1",
 		-- hands = RELIC.Hands,
 		legs = "Zoar Subligar +1",
@@ -238,6 +269,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Friomisi Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Provocare Ring",
+		back = "Reiki Cloak",
 		
 	}
     
@@ -305,24 +337,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		-- hands = EMPY.Hands,
 		-- back = Toetapper.RF,
 	-- }
-    
-	
-	sets.precast['Utsusemi'] = {
-		ammo = "Sapience Orb",
-		head = Herc.Head.WSD,
-		body = "Malignance Tabard",
-		hands = { name="Leyline Gloves", augments={'Accuracy+12','Mag. Acc.+10','"Mag.Atk.Bns."+1',}},
-		legs = "Gleti's Breeches",
-		feet = "Gleti's Boots",
-		neck = "Magoraga Beads",
-		waist = "Sailfi Belt +1",
-		left_ear = "Etiolation Earring",
-		right_ear = "Loquac. Earring",
-		left_ring = "Defending Ring",
-		right_ring = "Prolix Ring",
-		
-	
-	}
 	
 	
 	sets.precast.RA={
@@ -339,21 +353,53 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		back="Reiki Cloak",
 	}
 	
-	sets.precast['Accomplice'] = {head = EMPY.Head}
-	sets.precast['Collaborator'] = sets.precast['Accomplice']
-	sets.precast['Hide'] = {body = AF.Body}
-	sets.precast['Conspirator'] = {Body = EMPY.Body}
-	sets.precast['Perfect Dodge'] = {hands = RELIC.Hands,}
-	sets.precast['Feint'] = {legs = RELIC.Legs}
-	sets.precast['Flee'] = {feet = AF.Feet}
+	
+	sets.midcast = {}
+	sets.midcast.nuking ={}
+	sets.midcast.MB = {}
+	sets.midcast['Utsusemi'] = {}
+	
+	sets.midcast.enfeeble={
+    ammo = "Yamarang",
+    head = AF.Head,
+    body = "Malignance Tabard",
+    hands = "Malignance Gloves",
+    legs = "Malignance Tights",
+    feet = AF.Feet,
+    neck = "Incanter's Torque",
+    waist = "Eschan Stone",
+    right_ear = "Hermetic Earring",
+	
+	}
 
+	sets.midcast.nuking['Normal']={
+		ammo = "Ghastly Tathlum +1",
+		head = RELIC.Head,
+		body = Herc.Body.MAB,
+		legs = Herc.Legs.MAB,
+		feet = RELIC.Feet,
+		neck = "Sanctity Necklace",
+		waist = "Eschan Stone",
+		left_ear = "Friomisi Earring",
+		right_ear = "Hermetic Earring",
+		left_ring = "Persis Ring",
+		right_ring = "Dingir Ring",
+	}
+	
+	sets.midcast.nuking['Acc']= sets.midcast.nuking['Normal']
+	
+	sets.midcast.MB['Normal'] = sets.midcast.nuking['Normal']
+	sets.midcast.MB['Acc'] = sets.midcast.MB['Normal']
+	
+	
+	sets.midcast['Utsusemi'].Normal = {feet = EMPY.Feet, back = Andartia.TP,}
+	sets.midcast['Utsusemi'].Enmity = set_combine(sets.precast['Provoke'], sets.midcast['Utsusemi'].Normal)
     ------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------
 	
-	sets.buff['Sneak Attack'] = {hands = EMPY.Hands}
-	sets.buff['Trick Attack'] = {hands= AF.Hands}
-	sets.midcast = {}
+	
+	
     
 	sets.precast.WS = {
 		ammo = "C. Palug Stone",
@@ -362,79 +408,82 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		hands = "Meg. Gloves +2",
 		legs = Herc.Legs.MAB,
 		feet = Herc.Feet.WSD,
-		neck = { name="Asn. Gorget +1", augments={'Path: A',}},
 		waist = "Grunfeld Rope",
 		left_ear = "Ishvara Earring",
 		right_ear = "Odr Earring",
 		left_ring = "Thundersoul Ring",
 		right_ring = "Ilabrat Ring",
-		back = Toutatis.WSD,
+		back = Andartia.TP,
 	}
 
-    sets.precast['Exenterator'] = set_combine(sets.precast.WS,{
+    sets.precast['Blade: Ten'] = set_combine(sets.precast.WS,{
+		ammo = "C. Palug Stone",
+		head = AF.Head,
+		body = { name="Agony Jerkin +1", augments={'Path: A',}},
+		hands = RELIC.Hands,
+		legs = "Jokushu Haidate",
+		feet = { name="Tatena. Sune. +1", augments={'Path: A',}},
+		waist = "Grunfeld Rope",
+		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
+		right_ear = "Ishvara Earring",
+		left_ring = "Rajas Ring",
+		right_ring = "Epona's Ring",
+		back = Andartia.STRWSD,
+		
+	})
+
+	sets.precast['Blade: Metsu'] = set_combine(sets.precast['Blade: Ten'],{
+		ammo = "C. Palug Stone",
+		right_ear = "Odr Earring",
+	
+	})
+	
+    sets.precast['Blade: Shun'] = {
+		ammo = "C. Palug Stone",
 		head = "Malignance Chapeau",
-		body = "Meg. Cuirie +2",
+		body = "Malignance Tabard",
+		hands = "Malignance Gloves",
+		legs = "Jokushu Haidate",
+		feet = "Malignance Boots",
 		neck = "Fotia Gorget",
 		waist = "Fotia Belt",
-		right_ear = "Brutal Earring",
-		right_ear = "Sherida Earring",
-		left_ring = "Stormsoul Ring",
-		
-	})
-
+		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
+		right_ear = "Odr Earring",
+		left_ring = "Thundersoul Ring",
+		right_ring = "Ilabrat Ring",
+		back = Andartia.TP,
+	}
 	
-    sets.precast['Evisceration'] = set_combine(sets.precast.WS,{
-		head = "Mummu Bonnet +2",
-		body = "Abnoba Kaftan",
-		legs = AF.Legs,
-		feet = Herc.Feet.WSD,
-		neck = { name="Asn. Gorget +1", augments={'Path: A',}},
-		waist = "Grunfeld Rope",
-	})
-
-    sets.precast["Rudra's Storm"] = set_combine(sets.precast.WS,{
-		
-	})
+	sets.precast['Blade: Teki'] = {
 	
-	sets.precast['Shark Bite'] = sets.precast["Rudra's Storm"]
-
-    sets.precast['Aeolian Edge'] = set_combine(sets.precast.WS,{ 
+		ammo = "Seeth. Bomblet +1",
+		head = RELIC.Head,
 		body = Herc.Body.MAB,
-		hands = "Meg. Gloves +2",
-		legs=Herc.Legs.MAB,
+		hands = { name="Leyline Gloves", augments={'Accuracy+12','Mag. Acc.+10','"Mag.Atk.Bns."+1',}},
+		legs = Herc.Legs.MAB,
 		feet = Herc.Feet.WSD,
 		neck = "Sanctity Necklace",
 		waist = "Eschan Stone",
-		left_ear = "Ishvara Earring",
-		right_ear = "Hecate's Earring",
-		left_ring = "Thundersoul Ring",
-		right_ring = "Persis Ring",
-		back = Toutatis.WSD
-	})
+		left_ear = "Hecate's Earring",
+		right_ear = "Friomisi Earring",
+		left_ring = "Spiral Ring",
+		right_ring = "Dingir Ring",
+		back = Andartia.STRWSD,
+	
+	
+	}
+	
+	sets.precast['Blade: Chi'] = sets.precast['Blade: Teki']
+	sets.precast['Blade: To'] = sets.precast['Blade: Teki']
+	sets.precast['Blade: Ei'] = sets.precast['Blade: Teki']
+	sets.precast['Blade: Yu'] = sets.precast['Blade: Teki']
+    sets.precast['Aeolian Edge'] = sets.precast['Blade: Teki']
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Idle Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
     sets.idle = {} -- leave this empty
  	
-	sets.idle.Regain = {
-		head = "Gleti's Mask",
-		body = "Gleti's Cuirass",
-		hands = "Gleti's Gauntlets",
-		legs = "Gleti's Breeches",
-		feet = "Gleti's Boots",
-		
-	}
-	
-	sets.idle.Regen = set_combine(sets.idle.Regain, {
-	
-		body = "Meg. Cuirie +2",
-		hands = "Meg. Gloves +2",
-		neck = "Sanctity Necklace",
-		left_ring = "Woltaris Ring",
-	
-	})
-	
 	sets.idle.DT = {
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -450,7 +499,13 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	}
 
-
+	sets.idle.Regen = set_combine(sets.idle.DT,{
+	
+		neck = "Sanctity Necklace",
+		left_ring = "Woltaris Ring",
+	
+	})
+	
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Engaged Sets ------------------------------------------
 	------------------------------------------------------------------------------------------------
@@ -459,35 +514,51 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.engaged = {}  -- leave this empty
 
     sets.engaged.TP = {
-		ammo = "Yamarang",
-		head = "Malignance Chapeau",
-		body = "Gleti's Cuirass",
-		hands = "Malignance Gloves",
-		legs = "Malignance Tights",
-		feet = RELIC.Feet,
-		neck = { name = "Asn. Gorget +1", augments={'Path: A',}},
+		
+		head = Adh.Head.A,
+		body = "Malignance Tabard",
+		hands = Adh.Hands.A,
+		legs = { name="Tatena. Haidate +1", augments={'Path: A',}},
+		feet = { name="Tatena. Sune. +1", augments={'Path: A',}},
+		neck = "Sanctity Necklace",
 		waist = "Windbuffet Belt",
 		left_ear = "Telos Earring",
-		right_ear = "Sherida Earring",
-		left_ring = "Epona's Ring",
-		right_ring = "Ilabrat Ring",
-		back = Toutatis.TP,
+		right_ear = "Suppanomimi",
+		left_ring = "Hetairoi Ring",
+		right_ring = "Epona's Ring",
+		back = Andartia.TP,
 	}
 	
 	sets.engaged.Hybrid = {
 		ammo = "Yamarang",
-		head = "Malignance Chapeau",
-		body = "Gleti's Cuirass",
-		hands = "Malignance Gloves",
+		hands = Adh.Hands.A,
+		body = "Malignance Tabard",
+		hands = Adh.Hands.A,
 		legs = "Malignance Tights",
-		feet = RELIC.Feet,
-		neck={ name="Asn. Gorget +1", augments={'Path: A',}},
+		feet = "Malignance Boots",
+		neck = "Loricate Torque",
 		waist = "Windbuffet Belt",
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Epona's Ring",
 		right_ring="Hetairoi Ring",
-		back = Toutatis.TP
+		back = Andartia.TP,
+	}
+	
+	sets.engaged.Acc = {
+		ammo = "Yamarang",
+		head = "Malignance Chapeau",
+		body = "Malignance Tabard",
+		hands = "Malignance Gloves",
+		llegs = "Malignance Tights",
+		feet = "Malignance Boots",
+		neck = "Sanctity Necklace",
+		waist = "Windbuffet Belt",
+		left_ear = "Telos Earring",
+		right_ear = "Sherida Earring",
+		left_ring = "Epona's Ring",
+		right_ring="Hetairoi Ring",
+		back = Andartia.TP,
 	}
 	
 	sets.engaged.DT = {
@@ -502,7 +573,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Sherida Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Warden's Ring",
-		back = Toutatis.TP
+		back = Andartia.TP,
 	}
 	
 	
@@ -513,15 +584,15 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	--	Note that movespeed is sets.me this is a holdover from the way the movespeed equip 
 	--	helper function expects its input. I'll get around to fixing it eventually
 	--	but this works for now
-	sets.TH ={
-    ammo = "Per. Lucky Egg",
-    head = "Wh. Rarab Cap +1",
-    hands = RELIC.Hands,
-    feet = "Skulk. Poulaines +1",
-    waist = "Chaac Belt",
+	-- sets.TH ={
+    -- ammo = "Per. Lucky Egg",
+    -- head = "Wh. Rarab Cap +1",
+    -- hands = RELIC.Hands,
+    -- feet = "Skulk. Poulaines +1",
+    -- waist = "Chaac Belt",
     
-}
+-- }
 	sets.me = {} -- leave this empty
 	
-	sets.me.movespeed = {feet = AF.Feet,}
+	sets.me.movespeed = {feet = "Danzo Sune-Ate",}
 end

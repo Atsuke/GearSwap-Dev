@@ -175,10 +175,10 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	-- Fill this with your own JSE. 
     --Laksamana
-    AF.Head = "Laksa. Tricorne +1"
+    AF.Head = "Laksa. Tricorne +2"
     AF.Body = "Laksa. Frac +2"
-    AF.Hands = "Laksa. Gants"
-    AF.Legs = "Laksa. Trews"
+    AF.Hands = "Laksa. Gants +1"
+    AF.Legs = "Laksa. Trews +1"
     AF.Feet = "Laksa. Bottes +1"
 
     --Lanun
@@ -274,16 +274,6 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
     -- sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
-    
-	-- sets.precast.Samba = {
-		-- head = AF.Head,
-		-- back = Senuna.DA
-	-- }
-    
-	-- sets.precast.Jig = {
-			-- legs = RELIC.Legs,
-			-- feet = AF.Feet,
-	-- }
 	
 	sets.precast['Violent Flourish'] = {
 		ammo = "Yamarang",

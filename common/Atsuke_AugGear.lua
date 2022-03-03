@@ -97,6 +97,8 @@
 	Helios.Hands = {}
 	Helios.Legs = {}
 	Helios.Feet = {}
+	Samnuha = {}
+	Samnuha.Legs = {}
 	
 --------------------------------------------------
 --------------------------------------------------    
@@ -140,3 +142,8 @@
 	Taeon.Hands.Phalanx =	{ name="Taeon Gloves", augments={'"Fast Cast"+5','Phalanx +3',}}
 	Taeon.Legs.Phalanx	=	{ name="Taeon Tights", augments={'Accuracy+12 Attack+12','Spell interruption rate down -9%','Phalanx +3',}}
 	Taeon.Feet.Phalanx	=	{ name="Taeon Boots", augments={'Spell interruption rate down -8%','Phalanx +3',}}
+	
+	Adh.Head.A          =   { name="Adhemar Bonnet +1", augments={'DEX+12','AGI+12','Accuracy+20',}}
+	Adh.Hands.A         =	{ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}}
+	
+	Samnuha.Legs        =   { name="Samnuha Tights", augments={'STR+7','"Dbl.Atk."+2','"Triple Atk."+1',}}
