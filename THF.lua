@@ -2,6 +2,16 @@ version = "3.0"
 --[[
         Custom commands:
        
+		Can bind these to keys or use in macros ex: /console gs c toggle melee
+		
+	    gs c toggle idlemode            Change Idle Mode
+		gs c toggle runspeed 		    Toggles locking on / off AF Feet
+		gs c toggle meleemode           Change Idle Mode    
+		gs c toggle enmity			   	Toggle casting modes between regular and Enmity for Utsusemi
+		gs c toggle melee			    Toggle Melee mode on / off and locking of weapons  
+		gs c toggle thMode            	Toggle Treasure Hunter Mode on or off
+		gs c dnc voke					Uses either Provoke or Animated Flourish depending on subjob
+	
 
         HUD Functions:
         gs c hud hide                   Toggles the Hud entirely on or off
@@ -35,8 +45,7 @@ version = "3.0"
 -- Set it to false and the movespeed toggle is manual. 
 autorunspeed = false
 auto_CP_Cape = false
--- TP treshold where weapons gets locked. 
-lockWeaponTP = 500
+lockWeaponTP = 500 -- TP treshold where weapons gets locked. 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- HUD Initial setup and Positioning
@@ -51,8 +60,7 @@ hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-include('Atsuke-Includes.lua')
-
+include('Atsuke-Includes.lua') -- Leave as is
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- Customize HUD looks and content
@@ -63,15 +71,17 @@ keybindsColors:set('orange')
 optionsColors:set('white')
 selectionColors:set('blue')   
 
-textHideMode:set(false)
-textHideOptions:set(false)
-textHideJob:set(false)
-textHideBattle:set(true)
-textHideHUD:set(false)
-useLightMode:set(false)
-keybinds:set(true)
+textHideMode:set(false) -- Change to toggle default visibility of Mode section
+textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
+textHideJob:set(false) -- Change to toggle default visibility of job Section
+textHideBattle:set(true) -- Change to toggle default visibility for battle section
+textHideHUD:set(false) -- Change to toggle default setting for hud visibility
+useLightMode:set(false) -- Change to toggle default setting for lite mode
+keybinds:set(true) -- Change to toggle default setting for keybind visibility
+tools:set(true) -- Change to toggle the default setting of the tool counter
 
--- Optional. Swap to your sch macro sheet / book
+
+-- Optional. Swap to your THF macro sheet / book
 -- set_macros(2,29) -- Sheet, Book   
 
 --------------------------------------------------------------------------------------------------------------
@@ -81,10 +91,10 @@ keybinds:set(true)
 -- to define sets for idle if you add more modes, name them: sets.idle.mymode and add 'mymode' in the group.
 
 idleModes   = M('Regain', 'Regen','DT')
-meleeModes  = M('TP', 'Hybrid', 'DT')
+meleeModes  = M('TP', 'Hybrid', 'DT', 'Acc')
 treasureHunter = M('OFF', 'ON')
 enmityModes = M('Normal', 'Enmity')
-	
+
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ Keybinds --------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -95,9 +105,7 @@ enmityModes = M('Normal', 'Enmity')
 	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
     windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
-	windower.send_command('bind !f11 gs c toggle nukemode')     	   -- Alt-F11 to change Nuking Mode
 	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
-    windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
 	windower.send_command('bind insert gs c toggle thMode')            -- insert to toggle Treasure Hunter Mode on or off
 	
 
@@ -110,12 +118,11 @@ enmityModes = M('Normal', 'Enmity')
 
 keybinds_on = {}
 keybinds_on['key_bind_idle'] = '(F9) '
+keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
 keybinds_on['key_bind_melee'] = '(F10) '
 keybinds_on['key_bind_enmity'] = '(F11) '
-keybinds_on['key_bind_'] = '(F11) '
-keybinds_on['key_bind_treasure_hunter'] = '(INSERT)'
-keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
 keybinds_on['key_bind_lock_weapon'] = '(F12) '
+keybinds_on['key_bind_treasure_hunter'] = '(INSERT)'
 
 
 -- Remember to unbind your keybinds on job change.
@@ -136,6 +143,30 @@ function user_unload()
     send_command('unbind `f10')
    	      	
 end
+
+	------------------------------------------------------------------------------------------------
+    ---------------------------------------- Tool Counter ------------------------------------------
+    ------------------------------------------------------------------------------------------------
+
+-- Set the tools you would like to track while tool tracker is set to on. 
+-- Tools can be in inventory or wardrobe.  
+-- Set value to empty string if you dont want to track a tool.  Ex. tool_4 = ''
+
+tool_1 = "Shihei"
+tool_2 = ""
+tool_3 = ""
+tool_4 = ""
+
+-- Set these values for the text displayed in the hud next to the tool count
+tools_on = {}
+tools_on['tool_1'] = 'Shihei: '
+tools_on['tool_2'] = ""
+tools_on['tool_3'] = ""
+tools_on['tool_4'] = ""
+
+-- set level for low tool warning
+tool_warning = 20
+
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 include('/libs/THF_Lib.lua')            -- leave this as is. NO TOUCHEY!   
@@ -153,18 +184,22 @@ include('/libs/THF_Lib.lua')            -- leave this as is. NO TOUCHEY!
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------    
 
-
-
-
 -- Setup your Gear Sets below:
 function get_sets()
---select_default_macro_book()
-include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file since it's shared across many jobs. 
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+-- I list all my Augmented gears in a sidecar file since it's shared across many jobs. This is optional but
+-- makes changing augs without updating multiple sets much easier. 
+include('Atsuke_AugGear.lua')  
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+ 
     
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ JSE Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
-	--define jse capes/armors below. Only have to update one spot as we reforge
+	-- Define jse capes/armors below. Only have to update one spot as we reforge
 	-- JSE
     AF = {}         -- leave this empty
     RELIC = {}      -- leave this empty
@@ -207,23 +242,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.precast.WS= {}	-- leave this empty
 	sets.buff = {}		-- leave this empty
 	
-	sets.precast['Utsusemi'] = {
-			
-		ammo = "Sapience Orb",
-		head = Herc.Head.WSD,
-		body = "Malignance Tabard",
-		hands = { name="Leyline Gloves", augments={'Accuracy+12','Mag. Acc.+10','"Mag.Atk.Bns."+1',}},
-		neck = "Magoraga Beads",
-		waist = "Sailfi Belt +1",
-		left_ear = "Etiolation Earring",
-		right_ear = "Loquac. Earring",
-		left_ring = "Gelatinous Ring +1",
-		right_ring = "Prolix Ring",
-	
-	
-	}
-    sets.precast['No Foot Rise'] = {body = RELIC.Body}
-	
 	sets.precast['Provoke'] = {
 	
 		ammo = "Sapience Orb",
@@ -241,6 +259,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		
 	}
     
+	sets.precast['Animated Flourish'] = sets.precast['Provoke']
+	
 	sets.precast.Waltz = { 
 		ammo = "Yamarang",
 		head = "Mummu Bonnet +2",
@@ -248,26 +268,14 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		hands = "Nyame Gauntlets",
 		legs = "Nyame Flanchard",
 		feet = "Rawhide Boots",
-		-- neck = { name = "Etoile Gorget +2", augments={'Path: A',}},
-		-- waist = "Chaac Belt",
-		-- left_ear = "Odnowa Earring +1",
-		-- right_ear = "Etiolation Earring",
+		left_ear = "Odnowa Earring +1",
+		right_ear = "Etiolation Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Gelatinous Ring +1",
-		-- back=Senuna.DA,
+		
 	}
 	
     -- sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
-    
-	-- sets.precast.Samba = {
-		-- head = AF.Head,
-		-- back = Senuna.DA
-	-- }
-    
-	-- sets.precast.Jig = {
-			-- legs = RELIC.Legs,
-			-- feet = AF.Feet,
-	-- }
 	
 	sets.precast['Violent Flourish'] = {
 		ammo = "Yamarang",
@@ -298,14 +306,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ring = "Varar Ring +1",
 		
 	}   
-    
-	sets.precast['Animated Flourish'] = sets.precast['Provoke']
-	
-	-- sets.precast['Reverse Flourish'] = {
-		-- hands = EMPY.Hands,
-		-- back = Toetapper.RF,
-	-- }
-    
 	
 	sets.precast['Utsusemi'] = {
 		ammo = "Sapience Orb",
@@ -324,7 +324,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	}
 	
-	
 	sets.precast.RA={
 		head="Malignance Chapeau",
 		body="Malignance Tabard",
@@ -339,6 +338,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		back="Reiki Cloak",
 	}
 	
+	-- JA specific equipment swaps.
 	sets.precast['Accomplice'] = {head = EMPY.Head}
 	sets.precast['Collaborator'] = sets.precast['Accomplice']
 	sets.precast['Hide'] = {body = AF.Body}
@@ -346,13 +346,14 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.precast['Perfect Dodge'] = {hands = RELIC.Hands,}
 	sets.precast['Feint'] = {legs = RELIC.Legs}
 	sets.precast['Flee'] = {feet = AF.Feet}
+	sets.buff['Sneak Attack'] = {hands = EMPY.Hands}
+	sets.buff['Trick Attack'] = {hands= AF.Hands}
 
     ------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------
 	
-	sets.buff['Sneak Attack'] = {hands = EMPY.Hands}
-	sets.buff['Trick Attack'] = {hands= AF.Hands}
+		
 	sets.midcast = {}
     
 	sets.precast.WS = {
@@ -382,7 +383,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		
 	})
 
-	
     sets.precast['Evisceration'] = set_combine(sets.precast.WS,{
 		head = "Mummu Bonnet +2",
 		body = "Abnoba Kaftan",
@@ -397,7 +397,9 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	})
 	
 	sets.precast['Shark Bite'] = sets.precast["Rudra's Storm"]
-
+	
+	sets.precast['Mandalic Stab'] = sets.precast["Rudra's Storm"]
+	
     sets.precast['Aeolian Edge'] = set_combine(sets.precast.WS,{ 
 		body = Herc.Body.MAB,
 		hands = "Meg. Gloves +2",
@@ -450,7 +452,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	}
 
-
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Engaged Sets ------------------------------------------
 	------------------------------------------------------------------------------------------------
@@ -460,9 +461,9 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 
     sets.engaged.TP = {
 		ammo = "Yamarang",
-		head = "Malignance Chapeau",
+		head = Adh.Head.A,
 		body = "Gleti's Cuirass",
-		hands = "Malignance Gloves",
+		hands = Adh.Hands.A,
 		legs = "Malignance Tights",
 		feet = RELIC.Feet,
 		neck = { name = "Asn. Gorget +1", augments={'Path: A',}},
@@ -481,13 +482,30 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		hands = "Malignance Gloves",
 		legs = "Malignance Tights",
 		feet = RELIC.Feet,
-		neck={ name="Asn. Gorget +1", augments={'Path: A',}},
+		neck ={ name="Asn. Gorget +1", augments={'Path: A',}},
 		waist = "Windbuffet Belt",
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Epona's Ring",
 		right_ring="Hetairoi Ring",
 		back = Toutatis.TP
+	}
+	
+	sets.engaged.Acc = {
+    
+		ammo = "Yamarang",
+		head = Adh.Head.A,
+		body = "Malignance Tabard",
+		hands = Adh.Hands.A,
+		legs = "Mummu Kecks +2",
+		feet = "Malignance Boots",
+		neck = { name="Asn. Gorget +1", augments={'Path: A',}},
+		waist = "Grunfeld Rope",
+		left_ear = "Telos Earring",
+		right_ear = "Odr Earring",
+		left_ring = "Epona's Ring",
+		right_ring = "Ilabrat Ring",
+		back = Toutatis.TP,
 	}
 	
 	sets.engaged.DT = {
@@ -505,7 +523,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		back = Toutatis.TP
 	}
 	
-	
 	------------------------------------------------------------------------------------------------
     ----------------------------------------- Misc. Sets -------------------------------------------
 	------------------------------------------------------------------------------------------------
@@ -514,13 +531,13 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	--	helper function expects its input. I'll get around to fixing it eventually
 	--	but this works for now
 	sets.TH ={
-    ammo = "Per. Lucky Egg",
-    head = "Wh. Rarab Cap +1",
-    hands = RELIC.Hands,
-    feet = "Skulk. Poulaines +1",
-    waist = "Chaac Belt",
-    
-}
+		ammo = "Per. Lucky Egg",
+		head = "Wh. Rarab Cap +1",
+		hands = RELIC.Hands,
+		feet = "Skulk. Poulaines +1",
+		waist = "Chaac Belt",
+	}
+	
 	sets.me = {} -- leave this empty
 	
 	sets.me.movespeed = {feet = AF.Feet,}
