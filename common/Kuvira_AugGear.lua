@@ -92,16 +92,26 @@
 	Telchine.Legs.en    =   { name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +10',}}
 	Telchine.Feet.en    =   { name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +10',}}
 
-    
 	Merl.Body.FC		=	{ name="Merlinic Jubbah", augments={'"Fast Cast"+6','INT+1','Mag. Acc.+13','"Mag.Atk.Bns."+15',}}
 	Merl.Legs.MB		=	{ name="Merlinic Shalwar", augments={'Mag. Acc.+28','Magic burst dmg.+9%','INT+2','"Mag.Atk.Bns."+15',}}
 	Merl.Feet.MAB       =   { name="Merlinic Crackows", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','"Conserve MP"+1','MND+9','Mag. Acc.+7','"Mag.Atk.Bns."+12',}}
 	Van.Head.ConMP      =   { name="Vanya Hood", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
 	Van.Hands.C         =   { name="Vanya Cuffs", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
-
-	Herc.Feet.MAB       =   { name="Herculean Boots", augments={'"Mag.Atk.Bns."+23','MND+10',}}
+	
+	Herc.Head.WSD		=   { name="Herculean Helm", augments={'Accuracy+1','MND+9','Weapon skill damage +7%','Accuracy+5 Attack+5','Mag. Acc.+9 "Mag.Atk.Bns."+9',}}
+	Herc.Head.MAB		=   { name="Herculean Helm", augments={'"Mag.Atk.Bns."+23','STR+5','Damage taken-1%','Accuracy+17 Attack+17','Mag. Acc.+16 "Mag.Atk.Bns."+16',}}
 	Herc.Hands.WSD      =   { name="Herculean Gloves", augments={'Weapon skill damage +4%','Pet: INT+9','Chance of successful block +4','Mag. Acc.+17 "Mag.Atk.Bns."+17',}}
 	Herc.Legs.WSD       =   { name="Herculean Trousers", augments={'Pet: "Mag.Atk.Bns."+4','DEX+7','Weapon skill damage +6%',}}
+	Herc.Legs.MAB 		= 	{ name="Herculean Trousers", augments={'"Mag.Atk.Bns."+17','Mag. crit. hit dmg. +10%','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
+	Herc.Feet.MAB       =   { name="Herculean Boots", augments={'"Mag.Atk.Bns."+23','MND+10',}}
+	
+	
+	Carm.Hands.D		=   { name="Carmine Fin. Ga.", augments={'Rng.Atk.+15','"Mag.Atk.Bns."+10','"Store TP"+5',}}
+	
+	Adh.Head.A			=   { name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}}
+	Adh.Hands.A			=	{ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}}
+	Adh.Body.B			=	{ name="Adhemar Jacket +1", augments={'STR+12','DEX+12','Attack+20',}}
+	Adh.Legs.D			=   { name="Adhemar Kecks", augments={'AGI+10','"Rapid Shot"+10','Enmity-5',}}
 
 	Rao.Head.C			=	{ name="Rao Kabuto +1", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}}
 	Rao.Body.C			=	{ name="Rao Togi +1", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}}
@@ -110,8 +120,6 @@
 	
 	Ryuo.Hands.A		=	{ name="Ryuo Tekko +1", augments={'STR+12','DEX+12','Accuracy+20',}}
 	Ryuo.Feet.D			=	{ name="Ryuo Sune-Ate +1", augments={'STR+12','Attack+25','Crit. hit rate+4%',}}
-
-
 
 	Taeon.Head.PetDT    =   { name="Taeon Chapeau", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
 	Taeon.Body.PetDT    =   { name="Taeon Tabard", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
