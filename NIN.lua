@@ -135,6 +135,9 @@ tools_on['tool_2'] = "Inoshishinofuda: "
 tools_on['tool_3'] = "Chonofuda: "
 tools_on['tool_4'] = "Shikanofuda: "
 
+-- set level for low tool warning
+tool_warning = 20
+
 -- Remember to unbind your keybinds on job change.
 function user_unload()
     send_command('unbind insert')
@@ -224,11 +227,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.precast = {}   -- leave this empty
 	sets.precast.WS= {}	-- leave this empty
 	sets.buff = {}		-- leave this empty
-	
-	
-	
-	
-	
 	
 	sets.precast.casting = {
 			
@@ -340,20 +338,23 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	
 	sets.precast.RA={
-		head="Malignance Chapeau",
-		body="Malignance Tabard",
-		hands="Malignance Gloves",
-		legs="Malignance Tights",
-		feet="Malignance Boots",
-		neck="Iskur Gorget",
-		waist="Eschan Stone",
-		left_ear="Telos Earring",
-		left_ring="Stormsoul Ring",
-		right_ring="Cacoethic Ring",
-		back="Reiki Cloak",
+		head = "Malignance Chapeau",
+		body = "Malignance Tabard",
+		hands = "Malignance Gloves",
+		legs = "Malignance Tights",
+		feet = "Malignance Boots",
+		neck = "Iskur Gorget",
+		waist = "Eschan Stone",
+		left_ear = "Telos Earring",
+		left_ring = "Stormsoul Ring",
+		right_ring = "Cacoethic Ring",
+		back = "Reiki Cloak",
 	}
 	
-	
+	sets.precast['Mijin Gakure'] = {legs = RELIC.Legs}
+	------------------------------------------------------------------------------------------------
+    ---------------------------------------- Mid Cast Sets -----------------------------------------
+    ------------------------------------------------------------------------------------------------
 	sets.midcast = {}
 	sets.midcast.nuking ={}
 	sets.midcast.MB = {}
@@ -408,6 +409,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		hands = "Meg. Gloves +2",
 		legs = Herc.Legs.MAB,
 		feet = Herc.Feet.WSD,
+		neck ={ name="Ninja Nodowa +2", augments={'Path: A',}},
 		waist = "Grunfeld Rope",
 		left_ear = "Ishvara Earring",
 		right_ear = "Odr Earring",
@@ -454,6 +456,22 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		back = Andartia.TP,
 	}
 	
+	sets.precast['Blade: Hi'] = {
+		ammo = "C. Palug Stone",
+		head = "Mummu Bonnet +2",
+		body = "Abnoba Kaftan",
+		hands = "Mummu Wrists +2",
+		legs = "Mummu Kecks +2",
+		feet = "Mummu Gamash. +2",
+		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},
+		waist = "Windbuffet Belt",
+		left_ear = "Ishvara Earring",
+		right_ear = "Brutal Earring",
+		left_ring = "Hetairoi Ring",
+		right_ring = "Ilabrat Ring",
+		back = Andartia.TP,
+	}
+	
 	sets.precast['Blade: Teki'] = {
 	
 		ammo = "Seeth. Bomblet +1",
@@ -485,6 +503,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     sets.idle = {} -- leave this empty
  	
 	sets.idle.DT = {
+		
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
@@ -514,13 +533,13 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.engaged = {}  -- leave this empty
 
     sets.engaged.TP = {
-		
+		ammo = "Date Shuriken",
 		head = Adh.Head.A,
 		body = "Malignance Tabard",
 		hands = Adh.Hands.A,
 		legs = { name="Tatena. Haidate +1", augments={'Path: A',}},
 		feet = { name="Tatena. Sune. +1", augments={'Path: A',}},
-		neck = "Sanctity Necklace",
+		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},
 		waist = "Windbuffet Belt",
 		left_ear = "Telos Earring",
 		right_ear = "Suppanomimi",
@@ -536,7 +555,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		hands = Adh.Hands.A,
 		legs = "Malignance Tights",
 		feet = "Malignance Boots",
-		neck = "Loricate Torque",
+		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},
 		waist = "Windbuffet Belt",
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
@@ -549,10 +568,10 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
-		hands = "Malignance Gloves",
-		llegs = "Malignance Tights",
+		hands = { name="Tatena. Gote +1", augments={'Path: A',}},
+		legs = { name="Tatena. Haidate +1", augments={'Path: A',}},
 		feet = "Malignance Boots",
-		neck = "Sanctity Necklace",
+		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},
 		waist = "Windbuffet Belt",
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
