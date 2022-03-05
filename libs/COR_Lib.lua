@@ -94,7 +94,7 @@ function precast(spell)
         
         if elemental_ws:contains(spell.name) then
             -- Matching double weather (w/o day conflict).
-            if spell.element == world.weather_element and (get_weather_intensity() == 2 and spell.element ~= elements.weak_to[world.day_element]) then
+            if spell.element == world.weather_element and (get_weather_intensity() == 2 and spell.element ~= element.weak_to[world.day_element]) then
                 equip({waist="Hachirin-no-Obi"})
             -- Matching day and weather.
             elseif spell.element == world.day_element and spell.element == world.weather_element then
@@ -159,12 +159,12 @@ function midcast(spell)
     
 	if spell.action_type == 'Ranged Attack' then
         if buffactive['Triple Shot'] then
-            equip(sets.TripleShot)
+            equip(set_combine(sets.midcast.RA[rangedModes.current],sets.TripleShot))
             if buffactive['Aftermath: Lv.3'] and player.equipment.ranged == "Armageddon" then
                 equip(sets.TripleShotCritical)
             end
 		else
-			equip(sets.midcast.RA[rangedModes.value])		
+			equip(sets.midcast.RA[rangedModes.current])		
 		end
 	end
 end
@@ -289,20 +289,16 @@ function self_command(command)
 			-- cycles through your available idle modes
             elseif commandArgs[2] == 'idlemode' then
                 idleModes:cycle()
-                --idle()
 			
 			-- cycles through your available "Engaged" modes
             elseif commandArgs[2] == 'meleemode' then
                 meleeModes:cycle()                 
-				--idle()
+				
 			elseif commandArgs[2] == 'ranged' then
                 rangedModes:cycle()                 
-				--idle()
+			
 			elseif commandArgs[2] == 'luzaf' then
                 luzafMode:cycle()
-			
-			elseif commandArgs[2] == 'qd' then
-                quickDrawModes:cycle()
 			end	
 		
 		elseif commandArgs[1] == 'dnc' then
@@ -310,10 +306,56 @@ function self_command(command)
 				handle_voke()
 				
 			end
+		elseif commandArgs[1] == 'roll1' then --handle cycling of roll_1
+			if not commandArgs[2] then
+				windower.add_to_chat(123, 'Not a valid command dummy')
+				return
+			end
+			local arg2 = commandArgs[2]:lower()
+			
+			if arg2 == 'cycle' then
+				roll_1:cycle()
+			elseif arg2 == 'cycledown' then
+				roll_1:cycleback()
+			elseif arg2 == 'roll' then
+				send_command('@input /ja "'..roll_1.current..'"')
+			end
+		elseif commandArgs[1] == 'roll2' then --handle cycleing of roll_2
+			if not commandArgs[2] then
+				windower.add_to_chat(123, 'Not a valid command dummy')
+				return
+			end
+			
+			local arg2 = commandArgs[2]:lower()
+			
+			if arg2 == 'cycle' then
+				roll_2:cycle()
+			elseif arg2 == 'cycledown' then
+				roll_2:cycleback()
+			elseif arg2 == 'roll' then
+				send_command('@input /ja "'..roll_2.current..'"')
+			end
+		elseif commandArgs[1] == 'qd' then
+			if not commandArgs[2] then
+				windower.add_to_chat(123, 'Not a valid command dummy')
+				return
+			end
+			
+			local arg2 = commandArgs[2]:lower()
+			
+			if arg2 == 'mode' then
+				quickDrawModes:cycle()
+			elseif arg2 == 'cycle' then
+				elements:cycle()
+			elseif arg2 == 'cycledown' then
+				elements:cycleback()
+			elseif arg2 == 'shoot' then
+				send_command('@input /ja "'..quickdraw[elements.current]..'"')
+			end
+			
 		end
     end
 	
-	--validateTextInformation()
 	idle()
 end
 
