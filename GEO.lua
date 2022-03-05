@@ -268,7 +268,7 @@ function get_sets()
     -- Your idle set when you DON'T have a luopan out
     sets.me.idle.normal = {
 		main="Idris",
-		sub="Genbu's Shield",
+		sub = "Genmei Shield",
 		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head= EMPY.Head,
 		body="Mallquis Saio +2",
@@ -307,7 +307,7 @@ function get_sets()
     -- This is the base for all perpetuation scenarios, as seen below
     sets.pan.idle.normal = {
         main="Idris",
-		sub="Genbu's Shield",
+		sub="Genmei Shield",
 		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head=EMPY.Head,
 		body="Mallquis Saio +2",
@@ -503,7 +503,7 @@ function get_sets()
 	-- For Geo spells /
     sets.midcast.geo = set_combine(sets.midcast.casting,{
         main = "Idris",
-		sub = "Genbu's Shield",
+		sub = "Genmei Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head = Van.Head.C,
 		body = Amal.Body.D,
