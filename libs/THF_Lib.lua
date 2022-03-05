@@ -23,8 +23,6 @@ time_start = 0
 setupTextWindow()
 
 
---validateTextInformation()
-
 -- Called every time we gain or lose a buff.
 function buff_change(buff,gain)
     if (buff == 'Sneak Attack' and gain) then
@@ -49,7 +47,7 @@ function precast(spell)
     -- Detect Silence and yell at you to use echo drops.    
     if spell.action_type == 'ninjutsu' and buffactive['Silence'] then 
         cancel_spell()
-        --send_command('input /item "Echo Drops" <me>')     
+        --send_command('input /item "Echo Drops" <me>') -- uncomment this line for auto echo drops.     
         add_to_chat(8, '****** ['..spell.name..' CANCELED - Use Echo Drops] ******')
         return        
     end   
@@ -72,6 +70,8 @@ function precast(spell)
 	-- Waltzes that heal us is a different set than waltzes for others
 	if spell.type == 'Waltz' and spell.target.type == 'SELF' then
         equip(sets.precast.WaltzSelf)
+	else
+		equip(sets.precast.Waltz)
     end   
 	
 	-- Ranged Attack
@@ -92,7 +92,8 @@ function precast(spell)
 	--Catchall for the various Utsusem Spells
 	if spell.name:contains('Utsusemi') then
 			equip(sets.precast['Utsusemi'])
-		end
+	end
+	
 	-- We use a catch all here, if the set exists for an ability, 
 	-- use it. This way we don't need to write a load of different
 	-- code for different abilities, just make a set
@@ -117,11 +118,10 @@ function midcast(spell)
 		end
 	end
 	
-	
-	-- -- else
-	-- if sets.midcast[spell.name] then
-        -- equip(sets.midcast[spell.name])
-    -- end
+	-- Again we use a catchall here. Unlikely it will be needed since THF doesnt really do Midcast
+	if sets.midcast[spell.name] then
+        equip(sets.midcast[spell.name])
+    end
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ end
 --------------------------------------------------------------------------------------------------------------
 
 -- called after each cast. 
--- We just call the idle function as it contains our logic.
+-- We just call the idle function as it contains our logic and updates our HUD
 
 function aftercast(spell) 
     idle()
