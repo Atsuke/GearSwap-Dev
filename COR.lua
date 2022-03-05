@@ -2,7 +2,29 @@ version = "3.0"
 --[[
         Custom commands:
        
-
+		Can bind these to keys or use in macros ex: /console gs c toggle melee
+		
+	    gs c toggle idlemode            Change Idle Mode
+		gs c toggle runspeed 		    Toggles locking on / off AF Feet
+		gs c toggle meleemode           Change Idle Mode    
+		gs c toggle enmity			   	Toggle casting modes between regular and Enmity for Utsusemi
+		gs c toggle melee			    Toggle Melee mode on / off and locking of weapons  
+		gs c toggle ranged            	Toggle Ranged attack modes
+		gs c dnc voke					Uses either Provoke or Animated Flourish depending on subjob
+		
+		gs c roll1 cycle				Cycles through roll 1
+		gs c roll1 cycledown			Cycles backwards through roll 1
+		gs c roll1 roll					Uses the selected Phantom Roll
+		
+		gs c roll2 cycle				Cycles through roll 2
+		gs c roll2 cycledown			Cycles backwards through roll 2
+		gs c roll2 roll					Uses the selected Phantom Roll
+		
+		gs c qd mode					Cycles through available Quickdraw modes
+		gs c qd cycle					Cycles through Quickdraw elements
+		gs c qd cycledown				Cycles backward through Quickdraw elements
+		gs c qd shoot					Fires Quickdraw of the selected element
+		
         HUD Functions:
         gs c hud hide                   Toggles the Hud entirely on or off
         gs c hud hidemode               Toggles the Modes section of the HUD on or off
@@ -35,8 +57,7 @@ version = "3.0"
 -- Set it to false and the movespeed toggle is manual. 
 autorunspeed = false
 auto_CP_Cape = false
--- TP treshold where weapons gets locked. 
-lockWeaponTP = 500
+lockWeaponTP = 500 -- TP treshold where weapons gets locked. 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- HUD Initial setup and Positioning
@@ -51,8 +72,7 @@ hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-include('Atsuke-Includes.lua')
-
+include('Atsuke-Includes.lua') -- Leave as is. NO TOUCHY
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- Customize HUD looks and content
@@ -63,22 +83,23 @@ keybindsColors:set('orange')
 optionsColors:set('white')
 selectionColors:set('blue')   
 
-textHideMode:set(false)
-textHideOptions:set(false)
-textHideJob:set(false)
-textHideBattle:set(true)
-textHideHUD:set(false)
-useLightMode:set(false)
-keybinds:set(true)
+textHideMode:set(false) -- Change to toggle default visibility of Mode section
+textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
+textHideJob:set(false) -- Change to toggle default visibility of job Section
+textHideBattle:set(true) -- Change to toggle default visibility for battle section
+textHideHUD:set(false) -- Change to toggle default setting for hud visibility
+useLightMode:set(false) -- Change to toggle default setting for lite mode
+keybinds:set(true) -- Change to toggle default setting for keybind visibility
+tools:set(true) -- Change to toggle the default setting of the tool counter
 
 -- Optional. Swap to your sch macro sheet / book
--- set_macros(2,29) -- Sheet, Book   
+ set_macros(2,21) -- Sheet, Book   
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- Define your modes: 
 -- You can add or remove modes in the table below, they will get picked up in the cycle automatically. 
--- to define sets for idle if you add more modes, name them: sets.idle.mymode and add 'mymode' in the group.
+-- Each mode needs to have a corresponding set in order to work.  ex: sets.idle.Regen
 
 idleModes   = M('Regen','DT')
 meleeModes  = M('TP', 'Hybrid', 'DT')
@@ -86,7 +107,8 @@ rangedModes = M('STP', 'ACC')
 luzafMode   = M('ON','OFF')
 quickDrawModes = M('STP', 'DMG', 'ACC', 'TH')
 
-	
+roll_1:set('Chaos Roll')     -- Roll 1 Default        (when you first load lua / change jobs the saved roll is this one)
+roll_2:set('Samurai Roll')   -- Roll 2 Default        (when you first load lua / change jobs the saved roll is this one)	
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ Keybinds --------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -94,13 +116,18 @@ quickDrawModes = M('STP', 'DMG', 'ACC', 'TH')
 	-- Setup your Key Bindings here:
     
     windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
-	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
+	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off runspeed gear
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F10 to change engaged Mode    
     windower.send_command('bind f11 gs c toggle ranged')			   -- F11 Toggle ranged modes
+	windower.send_command('bind !F11 gs c qd mode') 	               -- delete to toggle QD Modes 
 	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
-    windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
-	windower.send_command('bind insert gs c toggle luzaf')             -- insert to toggle Luzaf Mode on or off
-	windower.send_command('bind delete gs c toggle qd')                -- delete to toggle QD Modes 
+	windower.send_command('bind insert gs c qd cycle') 		           -- insert to cycle QD Elements
+	windower.send_command('bind !insert gs c qd cycle') 	           -- Alt + insert to cycleback QD Elements
+	windower.send_command('bind delete gs c toggle luzaf')             -- Delete to toggle Luzaf Mode on or off
+	windower.send_command('bind pageup gs c roll1 cycle')			   -- cycle roll 1
+	windower.send_command('bind !pageup gs c roll1 cycledown')		   -- cycledown roll 1
+	windower.send_command('bind pagedown gs c roll2 cycle')			   -- cycle roll 
+	windower.send_command('bind !pagedown gs c roll2 cycledown')	   -- cycledown roll 2
 	
 
 	--[[
@@ -116,26 +143,48 @@ keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
 keybinds_on['key_bind_melee'] = '(F10) '
 keybinds_on['key_bind_ranged'] = '(F11) '
 keybinds_on['key_bind_lock_weapon'] = '(F12) '
-keybinds_on['key_bind_luzaf_mode'] = '(INSERT) '
-keybinds_on['key_bind_QD_mode'] = '(DELETE) '
+keybinds_on['key_bind_element_cycle'] = '(INSERT) '
+keybinds_on['key_bind_luzaf_mode'] = '(DELETE) '
+keybinds_on['key_bind_QD_mode'] = '(ALT-F11) '
+keybinds_on['key_bind_roll_1'] = '(PgUp) '
+keybinds_on['key_bind_roll_2'] = '(PgDwn) '
+
+-- Set the tools you would like to track while tool tracker is set to on. 
+-- Tools can be in inventory or wardrobe.  
+-- Set value to empty string if you dont want to track a tool.  Ex. tool_4 = ''
+
+tool_1 = "Chrono bullet"
+tool_2 = "Shihei"
+tool_3 = "Trump Card"
+tool_4 = ""
+
+-- Set these values for the text displayed in the hud
+tools_on = {}
+tools_on['tool_1'] = 'Chrono Bullet: '
+tools_on['tool_2'] = "Shihei: "
+tools_on['tool_3'] = "Cards: "
+tools_on['tool_4'] = ""
+
+-- set level for low tool warning
+tool_warning = 20
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
-    send_command('unbind insert')
-	send_command('unbind !insert')
-    send_command('unbind delete')
-	send_command('unbind !delete')
     send_command('unbind f9')
     send_command('unbind !f9')
 	send_command('unbind f10')
-    send_command('unbind f12')
-    send_command('unbind home')
-    send_command('unbind !home')
-	send_command('unbind end')
+	send_command('unbind f11')	
+    send_command('unbind !f10')
+   	send_command('unbind f12')
+	send_command('unbind insert')
+	send_command('unbind !insert')
+    send_command('unbind delete')
+	send_command('unbind pageup')
+	send_command('unbind !pageup')
+	send_command('unbind pagedown')
+	send_command('unbind !pagedown')
     send_command('unbind !end') 
-	send_command('unbind !f10')	
-    send_command('unbind `f10')
-   	      	
+	      	
 end
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
@@ -156,13 +205,17 @@ elemental_ws = S{"Aeolian Edge", "Leaden Salute", "Wildfire"}
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------    
 
-
-
-
 -- Setup your Gear Sets below:
 function get_sets()
 --select_default_macro_book()
-include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file since it's shared across many jobs. 
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+-- I list all my Augmented gears in a sidecar file since it's shared across many jobs. This is optional but
+-- makes changing augs without updating multiple sets much easier. 
+include('Kuvira_AugGear.lua')  
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
     
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ JSE Sets --------------------------------------------
@@ -175,35 +228,35 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	-- Fill this with your own JSE. 
     --Laksamana
-    AF.Head = "Laksa. Tricorne +2"
-    AF.Body = "Laksa. Frac +2"
+    AF.Head  = "Laksa. Tricorne +2"
+    AF.Body  = "Laksa. Frac +2"
     AF.Hands = "Laksa. Gants +1"
-    AF.Legs = "Laksa. Trews +1"
-    AF.Feet = "Laksa. Bottes +1"
+    AF.Legs  = "Laksa. Trews +1"
+    AF.Feet  = "Laksa. Bottes +1"
 
     --Lanun
-    RELIC.Head = { name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}}
-    RELIC.Body = { name="Lanun Frac +3", augments={'Enhances "Loaded Deck" effect',}}
+    RELIC.Head  = { name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}}
+    RELIC.Body  = { name="Lanun Frac +3", augments={'Enhances "Loaded Deck" effect',}}
     RELIC.Hands = { name="Lanun Gants +1", augments={'Enhances "Fold" effect',}}
-    RELIC.Legs = { name="Lanun Trews", augments={'Enhances "Snake Eye" effect',}}
-    RELIC.Feet = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}}
+    RELIC.Legs  = { name="Lanun Trews", augments={'Enhances "Snake Eye" effect',}}
+    RELIC.Feet  = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}}
 	
     --Chasseur
-    EMPY.Head = "Chass. Tricorne +1"
-    EMPY.Body = "Chasseur's Frac +1"
+    EMPY.Head  = "Chass. Tricorne +1"
+    EMPY.Body  = "Chasseur's Frac +1"
     EMPY.Hands = "Chasseur's Gants +1"
-    EMPY.Legs = "Chas. Culottes +1"
-    EMPY.Feet = "Chass. Bottes +1"
+    EMPY.Legs  = "Chas. Culottes +1"
+    EMPY.Feet  = "Chass. Bottes +1"
 	
 	-- Define your ammo preferences here.
 	RAbullet = "Chrono Bullet"
     RAccbullet = "Chrono Bullet"
     WSbullet = "Chrono Bullet"
     MAbullet = "Living Bullet"
-    QDbullet = "Bronze Bullet"
+    QDbullet = "Hauksbok Bullet"
 	
 	-- NEVER AGAIN!
-	no_shoot_ammo = S{"Animikii Bullet", "Hauksbok Bullet", "Bronze Bullet"}
+	no_shoot_ammo = S{"Animikii Bullet", "Hauksbok Bullet"}
 	
 	-- Define your JSE Capes here. 
 	Camulus = {} -- leave this empty
@@ -220,8 +273,8 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.precast = {}   -- leave this empty
 	sets.precast.WS= {}	-- leave this empty
-	sets.precast.CorsairRoll = {}
-	sets.buff = {}		-- leave this empty
+	sets.precast.CorsairRoll = {} -- leave this empty
+	sets.buff = {}  -- leave this empty
 	
 	sets.precast['Utsusemi'] = {
 			
@@ -235,28 +288,23 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Loquac. Earring",
 		left_ring = "Gelatinous Ring +1",
 		right_ring = "Prolix Ring",
-	
-	
 	}
-   
 	
 	sets.precast['Provoke'] = {
 	
 		ammo = "Sapience Orb",
-		head = RELIC.Head,
 		body = "Emet Harness +1",
-		-- hands = RELIC.Hands,
 		legs = "Zoar Subligar +1",
 		feet = "Nyame Sollerets",
 		neck = "Unmoving Collar +1",
-		waist = "Engraved Belt",
 		left_ear = "Genmei Earring",
 		right_ear = "Friomisi Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Provocare Ring",
-		
 	}
     
+	sets.precast['Animated Flourish'] = sets.precast['Provoke']
+	
 	sets.precast.Waltz = { 
 		ammo = "Yamarang",
 		head = "Mummu Bonnet +2",
@@ -264,16 +312,13 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		hands = "Nyame Gauntlets",
 		legs = "Nyame Flanchard",
 		feet = "Rawhide Boots",
-		-- neck = { name = "Etoile Gorget +2", augments={'Path: A',}},
-		-- waist = "Chaac Belt",
-		-- left_ear = "Odnowa Earring +1",
-		-- right_ear = "Etiolation Earring",
+		left_ear = "Odnowa Earring +1",
+		right_ear = "Etiolation Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Gelatinous Ring +1",
-		-- back=Senuna.DA,
 	}
 	
-    -- sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
+    sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
 	
 	sets.precast['Violent Flourish'] = {
 		ammo = "Yamarang",
@@ -287,7 +332,6 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Hermetic Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Warden's Ring",
-		
 	}
 	
 	sets.precast.Step = {
@@ -301,42 +345,28 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ear = "Telos Earring",
 		right_ear = "Odr Earring",
 		left_ring = "Cacoethic Ring",
-		right_ring = "Varar Ring +1",
-		
+		right_ring = "Varar Ring +1",		
 	}   
     
-	sets.precast['Animated Flourish'] = sets.precast['Provoke']
-	
-	-- sets.precast['Reverse Flourish'] = {
-		-- hands = EMPY.Hands,
-		-- back = Toetapper.RF,
-	-- }
-    
-	
-	
 	sets.precast.RA={
 		
 		ammo = RAbullet,
-		head = "Chass. Tricorne +1",
-		body = "Laksa. Frac +2",
-		hands = { name="Carmine Fin. Ga.", augments={'Rng.Atk.+15','"Mag.Atk.Bns."+10','"Store TP"+5',}},
-		legs = { name="Adhemar Kecks", augments={'AGI+10','"Rapid Shot"+10','Enmity-5',}},
+		head = EMPY.Head,
+		body = AF.Body,
+		hands = RELIC.Hands,
+		legs = Adh.Legs.D,
 		feet = "Meg. Jam. +2",
 		neck = "Marked Gorget",
 		waist = "Yemaya Belt",
-		left_ear = "Beyla Earring",
-		right_ear = "Enervating Earring",
-		left_ring = "Cacoethic Ring +1",
-		right_ring = "Ilabrat Ring",
 		back = Camulus.SnapShot,
 	}
 	
 	sets.precast.CorsairRoll.Duration = {
-		range={ name="Compensator", augments={'DMG:+15','Rng.Atk.+15','"Mag.Atk.Bns."+15',}},
-		ammo="Chrono Bullet",
-		head={ name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}},
-		hands="Chasseur's Gants +1",
-		neck="Regal Necklace",	
+		range = { name="Compensator", augments={'DMG:+15','Rng.Atk.+15','"Mag.Atk.Bns."+15',}},
+		ammo = "Chrono Bullet",
+		head = RELIC.Head,
+		hands = EMPY.Hands,
+		neck = "Regal Necklace",	
 	}
 	
 	sets.precast.LuzafRing = set_combine(sets.precast.CorsairRoll.Duration,{right_ring = "Luzaf's Ring"})
@@ -361,8 +391,8 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	
 	sets.midcast.RA = {
-		head = "Meghanada Visor +1",
-		body = "Laksa. Frac +2",
+		head = "Meghanada Visor +2",
+		body = AF.Body,
 		hands = "Meg. Gloves +2",
 		legs = "Meg. Chausses +2",
 		feet = "Meg. Jam. +2",
@@ -370,18 +400,30 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		waist = "Yemaya Belt",
 		left_ear = "Telos Earring",
 		right_ear = "Enervating Earring",
-		left_ring = "Garuda Ring",
+		left_ring = "Dingir Ring",
 		right_ring = "Ilabrat Ring",
 		back = Camulus.RATP,
 	}
 	
-	sets.midcast.RA['STP'] = set_combine(sets.midcast.RA, {head = 'Dampening Tam'})
-	sets.midcast.RA['ACC'] = set_combine(sets.midcast.RA, {head = 'Blistering Sallet +1'})
+	sets.midcast.RA['STP'] = set_combine(sets.midcast.RA, {
+		
+		head = "Ikenga's Hat",
+		legs = "Ikenga's Trousers",
+	})
 	
-	sets.TripleShot = set_combine(sets.midcast.RA,{
+	sets.midcast.RA['ACC'] = set_combine(sets.midcast.RA, {
+		
+		waist = "Eschan Stone",
+		left_ear = "Beyla Earring",
+		left_ring = "Cacoethic Ring",
+		right_ring = "Cacoethic Ring +1",
+	})
+	
+	sets.TripleShot = {
 		body = EMPY.Body,
 		hands = RELIC.Hands,
-	})
+		back = Camulus.RATP
+	}
 	
 	--no Armageddon so no point. 
 	sets.TripleShotCritical = sets.TripleShot
@@ -390,11 +432,11 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.midcast['CorsairShot'] = {
 		
 		ammo = QDbullet,
-		head = { name="Herculean Helm", augments={'"Mag.Atk.Bns."+23','STR+5','Damage taken-1%','Accuracy+17 Attack+17','Mag. Acc.+16 "Mag.Atk.Bns."+16',}},
-		body = { name="Lanun Frac +3", augments={'Enhances "Loaded Deck" effect',}},
-		hands = { name="Carmine Fin. Ga.", augments={'Rng.Atk.+15','"Mag.Atk.Bns."+10','"Store TP"+5',}},
-		legs = { name="Herculean Trousers", augments={'Pet: "Mag.Atk.Bns."+4','DEX+7','Weapon skill damage +6%',}},
-		feet = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}},
+		head = Herc.Head.MAB,
+		body = RELIC.Body,
+		hands = Carm.Hands.D,
+		legs = Herc.Legs.WSD,
+		feet = RELIC.Feet,
 		neck = "Sanctity Necklace",
 		waist = "Eschan Stone",
 		left_ear = "Friomisi Earring",
@@ -414,18 +456,15 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------
 	
-	sets.buff['Sneak Attack'] = {hands = EMPY.Hands}
-	sets.buff['Trick Attack'] = {hands= AF.Hands}
-	
     
 	sets.precast.WS = {
 		
 		ammo = "Chrono Bullet",
-		head = "Meghanada Visor +1",
-		body = "Laksa. Frac +2",
+		head = "Meghanada Visor +2",
+		body = AF.Body,
 		hands = "Meg. Gloves +2",
 		legs = "Meg. Chausses +2",
-		feet = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}},
+		feet = RELIC.Feet,
 		neck = "Fotia Gorget",
 		waist = "Fotia Belt",
 		left_ear = "Beyla Earring",
@@ -441,9 +480,9 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     sets.precast['Leaden Salute'] = set_combine(sets.precast.WS,{
 		ammo = WSbullet,
 		head = "Pixie Hairpin +1",
-		body = { name="Lanun Frac +3", augments={'Enhances "Loaded Deck" effect',}},
-		hands = { name="Carmine Fin. Ga.", augments={'Rng.Atk.+15','"Mag.Atk.Bns."+10','"Store TP"+5',}},
-		legs = { name="Herculean Trousers", augments={'Pet: "Mag.Atk.Bns."+4','DEX+7','Weapon skill damage +6%',}},
+		body = RELIC.Body,
+		hands = Carm.Hands.D,
+		legs = Herc.Legs.WSD,
 		neck = "Sanctity Necklace",
 		waist = "Eschan Stone",
 		left_ear = "Friomisi Earring",
@@ -455,11 +494,11 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 
     sets.precast["Savage Blade"] = {
 		ammo = WSbullet,
-		head = { name="Herculean Helm", augments={'Accuracy+1','MND+9','Weapon skill damage +7%','Accuracy+5 Attack+5','Mag. Acc.+9 "Mag.Atk.Bns."+9',}},
-		body = "Laksa. Frac +2",
+		head = Herc.Head.WSD,
+		body = AF.Body,
 		hands = "Meg. Gloves +2",
-		legs = { name="Herculean Trousers", augments={'Pet: "Mag.Atk.Bns."+4','DEX+7','Weapon skill damage +6%',}},
-		feet = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}},
+		legs = Herc.Legs.WSD,
+		feet = RELIC.Feet,
 		neck = "Lissome Necklace",
 		waist = "Grunfeld Rope",
 		left_ear = "Brutal Earring",
@@ -470,26 +509,26 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 
     sets.precast['Requiescat'] = set_combine(sets.precast.WS,{ 
-		head = { name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
-		body = "Laksa. Frac +2",
-		hands = "Meg. Gloves +2",
+		head = Adh.Head.A,
+		body = AF.Body,
+		hands = Adh.Body.B,
 		legs = "Meg. Chausses +2",
-		feet = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}},
+		feet = RELIC.Feet,
 		neck = "Fotia Gorget",
 		waist = "Fotia Belt",
 		left_ear = "Telos Earring",
 		right_ear = { name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
 		left_ring = "Epona's Ring",
 		right_ring = "Apate Ring",
-		back = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+		back = Camulus.MeleeTP,
 	})
 	
 	sets.precast['Wildfire'] = {
-		head = { name="Herculean Helm", augments={'Accuracy+1','MND+9','Weapon skill damage +7%','Accuracy+5 Attack+5','Mag. Acc.+9 "Mag.Atk.Bns."+9',}},
-		body = { name="Lanun Frac +3", augments={'Enhances "Loaded Deck" effect',}},
+		head = Herc.Head.WSD,
+		body = RELIC.Body,
 		hands = "Meg. Gloves +2",
-		legs = { name="Herculean Trousers", augments={'Pet: "Mag.Atk.Bns."+4','DEX+7','Weapon skill damage +6%',}},
-		feet = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}},
+		legs = Herc.Legs.WSD,
+		feet = RELIC.Feet,
 		neck = "Sanctity Necklace",
 		waist = "Eschan Stone",
 		left_ear = "Friomisi Earring",
@@ -497,9 +536,40 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ring = "Dingir Ring",
 		right_ring = "Garuda Ring",
 		back = Camulus.AGIWSD,
-}
+	}
 	
+	sets.precast['Evisceration'] = {
+		
+		ammo = "Chrono Bullet",
+		head = Adh.Head.A,
+		body = "Meg. Cuirie +2",
+		hands = "Mummu Wrists +2",
+		legs = "Meg. Chausses +2",
+		feet = "Mummu Gamash. +1",
+		neck = "Fotia Gorget",
+		waist = "Fotia Belt",
+		left_ear = "Odr Earring",
+		right_ear = "Suppanomimi",
+		left_ring = "Epona's Ring",
+		right_ring = "Ilabrat Ring",
+		back = Camulus.MeleeTP,
+	}
 	
+	sets.exported={
+		
+		head = Herc.Head.MAB,
+		body = RELIC.Body,
+		hands = Carm.Hands.D,
+		legs = Herc.Legs.MAB,
+		feet = RELIC.Feet,
+		neck = "Sanctity Necklace",
+		waist = "Eschan Stone",
+		left_ear = "Friomisi Earring",
+		right_ear = "Hecate's Earring",
+		left_ring = "Dingir Ring",
+		right_ring = "Arvina Ringlet +1",
+		back = Camulus.AGIWSD,
+	}
 
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Idle Sets --------------------------------------------
@@ -507,18 +577,19 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     sets.idle = {} -- leave this empty
  	
 	
-	sets.idle.Regen = set_combine(sets.idle.Regain, {
-	
+	sets.idle.Regen = {
+		
+		ammo = "Chrono Bullet",
 		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
 		neck = "Sanctity Necklace",
 		left_ring = "Woltaris Ring",
 	
-	})
+	}
 	
 	sets.idle.DT = {
 		ammo = "Chrono Bullet",
-		head = "Meghanada Visor +1",
+		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
 		legs = "Meg. Chausses +2",
@@ -529,7 +600,7 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Etiolation Earring",
 		left_ring = "Epona's Ring",
 		right_ring = "Defending Ring",
-		back = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+		back = Camulus.MeleeTP,
 	
 	}
 
@@ -543,9 +614,9 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 
     sets.engaged.TP = {
 		ammo = "Chrono Bullet",
-		head = { name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}},
-		body = "Meg. Cuirie +2",
-		hands = { name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}},
+		head = Adh.Head.A,
+		body = Adh.Body.B,
+		hands = Adh.Hands.A,
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Iskur Gorget",
@@ -554,14 +625,14 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Suppanomimi",
 		left_ring = "Epona's Ring",
 		right_ring = "Petrov Ring",
-		back = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
+		back = Camulus.MeleeTP
 	}
 	
 	sets.engaged.Hybrid = sets.engaged.TP
 	
 	sets.engaged.DT = {
 		ammo = "Chrono Bullet",
-		head = "Meghanada Visor +1",
+		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
 		legs = "Meg. Chausses +2",
@@ -572,7 +643,7 @@ include('Kuvira_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Etiolation Earring",
 		left_ring = "Epona's Ring",
 		right_ring = "Defending Ring",
-		back = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+		back = Camulus.MeleeTP,
 	}
 	
 	
