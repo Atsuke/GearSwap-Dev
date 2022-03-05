@@ -408,6 +408,10 @@ function selectSCElement()
         selectedElement = "Lightning"
         elements:set(selectedElement)
     end
+	-- Fix for NIN since it has a shorter element table
+	if player.main_job == 'NIN' then
+		ninElements:set(selectedElement)
+	end
 end
 
 -- Function to get the current weather intensity: 0 for none, 1 for single weather, 2 for double weather.
@@ -485,37 +489,82 @@ end
 
 function tool_tracker()
 	
-	
 	if tool_1 ~= '' then
 		if not(player.inventory[tool_1] or player.wardrobe[tool_1]) then
 			tool1 = 0
 		else
-			tool1 = (player.inventory[tool_1].count or player.wardrobe[tool_1].count)
+			if player.inventory[tool_1] then
+				tool1 = player.inventory[tool_1].count 
+			else 
+				tool1 =player.wardrobe[tool_1].count
+			end
 		end
+		
+		if tool1 < tool_warning then
+			tool1Color = hudColors["red"]
+		else 
+			tool1Color = hudColors["green"]
+		end
+		
 	end
-	
 	
 	if tool_2 ~= '' then
 		if not(player.inventory[tool_2] or player.wardrobe[tool_2]) then
 			tool2 = 0
 		else
-			tool2 = (player.inventory[tool_2].count or player.wardrobe[tool_2].count)
+			if player.inventory[tool_2] then
+				tool2 = player.inventory[tool_2].count 
+			else 
+				tool2 =player.wardrobe[tool_2].count
+			end
 		end
+		
+		if tool2 < tool_warning then
+			tool2Color = hudColors["red"]
+		else 
+			tool2Color = hudColors["green"]
+		end
+		
 	end
 	
 	if tool_3 ~= '' then
 		if not(player.inventory[tool_3] or player.wardrobe[tool_3]) then
 			tool3 = 0
 		else
-			tool3 = (player.inventory[tool_3].count or player.wardrobe[tool_3].count)
+			if player.inventory[tool_3] then
+				tool3 = player.inventory[tool_3].count 
+			else 
+				tool3 =player.wardrobe[tool_3].count
+			end
 		end
+		
+		if tool3 < tool_warning then
+			tool3Color = hudColors["red"]
+		else 
+			tool3Color = hudColors["green"]
+		end
+		
 	end
 	
 	if tool_4 ~= '' then
 		if not(player.inventory[tool_4] or player.wardrobe[tool_4]) then
 			tool4 = 0
 		else
-			tool4 = (player.inventory[tool_4].count or player.wardrobe[tool_4].count)
+			if player.inventory[tool_4] then
+				tool4 = player.inventory[tool_4].count 
+			else 
+				tool4 =player.wardrobe[tool_4].count
+			end
 		end
+		
+		if tool4 < tool_warning then
+			tool4Color = hudColors["red"]
+		else 
+			tool4Color = hudColors["green"]
+		end
+		
 	end
+	
+	
+	
 end

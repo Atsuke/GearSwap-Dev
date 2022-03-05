@@ -17,6 +17,8 @@ keybinds_off['key_bind_entrust_cycle'] = ''
 keybinds_off['key_bind_rage_cycle'] = ''
 keybinds_off['key_bind_ward_cycle'] = ''
 keybinds_off['key_bind_avatar'] = ''
+keybinds_off['key_bind_roll_1'] = ''
+keybinds_off['key_bind_roll_2'] = ''
 
 tools_off = {}
 tools_off['tool_1'] = ''
@@ -78,8 +80,7 @@ const_off = "\\cs(255, 32, 32)OFF\\cr"
 const_autoOff = "\\cs(255, 32, 32)AUTO\\cr"
 const_autoOn = "\\cs(32, 255, 32)AUTO\\cr"
 
-hud_endofline = [[\cr
-]]
+hud_endofline = [[\cr]]
 hud_idleMode = ''
 hud_meleeMode = ''
 hud_nukingMode = ''
@@ -210,6 +211,17 @@ function construct_HUD_Categories( useLightMode )
 		hud_lastSC = [[        ${options_color}Last SC:${last_sc_element_color}${last_sc|No SC yet}]]
 		hud_burstWindow = [[        ${options_color}Burst Window:${last_sc_element_color}${burst_window|0}]]
 		hud_magicBurst = [[        ${options_color}Magic Burst:${player_current_mb}]]
+		
+		if player.main_job == 'COR' then
+			hud_nukingElement = [[        ${keybinds_color}${key_bind_element_cycle}${options_color}QuickDraw:\cr ${element_color}${toggle_element_cycle|Unset}]]
+			hud_roll_1 = [[        ${keybinds_color}${key_bind_roll_1}${options_color}Roll 1:\cr ${selection_color}${current_roll_1|Unset}]]
+			hud_roll_2 =   [[        ${keybinds_color}${key_bind_roll_2}${options_color}Roll 2:\cr ${selection_color}${current_roll_2|Unset}]]
+		else
+			hud_roll_1 = ''
+			hud_roll_2= ''
+		end		
+		
+		
 		if player.main_job == 'GEO' then
 			hud_geoCycle = [[        ${keybinds_color}${key_bind_geo_cycle}${options_color}Geo-Spell:\cr ${selection_color}${toggle_geo_cycle|Unset}]]
 			hud_indiCycle = [[        ${keybinds_color}${key_bind_indi_cycle}${options_color}Indi-Spell:\cr ${selection_color}${toggle_indi_cycle|Unset}]]
@@ -370,6 +382,23 @@ function construct_HUD_Categories( useLightMode )
 			hud_ward = ''
 		end	
 		
+		if player.main_job == 'COR' then
+			hud_nukingElement = [[\cr
+			        ${keybinds_color}${key_bind_element_cycle}${options_color}QuickDraw: \cr ${element_color}${toggle_element_cycle|Unset}]]
+			hud_roll_1 = [[\cr
+			        ${keybinds_color}${key_bind_roll_1}${options_color}Roll 1: \cr ${selection_color}${current_roll_1|Unset}
+			        ${options_color}Lucky: \cr ${selection_color}${current_roll_1_lucky|unset}      ${options_color}Unlucky:\cr ${selection_color}${current_roll_1_unlucky|unset}
+			        ${options_color}Bonus: \cr ${selection_color}${current_roll_1_bonus|unset}
+					]]
+			hud_roll_2 =   [[\cr
+			        ${keybinds_color}${key_bind_roll_2}${options_color}Roll 2:\cr ${selection_color}${current_roll_2|Unset}
+			        ${options_color}Lucky: \cr ${selection_color}${current_roll_2_lucky|unset}      ${options_color}Unlucky:\cr ${selection_color}${current_roll_2_unlucky|unset}
+			        ${options_color}Bonus: \cr ${selection_color}${current_roll_2_bonus|unset}]]
+		else
+			hud_roll_1 = ''
+			hud_roll_2= ''
+		end		
+		
 		if player.main_job == 'DNC' or player.main_job == 'THF' or player.main_job == 'COR' then 
 			hud_handleSkillchains = ''
 			
@@ -378,26 +407,26 @@ function construct_HUD_Categories( useLightMode )
 		if tools ~= nil and tools_on then
 			if tools_on['tool_1'] ~= nil then
 				tool_option_1 =  [[\cr 
-        				${options_color}${tool_1} ${tool1}\cr]]
+        				${options_color}${tool_1}\cr ${tool_1_Color}${tool1}\cr]]
 			else
 				tool_option_1 = ''
 			end
 			
 			if tools_on['tool_2'] ~= nil then
-				tool_option_2 =  [[   ${options_color}${tool_2} ${tool2}\cr]]
+				tool_option_2 =  [[   ${options_color}${tool_2}\cr ${tool_2_Color}${tool2}\cr]]
 			else
 				tool_option_2 = ''
 			end
 	
 			if tools_on['tool_3'] ~= nil then
 				tool_option_3 =  [[\cr
-				        ${options_color}${tool_3} ${tool3}\cr]]
+				        ${options_color}${tool_3}\cr ${tool_3_Color}${tool3}\cr]]
 			else
 				tool_option_3 = ''
 			end
 
 			if tools_on['tool_4'] ~= nil then
-				tool_option_4 =  [[   ${options_color}${tool_4} ${tool4}\cr]]
+				tool_option_4 =  [[   ${options_color}${tool_4}\cr ${tool_4_Color}${tool4}\cr]]
 			else
 				tool_option_4 = ''
 			end
@@ -415,13 +444,13 @@ function buildHUD( useLightMode )
 	if useLightMode then
 		hud_mode = [[        ${sections_color}Modes:]]..hud_idleMode..hud_meleeMode..hud_ranged_mode..hud_enmityMode..hud_nukingMode..hud_endofline
 	else
-		hud_mode = [[${sections_color}Modes:]]..hud_idleMode..hud_meleeMode..hud_ranged_mode..hud_enmityMode..hud_pet_mode..hud_nukingMode..hud_endofline
+		hud_mode = [[${sections_color}Modes:]]..hud_idleMode..hud_meleeMode..hud_ranged_mode..hud_enmityMode..hud_pet_mode..hud_nukingMode..hud_quickdraw_mode..hud_endofline
 	end
 	hud_options = [[${sections_color}Options:]]..hud_handleSkillchains..hud_lockWeapons..hud_lockMovespeed..hud_endofline
 		
 	hud_job = [[${sections_color}${player_job}:]]..hud_nukingElement..hud_indiCycle..hud_geoCycle..hud_entrustCycle..hud_mainWeapon..
 		hud_subWeapon..hud_regenMode..hud_avatar..hud_rage..hud_ward..hud_makingSC..hud_Enspell..hud_treasure_hunter..
-		hud_bp_mode..hud_convert_mode..hud_quickdraw_mode..hud_luzaf_mode..hud_tools..
+		hud_bp_mode..hud_convert_mode..hud_luzaf_mode..hud_roll_1..hud_roll_2..hud_tools..
 		hud_endofline        
 	hud_battle = [[${sections_color}Battle Info:]]..hud_lastSC..hud_burstWindow..hud_magicBurst..hud_cardinalChant..hud_endofline 
 end
@@ -435,6 +464,7 @@ function validateTextInformation()
     main_text_hud.keybinds_color = hudColors[keybindsColors.current]
     main_text_hud.options_color = hudColors[optionsColors.current]
     main_text_hud.selection_color = hudColors[selectionColors.current]
+	
 
     if regenModes ~= nil then 
     	main_text_hud.player_current_regen = regenModes.current
@@ -483,19 +513,10 @@ function validateTextInformation()
     	main_text_hud.player_current_casting = nukeModes.current
   	end
   	if elements ~= nil or ninElements ~= nil then
-		
-		
-		
-		
 		if player.main_job == 'NIN' then
 			main_text_hud.toggle_element_cycle = ninElements.current
 		else
-    	
-		
-		
 			main_text_hud.toggle_element_cycle = elements.current
-	
-	
 		end
 	end
 	
@@ -506,7 +527,11 @@ function validateTextInformation()
     	main_text_hud.player_current_ranged = rangedModes.current
     end
 	if luzafMode ~= nil then
-    	main_text_hud.player_current_luzaf_mode = luzafMode.current
+    	if luzafMode.value == 'ON' then
+			main_text_hud.player_current_luzaf_mode = const_on
+		else
+			main_text_hud.player_current_luzaf_mode = const_off
+		end
     end
 	if quickDrawModes ~= nil then
     	main_text_hud.player_current_quickdraw_mode = quickDrawModes.current
@@ -535,8 +560,20 @@ function validateTextInformation()
 		main_text_hud.current_bp_mode = bpModes.current
 	end
 	
-	
-    main_text_hud.player_job = player.job
+	if player.main_job == 'COR' then
+		main_text_hud.current_roll_1 = roll_1.current
+		main_text_hud.current_roll_1_lucky = rolls[roll_1.current].lucky
+		main_text_hud.current_roll_1_unlucky = rolls[roll_1.current].unlucky
+		main_text_hud.current_roll_1_bonus = rolls[roll_1.current].bonus
+		
+		main_text_hud.current_roll_2 = roll_2.current
+		main_text_hud.current_roll_2_lucky = rolls[roll_2.current].lucky
+		main_text_hud.current_roll_2_unlucky = rolls[roll_2.current].unlucky
+		main_text_hud.current_roll_2_bonus = rolls[roll_2.current].bonus
+
+	end
+    
+	main_text_hud.player_job = player.job
 
 
     if last_skillchain ~= nil then
@@ -648,9 +685,13 @@ function validateTextInformation()
         texts.update(main_text_hud, tools_on)
 		tool_tracker()
 		main_text_hud.tool1 = tool1
+		main_text_hud.tool_1_Color = tool1Color
 		main_text_hud.tool2 = tool2
+		main_text_hud.tool_2_Color = tool2Color
 		main_text_hud.tool3 = tool3
+		main_text_hud.tool_3_Color = tool3Color
 		main_text_hud.tool4 = tool4
+		main_text_hud.tool_4_Color = tool4Color
     else 
         texts.update(main_text_hud, tools_off)
     end

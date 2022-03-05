@@ -89,6 +89,40 @@ enfeeb_maps = {
     ['Poison']='skillpot', ['Poison II']='skillpot', ['Poisonga']='skillpot',
 }
 
+ rolls = {
+        ["Corsair's Roll"]   = {lucky=5, unlucky=9, bonus="Experience Points"},
+        ["Ninja Roll"]       = {lucky=4, unlucky=8, bonus="Evasion"},
+        ["Hunter's Roll"]    = {lucky=4, unlucky=8, bonus="Accuracy"},
+        ["Chaos Roll"]       = {lucky=4, unlucky=8, bonus="Attack"},
+        ["Magus's Roll"]     = {lucky=2, unlucky=6, bonus="Magic Defense"},
+        ["Healer's Roll"]    = {lucky=3, unlucky=7, bonus="Cure Potency Received"},
+        ["Puppet Roll"]      = {lucky=4, unlucky=8, bonus="Pet Magic Accuracy/Attack"},
+        ["Choral Roll"]      = {lucky=2, unlucky=6, bonus="Spell Interruption Rate"},
+        ["Monk's Roll"]      = {lucky=3, unlucky=7, bonus="Subtle Blow"},
+        ["Beast Roll"]       = {lucky=4, unlucky=8, bonus="Pet Attack"},
+        ["Samurai Roll"]     = {lucky=2, unlucky=6, bonus="Store TP"},
+        ["Evoker's Roll"]    = {lucky=5, unlucky=9, bonus="Refresh"},
+        ["Rogue's Roll"]     = {lucky=5, unlucky=9, bonus="Critical Hit Rate"},
+        ["Warlock's Roll"]   = {lucky=4, unlucky=8, bonus="Magic Accuracy"},
+        ["Fighter's Roll"]   = {lucky=5, unlucky=9, bonus="Double Attack Rate"},
+        ["Drachen Roll"]     = {lucky=3, unlucky=7, bonus="Pet Accuracy"},
+        ["Gallant's Roll"]   = {lucky=3, unlucky=7, bonus="Defense"},
+        ["Wizard's Roll"]    = {lucky=5, unlucky=9, bonus="Magic Attack"},
+        ["Dancer's Roll"]    = {lucky=3, unlucky=7, bonus="Regen"},
+        ["Scholar's Roll"]   = {lucky=2, unlucky=6, bonus="Conserve MP"},
+        ["Bolter's Roll"]    = {lucky=3, unlucky=9, bonus="Movement Speed"},
+        ["Caster's Roll"]    = {lucky=2, unlucky=7, bonus="Fast Cast"},
+        ["Courser's Roll"]   = {lucky=3, unlucky=9, bonus="Snapshot"},
+        ["Blitzer's Roll"]   = {lucky=4, unlucky=9, bonus="Attack Delay"},
+        ["Tactician's Roll"] = {lucky=5, unlucky=8, bonus="Regain"},
+        ["Allies's Roll"]    = {lucky=3, unlucky=10, bonus="Skillchain Damage"},
+        ["Miser's Roll"]     = {lucky=5, unlucky=7, bonus="Save TP"},
+        ["Companion's Roll"] = {lucky=2, unlucky=10, bonus="Pet Regain and Regen"},
+        ["Avenger's Roll"]   = {lucky=4, unlucky=8, bonus="Counter Rate"},
+    }
+
+quickdraw = {['Earth']="Earth Shot",      ['Water']="Water Shot",      ['Air']="Wind Shot",     ['Fire']="Fire Shot",    ['Ice']="Ice Shot",     ['Lightning']="Thunder Shot", ['Light']="Light Shot", ['Dark']="Dark Shot"}
+
 elements =  M('Ice', 'Air', 'Dark', 'Light', 'Earth', 'Lightning', 'Water', 'Fire')
 ninElements = M('Earth', 'Air', 'Ice', 'Fire', 'Water', 'Lightning')
 
@@ -202,6 +236,18 @@ indicolure = M('Indi-Acumen', 'Indi-Attunement', 'Indi-Barrier', 'Indi-STR', 'In
 entrustindi = M('Indi-Acumen', 'Indi-Attunement', 'Indi-Barrier', 'Indi-STR', 'Indi-DEX', 'Indi-VIT', 'Indi-AGI', 'Indi-INT', 'Indi-MND', 'Indi-CHR', 'Indi-Fade',
              'Indi-Fend', 'Indi-Focus', 'Indi-Frailty', 'Indi-Fury', 'Indi-Gravity', 'Indi-Haste', 'Indi-Languor', 'Indi-Malaise', 'Indi-Paralysis', 
              'Indi-Poison', 'Indi-Precision', 'Indi-Refresh', 'Indi-Regen', 'Indi-Slip', 'Indi-Slow', 'Indi-Torpor', 'Indi-Vex', 'Indi-Voidance', 'Indi-Wilt')
+
+roll_1 = M("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll", "Choral Roll", "Monk's Roll",
+		   "Beast Roll", "Samurai Roll", "Evoker's Roll", "Rogue's Roll", "Warlock's Roll", "Fighter's Roll", "Drachen Roll", "Gallant's Roll", "Wizard's Roll",
+		   "Dancer's Roll", "Scholar's Roll", "Bolter's Roll", "Caster's Roll", "Courser's Roll", "Blitzer's Roll", "Tactician's Roll", "Allies's Roll", 
+		   "Miser's Roll", "Companion's Roll", "Avenger's Roll")
+
+roll_2 = M("Corsair's Roll", "Ninja Roll", "Hunter's Roll", "Chaos Roll", "Magus's Roll", "Healer's Roll", "Puppet Roll", "Choral Roll", "Monk's Roll",
+		   "Beast Roll", "Samurai Roll", "Evoker's Roll", "Rogue's Roll", "Warlock's Roll", "Fighter's Roll", "Drachen Roll", "Gallant's Roll", "Wizard's Roll",
+		   "Dancer's Roll", "Scholar's Roll", "Bolter's Roll", "Caster's Roll", "Courser's Roll", "Blitzer's Roll", "Tactician's Roll", "Allies's Roll", 
+		   "Miser's Roll", "Companion's Roll", "Avenger's Roll")
+
+
 
 -- Colors for elements
 Colors = {
