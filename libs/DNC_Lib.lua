@@ -142,7 +142,7 @@ function idle()
        
         equip(sets.engaged[meleeModes.value])               
     else
-       equip(sets.idle[idleModes.value]) -- currently not engaged.             
+       equip(sets.idle[idleModes.value]) -- currently not engaged.
 	end
 
 	validateTextInformation() -- updates the HUD
@@ -162,7 +162,7 @@ function handle_voke()
 	
 	if player.sub_job == 'WAR' then --Are you /WAR?
 	
-		
+
 	spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
 	
 	if ability_recasts[5] > 0 then --Is Provoke Ready?
