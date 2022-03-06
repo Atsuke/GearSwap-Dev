@@ -410,7 +410,13 @@ function selectSCElement()
     end
 	-- Fix for NIN since it has a shorter element table
 	if player.main_job == 'NIN' then
-		ninElements:set(selectedElement)
+		if selectedElement == 'Light' then
+			ninElements:set('Lightning')
+		elseif selectedElement == "Dark" then
+			ninElements:set('Ice')
+		else
+			ninElements:set(selectedElement)
+		end
 	end
 end
 
