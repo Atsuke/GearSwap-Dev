@@ -122,7 +122,7 @@ roll_2:set('Samurai Roll')   -- Roll 2 Default        (when you first load lua /
 	windower.send_command('bind !F11 gs c qd mode') 	               -- delete to toggle QD Modes 
 	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
 	windower.send_command('bind insert gs c qd cycle') 		           -- insert to cycle QD Elements
-	windower.send_command('bind !insert gs c qd cycle') 	           -- Alt + insert to cycleback QD Elements
+	windower.send_command('bind !insert gs c qd cycledown')	           -- Alt + insert to cycleback QD Elements
 	windower.send_command('bind delete gs c toggle luzaf')             -- Delete to toggle Luzaf Mode on or off
 	windower.send_command('bind pageup gs c roll1 cycle')			   -- cycle roll 1
 	windower.send_command('bind !pageup gs c roll1 cycledown')		   -- cycledown roll 1

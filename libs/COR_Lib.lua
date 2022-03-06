@@ -345,10 +345,14 @@ function self_command(command)
 			
 			if arg2 == 'mode' then
 				quickDrawModes:cycle()
-			elseif arg2 == 'cycle' then
-				elements:cycle()
-			elseif arg2 == 'cycledown' then
-				elements:cycleback()
+			elseif (arg2 == 'cycle' or arg2 == 'cycledown') then
+				if arg2 == 'cycle' then
+					elements:cycle()
+					 oldElement = elements.current
+				elseif arg2 == 'cycledown' then
+					elements:cycleback()
+					 oldElement = elements.current
+				end
 			elseif arg2 == 'shoot' then
 				send_command('@input /ja "'..quickdraw[elements.current]..'"')
 			end
