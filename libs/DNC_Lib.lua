@@ -162,6 +162,7 @@ function handle_voke()
 	
 	if player.sub_job == 'WAR' then --Are you /WAR?
 	
+		
 	spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
 	
 	if ability_recasts[5] > 0 then --Is Provoke Ready?
