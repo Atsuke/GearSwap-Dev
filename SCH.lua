@@ -129,8 +129,8 @@ regenModes = M('hybrid', 'duration', 'potency')
 nukeModes = M('normal', 'acc')
 
 -- Setup your Key Bindings here:
-    windower.send_command('bind insert gs c nuke cycle')            -- Insert Cycles Nuke element
-    windower.send_command('bind !insert gs c nuke cycledown')       -- ALT+Insert Cycles Nuke element in reverse order 
+    windower.send_command('bind insert gs c nuke cycle')        -- Insert Cycles Nuke element
+    windower.send_command('bind !insert gs c nuke cycledown')   -- ALT+Insert Cycles Nuke element in reverse order 
     windower.send_command('bind f9 gs c toggle idlemode')       -- F9 to change Idle Mode    
     windower.send_command('bind !f9 gs c toggle runspeed') 		-- Alt-F9 toggles locking on / off Herald's Gaiters
     windower.send_command('bind f12 gs c toggle melee')			-- F12 Toggle Melee mode on / off and locking of weapons
