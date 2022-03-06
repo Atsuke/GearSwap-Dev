@@ -225,11 +225,11 @@ function self_command(command)
                 runspeed:cycle()
                 updateRunspeedGear(runspeed.value, runspeedslot)
 			
-			-- elseif commandArgs[2] == 'mb' then
-                -- -- //gs c toggle mb will toggle mb mode on and off.
-                -- -- You need to toggle prioritisation yourself
-                -- mBurst:toggle()
-                -- updateMB(mBurst.value)
+			elseif commandArgs[2] == 'mb' then
+                -- //gs c toggle mb will toggle mb mode on and off.
+                -- You need to toggle prioritisation yourself
+                mBurst:toggle()
+                updateMB(mBurst.value)
 			
 			-- cycles through your available idle modes
             elseif commandArgs[2] == 'idlemode' then
