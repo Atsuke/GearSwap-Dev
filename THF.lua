@@ -101,7 +101,7 @@ enmityModes = M('Normal', 'Enmity')
 	
 	-- Setup your Key Bindings here:
     
-    windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
+	windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
 	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
     windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
