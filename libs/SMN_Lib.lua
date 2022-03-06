@@ -93,7 +93,10 @@ end
 --------------------------------------------------------------------------------------------------------------
 
 function precast(spell)
-
+	if (pet.isvalid and pet_midaction() and not spell.type == "SummonerPact") or spell.type == "Item" then
+		return
+	end
+	
     local spell_recasts = windower.ffxi.get_spell_recasts()
 	local ability_recasts = windower.ffxi.get_ability_recasts()
 	
@@ -212,7 +215,12 @@ end
 --------------------------------------------------------------------------------------------------------------
 
 function midcast(spell)
-    -- Get the spell mapping, since we'll be passing it to various functions and checks.
+    
+	if (pet.isvalid and pet_midaction() and not spell.type == "SummonerPact") or spell.type == "Item" then
+		return
+	end
+	
+	-- Get the spell mapping, since we'll be passing it to various functions and checks.
     local spellMap = get_spell_map(spell)    
     -- No need to annotate all this, it's fairly logical. Just equips the relevant sets for the relevant magic
     if spell.name:match('Cure') or spell.name:match('Cura') then
@@ -326,6 +334,28 @@ function AFAC_Helper(spell)
 	send_command('input /ja "'..temp_spell..'" <t>;')
 end
  
+
+
+
+--------------------------------------------------------------------------------------------------------------
+----------------------------------------------- After Cast ---------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+ 
+function aftercast(spell) 
+    
+	if pet_midaction() or spell.type == "Item" then
+		return
+	end
+	
+	-- Then initiate idle function to check which set should be equipped
+    if not (spell.type == 'BloodPactRage' or spell.type == 'BloodPactWard') then
+	
+	update_active_strategems()
+    
+    idle(pet)
+	end
+end
+
 function pet_aftercast(spell)
 	-- Pet aftercast is simply a check for whether Conduit and Apogee are up, and then a call to our aftercast function
     -- We have a variable called autobp that we set to true or false with commands to auto repeat BPs for us
@@ -340,28 +370,15 @@ function pet_aftercast(spell)
     idle(pet)
 end
 
-
---------------------------------------------------------------------------------------------------------------
------------------------------------------------ After Cast ---------------------------------------------------
---------------------------------------------------------------------------------------------------------------
- 
-function aftercast(spell) 
-    -- Then initiate idle function to check which set should be equipped
-    if not (spell.type == 'BloodPactRage' or spell.type == 'BloodPactWard') then
-	
-	update_active_strategems()
-    --update_sublimation()
-    idle(pet)
-	end
-end
-
 --------------------------------------------------------------------------------------------------------------
 ------------------------------------------------ Pet Change --------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 
 function pet_change(pet, gain)
-    -- When cast a summon
-    idle(pet)
+    if (not (gain and pet_midaction())) then
+		-- When cast a summon
+		idle(pet)
+	end
 end
 
 --------------------------------------------------------------------------------------------------------------
