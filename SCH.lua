@@ -125,7 +125,7 @@ set_macros(2,12) -- Sheet, Book
 -- Same idea for nuke modes. 
 idleModes = M('refresh', 'dt', 'mdt')
 regenModes = M('hybrid', 'duration', 'potency')
--- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmode
+-- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmodes
 nukeModes = M('normal', 'acc')
 
 -- Setup your Key Bindings here:
@@ -174,7 +174,7 @@ function user_unload()
 end
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-include('/libs/SCH_Lib.lua')          -- leave this as is    
+include('/libs/SCH_Lib.lua')    -- leave this as is    
 refreshType = idleModes[1]      -- leave this as is     
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------

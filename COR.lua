@@ -92,7 +92,7 @@ useLightMode:set(false) -- Change to toggle default setting for lite mode
 keybinds:set(true) -- Change to toggle default setting for keybind visibility
 tools:set(true) -- Change to toggle the default setting of the tool counter
 
--- Optional. Swap to your sch macro sheet / book
+-- Optional. Swap to your COR macro sheet / book
  set_macros(2,21) -- Sheet, Book   
 
 --------------------------------------------------------------------------------------------------------------

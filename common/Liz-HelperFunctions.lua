@@ -427,6 +427,7 @@ end
 
 function downgradenuke( spell )
 
+
     if spell.name:match(nukes.t1[elements.current]) then   
         if spell.name == nukes.t5[elements.current] then
             newspell = nukes.t4[elements.current]
