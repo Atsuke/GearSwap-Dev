@@ -151,9 +151,9 @@ nukes.ra2 = {['Earth']="Stonera II", ['Water']="Watera II", ['Air']="Aera II", [
 nukes.ra3 = {['Earth']="Stonera III",['Water']="Watera III",['Air']="Aera III",['Fire']="Fira III",['Ice']="Blizzara III",['Lightning']="Thundara III",['Light']="Thundara III",['Dark']="Blizzara III"}
 
 ninjaNukes = {}
-ninjaNukes.t1 = {['Earth']="Doton: Ichi",      ['Water']="Suiton: Ichi",      ['Air']="Huton: Ichi",     ['Fire']="Katon: Ichi",    ['Ice']="Hyoton: Ichi",     ['LightIching']="Raiton: Ichi"}
-ninjaNukes.t2 = {['Earth']="Doton: Ni",        ['Water']="Suiton: Ni",        ['Air']="Huton: Ni",       ['Fire']="Katon: Ni",      ['Ice']="Hyoton: Ni",       ['LightNing']="Raiton: Ni"}
-ninjaNukes.t3 = {['Earth']="Doton: San",       ['Water']="Suiton: San",       ['Air']="Huton: San",      ['Fire']="Katon: San",     ['Ice']="Hyoton: San",      ['LightSanng']="Raiton: San"}
+ninjaNukes.t1 = {['Earth']="Doton: Ichi",      ['Water']="Suiton: Ichi",      ['Air']="Huton: Ichi",     ['Fire']="Katon: Ichi",    ['Ice']="Hyoton: Ichi",     ['Lightning']="Raiton: Ichi"}
+ninjaNukes.t2 = {['Earth']="Doton: Ni",        ['Water']="Suiton: Ni",        ['Air']="Huton: Ni",       ['Fire']="Katon: Ni",      ['Ice']="Hyoton: Ni",       ['Lightning']="Raiton: Ni"}
+ninjaNukes.t3 = {['Earth']="Doton: San",       ['Water']="Suiton: San",       ['Air']="Huton: San",      ['Fire']="Katon: San",     ['Ice']="Hyoton: San",      ['Lightning']="Raiton: San"}
  
 
 storms = S{"Aurorastorm", "Voidstorm", "Firestorm", "Sandstorm", "Rainstorm", "Windstorm", "Hailstorm", "Thunderstorm",
