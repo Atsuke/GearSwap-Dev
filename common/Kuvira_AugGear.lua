@@ -87,6 +87,7 @@
 
 
 	Amal.Body.D			=	{ name="Amalric Doublet +1", augments={'MP+80','"Mag.Atk.Bns."+25','"Fast Cast"+4',}}
+	Amal.Hands.D		=	{ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}}
 	
 	Telchine.Head.en    =   { name="Telchine Cap", augments={'Enh. Mag. eff. dur. +8',}}
 	Telchine.Legs.en    =   { name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +10',}}
@@ -94,7 +95,7 @@
 
 	Merl.Body.FC		=	{ name="Merlinic Jubbah", augments={'"Fast Cast"+6','INT+1','Mag. Acc.+13','"Mag.Atk.Bns."+15',}}
 	Merl.Legs.MB		=	{ name="Merlinic Shalwar", augments={'Mag. Acc.+28','Magic burst dmg.+9%','INT+2','"Mag.Atk.Bns."+15',}}
-	Merl.Feet.MAB       =   { name="Merlinic Crackows", augments={'Mag. Acc.+13 "Mag.Atk.Bns."+13','"Conserve MP"+1','MND+9','Mag. Acc.+7','"Mag.Atk.Bns."+12',}}
+	Merl.Feet.MAB       =   { name="Merlinic Crackows", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+7%','CHR+2','Mag. Acc.+5','"Mag.Atk.Bns."+2',}}
 	Van.Head.ConMP      =   { name="Vanya Hood", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
 	Van.Hands.C         =   { name="Vanya Cuffs", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
 	
@@ -109,7 +110,9 @@
 	Carm.Hands.D		=   { name="Carmine Fin. Ga.", augments={'Rng.Atk.+15','"Mag.Atk.Bns."+10','"Store TP"+5',}}
 	
 	Adh.Head.A			=   { name="Adhemar Bonnet", augments={'DEX+10','AGI+10','Accuracy+15',}}
+	Adh.Head.B 			=	{ name="Adhemar Bonnet +1", augments={'STR+12','DEX+12','Attack+20',}}
 	Adh.Hands.A			=	{ name="Adhemar Wristbands", augments={'DEX+10','AGI+10','Accuracy+15',}}
+	Adh.Hands.B			=	{ name="Adhemar Wrist. +1", augments={'STR+12','DEX+12','Attack+20',}}
 	Adh.Body.B			=	{ name="Adhemar Jacket +1", augments={'STR+12','DEX+12','Attack+20',}}
 	Adh.Legs.D			=   { name="Adhemar Kecks", augments={'AGI+10','"Rapid Shot"+10','Enmity-5',}}
 
