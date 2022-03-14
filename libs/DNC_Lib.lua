@@ -52,14 +52,13 @@ function precast(spell)
 	
 	-- If sneak is active when using, cancel before completion
 	if spell.name == 'Spectral Jig' and buffactive.sneak then
-        
 		windower.ffxi.cancel_buff(71)
     end
 	
 	--Check for Climactic Flourish
 	if spell.type == "WeaponSkill" then
         if buffactive['Climactic Flourish'] then
-            --equip(set_combine(set.midcast[spell.name], sets.buff['Climactic Flourish']))
+			--equip(set_combine(set.midcast[spell.name], sets.buff['Climactic Flourish']))
 			equip(sets.buff['Climactic Flourish'])
         end
 	end
@@ -86,15 +85,15 @@ function precast(spell)
 	
 	--Catchall for the various Utsusem Spells
 	if spell.name:contains('Utsusemi') then
-			equip(sets.precast['Utsusemi'])
-		end
+		equip(sets.precast['Utsusemi'])
+	end
 	-- We use a catch all here, if the set exists for an ability, 
 	-- use it. This way we don't need to write a load of different
 	-- code for different abilities, just make a set
 	
 	if sets.precast[spell.name] then
-        equip(sets.precast[spell.name])        
-    end
+        equip(sets.precast[spell.name])
+	end
 
 end
 
@@ -111,12 +110,6 @@ function midcast(spell)
 			equip(sets.precast['Provoke'])
 		end
 	end
-	
-	
-	-- -- else
-	-- if sets.midcast[spell.name] then
-        -- equip(sets.midcast[spell.name])
-    -- end
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -138,7 +131,7 @@ end
 
 function idle()
     
-    if (player.status=='Engaged') then -- We're engaged. Weapons out in a hostile manner   
+    if (player.status == 'Engaged') then -- We're engaged. Weapons out in a hostile manner   
        
         equip(sets.engaged[meleeModes.value])               
     else
@@ -161,7 +154,6 @@ function handle_voke()
 	
 	
 	if player.sub_job == 'WAR' then --Are you /WAR?
-	
 
 	spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
 	

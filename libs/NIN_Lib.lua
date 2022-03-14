@@ -84,7 +84,6 @@ function precast(spell)
 		equip(sets.precast.Step)
 	end
 	
-	
 	-- We use a catch all here, if the set exists for an ability, 
 	-- use it. This way we don't need to write a load of different
 	-- code for different abilities, just make a set
@@ -108,7 +107,6 @@ function midcast(spell)
 		if spell.name:contains('Utsusemi') then
 			equip(sets.midcast['Utsusemi'][enmityModes.current])
 		end
-	
 	
 	if spell.skill == 'Ninjutsu' then
 		if spellMap == 'ElementalNinjutsu' then
@@ -193,7 +191,6 @@ end
 -- for our purposes we just refer it back to idle.
 
 function status_change(new,old)
-    
 	idle()
 end
 
@@ -242,14 +239,14 @@ function self_command(command)
 			elseif commandArgs[2] == 'enmity' then
                 enmityModes:cycle() 
 			elseif commandArgs[2] == 'nukemode' then
-                nukeModes:cycle()                               
-               -- validateTextInformation() 
+                nukeModes:cycle() 
+			elseif commandArgs[2] == 'matchsc' then
+                matchsc:cycle()                                
 			end		
 		
 		elseif commandArgs[1] == 'dnc' then
 			if commandArgs[2] == 'voke' then
-				handle_voke()
-				
+				handle_voke()	
 			end
 
         elseif commandArgs[1]:lower() == 'nuke' then
@@ -269,8 +266,6 @@ function self_command(command)
                     oldElement = ninElements.current
 					
                 end         
-                                  
-                --validateTextInformation()
 
             elseif (nuke == 'air' or nuke == 'ice' or nuke == 'fire' or nuke == 'water' or nuke == 'lightning' or nuke == 'earth') then
                 local newType = commandArgs[2]
@@ -284,9 +279,7 @@ function self_command(command)
                 send_command('@input /ma "'..ninjaNukes[nuke][ninElements.current]..'"')     
             end
 		
-		
 		end		
-		
 		
     end
 	idle()

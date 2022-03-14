@@ -70,6 +70,7 @@ sectionsColors:set('green')
 keybindsColors:set('orange')
 optionsColors:set('white')
 selectionColors:set('blue')   
+toolColors:set('green')
 
 textHideMode:set(false) -- Change to toggle default visibility of Mode section
 textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
@@ -78,7 +79,7 @@ textHideBattle:set(true) -- Change to toggle default visibility for battle secti
 textHideHUD:set(false) -- Change to toggle default setting for hud visibility
 useLightMode:set(false) -- Change to toggle default setting for lite mode
 keybinds:set(true) -- Change to toggle default setting for keybind visibility
-tools:set(true) -- Change to toggle the default setting of the tool counter
+textHideTools:set(false) -- Change to toggle the default setting of the tool counter
 
 
 -- Optional. Swap to your THF macro sheet / book
@@ -104,7 +105,7 @@ enmityModes = M('Normal', 'Enmity')
 	windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
 	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
-    windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
+	windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
 	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
 	windower.send_command('bind insert gs c toggle thMode')            -- insert to toggle Treasure Hunter Mode on or off
 	
@@ -127,20 +128,20 @@ keybinds_on['key_bind_treasure_hunter'] = '(INSERT)'
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
-    send_command('unbind insert')
+	send_command('unbind insert')
 	send_command('unbind !insert')
-    send_command('unbind delete')
+	send_command('unbind delete')
 	send_command('unbind !delete')
-    send_command('unbind f9')
-    send_command('unbind !f9')
+	send_command('unbind f9')
+	send_command('unbind !f9')
 	send_command('unbind f10')
-    send_command('unbind f12')
-    send_command('unbind home')
-    send_command('unbind !home')
+	send_command('unbind f12')
+	send_command('unbind home')
+	send_command('unbind !home')
 	send_command('unbind end')
-    send_command('unbind !end')
+	send_command('unbind !end')
 	send_command('unbind !f10')	
-    send_command('unbind `f10')
+	send_command('unbind `f10')
    	      	
 end
 

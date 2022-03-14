@@ -1,10 +1,10 @@
 version = "3.0"
 --[[
-        Custom commands:
+		Custom commands:
        
 		Can bind these to keys or use in macros ex: /console gs c toggle melee
-		
-	    gs c toggle idlemode            Change Idle Mode
+	
+		gs c toggle idlemode            Change Idle Mode
 		gs c toggle runspeed 		    Toggles locking on / off AF Feet
 		gs c toggle meleemode           Change Idle Mode    
 		gs c toggle enmity			   	Toggle casting modes between regular and Enmity for Utsusemi
@@ -25,20 +25,19 @@ version = "3.0"
 		gs c qd cycledown				Cycles backward through Quickdraw elements
 		gs c qd shoot					Fires Quickdraw of the selected element
 		
-        HUD Functions:
-        gs c hud hide                   Toggles the Hud entirely on or off
-        gs c hud hidemode               Toggles the Modes section of the HUD on or off
-        gs c hud hidejob                Toggles the job section of the HUD on or off
-        gs c hud hidebattle             Toggles the Battle section of the HUD on or off
-        gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
-        gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
-        gs c hud setcolor sections      Cycles colors for sections
-        gs c hud setcolor options       Cycles colors for options
-        gs c hud setcolor keybinds      Cycles colors for keybinds
-        gs c hud setcolor selection     Cycles colors for selection
-
-        Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
-        
+		HUD Functions:
+		gs c hud hide                   Toggles the Hud entirely on or off
+		gs c hud hidemode               Toggles the Modes section of the HUD on or off
+		gs c hud hidejob                Toggles the job section of the HUD on or off
+		gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
+		gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
+		gs c hud setcolor sections      Cycles colors for sections
+		gs c hud setcolor options       Cycles colors for options
+		gs c hud setcolor keybinds      Cycles colors for keybinds
+		gs c hud setcolor selection     Cycles colors for selection
+		
+		Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
         
 --]]
 
@@ -82,6 +81,7 @@ sectionsColors:set('green')
 keybindsColors:set('orange')
 optionsColors:set('white')
 selectionColors:set('blue')   
+toolColors:set('green')
 
 textHideMode:set(false) -- Change to toggle default visibility of Mode section
 textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
@@ -90,7 +90,7 @@ textHideBattle:set(true) -- Change to toggle default visibility for battle secti
 textHideHUD:set(false) -- Change to toggle default setting for hud visibility
 useLightMode:set(false) -- Change to toggle default setting for lite mode
 keybinds:set(true) -- Change to toggle default setting for keybind visibility
-tools:set(true) -- Change to toggle the default setting of the tool counter
+textHideTools:set(false) -- Change to toggle the default setting of the tool counter
 
 -- Optional. Swap to your COR macro sheet / book
  set_macros(2,21) -- Sheet, Book   
@@ -102,7 +102,7 @@ tools:set(true) -- Change to toggle the default setting of the tool counter
 -- Each mode needs to have a corresponding set in order to work.  ex: sets.idle.Regen
 
 idleModes   = M('Regen','DT')
-meleeModes  = M('TP', 'Hybrid', 'DT')
+meleeModes  = M('TP', 'Hybrid', 'DT', 'Acc')
 rangedModes = M('STP', 'ACC')
 luzafMode   = M('ON','OFF')
 quickDrawModes = M('STP', 'DMG', 'ACC', 'TH')
@@ -115,10 +115,10 @@ roll_2:set('Samurai Roll')   -- Roll 2 Default        (when you first load lua /
 	
 	-- Setup your Key Bindings here:
     
-    windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
+	windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
 	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off runspeed gear
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F10 to change engaged Mode    
-    windower.send_command('bind f11 gs c toggle ranged')			   -- F11 Toggle ranged modes
+	windower.send_command('bind f11 gs c toggle ranged')			   -- F11 Toggle ranged modes
 	windower.send_command('bind !F11 gs c qd mode') 	               -- delete to toggle QD Modes 
 	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
 	windower.send_command('bind insert gs c qd cycle') 		           -- insert to cycle QD Elements
@@ -170,20 +170,20 @@ tool_warning = 20
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
-    send_command('unbind f9')
-    send_command('unbind !f9')
+	send_command('unbind f9')
+	send_command('unbind !f9')
 	send_command('unbind f10')
 	send_command('unbind f11')	
-    send_command('unbind !f10')
-   	send_command('unbind f12')
+	send_command('unbind !f10')
+	send_command('unbind f12')
 	send_command('unbind insert')
 	send_command('unbind !insert')
-    send_command('unbind delete')
+	send_command('unbind delete')
 	send_command('unbind pageup')
 	send_command('unbind !pageup')
 	send_command('unbind pagedown')
 	send_command('unbind !pagedown')
-    send_command('unbind !end') 
+	send_command('unbind !end') 
 	      	
 end
 --------------------------------------------------------------------------------------------------------------
@@ -218,42 +218,43 @@ include('Kuvira_AugGear.lua')
 --------------------------------------------------------------------------------------------------------------
     
 	------------------------------------------------------------------------------------------------
-    ------------------------------------------ JSE Sets --------------------------------------------
-    ------------------------------------------------------------------------------------------------
+	------------------------------------------ JSE Sets --------------------------------------------
+	------------------------------------------------------------------------------------------------
+	
 	--define jse capes/armors below. Only have to update one spot as we reforge
 	-- JSE
-    AF = {}         -- leave this empty
-    RELIC = {}      -- leave this empty
-    EMPY = {}       -- leave this empty
+	AF = {}         -- leave this empty
+	RELIC = {}      -- leave this empty
+	EMPY = {}       -- leave this empty
 	
 	-- Fill this with your own JSE. 
     --Laksamana
-    AF.Head  = "Laksa. Tricorne +2"
-    AF.Body  = "Laksa. Frac +2"
-    AF.Hands = "Laksa. Gants +1"
-    AF.Legs  = "Laksa. Trews +1"
-    AF.Feet  = "Laksa. Bottes +1"
+	AF.Head  = "Laksa. Tricorne +3"
+	AF.Body  = "Laksa. Frac +2"
+	AF.Hands = "Laksa. Gants +1"
+	AF.Legs  = "Laksa. Trews +1"
+	AF.Feet  = "Laksa. Bottes +2"
 
-    --Lanun
-    RELIC.Head  = { name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}}
-    RELIC.Body  = { name="Lanun Frac +3", augments={'Enhances "Loaded Deck" effect',}}
-    RELIC.Hands = { name="Lanun Gants +1", augments={'Enhances "Fold" effect',}}
-    RELIC.Legs  = { name="Lanun Trews", augments={'Enhances "Snake Eye" effect',}}
-    RELIC.Feet  = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}}
+	--Lanun
+	RELIC.Head  = { name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}}
+	RELIC.Body  = { name="Lanun Frac +3", augments={'Enhances "Loaded Deck" effect',}}
+	RELIC.Hands = { name="Lanun Gants +1", augments={'Enhances "Fold" effect',}}
+	RELIC.Legs  = { name="Lanun Trews", augments={'Enhances "Snake Eye" effect',}}
+	RELIC.Feet  = { name="Lanun Bottes +3", augments={'Enhances "Wild Card" effect',}}
 	
-    --Chasseur
-    EMPY.Head  = "Chass. Tricorne +1"
-    EMPY.Body  = "Chasseur's Frac +1"
-    EMPY.Hands = "Chasseur's Gants +1"
-    EMPY.Legs  = "Chas. Culottes +1"
-    EMPY.Feet  = "Chass. Bottes +1"
+	--Chasseur
+	EMPY.Head  = "Chass. Tricorne +1"
+	EMPY.Body  = "Chasseur's Frac +1"
+	EMPY.Hands = "Chasseur's Gants +1"
+	EMPY.Legs  = "Chas. Culottes +1"
+	EMPY.Feet  = "Chass. Bottes +1"
 	
 	-- Define your ammo preferences here.
 	RAbullet = "Chrono Bullet"
-    RAccbullet = "Chrono Bullet"
-    WSbullet = "Chrono Bullet"
-    MAbullet = "Living Bullet"
-    QDbullet = "Hauksbok Bullet"
+	RAccbullet = "Chrono Bullet"
+	WSbullet = "Chrono Bullet"
+	MAbullet = "Living Bullet"
+	QDbullet = "Hauksbok Bullet"
 	
 	-- NEVER AGAIN!
 	no_shoot_ammo = S{"Animikii Bullet", "Hauksbok Bullet"}
@@ -268,8 +269,8 @@ include('Kuvira_AugGear.lua')
 	Camulus.AGIWSD   = { name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}}
 	
 	------------------------------------------------------------------------------------------------
-    ---------------------------------------- Precast Sets ------------------------------------------
-    ------------------------------------------------------------------------------------------------
+	---------------------------------------- Precast Sets ------------------------------------------
+	------------------------------------------------------------------------------------------------
 	
 	sets.precast = {}   -- leave this empty
 	sets.precast.WS= {}	-- leave this empty
@@ -306,6 +307,7 @@ include('Kuvira_AugGear.lua')
 	sets.precast['Animated Flourish'] = sets.precast['Provoke']
 	
 	sets.precast.Waltz = { 
+		
 		ammo = "Yamarang",
 		head = "Mummu Bonnet +2",
 		-- body = AF.Body,
@@ -321,6 +323,7 @@ include('Kuvira_AugGear.lua')
     sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
 	
 	sets.precast['Violent Flourish'] = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -335,6 +338,7 @@ include('Kuvira_AugGear.lua')
 	}
 	
 	sets.precast.Step = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -362,6 +366,7 @@ include('Kuvira_AugGear.lua')
 	}
 	
 	sets.precast.CorsairRoll.Duration = {
+		
 		range = { name="Compensator", augments={'DMG:+15','Rng.Atk.+15','"Mag.Atk.Bns."+15',}},
 		ammo = "Chrono Bullet",
 		head = RELIC.Head,
@@ -371,26 +376,27 @@ include('Kuvira_AugGear.lua')
 	
 	sets.precast.LuzafRing = set_combine(sets.precast.CorsairRoll.Duration,{right_ring = "Luzaf's Ring"})
 	
-	
+	--JA precasts
 	sets.precast['Snake Eye'] = {legs = RELIC.Legs}
     sets.precast['Wild Card'] = {feet = RELIC.Feet}
     sets.precast['Random Deal'] = {body = RELIC.Body}
+	sets.precast['Fold'] = {body = RELIC.Hands}
 	sets.precast.CorsairRoll["Caster's Roll"] = set_combine(sets.precast.CorsairRoll.Duration, {legs = EMPY.Legs})
     sets.precast.CorsairRoll["Courser's Roll"] = set_combine(sets.precast.CorsairRoll.Duration, {feet = EMPY.Feet})
     sets.precast.CorsairRoll["Blitzer's Roll"] = set_combine(sets.precast.CorsairRoll.Duration, {head = EMPY.Head})
     sets.precast.CorsairRoll["Tactician's Roll"] = set_combine(sets.precast.CorsairRoll.Duration, {body = EMPY.Body})
     sets.precast.CorsairRoll["Allies' Roll"] = set_combine(sets.precast.CorsairRoll, {hands = EMPY.Hands})
-
-    sets.precast.FoldDoubleBust = {hands="Lanun Gants +3"}
+    sets.precast.FoldDoubleBust = {hands = RELIC.Hands}
 	
 	------------------------------------------------------------------------------------------------
-    ---------------------------------------- Midcast Sets ------------------------------------------
-    ------------------------------------------------------------------------------------------------
+	---------------------------------------- Midcast Sets ------------------------------------------
+	------------------------------------------------------------------------------------------------
 	sets.midcast = {} --Leave this empty
 	sets.midcast.RA = {}
 	
 	
 	sets.midcast.RA = {
+	
 		head = "Meghanada Visor +2",
 		body = AF.Body,
 		hands = "Meg. Gloves +2",
@@ -420,8 +426,11 @@ include('Kuvira_AugGear.lua')
 	})
 	
 	sets.TripleShot = {
+		
+		head = "Oshosi Mask",
 		body = EMPY.Body,
 		hands = RELIC.Hands,
+		legs = "Oshosi Leggings",
 		back = Camulus.RATP
 	}
 	
@@ -449,7 +458,17 @@ include('Kuvira_AugGear.lua')
 	
 	sets.midcast['CorsairShot']['STP'] = sets.midcast['CorsairShot'] 
 	sets.midcast['CorsairShot']['DMG'] = sets.midcast['CorsairShot']
-	sets.midcast['CorsairShot']['ACC'] = sets.midcast['CorsairShot']
+	
+	sets.midcast['CorsairShot']['ACC'] = set_combine(sets.midcast['CorsairShot'],{
+		head = AF.Head,
+		body = "Malignance Tabard",
+		hands = AF.Hands,
+		legs = "Malignance Tights",
+		feet =  AF.Feet,
+		right_ring = "Stikini Ring",
+	
+	})
+	
 	sets.midcast['CorsairShot']['TH'] = set_combine(sets.precast['Corsairshot'], sets.TH)
 	
     ------------------------------------------------------------------------------------------------
@@ -478,6 +497,7 @@ include('Kuvira_AugGear.lua')
 
 	
     sets.precast['Leaden Salute'] = set_combine(sets.precast.WS,{
+		
 		ammo = WSbullet,
 		head = "Pixie Hairpin +1",
 		body = RELIC.Body,
@@ -493,6 +513,7 @@ include('Kuvira_AugGear.lua')
 	})
 
     sets.precast["Savage Blade"] = {
+		
 		ammo = WSbullet,
 		head = Herc.Head.WSD,
 		body = AF.Body,
@@ -509,6 +530,7 @@ include('Kuvira_AugGear.lua')
 	}
 
     sets.precast['Requiescat'] = set_combine(sets.precast.WS,{ 
+		
 		head = Adh.Head.A,
 		body = AF.Body,
 		hands = Adh.Body.B,
@@ -524,6 +546,7 @@ include('Kuvira_AugGear.lua')
 	})
 	
 	sets.precast['Wildfire'] = {
+		
 		head = Herc.Head.WSD,
 		body = RELIC.Body,
 		hands = "Meg. Gloves +2",
@@ -555,7 +578,7 @@ include('Kuvira_AugGear.lua')
 		back = Camulus.MeleeTP,
 	}
 	
-	sets.exported={
+	sets.precast['Aeolian Edge'] = {
 		
 		head = Herc.Head.MAB,
 		body = RELIC.Body,
@@ -574,9 +597,9 @@ include('Kuvira_AugGear.lua')
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Idle Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
-    sets.idle = {} -- leave this empty
- 	
 	
+	sets.idle = {} -- leave this empty
+ 		
 	sets.idle.Regen = {
 		
 		ammo = "Chrono Bullet",
@@ -604,7 +627,6 @@ include('Kuvira_AugGear.lua')
 	
 	}
 
-
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Engaged Sets ------------------------------------------
 	------------------------------------------------------------------------------------------------
@@ -613,10 +635,11 @@ include('Kuvira_AugGear.lua')
 	sets.engaged = {}  -- leave this empty
 
     sets.engaged.TP = {
+	
 		ammo = "Chrono Bullet",
-		head = Adh.Head.A,
+		head = Adh.Head.B,
 		body = Adh.Body.B,
-		hands = Adh.Hands.A,
+		hands = Adh.Hands.B,
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Iskur Gorget",
@@ -646,14 +669,32 @@ include('Kuvira_AugGear.lua')
 		back = Camulus.MeleeTP,
 	}
 	
+	sets.engaged.Acc = set_combine(sets.engaged.TP,{
+	
+		ammo = "Chrono Bullet",
+		head = "Meghanada Visor +2",
+		body = RELIC.Body,
+		hands = "Meg. Gloves +2",
+		legs = "Meg. Chausses +2",
+		feet = "Malignance Boots",
+		neck = "Lissome Necklace",
+		waist = "Kentarch Belt",
+		--left_ear = "Telos Earring",
+		right_ear = "Odr Earring",
+		left_ring = "Cacoethic Ring",
+		right_ring = "Cacoethic Ring +1",
+		back = Camulus.MeleeTP
+	})
+	
 	
 	------------------------------------------------------------------------------------------------
-    ----------------------------------------- Misc. Sets -------------------------------------------
+	----------------------------------------- Misc. Sets -------------------------------------------
 	------------------------------------------------------------------------------------------------
 	
 	--	Note that movespeed is sets.me this is a holdover from the way the movespeed equip 
 	--	helper function expects its input. I'll get around to fixing it eventually
 	--	but this works for now
+	
 	sets.TH ={
 		ammo = "Per. Lucky Egg",
 		head = "Wh. Rarab Cap +1",

@@ -104,15 +104,37 @@ include('Atsuke-Includes.lua')
 sectionsColors:set('green')
 keybindsColors:set('orange')
 optionsColors:set('white')
-selectionColors:set('blue')   
+selectionColors:set('blue')  
+toolColors:set('green') 
 
-textHideMode:set(false)
-textHideOptions:set(false)
-textHideJob:set(false)
-textHideBattle:set(false)
-textHideHUD:set(false) 
-useLightMode:set(false)
-keybinds:set(true)
+textHideMode:set(false) -- Change to toggle default visibility of Mode section
+textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
+textHideJob:set(false) -- Change to toggle default visibility of job Section
+textHideBattle:set(true) -- Change to toggle default visibility for battle section
+textHideHUD:set(false) -- Change to toggle default setting for hud visibility
+useLightMode:set(false) -- Change to toggle default setting for lite mode
+keybinds:set(true) -- Change to toggle default setting for keybind visibility
+textHideTools:set(true) -- Change to toggle the default setting of the tool counter
+
+-- Set the tools you would like to track while tool tracker is set to on. 
+-- Tools can be in inventory or wardrobe.  
+-- Set value to empty string if you dont want to track a tool.  Ex. tool_4 = ''
+
+tool_1 = "Shihei"
+tool_2 = ""
+tool_3 = ""
+tool_4 = ""
+
+-- Set these values for the text displayed in the hud
+tools_on = {}
+tools_on['tool_1'] = 'Shihei: '
+tools_on['tool_2'] = ""
+tools_on['tool_3'] = ""
+tools_on['tool_4'] = ""
+
+-- set level for low tool warning
+tool_warning = 20
+
 
 -- Optional. Swap to your sch macro sheet / book
 set_macros(2,12) -- Sheet, Book   
@@ -413,7 +435,7 @@ function get_sets()
     -- Then only swap in what under this set after everything else. 
     sets.precast.grimoire = {
 		head = RELIC.Head,
-		feet= AF.Feet,
+		feet = AF.Feet,
     }
 
 	
@@ -430,8 +452,8 @@ function get_sets()
       
     -- Curing Precast, Cure Spell Casting time -
     sets.precast.cure = set_combine(sets.precast.casting,{
-		legs="Doyen Pants",	
-		feet= Vanya.Feet.D,
+		legs = "Doyen Pants",	
+		feet = Vanya.Feet.D,
     })
       
     ---------------------

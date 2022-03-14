@@ -50,7 +50,6 @@ function precast(spell)
 
 	end
 	
-	
     -- Auto use Echo Drops if you are trying to cast while silenced --    
     if spell.action_type == 'Magic' and buffactive['Silence'] then 
         cancel_spell()
@@ -81,20 +80,22 @@ function precast(spell)
             end
         elseif spell.type == 'Geomancy' then
             equip(sets.precast.geomancy)
+		 elseif spell.type == 'BlackMagic' then
+            equip(sets.precast.nuke)
         else
             -- For everything else we go with max fastcast
             equip(sets.precast.casting)
              
         end
     end 
-    -- Job Abilities
+    
+	-- Job Abilities
     -- We use a catch all here, if the set exists for an ability, use it
     -- This way we don't need to write a load of different code for different abilities, just make a set
      
     if sets.precast[spell.name] then
         equip(sets.precast[spell.name])
-    end
-     
+    end 
 end
  
 function midcast(spell)
@@ -102,52 +103,84 @@ function midcast(spell)
     local spellMap = get_spell_map(spell)    
     -- No need to annotate all this, it's fairly logical. Just equips the relevant sets for the relevant magic
     if spell.name:match('Cure') or spell.name:match('Cura') then
-        if spell.element == world.weather_element or spell.element == world.day_element then
-            equip(sets.midcast.cure.weather)
+    
+		if spell.element == world.weather_element or spell.element == world.day_element then
+			equip(sets.midcast.cure.weather)
         else
-            equip(sets.midcast.cure.normal)
+			equip(sets.midcast.cure.normal)
         end
-    elseif spell.skill == 'Enhancing Magic' then
-        equip(sets.midcast.enhancing)
-        if spell.name:match('Protect') or spell.name:match('Shell') then
-            equip({rring="Sheltered Ring"})
-        elseif spell.name:match('Refresh') then
-            equip(sets.midcast.refresh)
-        elseif spell.name:match('Regen') then
-            equip(sets.midcast.regen)
-        elseif spell.name:match('Aquaveil') then
-            equip(sets.midcast.aquaveil)
-        end
-    elseif spell.skill == 'Enfeebling Magic' and spell.type == 'BlackMagic' then -- to do: better rule for this.
-        equip(sets.midcast.IntEnfeebling)
-    elseif spell.skill == 'Enfeebling Magic' and spell.type == 'WhiteMagic' then -- to do: better rule for this.
-        equip(sets.midcast.MndEnfeebling)
-    elseif spell.type == 'BlackMagic' then
-        if mBurst.value == true then
-            equip(sets.midcast.MB[nukeModes.current])
-        else
-            equip(sets.midcast.nuking[nukeModes.current])
-        end
-    -- casting is basically enfeeble set.
+    
+	elseif spell.skill == 'Enhancing Magic' then
+    
+		equip(sets.midcast.enhancing)
+        
+		if spell.name:match('Protect') or spell.name:match('Shell') then
+    
+		equip({right_ring = "Sheltered Ring"})
+        
+		elseif spell.name:match('Refresh') then
+        
+			equip(sets.midcast.refresh)
+        
+		elseif spell.name:match('Regen') then
+        
+			equip(sets.midcast.regen)
+        
+		elseif spell.name:match('Aquaveil') then
+        
+			equip(sets.midcast.aquaveil)
+        
+		end
+    
+	elseif spell.skill == 'Enfeebling Magic' and spell.type == 'BlackMagic' then -- to do: better rule for this.
+    
+		equip(sets.midcast.IntEnfeebling)
+    
+	elseif spell.skill == 'Enfeebling Magic' and spell.type == 'WhiteMagic' then -- to do: better rule for this.
+    
+		equip(sets.midcast.MndEnfeebling)
+    
+	elseif spell.type == 'BlackMagic' then
+        
+		if mBurst.value == true then
+        
+			equip(sets.midcast.MB[nukeModes.current])
+    
+		else
+    
+		equip(sets.midcast.nuking[nukeModes.current])
+        
+		end
+    
+	-- casting is basically enfeeble set.
     elseif spell.name:match('Geo') then
-        equip(sets.midcast.geo)
-    elseif spell.name:match('Indi') then
+      
+		equip(sets.midcast.geo)
+    
+	elseif spell.name:match('Indi') then
+		
 		-- check for entrust
 		if buffactive['Entrust'] then
 			equip(sets.midcast.entrust)
 		else
 			equip(sets.midcast.indi)
 		end
-    else
-        equip(sets.midcast.casting)
-    end
-    -- And our catch all, if a set exists for this spell name, use it
+    
+	else
+    
+		equip(sets.midcast.casting)
+    
+	end
+    
+	-- And our catch all, if a set exists for this spell name, use it
     if sets.midcast[spell.name] then
         equip(sets.midcast[spell.name])
-    -- Catch all for tiered spells (use mapping), basically if no set for spell name, check set for spell mapping. AKA Drain works for all Drain tiers.
+    
+	-- Catch all for tiered spells (use mapping), basically if no set for spell name, check set for spell mapping. AKA Drain works for all Drain tiers.
     elseif sets.midcast[spellMap] then
         equip(sets.midcast[spellMap])
-    -- Remember those WS Sets we defined? :) sets.me["Insert Weaponskill"] are basically how I define any non-magic spells sets, aka, WS, JA, Idles, etc.
+    
+	-- Remember those WS Sets we defined? :) sets.me["Insert Weaponskill"] are basically how I define any non-magic spells sets, aka, WS, JA, Idles, etc.
     elseif sets.me[spell.name] then
         equip(sets.me[spell.name])
     end
@@ -156,10 +189,12 @@ function midcast(spell)
     if spell.element == world.weather_element and spellMap ~= 'Helix'then
         equip(sets.midcast.Obi)
     end
-    if spell.element == world.day_element and spellMap ~= 'Helix'then
+    
+	if spell.element == world.day_element and spellMap ~= 'Helix'then
         equip(sets.midcast.Obi)
     end
-    -- This needs to be here for if you cast stoneskin on earthsday if doesnt swap to obi --___--;
+    
+	-- This needs to be here for if you cast stoneskin on earthsday if doesnt swap to obi --___--;
     if spell.name:match('Stoneskin') then
             equip(sets.midcast.stoneskin)
     end
@@ -173,12 +208,12 @@ function aftercast(spell)
 		windower.ffxi.run()
 		autorun = 0
 	end
-    idle(pet)
+    
+	idle(pet)
 end
 
 function pet_change(pet, gain)
     -- When we cast a luopan
-    
 	idle(pet)
 end
 
@@ -199,13 +234,13 @@ function idle(pet)
         -- We're not meleeing
         equip(sets[luopanMode].idle[idleModes.value])     
     end
-    validateTextInformation()
-	
-	
+    
+	validateTextInformation()
 end
  
 function status_change(new,old)
-    if new == 'Engaged' then
+	
+	if new == 'Engaged' then
      
         -- If we engage check our meleeing status
         idle(pet)
@@ -221,8 +256,10 @@ end
  
  
 function self_command(command)
-    hud_command(command) 
-    local commandArgs = command
+    
+	hud_command(command) 
+    
+	local commandArgs = command
      
     if #commandArgs:split(' ') >= 2 then
         commandArgs = T(commandArgs:split(' '))
@@ -263,7 +300,8 @@ function self_command(command)
             end
             
             local nuke = commandArgs[2]:lower()
-            if (nuke == 'cycle' or nuke == 'cycledown') then
+            
+			if (nuke == 'cycle' or nuke == 'cycledown') then
                 if nuke == 'cycle' then
                     elements:cycle()
                     oldElement = elements.current
@@ -276,7 +314,6 @@ function self_command(command)
                 local newType = commandArgs[2]
                 elements:set(newType)
                 validateTextInformation()
-
             elseif not nukes[nuke] then
                 windower.add_to_chat(123,'Unknown element type: '..tostring(commandArgs[2]))
                 return    
@@ -293,7 +330,8 @@ function self_command(command)
             end
             
             local geo = commandArgs[2]:lower()
-            if (geo == 'geocycle' or geo == 'geocycledown') then
+            
+			if (geo == 'geocycle' or geo == 'geocycledown') then
                 if geo == 'geocycle' then
                     geomancy:cycle()
                 elseif geo == 'geocycledown' then 
@@ -307,26 +345,33 @@ function self_command(command)
                 elseif geo == 'indicycledown' then 
                     indicolure:cycleback() 
                 end                          
-                validateTextInformation() 
+            
+				validateTextInformation() 
 
             elseif geo == 'entrustcycle' or geo == 'entrustcledown' then
-                if geo == 'entrustcycle' then
+                
+				if geo == 'entrustcycle' then
                     entrustindi:cycle()
                 elseif geo == 'entrustcledown' then 
                     entrustindi:cycleback() 
                 end                          
-                validateTextInformation() 
+                
+				validateTextInformation() 
 
             else
                 if geo == 'geo' then
-                    -- Leave out target; let Shortcuts auto-determine it.
+                
+				-- Leave out target; let Shortcuts auto-determine it.
                     send_command('@input /ma "'..geomancy.current..'"')
                 elseif geo == 'indi' then
+	
 					-- If Entrust is used then it'll use from the entrust list instead.
 					if buffactive['Entrust'] then
+					
 						-- Leave out target; let Shortcuts auto-determine it.
 						send_command('@input /ma "'..entrustindi.current..'"')   
 					else
+					
 						-- Leave out target; let Shortcuts auto-determine it.
 						send_command('@input /ma "'..indicolure.current..'"')    
 					end

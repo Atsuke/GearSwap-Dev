@@ -62,14 +62,17 @@ sectionsColors:set('green')
 keybindsColors:set('orange')
 optionsColors:set('white')
 selectionColors:set('blue')   
+toolColors:set('green')
 
-textHideMode:set(false)
-textHideOptions:set(false)
-textHideJob:set(false)
-textHideBattle:set(true)
-textHideHUD:set(false)
-useLightMode:set(false)
-keybinds:set(true)
+textHideMode:set(false) -- Change to toggle default visibility of Mode section
+textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
+textHideJob:set(false) -- Change to toggle default visibility of job Section
+textHideBattle:set(true) -- Change to toggle default visibility for battle section
+textHideHUD:set(false) -- Change to toggle default setting for hud visibility
+useLightMode:set(false) -- Change to toggle default setting for lite mode
+keybinds:set(true) -- Change to toggle default setting for keybind visibility
+textHideTools:set(false) -- Change to toggle the default setting of the tool counter
+
 
 -- Optional. Swap to your sch macro sheet / book
 -- set_macros(2,29) -- Sheet, Book   
@@ -93,12 +96,12 @@ meleeModes  = M('TP', 'Hybrid', 'DT')
 	
 	-- Setup your Key Bindings here:
     
-    windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
+	windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
 	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
-    windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
+	windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
 	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
-    windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
+	windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
 	
 
 	--[[
@@ -119,22 +122,42 @@ keybinds_on['key_bind_lock_weapon'] = '(F12) '
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
-    send_command('unbind insert')
+	send_command('unbind insert')
 	send_command('unbind !insert')
-    send_command('unbind delete')
+	send_command('unbind delete')
 	send_command('unbind !delete')
-    send_command('unbind f9')
-    send_command('unbind !f9')
+	send_command('unbind f9')
+	send_command('unbind !f9')
 	send_command('unbind f10')
-    send_command('unbind f12')
-    send_command('unbind home')
-    send_command('unbind !home')
+	send_command('unbind f12')
+	send_command('unbind home')
+	send_command('unbind !home')
 	send_command('unbind end')
-    send_command('unbind !end')
+	send_command('unbind !end')
 	send_command('unbind !f10')	
-    send_command('unbind `f10')
+	send_command('unbind `f10')
    	      	
 end
+
+-- Set the tools you would like to track while tool tracker is set to on. 
+-- Tools can be in inventory or wardrobe.  
+-- Set value to empty string if you dont want to track a tool.  Ex. tool_4 = ''
+
+tool_1 = "Shihei"
+tool_2 = ""
+tool_3 = ""
+tool_4 = ""
+
+-- Set these values for the text displayed in the hud
+tools_on = {}
+tools_on['tool_1'] = 'Shihei: '
+tools_on['tool_2'] = ""
+tools_on['tool_3'] = ""
+tools_on['tool_4'] = ""
+
+-- set level for low tool warning
+tool_warning = 20
+
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 include('/libs/DNC_Lib.lua')            -- leave this as is. NO TOUCHEY!   
@@ -165,31 +188,31 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     ------------------------------------------------------------------------------------------------
 	--define jse capes/armors below. Only have to update one spot as we reforge
 	-- JSE
-    AF = {}         -- leave this empty
-    RELIC = {}      -- leave this empty
-    EMPY = {}       -- leave this empty
+	AF = {}         -- leave this empty
+	RELIC = {}      -- leave this empty
+	EMPY = {}       -- leave this empty
 	
 	-- Fill this with your own JSE. 
-    --Maxixi
-    AF.Head     =   "Maxixi Tiara +1"
-    AF.Body     =   "Maxixi Casaque +3"
-    AF.Hands    =   "Maxixi Bangles +3"
-    AF.Legs     =  	"Maxixi Tights +1"
-    AF.Feet     =   "Maxixi Toe Shoes +1"
+	--Maxixi
+	AF.Head     =   "Maxixi Tiara +1"
+	AF.Body     =   "Maxixi Casaque +3"
+	AF.Hands    =   "Maxixi Bangles +3"
+	AF.Legs     =  	"Maxixi Tights +1"
+	AF.Feet     =   "Maxixi Toe Shoes +1"
+	
+	--Horos
+	RELIC.Head  =   { name="Horos Tiara +3", augments={'Enhances "Trance" effect',}}
+	RELIC.Body  =   { name="Horos Casaque +3", augments={'Enhances "No Foot Rise" effect',}}
+	RELIC.Hands =   { name="Horos Bangles +3", augments={'Enhances "Fan Dance" effect',}}
+	RELIC.Legs  =   { name="Horos Tights +3", augments={'Enhances "Saber Dance" effect',}}
+	RELIC.Feet  =   { name="Horos T. Shoes +3", augments={'Enhances "Closed Position" effect',}}
 
-    --Horos
-    RELIC.Head  =   { name="Horos Tiara +3", augments={'Enhances "Trance" effect',}}
-    RELIC.Body  =   { name="Horos Casaque +3", augments={'Enhances "No Foot Rise" effect',}}
-    RELIC.Hands =   { name="Horos Bangles +3", augments={'Enhances "Fan Dance" effect',}}
-    RELIC.Legs  =   { name="Horos Tights +3", augments={'Enhances "Saber Dance" effect',}}
-    RELIC.Feet  =   { name="Horos T. Shoes +3", augments={'Enhances "Closed Position" effect',}}
-
-    --Maculele
-    EMPY.Head   =   "Maculele Tiara +1"
-    EMPY.Body   =   "Macu. Casaque +1"
-    EMPY.Hands  =   "Macu. Bangles +1"
-    EMPY.Legs   =   "Charis Tights +2"
-    EMPY.Feet   =   "Macu. Toe Shoes +1"
+	--Maculele
+	EMPY.Head   =   "Maculele Tiara +1"
+	EMPY.Body   =   "Macu. Casaque +1"
+	EMPY.Hands  =   "Macu. Bangles +1"
+	EMPY.Legs   =   "Charis Tights +2"
+	EMPY.Feet   =   "Macu. Toe Shoes +1"
 
 	-- Define your JSE Capes here. 
 	Senuna = {} -- leave this empty
@@ -222,9 +245,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Loquac. Earring",
 		left_ring = "Gelatinous Ring +1",
 		right_ring = "Prolix Ring",
-	
-	
 	}
+
     sets.precast['No Foot Rise'] = {body = RELIC.Body}
 	
 	sets.precast['Provoke'] = {
@@ -245,6 +267,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
     
 	sets.precast.Waltz = { 
+
 		ammo = "Yamarang",
 		head = RELIC.Head,
 		body = AF.Body,
@@ -263,16 +286,19 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
     
 	sets.precast.Samba = {
+
 		head = AF.Head,
 		back = Senuna.DA
 	}
     
 	sets.precast.Jig = {
-			legs = RELIC.Legs,
-			feet = AF.Feet,
+
+		legs = RELIC.Legs,
+		feet = AF.Feet,
 	}
 	
 	sets.precast['Violent Flourish'] = {
+
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = RELIC.Body,
@@ -289,6 +315,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.precast.Step = {
+
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = AF.Body,
@@ -307,12 +334,13 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.precast['Animated Flourish'] = sets.precast['Provoke']
 	
 	sets.precast['Reverse Flourish'] = {
+
 		hands = EMPY.Hands,
 		back = Toetapper.RF,
 	}
-    
-	
+    	
 	sets.precast['Utsusemi'] = {
+	
 		ammo = "Sapience Orb",
 		head = Herc.Head.WSD,
 		body = "Malignance Tabard",
@@ -335,7 +363,9 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.buff['Climactic Flourish'] = {head = EMPY.Head, body="Meg. Cuirie +2"}
 	sets.midcast = {}
-    sets.precast.WS = {
+    
+	sets.precast.WS = {
+	
 		ammo = "C. Palug Stone",
 		head = Herc.Head.WSD,
 		body = "Meg. Cuirie +2",
@@ -352,6 +382,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 
     sets.precast['Exenterator'] = set_combine(sets.precast.WS,{
+		
 		head = "Malignance Chapeau",
 		right_ear = "Brutal Earring",
 		left_ring = "Stormsoul Ring",
@@ -359,12 +390,14 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	})
 
     sets.precast['Pyrrhic Kleos'] = set_combine(sets.precast.WS,{
+		
 		head = Herc.Head.WSD,
     	neck = { name="Etoile Gorget +2", augments={'Path: A',}},
 		
 	})
 	
     sets.precast['Evisceration'] = set_combine(sets.precast.WS,{
+		
 		head = "Mummu Bonnet +2",
 		body = "Abnoba Kaftan",
 		legs = RELIC.Legs,
@@ -398,9 +431,11 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     ------------------------------------------------------------------------------------------------
     ----------------------------------------- Idle Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
-    sets.idle = {} -- leave this empty
+    
+	sets.idle = {} -- leave this empty
  	
 	sets.idle.Regain = {
+	
 		head = "Gleti's Mask",
 		body = "Gleti's Cuirass",
 		hands = "Gleti's Gauntlets",
@@ -442,10 +477,11 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.engaged = {}  -- leave this empty
 
     sets.engaged.TP = {
+	
 		ammo = "Yamarang",
-		head = "Malignance Chapeau",
+		head = Adh.Head.A,
 		body = "Gleti's Cuirass",
-		hands = "Malignance Gloves",
+		hands = Adh.Hands.A,
 		legs = "Malignance Tights",
 		feet = "Malignance Boots",
 		neck = { name = "Etoile Gorget +2", augments={'Path: A',}},
@@ -458,6 +494,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.engaged.Hybrid = {
+	
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Gleti's Cuirass",
@@ -474,6 +511,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.engaged.DT = {
+		
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",

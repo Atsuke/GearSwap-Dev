@@ -22,12 +22,9 @@ time_start = 0
 
 setupTextWindow()
 
-
---validateTextInformation()
-
 -- Called every time we gain or lose a buff.
 function buff_change(buff,gain)
-    
+    idle()
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -76,6 +73,7 @@ function precast(spell)
             equip(sets.precast.LuzafRing)
         end
     end
+	
 	-- Waltzes that heal us is a different set than waltzes for others
 	if spell.type == 'Waltz' and spell.target.type == 'SELF' then
         equip(sets.precast.WaltzSelf)
@@ -90,16 +88,16 @@ function precast(spell)
         if spell.skill == 'Marksmanship' then
             special_ammo_check()
         end
-        -- Replace TP-bonus gear if not needed.
         
-        if elemental_ws:contains(spell.name) then
-            -- Matching double weather (w/o day conflict).
-            if spell.element == world.weather_element and (get_weather_intensity() == 2 and spell.element ~= element.weak_to[world.day_element]) then
-                equip({waist="Hachirin-no-Obi"})
-            -- Matching day and weather.
-            elseif spell.element == world.day_element and spell.element == world.weather_element then
-                equip({waist="Hachirin-no-Obi"})
-            -- Match day or weather.
+		-- Replace TP-bonus gear if not needed.
+		if elemental_ws:contains(spell.name) then
+			-- Matching double weather (w/o day conflict).
+			if spell.element == world.weather_element and (get_weather_intensity() == 2 and spell.element ~= element.weak_to[world.day_element]) then
+				equip({waist="Hachirin-no-Obi"})
+				-- Matching day and weather.
+			elseif spell.element == world.day_element and spell.element == world.weather_element then
+				equip({waist="Hachirin-no-Obi"})
+			-- Match day or weather.
             elseif spell.element == world.day_element or spell.element == world.weather_element then
                 equip({waist="Hachirin-no-Obi"})
             end
@@ -190,10 +188,12 @@ function idle()
     
     if player.status == 'Engaged' then -- We're engaged. Weapons out in a hostile manner
 	
-			equip(sets.engaged[meleeModes.value])
+		equip(sets.engaged[meleeModes.value])
 				
     else
+	
        equip(sets.idle[idleModes.value]) -- currently not engaged.             
+	
 	end
 
 	validateTextInformation() -- updates the HUD
@@ -212,7 +212,7 @@ function handle_voke()
 	
 	if player.sub_job == 'WAR' then --Are you /WAR?
 	
-	spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
+		spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
 	
 	if ability_recasts[5] > 0 then --Is Provoke Ready?
         --It wasn't. Bummer.

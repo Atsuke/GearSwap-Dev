@@ -154,8 +154,6 @@ function precast(spell)
 		end
 	end
 	
-	
-	
 	if spell.action_type  == 'Magic' and spell_recasts[spell.recast_id] > 0 then
         cancel_spell()
         downgradenuke(spell)
@@ -191,7 +189,8 @@ function precast(spell)
             equip(sets.precast.casting)                   
         end
     end
-    -- Job Abilities
+    
+	-- Job Abilities
     -- We use a catch all here, if the set exists for an ability, use it
     -- This way we don't need to write a load of different code for different abilities, just make a set
      
@@ -203,7 +202,8 @@ function precast(spell)
         if spell.type == 'BlackMagic' then
             equip(sets.precast.grimoire)            
         end
-    elseif buffactive['addendum: white'] or buffactive['light arts'] then
+    
+	elseif buffactive['addendum: white'] or buffactive['light arts'] then
         if spell.type == 'WhiteMagic' then
             equip(sets.precast.grimoire)            
         end
@@ -222,7 +222,8 @@ function midcast(spell)
 	
 	-- Get the spell mapping, since we'll be passing it to various functions and checks.
     local spellMap = get_spell_map(spell)    
-    -- No need to annotate all this, it's fairly logical. Just equips the relevant sets for the relevant magic
+    
+	-- No need to annotate all this, it's fairly logical. Just equips the relevant sets for the relevant magic
     if spell.name:match('Cure') or spell.name:match('Cura') then
         if spell.element == world.weather_element or spell.element == world.day_element then
             equip(sets.midcast.cure.weather)
@@ -230,11 +231,13 @@ function midcast(spell)
             equip(sets.midcast.cure.normal)
         end
     elseif spell.skill == 'Enhancing Magic' then
-        equip(sets.midcast.enhancing)
-        if spellMap == 'Storm' then
+       
+		equip(sets.midcast.enhancing)
+        
+		if spellMap == 'Storm' then
             equip(sets.midcast.storm)
         elseif spell.name:match('Protect') or spell.name:match('Shell') then
-            equip({rring="Sheltered Ring"})
+            equip({right_ring = "Sheltered Ring"})
         elseif spell.name:match('Refresh') then
             equip(sets.midcast.refresh)
         elseif spell.name:match('Regen') then
@@ -244,12 +247,16 @@ function midcast(spell)
         elseif spell.name:match('Stoneskin') then
             equip(sets.midcast.stoneskin)
         end
-    elseif spell.skill == 'Enfeebling Magic' and spell.type == 'BlackMagic' then -- to do: better rule for this.
+    
+	elseif spell.skill == 'Enfeebling Magic' and spell.type == 'BlackMagic' then -- to do: better rule for this.
         equip(sets.midcast.IntEnfeebling)
-    elseif spell.skill == 'Enfeebling Magic' and spell.type == 'WhiteMagic' then -- to do: better rule for this.
+    
+	elseif spell.skill == 'Enfeebling Magic' and spell.type == 'WhiteMagic' then -- to do: better rule for this.
         equip(sets.midcast.MndEnfeebling)
-    elseif spell.type == 'BlackMagic' then
-        if mBurst.value == true then
+    
+	elseif spell.type == 'BlackMagic' then
+    
+		if mBurst.value == true then
             equip(sets.midcast.MB[nukeModes.current])
         else
             equip(sets.midcast.nuking[nukeModes.current])
@@ -257,13 +264,16 @@ function midcast(spell)
     else
         equip(sets.midcast.casting)
     end
-    -- And our catch all, if a set exists for this spell name, use it
+    
+	-- And our catch all, if a set exists for this spell name, use it
     if sets.midcast[spell.name] then
         equip(sets.midcast[spell.name])
-    -- Catch all for tiered spells (use mapping), basically if no set for spell name, check set for spell mapping. AKA Drain works for all Drain tiers.
+    
+	-- Catch all for tiered spells (use mapping), basically if no set for spell name, check set for spell mapping. AKA Drain works for all Drain tiers.
     elseif sets.midcast[spellMap] then
         equip(sets.midcast[spellMap])
-    -- Remember those WS Sets we defined? :) sets.me["Insert Weaponskill"] are basically how I define any non-magic spells sets, aka, WS, JA, Idles, etc.
+    
+	-- Remember those WS Sets we defined? :) sets.me["Insert Weaponskill"] are basically how I define any non-magic spells sets, aka, WS, JA, Idles, etc.
     elseif sets.me[spell.name] then
         equip(sets.me[spell.name])
     end
@@ -330,7 +340,6 @@ end
 
 function AFAC_Helper(spell)
 	
-	--send_command('input /ja "%s" <t>':format(spell.name))
 	send_command('input /ja "'..temp_spell..'" <t>;')
 end
  
@@ -357,6 +366,7 @@ function aftercast(spell)
 end
 
 function pet_aftercast(spell)
+	
 	-- Pet aftercast is simply a check for whether Conduit and Apogee are up, and then a call to our aftercast function
     -- We have a variable called autobp that we set to true or false with commands to auto repeat BPs for us
     if (buffactive['Apogee'] or buffactive['Astral Conduit']) and bpModes.current == 'AUTO' then
@@ -530,13 +540,13 @@ function self_command(command)
                 -- Leave out target; let Shortcuts auto-determine it.
                 send_command('@input /ma "'..nukes[nuke][elements.current]..'"')     
             end
-        elseif commandArgs[1]:lower() == 'sc' then
+        
+		elseif commandArgs[1]:lower() == 'sc' then
             if not commandArgs[2] then
                 windower.add_to_chat(123,'No element type given.')
                 return
             end
           
-		
 		-- We want to do Summoner Things
 		elseif commandArgs[1]:lower() == 'summoner' then
 			if not commandArgs[2] then

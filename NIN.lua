@@ -61,16 +61,18 @@ include('Atsuke-Includes.lua')
 sectionsColors:set('green')
 keybindsColors:set('orange')
 optionsColors:set('white')
-selectionColors:set('blue')   
+selectionColors:set('blue')  
+toolColors:set('green') 
 
-textHideMode:set(false)
-textHideOptions:set(false)
-textHideJob:set(false)
-textHideBattle:set(true)
-textHideHUD:set(false)
-useLightMode:set(false)
-keybinds:set(true)
-tools:set(true)
+textHideMode:set(false) -- Change to toggle default visibility of Mode section
+textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
+textHideJob:set(false) -- Change to toggle default visibility of job Section
+textHideBattle:set(true) -- Change to toggle default visibility for battle section
+textHideHUD:set(false) -- Change to toggle default setting for hud visibility
+useLightMode:set(false) -- Change to toggle default setting for lite mode
+keybinds:set(true) -- Change to toggle default setting for keybind visibility
+textHideTools:set(false) -- Change to toggle the default setting of the tool counter
+
 
 -- Optional. Swap to your sch macro sheet / book
 -- set_macros(2,29) -- Sheet, Book   
@@ -98,7 +100,8 @@ enmityModes = M('Normal', 'Enmity')
 	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
     windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
 	windower.send_command('bind !f11 gs c toggle nukemode')     	   -- Alt-F11 to change Nuking Mode
-	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
+	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons
+	windower.send_command('bind !F12 gs c toggle matchsc')              -- F10 to change Match SC Mode
     windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
 	
 	
@@ -118,6 +121,7 @@ keybinds_on['key_bind_casting'] = '(Alt-F11) '
 keybinds_on['key_bind_element_cycle'] = '(INSERT)'
 keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
 keybinds_on['key_bind_lock_weapon'] = '(F12) '
+keybinds_on['key_bind_matchsc'] = '(ALT-F12) '
 
 -- Set the tools you would like to track while tool tracker is set to on. 
 -- Tools can be in inventory or wardrobe.  
@@ -155,6 +159,7 @@ function user_unload()
     send_command('unbind !end')
 	send_command('unbind !f10')	
     send_command('unbind `f10')
+	send_command('unbind !f12')
    	      	
 end
 --------------------------------------------------------------------------------------------------------------
@@ -353,8 +358,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.precast['Mijin Gakure'] = {legs = RELIC.Legs}
 	------------------------------------------------------------------------------------------------
-    ---------------------------------------- Mid Cast Sets -----------------------------------------
-    ------------------------------------------------------------------------------------------------
+	---------------------------------------- Mid Cast Sets -----------------------------------------
+	------------------------------------------------------------------------------------------------
 	sets.midcast = {}
 	sets.midcast.nuking ={}
 	sets.midcast.MB = {}
@@ -490,6 +495,23 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	
 	}
+	
+	sets.exported={
+		ammo="Seeth. Bomblet +1",
+		head = Herc.Head.WSD,
+		body = Herc.Body.WSD,
+		hands = Herc.Hands.WSD,
+		legs = { name="Tatena. Haidate +1", augments={'Path: A',}},
+		feet = Herc.Feet.WSD,
+		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},
+		waist = "Sailfi Belt +1",
+		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
+		right_ear = "Ishvara Earring",
+		left_ring = "Apate Ring",
+		right_ring = "Rajas Ring",
+		back = Andartia.STRWSD,
+	}
+	
 	
 	sets.precast['Blade: Chi'] = sets.precast['Blade: Teki']
 	sets.precast['Blade: To'] = sets.precast['Blade: Teki']
