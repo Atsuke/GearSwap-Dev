@@ -40,7 +40,7 @@ textHideBattle = M(false)
 textHideHUD = M(false)
 useLightMode = M(false)
 keybinds = M(false)
-tools = M(false)
+textHideTools = M(false)
 
 hud_padding = 10
 
@@ -55,6 +55,7 @@ sectionsColors = M('red', 'blue', 'green', 'white', 'yellow', 'cyan', 'magenta',
 keybindsColors = M('red', 'blue', 'green', 'white', 'yellow', 'cyan', 'magenta', 'black', 'orange')
 optionsColors = M('red', 'blue', 'green', 'white', 'yellow', 'cyan', 'magenta', 'black', 'orange')
 selectionColors = M('red', 'blue', 'green', 'white', 'yellow', 'cyan', 'magenta', 'black', 'orange')
+toolColors = M('red', 'blue', 'green', 'white', 'yellow', 'cyan', 'magenta', 'black', 'orange')
 
 -- Generic Colors
 hudColors = {
@@ -404,37 +405,32 @@ function construct_HUD_Categories( useLightMode )
 			
 		end	
 		
-		if tools ~= nil and tools_on then
+		if textHideTools ~= false and tools_on then
 			if tools_on['tool_1'] ~= nil then
 				tool_option_1 =  [[\cr 
-        				${options_color}${tool_1}\cr ${tool_1_Color}${tool1}\cr]]
+        				${options_color}${tool_1}\cr ${tool_1_Color}${tool1}]]
 			else
 				tool_option_1 = ''
 			end
 			
 			if tools_on['tool_2'] ~= nil then
-				tool_option_2 =  [[   ${options_color}${tool_2}\cr ${tool_2_Color}${tool2}\cr]]
+				tool_option_2 =  [[   ${options_color}${tool_2}\cr ${tool_2_Color}${tool2}]]
 			else
 				tool_option_2 = ''
 			end
 	
 			if tools_on['tool_3'] ~= nil then
 				tool_option_3 =  [[\cr
-				        ${options_color}${tool_3}\cr ${tool_3_Color}${tool3}\cr]]
+				        ${options_color}${tool_3}\cr ${tool_3_Color}${tool3}]]
 			else
 				tool_option_3 = ''
 			end
 
 			if tools_on['tool_4'] ~= nil then
-				tool_option_4 =  [[   ${options_color}${tool_4}\cr ${tool_4_Color}${tool4}\cr]]
+				tool_option_4 =  [[   ${options_color}${tool_4}\cr ${tool_4_Color}${tool4}]]
 			else
 				tool_option_4 = ''
 			end
-			
-			hud_tools = tool_option_1..tool_option_2..tool_option_3..tool_option_4
-		
-		else
-			hud_tools = ''
 		end
 	end
 
@@ -450,8 +446,9 @@ function buildHUD( useLightMode )
 		
 	hud_job = [[${sections_color}${player_job}:]]..hud_nukingElement..hud_indiCycle..hud_geoCycle..hud_entrustCycle..hud_mainWeapon..
 		hud_subWeapon..hud_regenMode..hud_avatar..hud_rage..hud_ward..hud_makingSC..hud_Enspell..hud_treasure_hunter..
-		hud_bp_mode..hud_convert_mode..hud_luzaf_mode..hud_roll_1..hud_roll_2..hud_tools..
-		hud_endofline        
+		hud_bp_mode..hud_convert_mode..hud_luzaf_mode..hud_roll_1..hud_roll_2..hud_endofline   
+	hud_tools = [[${tool_color}Tools:]]..tool_option_1..tool_option_2..tool_option_3..tool_option_4
+	
 	hud_battle = [[${sections_color}Battle Info:]]..hud_lastSC..hud_burstWindow..hud_magicBurst..hud_cardinalChant..hud_endofline 
 end
 --------------------------------------------------------------------------------------------------------------
@@ -464,6 +461,7 @@ function validateTextInformation()
     main_text_hud.keybinds_color = hudColors[keybindsColors.current]
     main_text_hud.options_color = hudColors[optionsColors.current]
     main_text_hud.selection_color = hudColors[selectionColors.current]
+	main_text_hud.tool_color = hudColors[toolColors.current]
 	
 
     if regenModes ~= nil then 
@@ -519,10 +517,6 @@ function validateTextInformation()
 			main_text_hud.toggle_element_cycle = elements.current
 		end
 	end
-	
-	
-	
-	
 	if rangedModes ~= nil then
     	main_text_hud.player_current_ranged = rangedModes.current
     end
@@ -549,9 +543,6 @@ function validateTextInformation()
 	    main_text_hud.card_chant = cChant
 	    main_text_hud.card_chant_color = ccColor
 	end
-	
-	
-	
 	if player.main_job == 'SMN' then
 		main_text_hud.toggle_avatar = avatars.current
 		main_text_hud.current_rage = currentRage
@@ -559,7 +550,6 @@ function validateTextInformation()
 		main_text_hud.current_pet_mode = petModes.current
 		main_text_hud.current_bp_mode = bpModes.current
 	end
-	
 	if player.main_job == 'COR' then
 		main_text_hud.current_roll_1 = roll_1.current
 		main_text_hud.current_roll_1_lucky = rolls[roll_1.current].lucky
@@ -681,7 +671,7 @@ function validateTextInformation()
         texts.update(main_text_hud, keybinds_off)
     end
 	
-	if tools.value then
+	if not textHideTools.value then
         texts.update(main_text_hud, tools_on)
 		tool_tracker()
 		main_text_hud.tool1 = tool1
@@ -756,6 +746,7 @@ function setupTextWindow()
     texts.append(main_text_hud, hud_options)
     texts.append(main_text_hud, hud_job)
     texts.append(main_text_hud, hud_battle)
+	texts.append(main_text_hud, hud_tools)
     --We then do a quick validation
     validateTextInformation()
 
@@ -783,6 +774,9 @@ function hideTextSections()
     end
     if not textHideBattle.value then
         texts.append(main_text_hud, hud_battle)
+	end
+	if not textHideTools.value then
+        texts.append(main_text_hud, hud_tools)
     end
     validateTextInformation()
 
@@ -845,8 +839,9 @@ function hud_command(command)
                 end
 
                 hideTextSections()
-			elseif commandArgs[2]:lower() == "tools" then --Hides/Show Keybinds
-                tools:toggle()
+			elseif commandArgs[2]:lower() == "hidetools" then --Hides/Show Tools
+                textHideTools:toggle()
+				hideTextSections()
 
                 if tools.value then
                     texts.update(main_text_hud, tools_on) --If ON then we pass in Table for keybinds to update the variables
@@ -914,6 +909,17 @@ function hud_command(command)
 						end
 					else
 						selectionColors:cycle()
+            		end
+					
+            	elseif commandArgs[3]:lower() == "tools" then
+            		if commandArgs[4] ~= nil and toolColors:contains(commandArgs[4]:lower()) then
+            			if toolColors:contains(commandArgs[4]:lower()) then
+            				toolColors:set(commandArgs[4]:lower())
+            			else
+							windower.add_to_chat(123,'Unknown hud color: '..tostring(commandArgs[4]))
+						end
+					else
+						toolColors:cycle()
             		end
             	end
             	validateTextInformation()
