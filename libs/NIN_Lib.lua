@@ -269,8 +269,7 @@ function self_command(command)
 
             elseif (nuke == 'air' or nuke == 'ice' or nuke == 'fire' or nuke == 'water' or nuke == 'lightning' or nuke == 'earth') then
                 local newType = commandArgs[2]
-                ninElements:set(newType)              
-                --validateTextInformation()
+                ninElements:set(newType)
             elseif not ninjaNukes[nuke] then
                 windower.add_to_chat(123,'Unknown element type: '..tostring(commandArgs[2]))
                 return              
