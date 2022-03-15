@@ -16,7 +16,7 @@ mBurst = M(false)
 runspeed = M('OFF', 'ON')
 oldElement = elements.current
 mBurstOldValue = mBurst.value
-matchsc = M('AUTO', 'OFF', 'ON')
+matchsc = M('OFF', 'AUTO', 'ON')
 MB_Window = 0   
 time_start = 0
 
