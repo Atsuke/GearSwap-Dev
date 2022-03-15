@@ -33,16 +33,18 @@ version = "3.0"
 		gs c geo indi					Cast saved Indi Spell
 
 		HUD Functions:
-		gs c hud hide                   Toggles the Hud entirely on or off
-		gs c hud hidemode               Toggles the Modes section of the HUD on or off
-		gs c hud hidejob                Toggles the job section of the HUD on or off
-		gs c hud hidebattle             Toggles the Battle section of the HUD on or off
-		gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
-		gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
-		gs c hud setcolor sections      Cycles colors for sections
-		gs c hud setcolor options       Cycles colors for options
-		gs c hud setcolor keybinds      Cycles colors for keybinds
-		gs c hud setcolor selection     Cycles colors for selection
+        gs c hud hide                   Toggles the Hud entirely on or off
+        gs c hud hidemode               Toggles the Modes section of the HUD on or off
+        gs c hud hidejob                Toggles the job section of the HUD on or off
+        gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud hidetools				Toggles the Tools section of the HUD on or off
+        gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
+        gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
+        gs c hud setcolor sections      Cycles colors for sections
+        gs c hud setcolor options       Cycles colors for options
+        gs c hud setcolor keybinds      Cycles colors for keybinds
+        gs c hud setcolor selection     Cycles colors for selection
+		gs c hud setcolor tools     	Cycles colors for selection
 
 		Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
 		
@@ -102,7 +104,7 @@ toolColors:set('green')
 textHideMode:set(false) -- Change to toggle default visibility of Mode section
 textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
 textHideJob:set(false) -- Change to toggle default visibility of job Section
-textHideBattle:set(true) -- Change to toggle default visibility for battle section
+textHideBattle:set(false) -- Change to toggle default visibility for battle section
 textHideHUD:set(false) -- Change to toggle default setting for hud visibility
 useLightMode:set(false) -- Change to toggle default setting for lite mode
 keybinds:set(true) -- Change to toggle default setting for keybind visibility

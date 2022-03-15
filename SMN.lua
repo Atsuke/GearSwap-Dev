@@ -43,12 +43,14 @@ version = "3.0"
         gs c hud hidemode               Toggles the Modes section of the HUD on or off
         gs c hud hidejob                Toggles the job section of the HUD on or off
         gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud hidetools				Toggles the Tools section of the HUD on or off
         gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
         gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
         gs c hud setcolor sections      Cycles colors for sections
         gs c hud setcolor options       Cycles colors for options
         gs c hud setcolor keybinds      Cycles colors for keybinds
         gs c hud setcolor selection     Cycles colors for selection
+		gs c hud setcolor tools     	Cycles colors for selection
 
         Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
         
@@ -106,14 +108,14 @@ optionsColors:set('white')
 selectionColors:set('blue')  
 toolColors:set('green') 
 
-textHideMode:set(false) -- Change to toggle default visibility of Mode section
-textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
-textHideJob:set(false) -- Change to toggle default visibility of job Section
-textHideBattle:set(true) -- Change to toggle default visibility for battle section
-textHideHUD:set(false) -- Change to toggle default setting for hud visibility
-useLightMode:set(false) -- Change to toggle default setting for lite mode
-keybinds:set(true) -- Change to toggle default setting for keybind visibility
-textHideTools:set(true) -- Change to toggle the default setting of the tool counter
+textHideMode:set(false)		-- Change to toggle default visibility of Mode section
+textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
+textHideJob:set(false)		-- Change to toggle default visibility of job Section
+textHideBattle:set(true)	-- Change to toggle default visibility for battle section
+textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
+useLightMode:set(false)		-- Change to toggle default setting for lite mode
+keybinds:set(true)			-- Change to toggle default setting for keybind visibility
+textHideTools:set(true)		-- Change to toggle the default setting of the tool counter
 
 -- Set the tools you would like to track while tool tracker is set to on. 
 -- Tools can be in inventory or wardrobe.  
@@ -448,7 +450,6 @@ function get_sets()
 	
 	})
 	
-	
 	sets.precast.bp= {
 		main = "Nirvana",
 		sub ="Elan Strap +1",
@@ -505,6 +506,7 @@ function get_sets()
     sets.midcast.DarkHelix = sets.midcast["Helix"]
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.Helix = {
+		
 		main = "Daybreak",
 		sub = "Culminus",
 		ammo = "Sancus Sachet +1",
@@ -519,7 +521,6 @@ function get_sets()
 		right_ear = "Friomisi Earring",
 		left_ring = "Persis Ring",
 		right_ring = "Kishar Ring",
-		
     }	
 
     -- Whatever you want to equip mid-cast as a catch all for all spells, and we'll overwrite later for individual spells

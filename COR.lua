@@ -5,7 +5,7 @@ version = "3.0"
 		Can bind these to keys or use in macros ex: /console gs c toggle melee
 	
 		gs c toggle idlemode            Change Idle Mode
-		gs c toggle runspeed 		    Toggles locking on / off AF Feet
+		gs c toggle runspeed 		    Toggles locking on / off Carmine Cuisses +1
 		gs c toggle meleemode           Change Idle Mode    
 		gs c toggle enmity			   	Toggle casting modes between regular and Enmity for Utsusemi
 		gs c toggle melee			    Toggle Melee mode on / off and locking of weapons  
@@ -26,16 +26,18 @@ version = "3.0"
 		gs c qd shoot					Fires Quickdraw of the selected element
 		
 		HUD Functions:
-		gs c hud hide                   Toggles the Hud entirely on or off
-		gs c hud hidemode               Toggles the Modes section of the HUD on or off
-		gs c hud hidejob                Toggles the job section of the HUD on or off
-		gs c hud hidebattle             Toggles the Battle section of the HUD on or off
-		gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
-		gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
-		gs c hud setcolor sections      Cycles colors for sections
-		gs c hud setcolor options       Cycles colors for options
-		gs c hud setcolor keybinds      Cycles colors for keybinds
-		gs c hud setcolor selection     Cycles colors for selection
+        gs c hud hide                   Toggles the Hud entirely on or off
+        gs c hud hidemode               Toggles the Modes section of the HUD on or off
+        gs c hud hidejob                Toggles the job section of the HUD on or off
+        gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud hidetools				Toggles the Tools section of the HUD on or off
+        gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
+        gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
+        gs c hud setcolor sections      Cycles colors for sections
+        gs c hud setcolor options       Cycles colors for options
+        gs c hud setcolor keybinds      Cycles colors for keybinds
+        gs c hud setcolor selection     Cycles colors for selection
+		gs c hud setcolor tools     	Cycles colors for selection
 		
 		Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
         
@@ -83,14 +85,14 @@ optionsColors:set('white')
 selectionColors:set('blue')   
 toolColors:set('green')
 
-textHideMode:set(false) -- Change to toggle default visibility of Mode section
-textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
-textHideJob:set(false) -- Change to toggle default visibility of job Section
-textHideBattle:set(true) -- Change to toggle default visibility for battle section
-textHideHUD:set(false) -- Change to toggle default setting for hud visibility
-useLightMode:set(false) -- Change to toggle default setting for lite mode
-keybinds:set(true) -- Change to toggle default setting for keybind visibility
-textHideTools:set(false) -- Change to toggle the default setting of the tool counter
+textHideMode:set(false)		-- Change to toggle default visibility of Mode section
+textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
+textHideJob:set(false)		-- Change to toggle default visibility of job Section
+textHideBattle:set(true)	-- Change to toggle default visibility for battle section
+textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
+useLightMode:set(false)		-- Change to toggle default setting for lite mode
+keybinds:set(true)			-- Change to toggle default setting for keybind visibility
+textHideTools:set(false)	-- Change to toggle the default setting of the tool counter
 
 -- Optional. Swap to your COR macro sheet / book
  set_macros(2,21) -- Sheet, Book   

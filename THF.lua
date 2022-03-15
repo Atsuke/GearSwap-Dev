@@ -13,17 +13,19 @@ version = "3.0"
 		gs c dnc voke					Uses either Provoke or Animated Flourish depending on subjob
 	
 
-        HUD Functions:
+       HUD Functions:
         gs c hud hide                   Toggles the Hud entirely on or off
         gs c hud hidemode               Toggles the Modes section of the HUD on or off
         gs c hud hidejob                Toggles the job section of the HUD on or off
         gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud hidetools				Toggles the Tools section of the HUD on or off
         gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
         gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
         gs c hud setcolor sections      Cycles colors for sections
         gs c hud setcolor options       Cycles colors for options
         gs c hud setcolor keybinds      Cycles colors for keybinds
         gs c hud setcolor selection     Cycles colors for selection
+		gs c hud setcolor tools     	Cycles colors for selection
 
         Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
         
@@ -72,18 +74,18 @@ optionsColors:set('white')
 selectionColors:set('blue')   
 toolColors:set('green')
 
-textHideMode:set(false) -- Change to toggle default visibility of Mode section
-textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
-textHideJob:set(false) -- Change to toggle default visibility of job Section
-textHideBattle:set(true) -- Change to toggle default visibility for battle section
-textHideHUD:set(false) -- Change to toggle default setting for hud visibility
-useLightMode:set(false) -- Change to toggle default setting for lite mode
-keybinds:set(true) -- Change to toggle default setting for keybind visibility
-textHideTools:set(false) -- Change to toggle the default setting of the tool counter
+textHideMode:set(false)		-- Change to toggle default visibility of Mode section
+textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
+textHideJob:set(false)		-- Change to toggle default visibility of job Section
+textHideBattle:set(true)	-- Change to toggle default visibility for battle section
+textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
+useLightMode:set(false)		-- Change to toggle default setting for lite mode
+keybinds:set(true)			-- Change to toggle default setting for keybind visibility
+textHideTools:set(false)	-- Change to toggle the default setting of the tool counter
 
 
 -- Optional. Swap to your THF macro sheet / book
--- set_macros(2,29) -- Sheet, Book   
+set_macros(2,22) -- Sheet, Book   
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
@@ -513,8 +515,8 @@ include('Atsuke_AugGear.lua')
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
-		legs = "Nyame Flanchard",
-		feet = "Nyame Sollerets",
+		legs = "Malignance Tights",
+		feet = "Malignance Boots",
 		neck = "Warder's Charm +1",
 		waist = "Engraved Belt",
 		left_ear = "Telos Earring",
@@ -533,7 +535,7 @@ include('Atsuke_AugGear.lua')
 	--	but this works for now
 	sets.TH ={
 		ammo = "Per. Lucky Egg",
-		head = "Wh. Rarab Cap +1",
+		head = Herc.Head.TH,
 		hands = RELIC.Hands,
 		feet = "Skulk. Poulaines +1",
 		waist = "Chaac Belt",

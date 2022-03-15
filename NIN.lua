@@ -2,20 +2,48 @@ version = "3.0"
 --[[
         Custom commands:
        
+		Toggle Function: 
+		gs c toggle melee               Toggle Melee mode on / off and locking of weapons
+		gs c toggle mb                  Toggles Magic Burst Mode on / off.
+		gs c toggle runspeed            Toggles locking on / off Herald's Gaiters
+		gs c toggle idlemode            Toggles between Refresh and DT idle mode. Activating Sublimation JA will auto replace refresh set for sublimation set. DT set will superceed both.   
+		gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
+		gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
+		
+		Casting functions:
+		these are to set fewer macros (2 cycle, 5 cast) to save macro space when playing lazily with controler
+        
+		gs c nuke cycle              	Cycles element type for nuking & SC
+		gs c nuke cycledown				Cycles element type for nuking & SC	in reverse order	
+		gs c nuke t1                    Cast tier 1 nuke of saved element 
+		gs c nuke t2                    Cast tier 2 nuke of saved element 
+		gs c nuke t3                    Cast tier 3 nuke of saved element 
+		
+		gs c dnc voke					Uses either Provoke or Animated Flourish depending on subjob
 
         HUD Functions:
         gs c hud hide                   Toggles the Hud entirely on or off
         gs c hud hidemode               Toggles the Modes section of the HUD on or off
         gs c hud hidejob                Toggles the job section of the HUD on or off
         gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud hidetools				Toggles the Tools section of the HUD on or off
         gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
         gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
         gs c hud setcolor sections      Cycles colors for sections
         gs c hud setcolor options       Cycles colors for options
         gs c hud setcolor keybinds      Cycles colors for keybinds
         gs c hud setcolor selection     Cycles colors for selection
+		gs c hud setcolor tools     	Cycles colors for selection
 
         Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
+		
+		// OPTIONAL IF YOU WANT / NEED to skip the cycles...  
+		gs c nuke Ice                   Set Element Type to Ice DO NOTE the Element needs a Capital letter. 
+		gs c nuke Air                   Set Element Type to Air DO NOTE the Element needs a Capital letter. 
+		gs c nuke Earth                 Set Element Type to Earth DO NOTE the Element needs a Capital letter. 
+		gs c nuke Lightning             Set Element Type to Lightning DO NOTE the Element needs a Capital letter. 
+		gs c nuke Water                 Set Element Type to Water DO NOTE the Element needs a Capital letter. 
+		gs c nuke Fire                  Set Element Type to Fire DO NOTE the Element needs a Capital letter. 
         
         
 --]]
@@ -64,14 +92,14 @@ optionsColors:set('white')
 selectionColors:set('blue')  
 toolColors:set('green') 
 
-textHideMode:set(false) -- Change to toggle default visibility of Mode section
-textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
-textHideJob:set(false) -- Change to toggle default visibility of job Section
-textHideBattle:set(true) -- Change to toggle default visibility for battle section
-textHideHUD:set(false) -- Change to toggle default setting for hud visibility
-useLightMode:set(false) -- Change to toggle default setting for lite mode
-keybinds:set(true) -- Change to toggle default setting for keybind visibility
-textHideTools:set(false) -- Change to toggle the default setting of the tool counter
+textHideMode:set(false) 	-- Change to toggle default visibility of Mode section
+textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
+textHideJob:set(false)		-- Change to toggle default visibility of job Section
+textHideBattle:set(true)	-- Change to toggle default visibility for battle section
+textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
+useLightMode:set(false)		-- Change to toggle default setting for lite mode
+keybinds:set(true)			-- Change to toggle default setting for keybind visibility
+textHideTools:set(false)	-- Change to toggle the default setting of the tool counter
 
 
 -- Optional. Swap to your sch macro sheet / book
@@ -93,16 +121,16 @@ enmityModes = M('Normal', 'Enmity')
     ------------------------------------------------------------------------------------------------
 	
 	-- Setup your Key Bindings here:
-    windower.send_command('bind insert gs c nuke cycle')               -- Insert Cycles Nuke element
-    windower.send_command('bind !insert gs c nuke cycledown')          -- ALT+Insert Cycles Nuke element in reverse order 
-    windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
-	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
-	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
-    windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
-	windower.send_command('bind !f11 gs c toggle nukemode')     	   -- Alt-F11 to change Nuking Mode
-	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons
-	windower.send_command('bind !F12 gs c toggle matchsc')              -- F10 to change Match SC Mode
-    windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
+    windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
+    windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order 
+    windower.send_command('bind f9 gs c toggle idlemode')				-- F9 to change Idle Mode
+	windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters
+	windower.send_command('bind f10 gs c toggle meleemode')				-- F9 to change Idle Mode    
+    windower.send_command('bind f11 gs c toggle enmity')				-- F11 Toggle casting modes between regular and Enmity
+	windower.send_command('bind !f11 gs c toggle nukemode')				-- Alt-F11 to change Nuking Mode
+	windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons
+	windower.send_command('bind !F12 gs c toggle matchsc')				-- F10 to change Match SC Mode
+    windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
 	
 	
 
@@ -356,7 +384,10 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		back = "Reiki Cloak",
 	}
 	
+	--JA Precasts
+	
 	sets.precast['Mijin Gakure'] = {legs = RELIC.Legs}
+	
 	------------------------------------------------------------------------------------------------
 	---------------------------------------- Mid Cast Sets -----------------------------------------
 	------------------------------------------------------------------------------------------------
