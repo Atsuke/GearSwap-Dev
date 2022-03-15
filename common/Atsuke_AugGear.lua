@@ -128,12 +128,13 @@
 	Telchine.Hands.en 	=   { name="Telchine Gloves", augments={'Enh. Mag. eff. dur. +8',}}
 	Telchine.Legs.en  	=   { name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +9',}}
 	Telchine.Feet.en  	=   { name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +9',}}
-
+	
+	Herc.Head.TH		=	{ name="Herculean Helm", augments={'Pet: Mag. Acc.+16','Pet: DEX+9','"Treasure Hunter"+2','Accuracy+14 Attack+14',}}
 	Herc.Head.WSD		= 	{ name= "Herculean Helm", augments={'"Conserve MP"+3','INT+2','Weapon skill damage +8%','Mag. Acc.+1 "Mag.Atk.Bns."+1',}}
 	Herc.Body.WSD  		=	{ name="Herculean Vest", augments={'AGI+8','Pet: Mag. Acc.+14','Weapon skill damage +10%','Accuracy+16 Attack+16',}}
 	Herc.Body.MAB  		= 	{ name="Herculean Vest", augments={'Pet: STR+8','"Mag.Atk.Bns."+13','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
 	Herc.Hands.WSD 		=	{ name="Herculean Gloves", augments={'Weapon skill damage +4%','Accuracy+10',}}
-	Herc.Legs.MAB  		=	{ name="Herculean Trousers", augments={'"Mag.Atk.Bns."+24','Phys. dmg. taken -2%','MND+14',}}
+	Herc.Legs.MAB  		=	{ name="Herculean Trousers", augments={'Accuracy+19','"Mag.Atk.Bns."+21','Mag. Acc.+14 "Mag.Atk.Bns."+14',}}
 	Herc.Feet.WSD  		=	{ name="Herculean Boots", augments={'Accuracy+4','Mag. Acc.+27','Weapon skill damage +8%','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
 
 	Taeon.Head.Phalanx	=	{ name="Taeon Chapeau", augments={'DEF+3','"Conserve MP"+5','Phalanx +3',}}
