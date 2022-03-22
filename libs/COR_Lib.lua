@@ -299,6 +299,9 @@ function self_command(command)
 			
 			elseif commandArgs[2] == 'luzaf' then
                 luzafMode:cycle()
+			elseif commandArgs[2] == 'matchsc' then
+                matchsc:cycle()                               
+                validateTextInformation()
 			end	
 		
 		elseif commandArgs[1] == 'dnc' then
