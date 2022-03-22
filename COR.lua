@@ -218,7 +218,14 @@ function get_sets()
 include('Kuvira_AugGear.lua')  
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-    
+
+	----------------------------------------------------------
+	-- Auto CP Cape: Will put on CP cape automatically when
+	-- fighting Apex mobs and job is not mastered
+	----------------------------------------------------------
+	CP_CAPE = "Mecisto. Mantle" -- Put your CP cape here
+	----------------------------------------------------------
+   
 	------------------------------------------------------------------------------------------------
 	------------------------------------------ JSE Sets --------------------------------------------
 	------------------------------------------------------------------------------------------------
@@ -432,7 +439,8 @@ include('Kuvira_AugGear.lua')
 		head = "Oshosi Mask",
 		body = EMPY.Body,
 		hands = RELIC.Hands,
-		legs = "Oshosi Leggings",
+		legs = "Oshosi Trousers",
+		feet = "Oshosi Leggings",
 		back = Camulus.RATP
 	}
 	
@@ -523,7 +531,7 @@ include('Kuvira_AugGear.lua')
 		legs = Herc.Legs.WSD,
 		feet = RELIC.Feet,
 		neck = "Lissome Necklace",
-		waist = "Grunfeld Rope",
+		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = "Brutal Earring",
 		right_ear = { name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
 		left_ring = "Ifrit Ring",
@@ -645,7 +653,7 @@ include('Kuvira_AugGear.lua')
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Iskur Gorget",
-		waist = "Sailfi Belt +1",
+		waist = "Reiki Yotai",
 		left_ear = "Telos Earring",
 		right_ear = "Suppanomimi",
 		left_ring = "Epona's Ring",
@@ -663,7 +671,7 @@ include('Kuvira_AugGear.lua')
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Loricate Torque +1",
-		waist = "Sailfi Belt +1",
+		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = "Odnowa Earring +1",
 		right_ear = "Etiolation Earring",
 		left_ring = "Epona's Ring",
@@ -675,7 +683,7 @@ include('Kuvira_AugGear.lua')
 	
 		ammo = "Chrono Bullet",
 		head = "Meghanada Visor +2",
-		body = RELIC.Body,
+		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",

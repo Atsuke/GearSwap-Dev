@@ -511,21 +511,21 @@ function get_sets()
 	sets.midcast["Sublimation"] = {head= AF.Head, body= RELIC.Body}
     
     sets.midcast.nuking.normal = {
-		main="Daybreak",
-		sub="Ammurapi Shield",
-		ammo="Ghastly Tathlum +1",
-		head= RELIC.Head,
-		body= Merl.Body.MAB,
-		hands=Merl.Hands.MAB,
-		legs= RELIC.legs,
-		feet= RELIC.Feet,
-		neck={ name="Argute Stole +1", augments={'Path: A',}},
-		waist="Eschan Stone",
-		left_ear="Regal Earring",
-		right_ear="Malignance Earring",
-		left_ring="Persis Ring",
-		right_ring="Mallquis Ring",
-		back=SCHCape.NUKE,
+		main = "Daybreak",
+		sub = "Ammurapi Shield",
+		ammo = "Ghastly Tathlum +1",
+		head = RELIC.Head,
+		body = Merl.Body.MAB,
+		hands = Merl.Hands.MAB,
+		legs = RELIC.legs,
+		feet = RELIC.Feet,
+		neck = { name="Argute Stole +1", augments={'Path: A',}},
+		waist = "Eschan Stone",
+		left_ear = "Regal Earring",
+		right_ear = "Malignance Earring",
+		left_ring = "Persis Ring",
+		right_ring= " Mallquis Ring",
+		back = SCHCape.NUKE,
     }
     -- used with toggle, default: F10
     -- Pieces to swap from freen nuke to Magic Burst

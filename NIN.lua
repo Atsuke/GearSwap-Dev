@@ -208,13 +208,18 @@ include('/libs/NIN_Lib.lua')            -- leave this as is. NO TOUCHEY!
 --------------------------------------------------------------------------------------------------------------    
 
 
-
-
 -- Setup your Gear Sets below:
 function get_sets()
 --select_default_macro_book()
 include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file since it's shared across many jobs. 
-    
+  
+	----------------------------------------------------------
+	-- Auto CP Cape: Will put on CP cape automatically when
+	-- fighting Apex mobs and job is not mastered
+	----------------------------------------------------------
+	CP_CAPE = "Mecisto. Mantle" -- Put your CP cape here
+	----------------------------------------------------------
+  
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ JSE Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -226,17 +231,17 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	-- Fill this with your own JSE. 
     --Hachiya
-    AF.Head  = "Hachi. Hatsu. +1"
+    AF.Head  = "Hachi. Hatsu. +2"
     AF.Body  = "Hachi. Chain. +1"
     AF.Hands = "Hachiya Tekko +1"
     AF.Legs  = "Hachi. Hakama +1"
-    AF.Feet  = "Hachi. Kyahan +1"
+    AF.Feet  = "Hachi. Kyahan +2"
 
     --Mochizuki
-    RELIC.Head  = { name="Mochi. Hatsuburi +1", augments={'Enhances "Yonin" and "Innin" effect',}}
-    RELIC.Body  = { name="Mochi. Chainmail +1", augments={'Enhances "Sange" effect',}}
+    RELIC.Head  = { name="Mochi. Hatsuburi +3", augments={'Enhances "Yonin" and "Innin" effect',}}
+    RELIC.Body  = { name="Mochi. Chainmail +2", augments={'Enhances "Sange" effect',}}
     RELIC.Hands = { name="Mochizuki Tekko +1", augments={'Enh. "Ninja Tool Expertise" effect',}}
-    RELIC.Legs  = { name="Mochi. Hakama +1", augments={'Enhances "Mijin Gakure" effect',}}
+    RELIC.Legs  = { name="Mochi. Hakama +2", augments={'Enhances "Mijin Gakure" effect',}}
     RELIC.Feet  = { name="Mochi. Kyahan +1", augments={'Enh. Ninj. Mag. Acc/Cast Time Red.',}}
 	
     --Hattori
@@ -293,7 +298,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		body = "Emet Harness +1",
 		-- hands = RELIC.Hands,
 		legs = "Zoar Subligar +1",
-		feet = "Nyame Sollerets",
+		feet = RELIC.Feet,
 		neck = "Unmoving Collar +1",
 		waist = "Engraved Belt",
 		left_ear = "Genmei Earring",
@@ -388,6 +393,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.precast['Mijin Gakure'] = {legs = RELIC.Legs}
 	
+	
 	------------------------------------------------------------------------------------------------
 	---------------------------------------- Mid Cast Sets -----------------------------------------
 	------------------------------------------------------------------------------------------------
@@ -395,6 +401,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.midcast.nuking ={}
 	sets.midcast.MB = {}
 	sets.midcast['Utsusemi'] = {}
+	
+	sets.midcast['Futae'] = {hands = EMPY.Hands}
 	
 	sets.midcast.enfeeble={
     ammo = "Yamarang",
@@ -413,6 +421,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		ammo = "Ghastly Tathlum +1",
 		head = RELIC.Head,
 		body = Herc.Body.MAB,
+		hands = EMPY.Hands,
 		legs = Herc.Legs.MAB,
 		feet = RELIC.Feet,
 		neck = "Sanctity Necklace",
@@ -425,7 +434,11 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.midcast.nuking['Acc']= sets.midcast.nuking['Normal']
 	
-	sets.midcast.MB['Normal'] = sets.midcast.nuking['Normal']
+	sets.midcast.MB['Normal'] = set_combine(sets.midcast.nuking['Normal'], {
+		feet = AF.Feet,
+		left_ring = "Mujin Band",
+	})
+	
 	sets.midcast.MB['Acc'] = sets.midcast.MB['Normal']
 	
 	
@@ -457,11 +470,11 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     sets.precast['Blade: Ten'] = set_combine(sets.precast.WS,{
 		ammo = "C. Palug Stone",
 		head = AF.Head,
-		body = { name="Agony Jerkin +1", augments={'Path: A',}},
+		body = Herc.Body.WSD,
 		hands = RELIC.Hands,
-		legs = "Jokushu Haidate",
+		legs = RELIC.Legs,
 		feet = { name="Tatena. Sune. +1", augments={'Path: A',}},
-		waist = "Grunfeld Rope",
+		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
 		right_ear = "Ishvara Earring",
 		left_ring = "Rajas Ring",
@@ -514,7 +527,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		head = RELIC.Head,
 		body = Herc.Body.MAB,
 		hands = { name="Leyline Gloves", augments={'Accuracy+12','Mag. Acc.+10','"Mag.Atk.Bns."+1',}},
-		legs = Herc.Legs.MAB,
+		legs = RELIC.Legs,
 		feet = Herc.Feet.WSD,
 		neck = "Sanctity Necklace",
 		waist = "Eschan Stone",
@@ -527,15 +540,15 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	}
 	
-	sets.exported={
-		ammo="Seeth. Bomblet +1",
+	sets.precast['Blade: Kamu'] ={ 
+		ammo = "Seeth. Bomblet +1",
 		head = Herc.Head.WSD,
 		body = Herc.Body.WSD,
 		hands = Herc.Hands.WSD,
 		legs = { name="Tatena. Haidate +1", augments={'Path: A',}},
 		feet = Herc.Feet.WSD,
 		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},
-		waist = "Sailfi Belt +1",
+		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
 		right_ear = "Ishvara Earring",
 		left_ring = "Apate Ring",
@@ -593,7 +606,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		legs = { name="Tatena. Haidate +1", augments={'Path: A',}},
 		feet = { name="Tatena. Sune. +1", augments={'Path: A',}},
 		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},
-		waist = "Windbuffet Belt",
+		waist = "Reiki Yotai",
 		left_ear = "Telos Earring",
 		right_ear = "Suppanomimi",
 		left_ring = "Hetairoi Ring",

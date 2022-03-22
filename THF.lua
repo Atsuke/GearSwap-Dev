@@ -198,6 +198,12 @@ include('Atsuke_AugGear.lua')
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
  
+	----------------------------------------------------------
+	-- Auto CP Cape: Will put on CP cape automatically when
+	-- fighting Apex mobs and job is not mastered
+	----------------------------------------------------------
+	CP_CAPE = "Mecisto. Mantle" -- Put your CP cape here
+	----------------------------------------------------------
     
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ JSE Sets --------------------------------------------
@@ -470,7 +476,7 @@ include('Atsuke_AugGear.lua')
 		legs = "Malignance Tights",
 		feet = RELIC.Feet,
 		neck = { name = "Asn. Gorget +1", augments={'Path: A',}},
-		waist = "Windbuffet Belt",
+		waist = "Reiki Yotai",
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Epona's Ring",

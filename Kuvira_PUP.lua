@@ -354,7 +354,7 @@ include("kuvira_AugGear.lua")
     sets.precast.JA["Maintenance"] = set_combine(sets.precast.JA["Repair"], {})
 
     sets.precast.JA.Maneuver = {
-        neck = "Buffoon's Collar",
+        neck = "Buffoon's Collar +1",
         body = EMPY.Body,
         hands = AF.Hands,
     }

@@ -224,12 +224,12 @@ validateTextInformation()
 -- Setup your Gear Sets below:
 function get_sets()
   
-    ----------------------------------------------------------
-    -- Auto CP Cape: Will put on CP cape automatically when
-    -- fighting Apex mobs and job is not mastered
-    ----------------------------------------------------------
-    CP_CAPE = "Mecisto. Mantle" -- Put your CP cape here
-    ----------------------------------------------------------
+   ----------------------------------------------------------
+	-- Auto CP Cape: Will put on CP cape automatically when
+	-- fighting Apex mobs and job is not mastered
+	----------------------------------------------------------
+	CP_CAPE = "Mecisto. Mantle" -- Put your CP cape here
+	----------------------------------------------------------
 
 	-- My formatting is very easy to follow. All sets that pertain to my character doing things are under 'me'.
 	-- All sets that are equipped to faciliate my.pan's behaviour or abilities are under .pan', eg, Perpetuation, Blood Pacts, etc
