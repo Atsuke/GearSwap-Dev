@@ -120,6 +120,9 @@ function midcast(spell)
 		end
 	end
 	
+	if buffactive['Futae'] then
+		equip(sets.midcast['Futae'])
+	end
 	if sets.midcast[spell.name] then
        	equip(sets.midcast[spell.name])
     end
