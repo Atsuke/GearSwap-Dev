@@ -191,9 +191,19 @@ include('/libs/DNC_Lib.lua')            -- leave this as is. NO TOUCHEY!
 
 -- Setup your Gear Sets below:
 function get_sets()
+
 select_default_macro_book()
+
 include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file since it's shared across many jobs. 
     
+	
+	----------------------------------------------------------
+	-- Auto CP Cape: Will put on CP cape automatically when
+	-- fighting Apex mobs and job is not mastered
+	----------------------------------------------------------
+	CP_CAPE = "Mecisto. Mantle" -- Put your CP cape here
+	----------------------------------------------------------
+	
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ JSE Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -348,24 +358,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 
 		hands = EMPY.Hands,
 		back = Toetapper.RF,
-	}
-    	
-	sets.precast['Utsusemi'] = {
-	
-		ammo = "Sapience Orb",
-		head = Herc.Head.WSD,
-		body = "Malignance Tabard",
-		hands = { name="Leyline Gloves", augments={'Accuracy+12','Mag. Acc.+10','"Mag.Atk.Bns."+1',}},
-		legs = "Gleti's Breeches",
-		feet = "Gleti's Boots",
-		neck = "Magoraga Beads",
-		waist = "Sailfi Belt +1",
-		left_ear = "Etiolation Earring",
-		right_ear = "Loquac. Earring",
-		left_ring = "Defending Ring",
-		right_ring = "Prolix Ring",
-		back = Senuna.DA,
-	
 	}
 
     ------------------------------------------------------------------------------------------------
