@@ -25,13 +25,23 @@ setupTextWindow()
 
 -- Called every time we gain or lose a buff.
 function buff_change(buff,gain)
-    if (buff == 'Sneak Attack' and gain) then
+    
+	--Check for SA/TA. Dont want to swap hands or feet if we are using SA/TA to proc TH. 
+	if (buff == 'Sneak Attack' and gain) and treasureHunter.current == 'OFF' then
 		equip(sets.buff['Sneak Attack'])
 	end
 	
-	if (buff == 'Trick Attack' and gain) then
+	if (buff == 'Trick Attack' and gain) and treasureHunter.current == 'OFF' then
 		equip(sets.buff['Trick Attack'])
 	end
+	
+	-- if (buff == 'Sneak Attack' and gain) then
+		-- equip(sets.buff['Sneak Attack'])
+	-- end
+	
+	-- if (buff == 'Trick Attack' and gain) then
+		-- equip(sets.buff['Trick Attack'])
+	-- end
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -58,14 +68,14 @@ function precast(spell)
 		windower.ffxi.cancel_buff(71)
     end
 	
-	--Check for SA/TA. Dont want to swap hands or feet if we are using SA/TA to proc TH. 
-	if (buff == 'Sneak Attack' and gain) and treasureHunter.current == 'OFF' then
-		equip(sets.buff['Sneak Attack'])
-	end
+	-- --Check for SA/TA. Dont want to swap hands or feet if we are using SA/TA to proc TH. 
+	-- if (buff == 'Sneak Attack' and gain) and treasureHunter.current == 'OFF' then
+		-- equip(sets.buff['Sneak Attack'])
+	-- end
 	
-	if (buff == 'Trick Attack' and gain) and treasureHunter.current == 'OFF' then
-		equip(sets.buff['Trick Attack'])
-	end
+	-- if (buff == 'Trick Attack' and gain) and treasureHunter.current == 'OFF' then
+		-- equip(sets.buff['Trick Attack'])
+	-- end
 	
 	-- Waltzes that heal us is a different set than waltzes for others
 	if spell.type == 'Waltz' and spell.target.type == 'SELF' then
