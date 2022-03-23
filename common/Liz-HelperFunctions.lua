@@ -572,6 +572,4 @@ function tool_tracker()
 		
 	end
 	
-	
-	
 end

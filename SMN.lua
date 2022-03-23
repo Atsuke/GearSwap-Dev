@@ -1,4 +1,11 @@
 version = "3.0"
+
+--[[
+	Big shoutout to Tunaliz https://github.com/Tunaliz for the amazing work he did, especially on the HUD.  
+	His code was a fantastic starting point	I fixed some bugs in the existing code,
+	added/removed/modified things to suit my needs and then built all of my lua's in a similar style. 
+--]]
+
 --[[
         Custom commands:
         Shorthand versions for each strategem type that uses the version appropriate for the current Arts.
@@ -20,6 +27,7 @@ version = "3.0"
         gs c toggle regenmode           Toggles between Hybrid, Duration and Potency mode for regen set  
         gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
         gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
+		gs c toggle autoconvert			Toggles autoconvert modes
                 
         
         Nukie Functions:
@@ -155,21 +163,21 @@ convertModes = M('OFF', 'AUTO')
 nukeModes = M('normal', 'acc')
 
 -- Setup your Key Bindings here:
-    windower.send_command('bind insert gs c nuke cycle')               -- Insert Cycles Nuke element
-    windower.send_command('bind !insert gs c nuke cycledown')          -- ALT+Insert Cycles Nuke element in reverse order 
-    windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode    
-    windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
-    windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons
-    windower.send_command('bind delete gs c summoner cycle')		   -- Cycle through available avatars
-    windower.send_command('bind !delete gs c summoner cycledown')      -- Cycle through available avatars
-	windower.send_command('bind end gs c summoner cycleward')	       -- Change the currently selected bp ward
-	windower.send_command('bind !end gs c summoner cyclewarddown')	   -- Change the currently selected bp ward
-	windower.send_command('bind home gs c summoner cyclerage')         -- DELETE to toggle rage bp's
-    windower.send_command('bind !home gs c summoner cycleragedown')    -- DELETE to toggle rage bp's
-    windower.send_command('bind f10 gs c toggle petmode')              -- F10 to change Match SC Mode          	   
-    windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
-	windower.send_command('bind PAGEUP gs c summoner autobp')          -- PAGEUP to toggle bp Mode
-	windower.send_command('bind PAGEDOWN gs c summoner autoconvert')   -- PAGEDOWN to toggle Convert Mode
+    windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
+    windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order 
+    windower.send_command('bind f9 gs c toggle idlemode')				-- F9 to change Idle Mode    
+    windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters
+    windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons
+    windower.send_command('bind delete gs c summoner cycle')			-- Cycle through available avatars
+    windower.send_command('bind !delete gs c summoner cycledown')		-- Cycle through available avatars
+	windower.send_command('bind end gs c summoner cycleward')			-- Change the currently selected bp ward
+	windower.send_command('bind !end gs c summoner cyclewarddown')		-- Change the currently selected bp ward
+	windower.send_command('bind home gs c summoner cyclerage')			-- DELETE to toggle rage bp's
+    windower.send_command('bind !home gs c summoner cycleragedown')		-- DELETE to toggle rage bp's
+    windower.send_command('bind f10 gs c toggle petmode')				-- F10 to change Match SC Mode          	   
+    windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
+	windower.send_command('bind PAGEUP gs c summoner autobp')			-- PAGEUP to toggle bp Mode
+	windower.send_command('bind PAGEDOWN gs c toggle autoconvert')		-- PAGEDOWN to toggle Convert Mode
 	
 
 --[[
@@ -650,8 +658,6 @@ function get_sets()
 		back = "Twilight Cape",
 	}
 	
-	
-	
 	--------------------------------------------------------------------------------------------------------------
 	---------------------------------------------- Avatar Sets ---------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------
@@ -845,7 +851,7 @@ function get_sets()
 	
 	sets.avatar.buff = sets.avatar.skill
 	
-
+	
 	--------------------------------------------------------------------------------------------------------------
 	-------------------------------------------------- Misc. -----------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------

@@ -1,4 +1,11 @@
 version = "3.0"
+
+--[[
+	Big shoutout to Tunaliz https://github.com/Tunaliz for the amazing work he did, especially on the HUD.  
+	His code was a fantastic starting point	I fixed some bugs in the existing code,
+	added/removed/modified things to suit my needs and then built all of my lua's in a similar style. 
+--]]
+
 --[[
         Custom commands:
        
@@ -265,12 +272,12 @@ include('Atsuke_AugGear.lua')
 		right_ear = "Friomisi Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Provocare Ring",
-		
 	}
     
 	sets.precast['Animated Flourish'] = sets.precast['Provoke']
 	
 	sets.precast.Waltz = { 
+		
 		ammo = "Yamarang",
 		head = "Mummu Bonnet +2",
 		-- body = AF.Body,
@@ -281,12 +288,12 @@ include('Atsuke_AugGear.lua')
 		right_ear = "Etiolation Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Gelatinous Ring +1",
-		
 	}
 	
     -- sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
 	
 	sets.precast['Violent Flourish'] = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -298,10 +305,10 @@ include('Atsuke_AugGear.lua')
 		right_ear = "Hermetic Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Warden's Ring",
-		
 	}
 	
 	sets.precast.Step = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -313,10 +320,10 @@ include('Atsuke_AugGear.lua')
 		right_ear = "Odr Earring",
 		left_ring = "Cacoethic Ring",
 		right_ring = "Varar Ring +1",
-		
 	}   
 	
 	sets.precast['Utsusemi'] = {
+		
 		ammo = "Sapience Orb",
 		head = Herc.Head.WSD,
 		body = "Malignance Tabard",
@@ -329,11 +336,10 @@ include('Atsuke_AugGear.lua')
 		right_ear = "Loquac. Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Prolix Ring",
-		
-	
 	}
 	
 	sets.precast.RA={
+		
 		head="Malignance Chapeau",
 		body="Malignance Tabard",
 		hands="Malignance Gloves",
@@ -361,11 +367,10 @@ include('Atsuke_AugGear.lua')
     ------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------
-	
-		
-	sets.midcast = {}
+	sets.midcast = {}	-- leave this empty
     
 	sets.precast.WS = {
+		
 		ammo = "C. Palug Stone",
 		head = Herc.Head.WSD,
 		body = Herc.Body.WSD,
@@ -382,6 +387,7 @@ include('Atsuke_AugGear.lua')
 	}
 
     sets.precast['Exenterator'] = set_combine(sets.precast.WS,{
+		
 		head = "Malignance Chapeau",
 		body = "Meg. Cuirie +2",
 		neck = "Fotia Gorget",
@@ -393,6 +399,7 @@ include('Atsuke_AugGear.lua')
 	})
 
     sets.precast['Evisceration'] = set_combine(sets.precast.WS,{
+		
 		head = "Mummu Bonnet +2",
 		body = "Abnoba Kaftan",
 		legs = AF.Legs,
@@ -401,15 +408,14 @@ include('Atsuke_AugGear.lua')
 		waist = "Grunfeld Rope",
 	})
 
-    sets.precast["Rudra's Storm"] = set_combine(sets.precast.WS,{
-		
-	})
+    sets.precast["Rudra's Storm"] = set_combine(sets.precast.WS,{})
 	
 	sets.precast['Shark Bite'] = sets.precast["Rudra's Storm"]
 	
 	sets.precast['Mandalic Stab'] = sets.precast["Rudra's Storm"]
 	
     sets.precast['Aeolian Edge'] = set_combine(sets.precast.WS,{ 
+		
 		body = Herc.Body.MAB,
 		hands = "Meg. Gloves +2",
 		legs=Herc.Legs.MAB,
@@ -429,12 +435,12 @@ include('Atsuke_AugGear.lua')
     sets.idle = {} -- leave this empty
  	
 	sets.idle.Regain = {
+		
 		head = "Gleti's Mask",
 		body = "Gleti's Cuirass",
 		hands = "Gleti's Gauntlets",
 		legs = "Gleti's Breeches",
 		feet = "Gleti's Boots",
-		
 	}
 	
 	sets.idle.Regen = set_combine(sets.idle.Regain, {
@@ -443,10 +449,10 @@ include('Atsuke_AugGear.lua')
 		hands = "Meg. Gloves +2",
 		neck = "Sanctity Necklace",
 		left_ring = "Woltaris Ring",
-	
 	})
 	
 	sets.idle.DT = {
+		
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
@@ -458,7 +464,6 @@ include('Atsuke_AugGear.lua')
 		right_ear = "Sherida Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Warden's Ring",
-	
 	}
 
     ------------------------------------------------------------------------------------------------
@@ -469,6 +474,7 @@ include('Atsuke_AugGear.lua')
 	sets.engaged = {}  -- leave this empty
 
     sets.engaged.TP = {
+		
 		ammo = "Yamarang",
 		head = Adh.Head.A,
 		body = "Gleti's Cuirass",
@@ -485,6 +491,7 @@ include('Atsuke_AugGear.lua')
 	}
 	
 	sets.engaged.Hybrid = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Gleti's Cuirass",
@@ -518,6 +525,7 @@ include('Atsuke_AugGear.lua')
 	}
 	
 	sets.engaged.DT = {
+		
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",

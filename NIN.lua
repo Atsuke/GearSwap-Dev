@@ -1,4 +1,11 @@
 version = "3.0"
+
+--[[
+	Big shoutout to Tunaliz https://github.com/Tunaliz for the amazing work he did, especially on the HUD.  
+	His code was a fantastic starting point	I fixed some bugs in the existing code,
+	added/removed/modified things to suit my needs and then built all of my lua's in a similar style. 
+--]]
+
 --[[
         Custom commands:
        
@@ -80,7 +87,6 @@ hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 include('Atsuke-Includes.lua')
-
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- Customize HUD looks and content
@@ -310,6 +316,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
     
 	sets.precast.Waltz = { 
+		
 		ammo = "Yamarang",
 		head = "Mummu Bonnet +2",
 		-- body = AF.Body,
@@ -326,18 +333,9 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
     -- sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
-    
-	-- sets.precast.Samba = {
-		-- head = AF.Head,
-		-- back = Senuna.DA
-	-- }
-    
-	-- sets.precast.Jig = {
-			-- legs = RELIC.Legs,
-			-- feet = AF.Feet,
-	-- }
-	
+    	
 	sets.precast['Violent Flourish'] = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -353,6 +351,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.precast.Step = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -368,14 +367,9 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}   
     
 	sets.precast['Animated Flourish'] = sets.precast['Provoke']
-	
-	-- sets.precast['Reverse Flourish'] = {
-		-- hands = EMPY.Hands,
-		-- back = Toetapper.RF,
-	-- }
-	
-	
+		
 	sets.precast.RA={
+	
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
@@ -397,27 +391,28 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	------------------------------------------------------------------------------------------------
 	---------------------------------------- Mid Cast Sets -----------------------------------------
 	------------------------------------------------------------------------------------------------
-	sets.midcast = {}
-	sets.midcast.nuking ={}
-	sets.midcast.MB = {}
-	sets.midcast['Utsusemi'] = {}
+	sets.midcast = {}	-- leave this empty
+	sets.midcast.nuking ={}	-- leave this empty
+	sets.midcast.MB = {}	-- leave this empty
+	sets.midcast['Utsusemi'] = {}	-- leave this empty
 	
 	sets.midcast['Futae'] = {hands = EMPY.Hands}
 	
-	sets.midcast.enfeeble={
-    ammo = "Yamarang",
-    head = AF.Head,
-    body = "Malignance Tabard",
-    hands = "Malignance Gloves",
-    legs = "Malignance Tights",
-    feet = AF.Feet,
-    neck = "Incanter's Torque",
-    waist = "Eschan Stone",
-    right_ear = "Hermetic Earring",
-	
+	sets.midcast.enfeeble = {
+		
+		ammo = "Yamarang",
+		head = AF.Head,
+		body = "Malignance Tabard",
+		hands = "Malignance Gloves",
+		legs = "Malignance Tights",
+		feet = AF.Feet,
+		neck = "Incanter's Torque",
+		waist = "Eschan Stone",
+		right_ear = "Hermetic Earring",
 	}
 
-	sets.midcast.nuking['Normal']={
+	sets.midcast.nuking['Normal'] = {
+		
 		ammo = "Ghastly Tathlum +1",
 		head = RELIC.Head,
 		body = Herc.Body.MAB,
@@ -432,7 +427,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ring = "Dingir Ring",
 	}
 	
-	sets.midcast.nuking['Acc']= sets.midcast.nuking['Normal']
+	sets.midcast.nuking['Acc'] = sets.midcast.nuking['Normal']
 	
 	sets.midcast.MB['Normal'] = set_combine(sets.midcast.nuking['Normal'], {
 		feet = AF.Feet,
@@ -441,17 +436,15 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.midcast.MB['Acc'] = sets.midcast.MB['Normal']
 	
-	
 	sets.midcast['Utsusemi'].Normal = {feet = EMPY.Feet, back = Andartia.TP,}
 	sets.midcast['Utsusemi'].Enmity = set_combine(sets.precast['Provoke'], sets.midcast['Utsusemi'].Normal)
-    ------------------------------------------------------------------------------------------------
+    
+	------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------
 	
-	
-	
-    
 	sets.precast.WS = {
+	
 		ammo = "C. Palug Stone",
 		head = Herc.Head.WSD,
 		body = Herc.Body.WSD,
@@ -468,6 +461,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 
     sets.precast['Blade: Ten'] = set_combine(sets.precast.WS,{
+		
 		ammo = "C. Palug Stone",
 		head = AF.Head,
 		body = Herc.Body.WSD,
@@ -490,6 +484,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	})
 	
     sets.precast['Blade: Shun'] = {
+		
 		ammo = "C. Palug Stone",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -506,6 +501,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.precast['Blade: Hi'] = {
+		
 		ammo = "C. Palug Stone",
 		head = "Mummu Bonnet +2",
 		body = "Abnoba Kaftan",
@@ -536,11 +532,10 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ring = "Spiral Ring",
 		right_ring = "Dingir Ring",
 		back = Andartia.STRWSD,
-	
-	
 	}
 	
 	sets.precast['Blade: Kamu'] ={ 
+		
 		ammo = "Seeth. Bomblet +1",
 		head = Herc.Head.WSD,
 		body = Herc.Body.WSD,
@@ -581,14 +576,12 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Sherida Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Warden's Ring",
-	
 	}
 
 	sets.idle.Regen = set_combine(sets.idle.DT,{
 	
 		neck = "Sanctity Necklace",
 		left_ring = "Woltaris Ring",
-	
 	})
 	
     ------------------------------------------------------------------------------------------------
@@ -599,6 +592,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.engaged = {}  -- leave this empty
 
     sets.engaged.TP = {
+		
 		ammo = "Date Shuriken",
 		head = Adh.Head.A,
 		body = "Malignance Tabard",
@@ -615,6 +609,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.engaged.Hybrid = {
+		
 		ammo = "Yamarang",
 		hands = Adh.Hands.A,
 		body = "Malignance Tabard",
@@ -631,6 +626,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.engaged.Acc = {
+		
 		ammo = "Yamarang",
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
@@ -647,6 +643,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	}
 	
 	sets.engaged.DT = {
+		
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
@@ -669,14 +666,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	--	Note that movespeed is sets.me this is a holdover from the way the movespeed equip 
 	--	helper function expects its input. I'll get around to fixing it eventually
 	--	but this works for now
-	-- sets.TH ={
-    -- ammo = "Per. Lucky Egg",
-    -- head = "Wh. Rarab Cap +1",
-    -- hands = RELIC.Hands,
-    -- feet = "Skulk. Poulaines +1",
-    -- waist = "Chaac Belt",
-    
--- }
+	
 	sets.me = {} -- leave this empty
 	
 	sets.me.movespeed = {feet = "Danzo Sune-Ate",}

@@ -1,4 +1,11 @@
 version = "3.0"
+
+--[[
+	Big shoutout to Tunaliz https://github.com/Tunaliz for the amazing work he did, especially on the HUD.  
+	His code was a fantastic starting point	I fixed some bugs in the existing code,
+	added/removed/modified things to suit my needs and then built all of my lua's in a similar style. 
+--]]
+
 --[[
         Custom commands:
 		
@@ -185,9 +192,6 @@ include('/libs/DNC_Lib.lua')            -- leave this as is. NO TOUCHEY!
                 -- \_____|\___|\__,_|_|        \/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------    
-
-
-
 
 -- Setup your Gear Sets below:
 function get_sets()

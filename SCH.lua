@@ -1,4 +1,11 @@
 version = "3.0"
+
+--[[
+	Big shoutout to Tunaliz https://github.com/Tunaliz for the amazing work he did, especially on the HUD.  
+	His code was a fantastic starting point	I fixed some bugs in the existing code,
+	added/removed/modified things to suit my needs and then built all of my lua's in a similar style. 
+--]]
+
 --[[
         Custom commands:
         Shorthand versions for each strategem type that uses the version appropriate for
@@ -24,6 +31,7 @@ version = "3.0"
         gs c toggle regenmode           Toggles between Hybrid, Duration and Potency mode for regen set  
         gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
         gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
+		gs c toggle autoconvert			Toggles autoconvert modes
                 
         Casting functions:
         these are to set fewer macros (1 cycle, 5 cast) to save macro space when playing lazily with controler
@@ -88,11 +96,11 @@ auto_CP_Cape = false
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1200    --important to update these if you have a smaller screen
-hud_y_pos = 50     --important to update these if you have a smaller screen
+hud_x_pos = 1200		--important to update these if you have a smaller screen
+hud_y_pos = 50			--important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150	-- a value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -151,20 +159,22 @@ idleModes = M('refresh', 'dt', 'mdt')
 regenModes = M('hybrid', 'duration', 'potency')
 -- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmodes
 nukeModes = M('normal', 'acc')
+convertModes = M('OFF', 'AUTO')
 
 -- Setup your Key Bindings here:
-    windower.send_command('bind insert gs c nuke cycle')        -- Insert Cycles Nuke element
-    windower.send_command('bind !insert gs c nuke cycledown')   -- ALT+Insert Cycles Nuke element in reverse order 
-    windower.send_command('bind f9 gs c toggle idlemode')       -- F9 to change Idle Mode    
-    windower.send_command('bind !f9 gs c toggle runspeed') 		-- Alt-F9 toggles locking on / off Herald's Gaiters
-    windower.send_command('bind f12 gs c toggle melee')			-- F12 Toggle Melee mode on / off and locking of weapons
-    windower.send_command('bind !` input /ma Stun <t>') 		-- Alt-` Quick Stun Shortcut.
-    windower.send_command('bind home gs c sc tier')				-- home to change SC tier between Level 1 or Level 2 SC
-    windower.send_command('bind end gs c toggle regenmode')		-- end to change Regen Mode	
-    windower.send_command('bind !f10 gs c toggle nukemode')     -- Alt-F10 to change Nuking Mode
-    windower.send_command('bind F10 gs c toggle matchsc')       -- F10 to change Match SC Mode          	
-    windower.send_command('bind !end gs c hud lite')            -- Alt-End to toggle light hud version       
-    windower.send_command('bind ^end gs c hud keybinds')        -- CTRL-End to toggle Keybinds  
+    windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
+    windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order 
+    windower.send_command('bind f9 gs c toggle idlemode')				-- F9 to change Idle Mode    
+    windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters
+    windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons
+    windower.send_command('bind !` input /ma Stun <t>')					-- Alt-` Quick Stun Shortcut.
+    windower.send_command('bind home gs c sc tier')						-- home to change SC tier between Level 1 or Level 2 SC
+    windower.send_command('bind end gs c toggle regenmode')				-- end to change Regen Mode	
+    windower.send_command('bind !f10 gs c toggle nukemode')				-- Alt-F10 to change Nuking Mode
+    windower.send_command('bind F10 gs c toggle matchsc')				-- F10 to change Match SC Mode          	
+    windower.send_command('bind !end gs c hud lite')					-- Alt-End to toggle light hud version       
+    windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
+	windower.send_command('bind PAGEDOWN gs c toggle autoconvert')		-- PAGEDOWN to toggle Convert Mode
 
 --[[
     This gets passed in when the Keybinds is turned on.
@@ -180,6 +190,7 @@ keybinds_on['key_bind_sc_level'] = '(HOME)'
 keybinds_on['key_bind_lock_weapon'] = '(F12)'
 keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
 keybinds_on['key_bind_matchsc'] = '(F10)'
+keybinds_on['key_bind_convert_mode'] = '(PgDwn)'
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
@@ -194,7 +205,8 @@ function user_unload()
     send_command('unbind !f10')	
     send_command('unbind `f10')
     send_command('unbind !f9')	
-    send_command('unbind !end')      	
+    send_command('unbind !end')
+	send_command('unbind PAGEDOWN')
 end
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------

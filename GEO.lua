@@ -1,15 +1,23 @@
 version = "3.0"
+
+--[[
+	Big shoutout to Tunaliz https://github.com/Tunaliz for the amazing work he did, especially on the HUD.  
+	His code was a fantastic starting point	I fixed some bugs in the existing code,
+	added/removed/modified things to suit my needs and then built all of my lua's in a similar style. 
+--]]
+
 --[[
         Custom commands:
     
         Toggle Function: 
 		gs c toggle melee               Toggle Melee mode on / off and locking of weapons
 		gs c toggle mb                  Toggles Magic Burst Mode on / off.
-		gs c toggle runspeed            Toggles locking on / off Herald's Gaiters
+		gs c toggle runspeed            Toggles locking on / off AF Feet
 		gs c toggle idlemode            Toggles between Refresh and DT idle mode. Activating Sublimation JA will auto replace refresh set for sublimation set. DT set will superceed both.        
 		gs c toggle regenmode           Toggles between Hybrid, Duration and Potency mode for regen set  
 		gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
 		gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
+		gs c toggle autoconvert			Toggles autoconvert modes 
 		
 		Casting functions:
 		these are to set fewer macros (2 cycle, 5 cast) to save macro space when playing lazily with controler
@@ -80,11 +88,11 @@ lockWeaponTP = 500
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1200     --important to update these if you have a smaller screen
-hud_y_pos = 50     --important to update these if you have a smaller screen
-hud_draggable = true
+hud_x_pos = 1200		--important to update these if you have a smaller screen
+hud_y_pos = 50			--important to update these if you have a smaller screen
+hud_draggable = true	
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150	-- a value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -101,14 +109,14 @@ optionsColors:set('white')
 selectionColors:set('blue')  
 toolColors:set('green') 
 
-textHideMode:set(false) -- Change to toggle default visibility of Mode section
-textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
-textHideJob:set(false) -- Change to toggle default visibility of job Section
-textHideBattle:set(false) -- Change to toggle default visibility for battle section
-textHideHUD:set(false) -- Change to toggle default setting for hud visibility
-useLightMode:set(false) -- Change to toggle default setting for lite mode
-keybinds:set(true) -- Change to toggle default setting for keybind visibility
-textHideTools:set(true) -- Change to toggle the default setting of the tool counter
+textHideMode:set(false)		-- Change to toggle default visibility of Mode section
+textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
+textHideJob:set(false)		-- Change to toggle default visibility of job Section
+textHideBattle:set(false)	-- Change to toggle default visibility for battle section
+textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
+useLightMode:set(false)		-- Change to toggle default setting for lite mode
+keybinds:set(true)			-- Change to toggle default setting for keybind visibility
+textHideTools:set(true)		-- Change to toggle the default setting of the tool counter
 
 -- Set the tools you would like to track while tool tracker is set to on. 
 -- Tools can be in inventory or wardrobe.  
@@ -142,30 +150,32 @@ set_macros(1,5) -- Sheet, Book
 idleModes = M('normal', 'dt', 'mdt')
 -- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmode
 nukeModes = M('normal', 'acc')
+convertModes = M('OFF', 'AUTO')
 
 -- Defults when you load the job / lua
-geomancy:set('Geo-Frailty')     -- Geo Spell Default        (when you first load lua / change jobs the saved spells is this one)
-indicolure:set('Indi-Fury')    -- Indi Spell Default       (when you first load lua / change jobs the saved spells is this one)
-entrustindi:set('Indi-Haste')    -- Enttrust Spell Default   (when you first load lua / change jobs the saved spells is this one)
+geomancy:set('Geo-Frailty')			-- Geo Spell Default        (when you first load lua / change jobs the saved spells is this one)
+indicolure:set('Indi-Fury')			-- Indi Spell Default       (when you first load lua / change jobs the saved spells is this one)
+entrustindi:set('Indi-Haste')		-- Enttrust Spell Default   (when you first load lua / change jobs the saved spells is this one)
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- Setup your Key Bindings here:  
-	windower.send_command('bind insert gs c nuke cycle')            -- Insert Cycles Nuke element
-	windower.send_command('bind !insert gs c nuke cycledown')       -- ALT+Insert Cycles Nuke element in reverse order   
-    windower.send_command('bind end gs c geo geocycle') 			-- Delete Cycles Geomancy Spell
-	windower.send_command('bind !end gs c geo geocycledown') 		-- ALT+Delete Cycles Geomancy Spell in reverse order	
-    windower.send_command('bind home gs c geo indicycle') 		    -- Home Cycles IndiColure Spell
-	windower.send_command('bind !home gs c geo indicycledown') 	    -- ALT+Home Cycles IndiColure Spell in reverse order	
-    windower.send_command('bind delete gs c geo entrustcycle') 	    -- PgUp Cycles Entrust IndiColure Spell
-	windower.send_command('bind !delete gs c geo entrustcledown') 	-- ALT-PgUp Cycles Entrust IndiColure Spell in reverse order	
-	windower.send_command('bind !f9 gs c toggle runspeed') 			-- Alt-F9 toggles locking on / off Herald's Gaiters	
-	windower.send_command('bind !f10 gs c toggle nukemode')         -- Alt-F10 to change Nuking Mode
-	windower.send_command('bind F10 gs c toggle matchsc')           -- F10 to change Match SC Mode         
-	windower.send_command('bind f12 gs c toggle melee')				-- F12 Toggle Melee mode on / off and locking of weapons
-	windower.send_command('bind f9 gs c toggle idlemode')			-- F9 Toggles between MasterRefresh or MasterDT when no luopan is out
-	windower.send_command('bind @end gs c hud lite')            	-- Alt-End to toggle light hud version       
-	windower.send_command('bind ^end gs c hud keybinds')       		-- CTRL-End to toggle Keybinds  
+	windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
+	windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order   
+    windower.send_command('bind end gs c geo geocycle')					-- END Cycles Geomancy Spell
+	windower.send_command('bind !end gs c geo geocycledown')			-- ALT+END Cycles Geomancy Spell in reverse order	
+    windower.send_command('bind home gs c geo indicycle')				-- Home Cycles IndiColure Spell
+	windower.send_command('bind !home gs c geo indicycledown')			-- ALT+Home Cycles IndiColure Spell in reverse order	
+    windower.send_command('bind delete gs c geo entrustcycle')			-- DELETE Cycles Entrust IndiColure Spell
+	windower.send_command('bind !delete gs c geo entrustcledown')		-- ALT-DELETE Cycles Entrust IndiColure Spell in reverse order	
+	windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters	
+	windower.send_command('bind !f10 gs c toggle nukemode')				-- Alt-F10 to change Nuking Mode
+	windower.send_command('bind F10 gs c toggle matchsc')				-- F10 to change Match SC Mode         
+	windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons
+	windower.send_command('bind f9 gs c toggle idlemode')				-- F9 Toggles between MasterRefresh or MasterDT when no luopan is out
+	windower.send_command('bind @end gs c hud lite')					-- Alt-End to toggle light hud version       
+	windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
+	windower.send_command('bind PAGEDOWN gs c toggle autoconvert')		-- PAGEDOWN to toggle Convert Mode
 --[[
     This gets passed in when the Keybinds is turned on.
     Each one matches to a given variable within the text object
@@ -184,23 +194,27 @@ keybinds_on['key_bind_indi_cycle'] = '(HOME) '
 keybinds_on['key_bind_entrust_cycle'] = '(DELETE) '
 keybinds_on['key_bind_lock_weapon'] = '(F12) '
 keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9) '
+keybinds_on['key_bind_convert_mode'] = '(PgDwn)'
 
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
     send_command('unbind insert')
-    send_command('unbind delete')
-    send_command('unbind home')
-    send_command('unbind PAGEUP')
-    send_command('unbind PAGEDOWN')
-    send_command('unbind ^PAGEDOWN')
+	send_command('unbind !insert')
     send_command('unbind end')
-    send_command('unbind ^end')
-    send_command('unbind f10')
-    send_command('unbind !f10')
-    send_command('unbind f12')
+    send_command('unbind !end')
+	send_command('unbind @end')
+	send_command('unbind ^end')
+	send_command('unbind home')
+	send_command('unbind !home')
+	send_command('unbind delete')
+	send_command('unbind !delete')
     send_command('unbind f9')
     send_command('unbind !f9')
+	send_command('unbind f10')
+    send_command('unbind !f10')
+	send_command('unbind f12')
+	send_command('unbind ^PAGEDOWN')
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -241,11 +255,8 @@ function get_sets()
 
 	-- sets starting with sets.me means you DONT have a luopan currently out.
 	-- sets starting with sets.pan means you DO have a luopan currently out.
-
-	-- For aug gear you can define some here like this.. Look below in the midcast MB set to see how it is used.
-	-- This helps when your augment changes to only have 1 place to update. 
 	
-	include('Kuvira_AugGear.lua')
+	include('Kuvira_AugGear.lua')	-- I list all my Augmented gears in a sidecar file since it's shared across many jobs. 
     
 	-- JSE
 	AF = {}         -- leave this empty
@@ -274,6 +285,7 @@ function get_sets()
 	EMPY.Legs   =   "Azimuth Tights +1"
 	EMPY.Feet   =   "Azimuth Gaiters +1"
 	
+	-- Define JSE Capes
 	Nantosuelta = {}
 	Lifestream =  {}
 	Lifestream.IndiDuration = { name="Lifestream Cape", augments={'Geomancy Skill +10','Indi. eff. dur. +18','Pet: Damage taken -5%',}}
@@ -282,26 +294,26 @@ function get_sets()
 	Nantosuelta.FC          = { name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}}
 	
 	-- Movespeed boots
-	sets.me.movespeed = {feet=AF.Feet}
+	sets.me.movespeed = {feet = AF.Feet}
 
 	-- Your idle set when you DON'T have a luopan out
 	sets.me.idle.normal = {
 		
-		main="Idris",
+		main = "Idris",
 		sub = "Genmei Shield",
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head= EMPY.Head,
-		body="Mallquis Saio +2",
-		hands= AF.Hands,
-		legs="Assid. Pants +1",
-		feet= RELIC.Feet,
-		neck={ name="Bagua Charm +2", augments={'Path: A',}},
-		waist="Isa Belt",
-		left_ear="Odnowa Earring +1",
-		right_ear="Etiolation Earring",
-		left_ring="Fortified Ring",
-		right_ring="Defending Ring",
-		back=Nantosuelta.PetRegen,
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = EMPY.Head,
+		body = "Mallquis Saio +2",
+		hands = AF.Hands,
+		legs = "Assid. Pants +1",
+		feet = RELIC.Feet,
+		neck = { name="Bagua Charm +2", augments={'Path: A',}},
+		waist = "Isa Belt",
+		left_ear = "Odnowa Earring +1",
+		right_ear = "Etiolation Earring",
+		left_ring = "Fortified Ring",
+		right_ring = "Defending Ring",
+		back = Nantosuelta.PetRegen,
     }
 	
     -- Your idle MasterDT set (Notice the sets.me, means no Luopan is out)
@@ -316,32 +328,31 @@ function get_sets()
 
     }
 	
-	sets.me.latent_refresh = {waist="Fucho-no-obi"}
+	sets.me.latent_refresh = {waist = "Fucho-no-obi"}
 	
-	
-    -----------------------
-    -- Luopan Perpetuation
-    -----------------------
+    ------------------------------------------------------------------------------------------------
+	--------------------------------------- Luopan Sets --------------------------------------------
+	------------------------------------------------------------------------------------------------
       
 	-- Luopan's Out --  notice sets.pan 
 	-- This is the base for all perpetuation scenarios, as seen below
 	sets.pan.idle.normal = {
     
-		main="Idris",
-		sub="Genmei Shield",
-		range={ name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head=EMPY.Head,
-		body="Mallquis Saio +2",
-		hands= AF.Hands,
-		legs="Assid. Pants +1",
-		feet= RELIC.Feet,
-		neck={ name="Bagua Charm +2", augments={'Path: A',}},
-		waist="Isa Belt",
-		left_ear="Odnowa Earring +1",
-		right_ear="Etiolation Earring",
-		left_ring="Fortified Ring",
-		right_ring="Defending Ring",
-		back=Nantosuelta.PetRegen,
+		main = "Idris",
+		sub = "Genmei Shield",
+		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+		head = EMPY.Head,
+		body = "Mallquis Saio +2",
+		hands = AF.Hands,
+		legs = "Assid. Pants +1",
+		feet = RELIC.Feet,
+		neck = { name="Bagua Charm +2", augments={'Path: A',}},
+		waist = "Isa Belt",
+		left_ear = "Odnowa Earring +1",
+		right_ear = "Etiolation Earring",
+		left_ring = "Fortified Ring",
+		right_ring = "Defending Ring",
+		back = Nantosuelta.PetRegen,
     }
 	
 	-- This is when you have a Luopan out but want to sacrifice some slot for master DT, put those slots in.
@@ -381,7 +392,9 @@ function get_sets()
         back =  Nantosuelta.PetRegen,
     }) 
     
-	-- Weapon Skill sets
+	------------------------------------------------------------------------------------------------
+	-------------------------------------- Weaponskill Sets ----------------------------------------
+	------------------------------------------------------------------------------------------------
 	-- Example:
 	sets.me["Flash Nova"] = {
 
@@ -475,10 +488,11 @@ function get_sets()
     })
     sets.precast.regen = set_combine(sets.precast.casting,{
 
-    })     
-    ---------------------
-    -- Ability Precasting
-    ---------------------
+    })   
+	
+	---------------------
+	-- Ability Precasting
+	---------------------
 	
 	-- Fill up with your JSE! 
     sets.precast["Life Cycle"] = {body = AF.Body,}
@@ -513,7 +527,9 @@ function get_sets()
 		back = Nantosuelta.MAB,
     }
 	
-	-- For Geo spells /
+	---------------------
+	-- Geo Spells
+	---------------------
     sets.midcast.geo = set_combine(sets.midcast.casting,{
         main = "Idris",
 		sub = "Genmei Shield",
@@ -532,7 +548,9 @@ function get_sets()
 		back = Lifestream.IndiDuration,
     })
 	
-	-- For Indi Spells
+	---------------------
+	-- Indi Spells
+	---------------------
     sets.midcast.indi = set_combine(sets.midcast.geo,{legs = RELIC.Legs,})
 	
 	-- For Entrusted Indi Spells
@@ -543,7 +561,9 @@ function get_sets()
 
 	sets.midcast.Obi = {waist = "Hachirin-no-Obi",}
 	
+	---------------------
 	-- Nuking
+	---------------------
 	sets.midcast.nuking.normal = set_combine(sets.midcast.casting,{
         main = "Daybreak",
 		sub = "Ammurapi Shield",
@@ -575,7 +595,9 @@ function get_sets()
 
     })
 
+	---------------------
 	-- Enfeebling
+	---------------------
 	sets.midcast.IntEnfeebling = set_combine(sets.midcast.casting,{
         main = "Daybreak",
 		sub = "Ammurapi Shield",
@@ -597,7 +619,9 @@ function get_sets()
         
     })
 	
-    -- Enhancing
+	---------------------
+	-- Enhancing
+	---------------------
     sets.midcast.enhancing = set_combine(sets.midcast.casting,{
         main = "Daybreak",
         head = Telchine.Head.en ,
@@ -621,12 +645,15 @@ function get_sets()
 		waist = "Siegel Sash",
     })
     
+	-- Refresh
 	sets.midcast.refresh = set_combine(sets.midcast.enhancing,{
 		
     })
     
+	-- Aquaveil
 	sets.midcast.aquaveil = sets.midcast.refresh
 	
+	-- Drain
 	sets.midcast["Drain"] = set_combine(sets.midcast.IntEnfeebling, {		
 		head = "Pixie Hairpin +1",
 		neck = "Erra Pendant",
@@ -640,7 +667,9 @@ function get_sets()
      
     sets.midcast.cure = {} -- Leave This Empty
     
-	-- Cure Potency
+	---------------------
+	-- Cures
+	---------------------
 	sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
         main = "Daybreak",
 		sub = "Genmei Shield",
@@ -661,6 +690,7 @@ function get_sets()
     
 	sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{waist="Hachirin-no-Obi",})    
     
+	-- Regen
 	sets.midcast.regen = set_combine(sets.midcast.enhancing,{
         main = "Bolelabunga",
         sub = "Ammurapi Shield",
