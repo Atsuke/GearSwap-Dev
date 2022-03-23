@@ -1,6 +1,8 @@
 --------------------------------------------------
 --Generic Declaration
 --------------------------------------------------
+
+-- These sets only exist as generic declarations. Specific equipment can be defined below. 
     Amal = {}
     Amal.Head = {}
     Amal.Body = {}
@@ -101,6 +103,7 @@
 	Samnuha.Legs = {}
 	
 --------------------------------------------------
+-- Augmented gear
 --------------------------------------------------    
 
 -- This helps when your augment changes to only have 1 place to update. 

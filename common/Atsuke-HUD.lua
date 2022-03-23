@@ -103,7 +103,6 @@ hud_ward= ''
 hud_pet_mode = ''
 hud_convert_mode = ''
 hud_bp_mode = ''
-hud_convert_mode = ''
 hud_enmity_mode = ''
 hud_TH_mode = ''
 hud_ranged_mode = ''
@@ -287,10 +286,6 @@ function construct_HUD_Categories( useLightMode )
 		else
 			hud_mainWeapon = ''
 		end
-		
-		
-		
-		
 		
 		if player.main_job == "RDM" or player.sub_job == "RDM" then
 			hud_convert_mode = [[\cr
@@ -742,7 +737,7 @@ function setupTextWindow()
 	construct_HUD_Categories(useLightMode.value)
 	buildHUD(useLightMode.value)
     --Appends the different sections to the main_text_hud
-    texts.append(main_text_hud, hud_mode)
+	texts.append(main_text_hud, hud_mode)
     texts.append(main_text_hud, hud_options)
     texts.append(main_text_hud, hud_job)
     texts.append(main_text_hud, hud_battle)
