@@ -501,7 +501,9 @@ function self_command(command)
                 end
             elseif commandArgs[2] == 'petmode' then
                 petModes:cycle()                 
-                validateTextInformation()   
+                validateTextInformation() 
+			elseif commandArgs[2] == 'autoconvert' then
+				convertModes:cycle()
             end
         end
         
@@ -591,8 +593,6 @@ function self_command(command)
 				handle_siphoning()
 			elseif (cmd == 'autobp') then
 				bpModes:cycle()
-			elseif (cmd == 'autoconvert') then
-				convertModes:cycle()
 			end
 			
 		validateTextInformation()

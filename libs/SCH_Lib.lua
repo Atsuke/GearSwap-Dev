@@ -321,6 +321,8 @@ function self_command(command)
             elseif commandArgs[2] == 'matchsc' then
                 matchsc:cycle()                               
                 validateTextInformation()
+			elseif commandArgs[2] == 'autoconvert' then
+				convertModes:cycle()
             end
         end
         
