@@ -247,7 +247,7 @@ include('Kuvira_AugGear.lua')
     --Laksamana
 	AF.Head  = "Laksa. Tricorne +3"
 	AF.Body  = "Laksa. Frac +2"
-	AF.Hands = "Laksa. Gants +1"
+	AF.Hands = "Laksa. Gants +2"
 	AF.Legs  = "Laksa. Trews +1"
 	AF.Feet  = "Laksa. Bottes +2"
 

@@ -277,7 +277,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.precast['Provoke'] = {
 	
 		ammo = "Sapience Orb",
-		head = "Malignance Chapeau",
+		head = "Halitus Helm",
 		body = "Emet Harness +1",
 		hands = RELIC.Hands,
 		legs = "Zoar Subligar +1",

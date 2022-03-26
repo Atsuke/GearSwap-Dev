@@ -245,10 +245,10 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 
     --Mochizuki
     RELIC.Head  = { name="Mochi. Hatsuburi +3", augments={'Enhances "Yonin" and "Innin" effect',}}
-    RELIC.Body  = { name="Mochi. Chainmail +2", augments={'Enhances "Sange" effect',}}
+    RELIC.Body  = { name="Mochi. Chainmail +3", augments={'Enhances "Sange" effect',}}
     RELIC.Hands = { name="Mochizuki Tekko +1", augments={'Enh. "Ninja Tool Expertise" effect',}}
-    RELIC.Legs  = { name="Mochi. Hakama +2", augments={'Enhances "Mijin Gakure" effect',}}
-    RELIC.Feet  = { name="Mochi. Kyahan +1", augments={'Enh. Ninj. Mag. Acc/Cast Time Red.',}}
+    RELIC.Legs  = { name="Mochi. Hakama +3", augments={'Enhances "Mijin Gakure" effect',}}
+    RELIC.Feet  = { name="Mochi. Kyahan +2", augments={'Enh. Ninj. Mag. Acc/Cast Time Red.',}}
 	
     --Hattori
     EMPY.Head  = "Hattori Zukin +1"
@@ -526,7 +526,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		legs = RELIC.Legs,
 		feet = Herc.Feet.WSD,
 		neck = "Sanctity Necklace",
-		waist = "Eschan Stone",
+		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = "Hecate's Earring",
 		right_ear = "Friomisi Earring",
 		left_ring = "Spiral Ring",

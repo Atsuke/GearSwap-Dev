@@ -261,7 +261,7 @@ include('Atsuke_AugGear.lua')
 	sets.precast['Provoke'] = {
 	
 		ammo = "Sapience Orb",
-		head = RELIC.Head,
+		head = "Halitus Helm",
 		body = "Emet Harness +1",
 		-- hands = RELIC.Hands,
 		legs = "Zoar Subligar +1",
@@ -547,12 +547,14 @@ include('Atsuke_AugGear.lua')
 	--	Note that movespeed is sets.me this is a holdover from the way the movespeed equip 
 	--	helper function expects its input. I'll get around to fixing it eventually
 	--	but this works for now
-	sets.TH ={
-		ammo = "Per. Lucky Egg",
-		head = Herc.Head.TH,
-		hands = RELIC.Hands,
-		feet = "Skulk. Poulaines +1",
-		waist = "Chaac Belt",
+	sets.TH = {
+		ammo = "Per. Lucky Egg",  --1
+		head = Herc.Head.TH, --2
+		hands = RELIC.Hands, --4
+		body = Herc.Body.TH, -- 1
+		legs = "Volte Hose", -- 1
+		feet = "Skulk. Poulaines +1", --3
+		waist = "Chaac Belt", -- 1
 	}
 	
 	sets.me = {} -- leave this empty
