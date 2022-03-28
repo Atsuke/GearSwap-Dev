@@ -137,7 +137,7 @@
 	Herc.Body.WSD  		=	{ name="Herculean Vest", augments={'AGI+8','Pet: Mag. Acc.+14','Weapon skill damage +10%','Accuracy+16 Attack+16',}}
 	Herc.Body.MAB  		= 	{ name="Herculean Vest", augments={'Pet: STR+8','"Mag.Atk.Bns."+13','Accuracy+17 Attack+17','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
 	Herc.Body.TH		=	{ name="Herculean Vest", augments={'STR+11','INT+10','"Treasure Hunter"+1','Mag. Acc.+11 "Mag.Atk.Bns."+11',}}
-	Herc.Hands.WSD 		=	{ name="Herculean Gloves", augments={'Weapon skill damage +4%','Accuracy+10',}}
+	Herc.Hands.MAB 		=	{ name="Herculean Gloves", augments={'Mag. Acc.+3','"Mag.Atk.Bns."+28','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
 	Herc.Legs.MAB  		=	{ name="Herculean Trousers", augments={'Accuracy+19','"Mag.Atk.Bns."+21','Mag. Acc.+14 "Mag.Atk.Bns."+14',}}
 	Herc.Feet.WSD  		=	{ name="Herculean Boots", augments={'Accuracy+4','Mag. Acc.+27','Weapon skill damage +8%','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
 

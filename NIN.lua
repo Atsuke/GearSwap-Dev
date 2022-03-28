@@ -539,7 +539,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		ammo = "Seeth. Bomblet +1",
 		head = Herc.Head.WSD,
 		body = Herc.Body.WSD,
-		hands = Herc.Hands.WSD,
+		hands = Herc.Hands.MAB,
 		legs = { name="Tatena. Haidate +1", augments={'Path: A',}},
 		feet = Herc.Feet.WSD,
 		neck = { name="Ninja Nodowa +2", augments={'Path: A',}},

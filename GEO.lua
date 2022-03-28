@@ -584,6 +584,9 @@ function get_sets()
 	
 	sets.midcast.MB.normal = set_combine(sets.midcast.nuking.normal, {
 		
+		body = "Ea Houppelande",
+		legs = "Ea Slops",
+		neck = "Mizu. Kubikazari",
 		right_ring = "Mujin Band",
 		
         

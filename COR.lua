@@ -486,7 +486,10 @@ include('Kuvira_AugGear.lua')
 	
 	})
 	
-	sets.midcast['CorsairShot']['TH'] = set_combine(sets.precast['Corsairshot'], sets.TH)
+	sets.midcast['CorsairShot']['TH'] = set_combine(sets.precast['Corsairshot'], {
+		head = "Wh. Rarab Cap +1",
+		waist = "Chaac Belt",
+	})
 	
     ------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
