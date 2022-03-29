@@ -237,7 +237,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	-- Fill this with your own JSE. 
     --Hachiya
-    AF.Head  = "Hachi. Hatsu. +2"
+    AF.Head  = "Hachi. Hatsu. +3"
     AF.Body  = "Hachi. Chain. +1"
     AF.Hands = "Hachiya Tekko +1"
     AF.Legs  = "Hachi. Hakama +1"

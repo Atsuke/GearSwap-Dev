@@ -7,11 +7,11 @@ version = "3.0"
 --]]
 
 --[[
-        Custom commands:
+		Custom commands:
 		
 		Can bind these to keys or use in macros ex: /console gs c toggle melee
 		
-	    gs c toggle idlemode            Change Idle Mode
+		gs c toggle idlemode            Change Idle Mode
 		gs c toggle runspeed 		    Toggles locking on / off AF Feet
 		gs c toggle meleemode           Change Idle Mode    
 		gs c toggle enmity			   	Toggle casting modes between regular and Enmity for Utsusemi
@@ -20,20 +20,20 @@ version = "3.0"
 		gs c dnc voke					Uses either Provoke or Animated Flourish depending on subjob
 
 		HUD Functions:
-        gs c hud hide                   Toggles the Hud entirely on or off
-        gs c hud hidemode               Toggles the Modes section of the HUD on or off
-        gs c hud hidejob                Toggles the job section of the HUD on or off
-        gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud hide                   Toggles the Hud entirely on or off
+		gs c hud hidemode               Toggles the Modes section of the HUD on or off
+		gs c hud hidejob                Toggles the job section of the HUD on or off
+		gs c hud hidebattle             Toggles the Battle section of the HUD on or off
 		gs c hud hidetools				Toggles the Tools section of the HUD on or off
-        gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
-        gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
-        gs c hud setcolor sections      Cycles colors for sections
-        gs c hud setcolor options       Cycles colors for options
-        gs c hud setcolor keybinds      Cycles colors for keybinds
-        gs c hud setcolor selection     Cycles colors for selection
+		gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
+		gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
+		gs c hud setcolor sections      Cycles colors for sections
+		gs c hud setcolor options       Cycles colors for options
+		gs c hud setcolor keybinds      Cycles colors for keybinds
+		gs c hud setcolor selection     Cycles colors for selection
 		gs c hud setcolor tools     	Cycles colors for selection
 
-        Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
+		Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
         
         
 --]]
@@ -82,14 +82,14 @@ optionsColors:set('white')
 selectionColors:set('blue')   
 toolColors:set('green')
 
-textHideMode:set(false) -- Change to toggle default visibility of Mode section
-textHideOptions:set(false) -- Change to toggle defautl visibility of Options sections
-textHideJob:set(false) -- Change to toggle default visibility of job Section
-textHideBattle:set(true) -- Change to toggle default visibility for battle section
-textHideHUD:set(false) -- Change to toggle default setting for hud visibility
-useLightMode:set(false) -- Change to toggle default setting for lite mode
-keybinds:set(true) -- Change to toggle default setting for keybind visibility
-textHideTools:set(false) -- Change to toggle the default setting of the tool counter
+textHideMode:set(false)		-- Change to toggle default visibility of Mode section
+textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
+textHideJob:set(false)		-- Change to toggle default visibility of job Section
+textHideBattle:set(true)	-- Change to toggle default visibility for battle section
+textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
+useLightMode:set(false)		-- Change to toggle default setting for lite mode
+keybinds:set(true)			-- Change to toggle default setting for keybind visibility
+textHideTools:set(false)	-- Change to toggle the default setting of the tool counter
 
 
 -- Optional. Swap to your sch macro sheet / book
@@ -114,12 +114,12 @@ meleeModes  = M('TP', 'Hybrid', 'DT')
 	
 	-- Setup your Key Bindings here:
     
-	windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
-	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off Herald's Gaiters
-	windower.send_command('bind f10 gs c toggle meleemode')            -- F9 to change Idle Mode    
-	windower.send_command('bind f11 gs c toggle enmity')			   -- F11 Toggle casting modes between regular and Enmity
-	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
-	windower.send_command('bind ^end gs c hud keybinds')               -- CTRL-End to toggle Keybinds
+	windower.send_command('bind f9 gs c toggle idlemode')			-- F9 to change Idle Mode
+	windower.send_command('bind !f9 gs c toggle runspeed')			-- Alt-F9 toggles locking on / off Herald's Gaiters
+	windower.send_command('bind f10 gs c toggle meleemode')			-- F9 to change Idle Mode    
+	windower.send_command('bind f11 gs c toggle enmity')			-- F11 Toggle casting modes between regular and Enmity
+	windower.send_command('bind f12 gs c toggle melee')				-- F12 Toggle Melee mode on / off and locking of weapons  
+	windower.send_command('bind ^end gs c hud keybinds')			-- CTRL-End to toggle Keybinds
 	
 
 	--[[

@@ -249,7 +249,7 @@ include('Kuvira_AugGear.lua')
 	AF.Body  = "Laksa. Frac +2"
 	AF.Hands = "Laksa. Gants +2"
 	AF.Legs  = "Laksa. Trews +1"
-	AF.Feet  = "Laksa. Bottes +2"
+	AF.Feet  = "Laksa. Bottes +3"
 
 	--Lanun
 	RELIC.Head  = { name="Lanun Tricorne +1", augments={'Enhances "Winning Streak" effect',}}
