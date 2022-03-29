@@ -53,7 +53,7 @@ version = "3.0"
 -- Set it to false and the movespeed toggle is manual. 
 autorunspeed = false
 auto_CP_Cape = false
--- TP treshold where weapons gets locked. 
+-- TP threshold where weapons gets locked. 
 lockWeaponTP = 500
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ textHideTools:set(false)	-- Change to toggle the default setting of the tool cou
 
 
 -- Optional. Swap to your sch macro sheet / book
--- set_macros(2,29) -- Sheet, Book   
+-- set_macros(2,29) -- Sheet, Book
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
