@@ -415,7 +415,7 @@ include('Kuvira_AugGear.lua')
 	
 		head = "Meghanada Visor +2",
 		body = AF.Body,
-		hands = "Meg. Gloves +2",
+		hands = "Malignance Gloves",
 		legs = "Meg. Chausses +2",
 		feet = "Meg. Jam. +2",
 		neck = "Iskur Gorget",
@@ -478,9 +478,9 @@ include('Kuvira_AugGear.lua')
 	
 	sets.midcast['CorsairShot']['ACC'] = set_combine(sets.midcast['CorsairShot'],{
 		head = AF.Head,
-		body = "Malignance Tabard",
+		--body = "Malignance Tabard",
 		hands = AF.Hands,
-		legs = "Malignance Tights",
+		legs = "Ikenga's Trousers",
 		feet =  AF.Feet,
 		right_ring = "Stikini Ring",
 	
@@ -623,18 +623,20 @@ include('Kuvira_AugGear.lua')
 	sets.idle.Regen = {
 		
 		ammo = "Chrono Bullet",
+		head="Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
+		legs = "Meg. Chausses +2",
+		feet = "Meg. Jam. +2",
 		neck = "Sanctity Necklace",
 		left_ring = "Woltaris Ring",
-	
 	}
 	
 	sets.idle.DT = {
 		ammo = "Chrono Bullet",
 		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
-		hands = "Meg. Gloves +2",
+		hands = "Malignance Gloves",
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Loricate Torque +1",
@@ -671,13 +673,22 @@ include('Kuvira_AugGear.lua')
 		back = Camulus.MeleeTP
 	}
 	
-	sets.engaged.Hybrid = sets.engaged.TP
+	sets.engaged.Hybrid = set_combine(sets.engaged.TP, {
+		
+		head = "Meghanada Visor +2",
+		hands = "Malignance Gloves",
+		body = "Meg. Cuirie +2",
+		feet = "Malignance Boots",
+		
+	
+	
+	})
 	
 	sets.engaged.DT = {
 		ammo = "Chrono Bullet",
 		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
-		hands = "Meg. Gloves +2",
+		hands = "Malignance Gloves",
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Loricate Torque +1",
@@ -694,7 +705,7 @@ include('Kuvira_AugGear.lua')
 		ammo = "Chrono Bullet",
 		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
-		hands = "Meg. Gloves +2",
+		hands = "Malignance Gloves",
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Lissome Necklace",
