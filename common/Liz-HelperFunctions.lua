@@ -60,7 +60,6 @@ end
 -- end
 
 
-
 function lockMainHand( value , pet)   
     if value == 'ON' then
         disable('main','sub','ranged')
@@ -288,6 +287,24 @@ end
             validateTextInformation()
         end
     end)
+
+
+-- Called when this job file is unloaded (eg: job change)
+-- Conditional definition so that it doesn't overwrite explicit user
+-- versions of this function.  Shamelessly stolen from Mote. 
+if not file_unload then
+    file_unload = function()
+        if user_unload then
+            user_unload()
+        elseif job_file_unload then
+            job_file_unload()
+        end
+        --_G[(binds_on_unload and 'binds_on_unload') or 'global_on_unload']()
+    end
+end
+
+
+
 
 function auto_cp()
     --Now we check if we need to lock our back for CP
