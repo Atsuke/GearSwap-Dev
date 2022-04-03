@@ -268,7 +268,7 @@ function get_sets()
     --Convokers
     AF.Head     =   "Convoker's Horn +2 "
     AF.Body     =   "Con. Doublet +3"
-    AF.Hands    =   "Convoker's Bracers"
+    AF.Hands    =   "Convoker's Bracers +3"
     AF.Legs     =  	"Convo. Spats +2"
     AF.Feet     =   "Convo. Pigaches +3"
 
