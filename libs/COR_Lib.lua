@@ -6,6 +6,7 @@ windower.add_to_chat(8,'----- Welcome back to your COR.lua, '..pName..' -----')
 
 runspeedslot = 'legs'
 
+
 --------------------------------------------------------------------------------------------------------------
 ------------------------------------------------ HUD STUFF ---------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
@@ -285,7 +286,7 @@ function self_command(command)
             elseif commandArgs[2] == 'runspeed' then
                 runspeed:cycle()
                 updateRunspeedGear(runspeed.value, runspeedslot)
-			
+				
 			-- cycles through your available idle modes
             elseif commandArgs[2] == 'idlemode' then
                 idleModes:cycle()
