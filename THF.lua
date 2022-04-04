@@ -560,4 +560,5 @@ include('Atsuke_AugGear.lua')
 	sets.me = {} -- leave this empty
 	
 	sets.me.movespeed = {feet = AF.Feet,}
+	sets.adoulin = {body = "Councilor's Garb",}
 end

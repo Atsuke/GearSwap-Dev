@@ -885,14 +885,10 @@ function get_sets()
     }) 
   
 	-- Movespeedset
-    sets.me.movespeed = { 
-        feet="Herald's Gaiters",
-    }
+    sets.me.movespeed = {feet="Herald's Gaiters",}
 	
 	-- For running faster in Adoulin
-	sets.adoulinmovement = { 
-	body="Councilor's Garb"
-	}
+	sets.adoulin = {body = "Councilor's Garb",}
     ------------
     -- Aftercast
     ------------

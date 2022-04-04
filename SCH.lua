@@ -280,11 +280,6 @@ function get_sets()
     SCHCape = {}
     --SCHCape.FC = { name="Lugh's Cape", augments={'MND+10','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Mag. Evasion+12',}}
     SCHCape.NUKE = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}}
-   
-    -- Movespeedset
-    sets.me.movespeed = { 
-        feet="Herald's Gaiters",
-    }
 	
 	-- For running faster in Adoulin
 	sets.adoulinmovement = { 
@@ -691,6 +686,11 @@ function get_sets()
 
     }) 
 	
+	-- Movespeedset
+    sets.me.movespeed = {feet="Herald's Gaiters",}
+	
+	-- For running faster in Adoulin
+	sets.adoulin = {body = "Councilor's Garb",}
     ------------
     -- Aftercast
     ------------

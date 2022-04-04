@@ -19,36 +19,13 @@ function updateMB( mBurst )
 end
 
 
-function updateRunspeedGear( value , slot , pet)
-    if value == 'OFF' or value == 'AUTO' then
-        validateTextInformation()
-        enable(slot)
-    else
-        validateTextInformation()
-        equip(sets.me.movespeed)
-        disable(slot)
-    end
-    if player.main_job == "GEO" or player.main_job == "SMN" or player.main_job == "BST" then
-        idle(pet)
-    else
-        idle()
-    end
-    validateTextInformation()
-end
-
-
 -- function updateRunspeedGear( value , slot , pet)
-    -- if value == 'OFF' or value == 'ON' then
-        -- autorunspeed = false
-		-- validateTextInformation()
-        -- enable(slot)
-		-- if value == 'ON' then
-			-- equip(sets.me.movespeed)
-		-- end
-    -- else
-		-- autorunspeed = true
+    -- if value == 'OFF' or value == 'AUTO' then
         -- validateTextInformation()
-        -- --equip(sets.me.movespeed)
+        -- enable(slot)
+    -- else
+        -- validateTextInformation()
+        -- equip(sets.me.movespeed)
         -- disable(slot)
     -- end
     -- if player.main_job == "GEO" or player.main_job == "SMN" or player.main_job == "BST" then
@@ -58,6 +35,47 @@ end
     -- end
     -- validateTextInformation()
 -- end
+
+function updateRunspeedGear( value , slot , pet)
+    if (value == 'OFF' or value == 'AUTO') then
+        validateTextInformation()
+        enable(slot)
+		enable('body')
+	
+	elseif(world.area:contains("Adoulin")) then
+        validateTextInformation()
+        equip(sets.adoulin)
+        enable(slot)
+		disable('body')
+	elseif player.main_job == 'NIN' and timeCheck == true then
+		validateTextInformation()
+        equip(sets.nightMovement)
+        disable(slot)
+		enable('body')
+		print('debug')
+	else
+		validateTextInformation()
+        equip(sets.me.movespeed)
+        disable(slot)
+		enable('body')
+	end
+   
+    if player.main_job == "GEO" or player.main_job == "SMN" or player.main_job == "BST" then
+        idle(pet)
+    else
+        idle()
+    end
+    validateTextInformation()
+	
+end
+
+function timeCheck()
+	if world.time >= (17*60) or world.time <= (7*60) then
+        return true
+    else
+        return false
+	end
+end
 
 
 function lockMainHand( value , pet)   

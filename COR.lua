@@ -266,11 +266,11 @@ include('Kuvira_AugGear.lua')
 	EMPY.Feet  = "Chass. Bottes +1"
 	
 	-- Define your ammo preferences here.
-	RAbullet = "Chrono Bullet"
+	RAbullet   = "Chrono Bullet"
 	RAccbullet = "Chrono Bullet"
-	WSbullet = "Chrono Bullet"
-	MAbullet = "Living Bullet"
-	QDbullet = "Hauksbok Bullet"
+	WSbullet   = "Chrono Bullet"
+	MAbullet   = "Living Bullet"
+	QDbullet   = "Hauksbok Bullet"
 	
 	-- NEVER AGAIN!
 	no_shoot_ammo = S{"Animikii Bullet", "Hauksbok Bullet"}
@@ -727,7 +727,7 @@ include('Kuvira_AugGear.lua')
 	--	but this works for now
 	
 	sets.TH ={
-		ammo = "Per. Lucky Egg",
+		--ammo = "Per. Lucky Egg",
 		head = "Wh. Rarab Cap +1",
 		waist = "Chaac Belt",
     
@@ -736,4 +736,5 @@ include('Kuvira_AugGear.lua')
 	sets.me = {} -- leave this empty
 	
 	sets.me.movespeed = {legs = "Carmine Cuisses +1",}
+	sets.adoulin = {body = "Councilor's Garb",}
 end

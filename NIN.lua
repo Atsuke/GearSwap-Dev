@@ -241,7 +241,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     AF.Body  = "Hachi. Chain. +1"
     AF.Hands = "Hachiya Tekko +1"
     AF.Legs  = "Hachi. Hakama +1"
-    AF.Feet  = "Hachi. Kyahan +2"
+    AF.Feet  = "Hachiya Kyahan +2"
 
     --Mochizuki
     RELIC.Head  = { name="Mochi. Hatsuburi +3", augments={'Enhances "Yonin" and "Innin" effect',}}
@@ -670,4 +670,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.me = {} -- leave this empty
 	
 	sets.me.movespeed = {feet = "Danzo Sune-Ate",}
+	sets.nightMovement = {feet = AF.Feet,}
+	sets.adoulin = {body = "Councilor's Garb",}
 end

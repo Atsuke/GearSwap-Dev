@@ -293,8 +293,6 @@ function get_sets()
 	Nantosuelta.MAB         = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}}
 	Nantosuelta.FC          = { name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}}
 	
-	-- Movespeed boots
-	sets.me.movespeed = {feet = AF.Feet}
 
 	-- Your idle set when you DON'T have a luopan out
 	sets.me.idle.normal = {
@@ -711,5 +709,7 @@ function get_sets()
     ------------
       
     -- I don't use aftercast sets, as we handle what to equip later depending on conditions using a function, eg, do we have a Luopan pan out?
-  
+  -- Movespeed boots
+	sets.me.movespeed = {feet = AF.Feet}
+	sets.adoulin = {body = "Councilor's Garb",}
 end
