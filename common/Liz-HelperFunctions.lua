@@ -47,12 +47,11 @@ function updateRunspeedGear( value , slot , pet)
         equip(sets.adoulin)
         enable(slot)
 		disable('body')
-	elseif player.main_job == 'NIN' and timeCheck == true then
+	elseif player.main_job == 'NIN' and timeCheck() == true then
 		validateTextInformation()
         equip(sets.nightMovement)
         disable(slot)
 		enable('body')
-		print('debug')
 	else
 		validateTextInformation()
         equip(sets.me.movespeed)
