@@ -127,7 +127,8 @@ keybinds_off['key_bind_lock_weapon'] = ''
     hub_pet_skills_std = [[ \cs(255, 115, 0)======= Pet Skills ========\cr
 - \cs(125, 125, 0)Maneuver Queue: \cr ${maneuver_queue|0}
 - \cs(125, 125, 0)Current Queue: \cr ${current_queue|0}
-${current_pet_skills|- No Skills To Track}]]
+${current_pet_skills|- No Skills To Track}\cr
+]]
 
     hub_state_std = [[ \cs(255, 115, 0)======= State ============\cr
 -\cs(125, 125, 0)${key_bind_pet_mode} Pet Mode :\cr ${pet_current_mode|TANK}

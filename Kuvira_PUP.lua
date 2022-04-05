@@ -183,7 +183,7 @@ function user_setup()
     -- Adjust the X (horizontal) and Y (vertical) position here to adjust the window
     -- pos_x = 2250
     -- pos_y = 370
-    pos_x = 1150
+    pos_x = 1200
     pos_y = 0
     setupTextWindow(pos_x, pos_y)
     
