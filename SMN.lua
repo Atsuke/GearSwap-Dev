@@ -154,7 +154,8 @@ set_macros(1,13) -- Sheet, Book
 -- to define sets for idle if you add more modes, name them: sets.me.idle.mymode and add 'mymode' in the group.
 -- to define sets for regen if you add more modes, name them: sets.midcast.regen.mymode and add 'mymode' in the group.
 -- Same idea for nuke modes. 
-idleModes = M('refresh','dt', 'Master+Pet')
+idleModes = M('Refresh','DT', 'Pet')
+meleeModes = M('TP', 'DT', 'Trust')
 petModes = M('TP', 'DT')
 bpModes = M('Normal', 'AUTO')
 convertModes = M('OFF', 'AUTO')
@@ -193,7 +194,8 @@ keybinds_on['key_bind_ward_cycle'] = '(END)'
 keybinds_on['key_bind_avatar'] = '(Delete)'
 keybinds_on['key_bind_lock_weapon'] = '(F12)'
 keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
-keybinds_on['key_bind_petModes'] = '(F10)'
+keybinds_on['key_bind_melee'] = '(F10) '
+keybinds_on['key_bind_petModes'] = '(F11)'
 keybinds_on['key_bind_bpMode'] = '(PgUp)'
 keybinds_on['key_bind_convert_mode'] = '(PgDwn)'
 
@@ -206,6 +208,7 @@ function user_unload()
     send_command('unbind f9')
     send_command('unbind !f9')
 	send_command('unbind f10')
+	send_command('unbind f11')
     send_command('unbind f12')
     send_command('unbind home')
     send_command('unbind !home')
@@ -266,7 +269,7 @@ function get_sets()
 
     -- Fill this with your own JSE. 
     --Convokers
-    AF.Head     =   "Convoker's Horn +2 "
+    AF.Head     =   "Convoker's Horn +2"
     AF.Body     =   "Con. Doublet +3"
     AF.Hands    =   "Convoker's Bracers +3"
     AF.Legs     =  	"Convo. Spats +2"
@@ -300,7 +303,7 @@ function get_sets()
 	------------------------------------------------------------------------------------------------
 
     -- Your idle set
-    sets.me.Idle.refresh = {
+    sets.me.Refresh = {
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -309,19 +312,20 @@ function get_sets()
 		hands = { name="Asteria Mitts +1", augments={'Path: A',}},
 		legs = { name="Assid. Pants +1", augments={'Path: A',}},
 		feet = "Volte Gaiters",
-		neck = { name="Smn. Collar +2", augments={'Path: A',}},
-		waist = "Isa Belt",
+		neck = "Caller's Pendant",
+		waist = "Lucidity Sash",
 		left_ear = "C. Palug Earring",
 		right_ear = { name="Moonshade Earring", augments={'Accuracy+4','Latent effect: "Refresh"+1',}},
-		left_ring = "Woltaris Ring",
-		right_ring = "Defending Ring",
-		back = SMNCape.PetPDT,
+		left_ring = "Defending Ring",
+		right_ring = "Woltaris Ring",
+		back = SMNCape.FC,
 		
     }
 
     -- Your idle Sublimation set combine from refresh or DT depening on mode.
-    sets.me.Idle.sublimation = set_combine(sets.me.Idle.refresh,{
-    	sub = "Ammurapi Shield",
+    sets.me.sublimation = set_combine(sets.me.refresh,{
+    	main = "Nirvana",
+		sub = "Ammurapi Shield",
 		head = "Acad. Mortar. +3",
 		body = RELIC.Body,
 		neck = "Loricate Torque",
@@ -330,12 +334,13 @@ function get_sets()
 		left_ring = "Woltaris Ring",
     })   
     -- Your idle DT set
-    sets.me.Idle.DT = set_combine(sets.me.Idle[refreshType],{
+    sets.me.DT = set_combine(sets.me.Idle[refreshType],{ --sets.me.DT
         main = "Malignance Pole",
 		sub = "Alber Strap",
+		legs = "Nyame Flanchard",
 		feet = "Nyame Sollerets",
-		neck = "Warder's Charm +1",
-		waist = "Embla Sash",
+		neck = { name="Smn. Collar +2", augments={'Path: A',}},
+		
     })  
     sets.me.Idle.mdt = set_combine(sets.me.Idle[refreshType],{
         
@@ -356,10 +361,10 @@ function get_sets()
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
-		head = "Nyame Helm",
-		body = "Nyame Mail",
-		hands = "Nyame Gauntlets",
-		legs = "Nyame Flanchard",
+		head = AF.Head,
+		body = AF.Body,
+		hands = AF.Hands,
+		legs = AF.Feet,
 		feet = RELIC.Feet,
 		neck = { name="Smn. Collar +2", augments={'Path: A',}},
 		waist = "Grunfeld Rope",
@@ -669,7 +674,7 @@ function get_sets()
 	sets.avatar.Idle.Idle = {}
 	
 	-- Pet out but not doing anything
-	sets.avatar.Idle.Idle={
+	sets.avatar.perp = {  -- Change this setname to sets.avatar.perp
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -678,7 +683,7 @@ function get_sets()
 		hands = "Asteria Mitts +1",
 		legs = Apo.Legs.A,
 		feet = Apo.Feet.A,
-		neck = "Caller's Pendant",
+		neck = { name="Smn. Collar +2", augments={'Path: A',}},
 		waist ="Incarnation Sash",
 		left_ear = "C. Palug Earring",
 		right_ear = { name="Moonshade Earring", augments={'Accuracy+4','Latent effect: "Refresh"+1',}},
@@ -692,17 +697,17 @@ function get_sets()
 	sets.avatar.Idle.Idle.DT= sets.avatar.Idle.Idle
 	
 	-- Have pet and it is doing all the work.  Note the capitalization of Idle and Engaged.  This is important as we are calling player and pet state.
-	sets.avatar.Idle.Engaged.TP ={
+	sets.avatar.TP = { -- sets.avatar.TP
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
-		head = "Beckoner's Horn +1",
+		head = AF.Head,
 		body = RELIC.Body,
-		hands = RELIC.Hands,
+		hands = AF.Hands,
 		legs = { name="Assid. Pants +1", augments={'Path: A',}},
 		feet = RELIC.Feet,
 		neck = { name="Smn. Collar +2", augments={'Path: A',}},
-		waist = "Isa Belt",
+		waist = "Incarnation Sash",
 		left_ear = "C. Palug Earring",
 		right_ear ="Enmerkar Earring", 
 		left_ring = "C. Palug Ring",
@@ -711,7 +716,7 @@ function get_sets()
 	}
 	
 	-- Pet if fighting alone and we want that extra PDT
-	sets.avatar.Idle.Engaged.DT ={
+	sets.avatar.Idle.Engaged.DT = { 
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -728,6 +733,20 @@ function get_sets()
 		right_ring = "Varar Ring +1",
 		back = SMNCape.PetPDT,
 	}
+	
+	
+	sets.avatar.DT = {
+		head = Telchine.Head.PetDT,
+		body = Telchine.Body.PetDT,
+		hands = Telchine.Hands.PetDT,
+		legs = Telchine.Legs.PetDT,
+		feet = Telchine.Feet.PetDT,
+		waist = "Isa Belt",
+		left_ear = "Handler's Earring",
+		right_ear = "Handler's Earring +1",
+		back = SMNCape.PetPDT
+	}
+	
 	
 	-- Fighting next to our pet. MeleeSmn4Lyfe!  
 	sets.avatar.Engaged.Idle={
@@ -754,6 +773,35 @@ function get_sets()
 	sets.avatar.Engaged.Engaged.DT = sets.avatar.Engaged.Idle
 
 	--------------------------------------------------------------------------------------------------------------
+	--------------------------------------------- Hybrid Sets ----------------------------------------------------
+	--------------------------------------------------------------------------------------------------------------
+	sets.MasterPet = {} -- Leave this empty
+	
+	sets.MasterPet.TP = {
+	
+		main = "Nirvana",
+		sub = "Elan Strap +1",
+		ammo = "Sancus Sachet +1",
+		head = AF.Head,
+		body = AF.Body,
+		hands = AF.Hands,
+		legs = AF.Legs,
+		feet = AF.Feet,
+		neck = "Shulmanu Collar",
+		waist = "Eschan Stone",
+		left_ear = "C. Palug Earring",
+		right_ear = "Telos Earring",
+		left_ring = "C. Palug Ring",
+		right_ring = "Hetairoi Ring",
+		back = SMNCape.PetPDT,
+	
+	
+	
+	
+	}
+	
+
+	--------------------------------------------------------------------------------------------------------------
 	----------------------------------------------- Blood Pacts --------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------
 
@@ -764,7 +812,7 @@ function get_sets()
 		head =  Helios.Head.BPDmg,
 		body = RELIC.Body,
 		hands = Merl.Hands.BPDmg,
-		legs = Apo.Legs.A,
+		legs = Apo.Legs.D,
 		feet = Apo.Feet.A,
 		neck = { name="Smn. Collar +2", augments={'Path: A',}},
 		waist = "Incarnation Sash",
@@ -848,6 +896,11 @@ function get_sets()
 		right_ring = "Evoker's Ring",
 		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},
 	}	
+	
+	sets.avatar.MB = set_combine(sets.avatar.mab, {
+	
+		hands = { name="Asteria Mitts +1", augments={'Path: A',}},
+	})
 	
 	sets.avatar.buff = sets.avatar.skill
 	
