@@ -175,7 +175,8 @@ nukeModes = M('normal', 'acc')
 	windower.send_command('bind !end gs c summoner cyclewarddown')		-- Change the currently selected bp ward
 	windower.send_command('bind home gs c summoner cyclerage')			-- DELETE to toggle rage bp's
     windower.send_command('bind !home gs c summoner cycleragedown')		-- DELETE to toggle rage bp's
-    windower.send_command('bind f10 gs c toggle petmode')				-- F10 to change Match SC Mode          	   
+	windower.send_command('bind f10 gs c toggle meleemode')				-- F10 to change Melee Mode
+    windower.send_command('bind f11 gs c toggle petmode')				-- F10 to change Pet Mode          	   
     windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
 	windower.send_command('bind PAGEUP gs c summoner autobp')			-- PAGEUP to toggle bp Mode
 	windower.send_command('bind PAGEDOWN gs c toggle autoconvert')		-- PAGEDOWN to toggle Convert Mode
