@@ -378,7 +378,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		neck = "Iskur Gorget",
 		waist = "Eschan Stone",
 		left_ear = "Telos Earring",
-		left_ring = "Stormsoul Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Cacoethic Ring",
 		back = "Reiki Cloak",
 	}
@@ -455,7 +455,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		waist = "Grunfeld Rope",
 		left_ear = "Ishvara Earring",
 		right_ear = "Odr Earring",
-		left_ring = "Thundersoul Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Ilabrat Ring",
 		back = Andartia.TP,
 	}
@@ -471,7 +471,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
 		right_ear = "Ishvara Earring",
-		left_ring = "Rajas Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Epona's Ring",
 		back = Andartia.STRWSD,
 		
@@ -495,7 +495,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		waist = "Fotia Belt",
 		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
 		right_ear = "Odr Earring",
-		left_ring = "Thundersoul Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Ilabrat Ring",
 		back = Andartia.TP,
 	}
@@ -529,7 +529,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = "Hecate's Earring",
 		right_ear = "Friomisi Earring",
-		left_ring = "Spiral Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Dingir Ring",
 		back = Andartia.STRWSD,
 	}
@@ -547,7 +547,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ear = { name="Lugra Earring +1", augments={'Path: A',}},
 		right_ear = "Ishvara Earring",
 		left_ring = "Apate Ring",
-		right_ring = "Rajas Ring",
+		right_ring = "Regal Ring",
 		back = Andartia.STRWSD,
 	}
 	
@@ -621,7 +621,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Epona's Ring",
-		right_ring="Hetairoi Ring",
+		right_ring = "Hetairoi Ring",
 		back = Andartia.TP,
 	}
 	
@@ -638,7 +638,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Epona's Ring",
-		right_ring="Hetairoi Ring",
+		right_ring ="Hetairoi Ring",
 		back = Andartia.TP,
 	}
 	

@@ -383,7 +383,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		waist = "Fotia Belt",
 		left_ear = "Ishvara Earring",
 		right_ear = "Odr Earring",
-		left_ring = "Thundersoul Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Ilabrat Ring",
 		back = Senuna.WSD,
 	}
@@ -392,7 +392,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		
 		head = "Malignance Chapeau",
 		right_ear = "Brutal Earring",
-		left_ring = "Stormsoul Ring",
+		left_ring = "Regal Ring",
 		back = Senuna.AGI,
 	})
 
@@ -430,7 +430,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		waist = "Eschan Stone",
 		left_ear = "Ishvara Earring",
 		right_ear = "Hecate's Earring",
-		left_ring = "Thundersoul Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Persis Ring",
 		back = Toetapper.RF,
 	})

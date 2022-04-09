@@ -381,7 +381,7 @@ include('Atsuke_AugGear.lua')
 		waist = "Grunfeld Rope",
 		left_ear = "Ishvara Earring",
 		right_ear = "Odr Earring",
-		left_ring = "Thundersoul Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Ilabrat Ring",
 		back = Toutatis.WSD,
 	}
@@ -394,7 +394,7 @@ include('Atsuke_AugGear.lua')
 		waist = "Fotia Belt",
 		right_ear = "Brutal Earring",
 		right_ear = "Sherida Earring",
-		left_ring = "Stormsoul Ring",
+		left_ring = "Regal Ring",
 		
 	})
 
@@ -424,7 +424,7 @@ include('Atsuke_AugGear.lua')
 		waist = "Eschan Stone",
 		left_ear = "Ishvara Earring",
 		right_ear = "Hecate's Earring",
-		left_ring = "Thundersoul Ring",
+		left_ring = "Regal Ring",
 		right_ring = "Persis Ring",
 		back = Toutatis.WSD
 	})
@@ -486,7 +486,7 @@ include('Atsuke_AugGear.lua')
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Epona's Ring",
-		right_ring = "Ilabrat Ring",
+		right_ring = "Hetairoi Ring",
 		back = Toutatis.TP,
 	}
 	
@@ -503,7 +503,7 @@ include('Atsuke_AugGear.lua')
 		left_ear = "Telos Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Epona's Ring",
-		right_ring="Hetairoi Ring",
+		right_ring = "Hetairoi Ring",
 		back = Toutatis.TP
 	}
 	
@@ -520,7 +520,7 @@ include('Atsuke_AugGear.lua')
 		left_ear = "Telos Earring",
 		right_ear = "Odr Earring",
 		left_ring = "Epona's Ring",
-		right_ring = "Ilabrat Ring",
+		right_ring = "Regal Ring",
 		back = Toutatis.TP,
 	}
 	
