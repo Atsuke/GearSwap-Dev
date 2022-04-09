@@ -294,7 +294,7 @@ include("kuvira_AugGear.lua")
         Will be activated when Pet is not active, otherwise refer to sets.idle.Pet
     ]]
     sets.idle = {
-        main="Sakpata's Fists",
+       
 		range = "Animator P +1",
 		ammo = "Automat. Oil +3",
 		head = "Heyoka Cap",
@@ -503,7 +503,7 @@ include("kuvira_AugGear.lua")
         Hybrid Mode = Normal
     ]]
     sets.engaged.MasterPet = {
-        main = "Sakpata's Fists",
+       
         ammo = "Automat. Oil +3",
 		head = "Heyoka Cap",
 		body = "Mpaca's Doublet",

@@ -121,6 +121,7 @@
 	Apo.Body.A        	=   { name="Apo. Dalmatica +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}}
 	Apo.Feet.A        	=   { name="Apogee Pumps +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}}
 	Apo.Legs.A        	=   { name="Apogee Slacks +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}}
+	Apo.Legs.D			=	{ name="Apogee Slacks +1", augments={'Pet: STR+20','Blood Pact Dmg.+14','Pet: "Dbl. Atk."+4',}}
 	Psycloth.Legs.FC  	=   { name="Psycloth Lappas", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}}
 	  
 	Vanya.Head.A      	=   { name="Vanya Hood", augments={'MP+50','"Cure" potency +7%','Enmity-6',}}
@@ -131,6 +132,12 @@
 	Telchine.Hands.en 	=   { name="Telchine Gloves", augments={'Enh. Mag. eff. dur. +8',}}
 	Telchine.Legs.en  	=   { name="Telchine Braconi", augments={'Enh. Mag. eff. dur. +9',}}
 	Telchine.Feet.en  	=   { name="Telchine Pigaches", augments={'Enh. Mag. eff. dur. +9',}}
+	
+	Telchine.Head.PetDT	=	{ name="Telchine Cap", augments={'Pet: DEF+19','Pet: "Regen"+3','Pet: Damage taken -4%',}}
+    Telchine.Body.PetDT	=	{ name="Telchine Chas.", augments={'Pet: DEF+19','Pet: "Regen"+3','Pet: Damage taken -4%',}}
+    Telchine.Hands.PetDT=	{ name="Telchine Gloves", augments={'Pet: DEF+16','Pet: "Regen"+3','Pet: Damage taken -4%',}}
+    Telchine.Legs.PetDT	=	{ name="Telchine Braconi", augments={'Pet: Accuracy+20 Pet: Rng. Acc.+20','Pet: "Regen"+3','Pet: Damage taken -4%',}}
+    Telchine.Feet.PetDT	=	{ name="Telchine Pigaches", augments={'Pet: DEF+15','Pet: "Regen"+3','Pet: Damage taken -4%',}}
 	
 	Herc.Head.TH		=	{ name="Herculean Helm", augments={'Pet: Mag. Acc.+16','Pet: DEX+9','"Treasure Hunter"+2','Accuracy+14 Attack+14',}}
 	Herc.Head.WSD		= 	{ name= "Herculean Helm", augments={'"Conserve MP"+3','INT+2','Weapon skill damage +8%','Mag. Acc.+1 "Mag.Atk.Bns."+1',}}
