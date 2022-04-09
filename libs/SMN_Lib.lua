@@ -30,6 +30,9 @@ temp_spell = ''
 
 
 petMode = 'me'
+Master_State = "Idle"
+Pet_State = "Idle"
+Hybrid_State = "Idle"
 
 setupTextWindow()
 
@@ -241,7 +244,7 @@ function midcast(spell)
         elseif spell.name:match('Refresh') then
             equip(sets.midcast.refresh)
         elseif spell.name:match('Regen') then
-            equip(sets.midcast.regen[regenModes.current])
+            equip(sets.midcast.regen.hybrid)
         elseif spell.name:match('Aquaveil') then
             equip(sets.midcast.aquaveil)
         elseif spell.name:match('Stoneskin') then
@@ -311,8 +314,11 @@ end
             end
              
         elseif bp_magical:contains(spell.name) then
-         
-            equip(sets.avatar.mab)
+			if mBurst.value == true then
+				equip(sets.avatar.MB)
+			else
+				equip(sets.avatar.mab)
+			end
             if pet.name == 'Ifrit' then
                 equip({right_ring="Fervor Ring"})--[[Change rring to lring if you put Evoker's on your right hand]]
             end
@@ -410,28 +416,9 @@ function idle(pet)
         petMode = 'me' 
    
 	end
-	
-	if (petMode == 'me') then --equip appropriate idle set. 
-	
-		--called Idle specifically here because trying player.status only accounted for engaged and idle.
-		-- This caused errors for things like sitting or resting 
-		--equip(sets[petMode][player.status][idleModes.value])
-		
-		equip(sets[petMode].Idle[idleModes.value])
-	else
-		if ( meleeing.value == 'ON' or meleeing.value == 'AUTO' ) and player.status=='Engaged' then
-			-- We're both 'engaged' and 'meleeing' is not off
-			equip(sets[petMode][player.status][pet.status][petModes.value])
-		else
-			equip(sets[petMode].Idle[pet.status][petModes.value]) --equip appropriate pet set
-		end
-	end
-	
-    if player.mpp < 51 then
-        equip(sets.me.latent_refresh)          
-    end
+	equip(customizeSet())
 	validateTextInformation()
-	--end
+	
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -441,9 +428,10 @@ end
 function status_change(new,old)
     if new == 'Engaged' then  
         -- If we engage check our meleeing status
+		Master_State = new
         idle(pet)
          
-    elseif new=='Resting' then
+    elseif new == 'Resting' then
      
         -- We're resting
         equip(sets.me.resting)          
@@ -455,9 +443,85 @@ end
 
 function pet_status_change(new, old)
 	--Just let our idle function deal with it.
-   idle(pet)
+	if pet.status then
+		Pet_State = new
+	end
+	idle(pet)
    --equip(sets[petMode][player.status][pet.status][petModes.value])
    
+end
+
+
+--------------------------------------------------------------------------------------------------------------
+---------------------------------------------- Customize Set -------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+
+function customizeSet()
+	local Custom_Set = sets.me.Engaged
+	
+	if (player.status == 'Idle' or player.status == '') and player.hp > 0 then -- Player is alive but not doing anything
+		
+		if petMode == 'me' then -- No Pet
+			Custom_Set = sets.me[idleModes.value]
+			Hybrid_State = 'Idle'
+		
+		elseif(petMode == 'avatar' and Pet_State == 'Engaged') then -- We have a pet and it is engaged
+			
+			if idleModes.current == 'Refresh' then --Most refresh while maintaining free avatar
+				Custom_Set = sets.avatar.perp
+				Hybrid_State = 'Perpetuation'
+			elseif idleModes.current == 'Pet' then
+				Custom_Set = sets.avatar[petModes.value]
+				Hybrid_State = 'Pet Only'
+			elseif idleModes.current == 'DT' then -- priority given to Master DT
+				Hybrid_State = 'Master + Pet'
+				if petModes.current == 'TP' then
+					Custom_Set = set_combine(sets.avatar.TP, sets.me.DT)
+				elseif petModes.current == 'DT' then
+					Custom_Set = set_combine(sets.avatar.DT, sets.me.DT)
+				end
+			end		
+		elseif(petMode == 'avatar' and Pet_State == 'Idle') then
+			Custom_Set = set_combine(sets.avatar.perp, sets.me[idleModes.value])
+		
+		
+		else
+			Custom_Set = sets.avatar.perp --Pet is out. It is not engaged. Max refresh gear. 
+		end
+		
+	elseif (player.status == "Engaged" and player.hp > 0) then
+		
+		if PetMode == 'me' then -- Seriously why are you engaged without a pet? You are a pet job dummy and a squishy one at that. 
+			Custom_Set = sets.me.Engaged --You are so screwed. Good luck!
+			Hybrid_State = 'Master'
+		elseif(petMode == 'avatar') then --No need to check pet state. It will engage as soon as you have aggro. Good avatar.
+			
+			if meleeModes.current == 'Trust' then -- only engaged for trusts and not actually meleeing 
+				Custom_Set = sets.avatar[petModes.value]
+				Hybrid_State = 'Pet'
+			elseif meleeModes.current == 'TP' then -- priority given to master
+				if petModes.current == 'TP' then
+					Hybrid_State = 'Master + Pet'
+					Custom_Set = sets.MasterPet.TP -- #MeleeSMN4Lyfe!!
+				elseif petModes.current == 'DT' then
+					Custom_Set = set_combine(sets.MasterPet.TP, sets.avatar.DT)
+				end
+			elseif meleeModes.current == 'DT' then -- priority given to master
+				if petModes.current == 'TP' then
+					Hybrid_State = 'Master + Pet'
+					Custom_Set = set_combine(sets.MasterPet.TP, sets.me.DT) -- #MeleeSMN4Lyfe!!
+				elseif petModes.current == 'DT' then
+					Custom_Set = set_combine(sets.MasterPet.TP, sets.me.DT, sets.avatar.DT) 
+				end
+				
+			end
+		
+		end
+	
+	end
+	
+	return Custom_Set
+
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -499,7 +563,10 @@ function self_command(command)
                 else
                     validateTextInformation()
                 end
-            elseif commandArgs[2] == 'petmode' then
+            elseif commandArgs[2] == 'meleemode' then
+                meleeModes:cycle()
+				validateTextInformation()
+			elseif commandArgs[2] == 'petmode' then
                 petModes:cycle()                 
                 validateTextInformation() 
 			elseif commandArgs[2] == 'autoconvert' then
@@ -616,7 +683,6 @@ function handle_rage_cycle(cmd)
 				carbuncle_rage:cycleback()
 		else
 			carbuncle_rage:cycle()
-			
 		end
 			currentRage = carbuncle_rage.current
 		end
@@ -626,8 +692,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				fenrir_rage:cycleback()
 		else
-			fenrir_rage:cycle()
-			
+			fenrir_rage:cycle()			
 		end
 			currentRage = fenrir_rage.current
 		end
@@ -637,8 +702,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				ifrit_rage:cycleback()
 		else
-			ifrit_rage:cycle()
-			
+			ifrit_rage:cycle()			
 		end
 			currentRage = ifrit_rage.current
 		end
@@ -648,8 +712,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				titan_rage:cycleback()
 		else
-			titan_rage:cycle()
-			
+			titan_rage:cycle()			
 		end
 			currentRage = titan_rage.current
 		end
@@ -659,8 +722,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				leviathan_rage:cycleback()
 		else
-			leviathan_rage:cycle()
-			
+			leviathan_rage:cycle()			
 		end
 			currentRage = leviathan_rage.current
 		end
@@ -670,8 +732,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				garuda_rage:cycleback()
 		else
-			garuda_rage:cycle()
-			
+			garuda_rage:cycle()			
 		end
 			currentRage = garuda_rage.current
 		end
@@ -681,8 +742,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				shiva_rage:cycleback()
 		else
-			shiva_rage:cycle()
-			
+			shiva_rage:cycle()			
 		end
 			currentRage = shiva_rage.current
 		end
@@ -692,8 +752,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				ramuh_rage:cycleback()
 		else
-			ramuh_rage:cycle()
-			
+			ramuh_rage:cycle()			
 		end
 			currentRage = ramuh_rage.current
 		end
@@ -703,8 +762,7 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				diabolos_rage:cycleback()
 		else
-			diabolos_rage:cycle()
-			
+			diabolos_rage:cycle()			
 		end
 			currentRage = diabolos_rage.current
 		end
@@ -714,24 +772,20 @@ function handle_rage_cycle(cmd)
 			if (cmd == 'cycleragedown') then
 				cait_sith_rage:cycleback()
 		else
-			cait_sith_rage:cycle()
-			
+			cait_sith_rage:cycle()			
 		end
 			currentRage = cait_sith_rage.current
 		end
 	
-
 		--Siren
 		if string.find(pet.name,'Siren')then 
 			if (cmd == 'cycleragedown') then
 				siren_rage:cycleback()
 		else
-			siren_rage:cycle()
-			
+			siren_rage:cycle()			
 		end
 			currentRage = siren_rage.current
 		end
-
 	end
 end
 
@@ -748,8 +802,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				carbuncle_ward:cycleback()
 		else
-			carbuncle_ward:cycle()
-			
+			carbuncle_ward:cycle()			
 		end
 			currentWard = carbuncle_ward.current
 		end
@@ -759,8 +812,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				fenrir_ward:cycleback()
 		else
-			fenrir_ward:cycle()
-			
+			fenrir_ward:cycle()			
 		end
 			currentWard = fenrir_ward.current
 		end
@@ -770,8 +822,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				ifrit_ward:cycleback()
 		else
-			ifrit_ward:cycle()
-			
+			ifrit_ward:cycle()			
 		end
 			currentWard = ifrit_ward.current
 		end
@@ -781,8 +832,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				titan_ward:cycleback()
 		else
-			titan_ward:cycle()
-			
+			titan_ward:cycle()			
 		end
 			currentWard = titan_ward.current
 		end
@@ -793,7 +843,6 @@ function handle_ward_cycle(cmd)
 				leviathan_ward:cycleback()
 		else
 			leviathan_ward:cycle()
-			
 		end
 			currentWard = leviathan_ward.current
 		end
@@ -803,8 +852,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				garuda_ward:cycleback()
 		else
-			garuda_ward:cycle()
-			
+			garuda_ward:cycle()			
 		end
 			currentWard = garuda_ward.current
 		end
@@ -814,8 +862,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				shiva_ward:cycleback()
 		else
-			shiva_ward:cycle()
-			
+			shiva_ward:cycle()			
 		end
 			currentWard = shiva_ward.current
 		end
@@ -825,8 +872,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				ramuh_ward:cycleback()
 		else
-			ramuh_ward:cycle()
-			
+			ramuh_ward:cycle()			
 		end
 			currentWard = ramuh_ward.current
 		end
@@ -836,8 +882,7 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				diabolos_ward:cycleback()
 		else
-			diabolos_ward:cycle()
-			
+			diabolos_ward:cycle()			
 		end
 			currentWard = diabolos_ward.current
 		end
@@ -847,24 +892,20 @@ function handle_ward_cycle(cmd)
 			if (cmd == 'cyclewarddown') then
 				cait_sith_ward:cycleback()
 		else
-			cait_sith_ward:cycle()
-			
+			cait_sith_ward:cycle()			
 		end
 			currentWard = cait_sith_ward.current
 		end
 	
-
 		--Siren
 		if string.find(pet.name,'Siren')then 
 			if (cmd == 'cyclewarddown') then
 				siren_ward:cycleback()
 		else
-			siren_ward:cycle()
-			
+			siren_ward:cycle()			
 		end
 			currentWard = siren_ward.current
 		end
-
 	end
 end
 
