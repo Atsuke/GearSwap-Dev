@@ -27,6 +27,7 @@ version = "3.0"
         gs c toggle regenmode           Toggles between Hybrid, Duration and Potency mode for regen set  
         gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
         gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
+		gs c toggle thMode            	Toggle Treasure Hunter Mode on or off
 		gs c toggle autoconvert			Toggles autoconvert modes
                 
         
@@ -146,7 +147,7 @@ tool_warning = 20
 
 
 -- Optional. Swap to your sch macro sheet / book
-set_macros(1,13) -- Sheet, Book   
+set_macros(2,13) -- Sheet, Book   
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- Define your modes: 
@@ -159,6 +160,7 @@ meleeModes = M('TP', 'DT', 'Trust')
 petModes = M('TP', 'DT')
 bpModes = M('Normal', 'AUTO')
 convertModes = M('OFF', 'AUTO')
+treasureHunter = M('OFF', 'ON')
 
 -- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmode
 nukeModes = M('normal', 'acc')
@@ -167,19 +169,20 @@ nukeModes = M('normal', 'acc')
     windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
     windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order 
     windower.send_command('bind f9 gs c toggle idlemode')				-- F9 to change Idle Mode    
-    windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters
+    windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt+F9 toggles locking on / off Herald's Gaiters
     windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons
     windower.send_command('bind delete gs c summoner cycle')			-- Cycle through available avatars
     windower.send_command('bind !delete gs c summoner cycledown')		-- Cycle through available avatars
 	windower.send_command('bind end gs c summoner cycleward')			-- Change the currently selected bp ward
 	windower.send_command('bind !end gs c summoner cyclewarddown')		-- Change the currently selected bp ward
-	windower.send_command('bind home gs c summoner cyclerage')			-- DELETE to toggle rage bp's
-    windower.send_command('bind !home gs c summoner cycleragedown')		-- DELETE to toggle rage bp's
+	windower.send_command('bind home gs c summoner cyclerage')			-- HOME to toggle rage bp's
+    windower.send_command('bind !home gs c summoner cycleragedown')		-- ALT+HOME to toggle rage bp's
 	windower.send_command('bind f10 gs c toggle meleemode')				-- F10 to change Melee Mode
-    windower.send_command('bind f11 gs c toggle petmode')				-- F10 to change Pet Mode          	   
+    windower.send_command('bind f11 gs c toggle petmode')				-- F11 to change Pet Mode          	   
     windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
 	windower.send_command('bind PAGEUP gs c summoner autobp')			-- PAGEUP to toggle bp Mode
 	windower.send_command('bind PAGEDOWN gs c toggle autoconvert')		-- PAGEDOWN to toggle Convert Mode
+	windower.send_command('bind !t gs c toggle thMode')					-- ALT+T to toggle Treasure Hunter Mode
 	
 
 --[[
@@ -199,6 +202,7 @@ keybinds_on['key_bind_melee'] = '(F10) '
 keybinds_on['key_bind_petModes'] = '(F11)'
 keybinds_on['key_bind_bpMode'] = '(PgUp)'
 keybinds_on['key_bind_convert_mode'] = '(PgDwn)'
+keybinds_on['key_bind_treasure_hunter'] = '(ALT-T)'
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
@@ -219,8 +223,25 @@ function user_unload()
     send_command('unbind `f10')
 	send_command('unbind PAGEUP')
 	send_command('unbind PAGEDOWN')
+	send_command('unbind !t')
    	      	
 end
+
+-- Default Blood Pacts
+-- Set the pacts that you want to set your rage and ward commands to on initial summoning of an avatar. 
+-- NOTE: Take care with spelling or it wont work.
+defaultbps = {}
+defaultbps.Carbuncle = {['Rage'] = "Meteorite", ['Ward'] = "Healing Ruby II"}
+defaultbps.Fenrir = {['Rage'] = "Impact", ['Ward'] = "Lunar Roar"}
+defaultbps.Ifrit = {['Rage'] = "Flaming Crush", ['Ward'] = "Crimson Howl"}
+defaultbps.Titan = {['Rage'] = "Crag Throw", ['Ward'] = "Earthen Armor"}
+defaultbps.Leviathan = {['Rage'] = "Grand Fall", ['Ward'] = "Spring Water"}
+defaultbps.Garuda = {['Rage'] = "Predator Claws", ['Ward'] = "Hastega II"}
+defaultbps.Shiva = {['Rage'] = "Heavenly Strike", ['Ward'] = "Crystal Blessing"}
+defaultbps.Ramuh = {['Rage'] = "Volt Strike", ['Ward'] = "Shock Squall"}
+defaultbps.Diabolos = {['Rage'] = "Blindside", ['Ward'] = "Noctoshield"}
+defaultbps["Cait Sith"] = {['Rage'] = "Regal Gash", ['Ward'] = "Mewing Lullaby"}
+defaultbps.Siren = {['Rage'] = "Hysteric Assault", ['Ward'] = "Wind's Blessing"}
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 include('libs/SMN_Lib.lua')     -- leave this as is    
@@ -228,6 +249,8 @@ refreshType = idleModes[1]      -- leave this as is
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 
+-- Actions you want to be able to 'tag' treasure hunter with when TH mode is set to ON.
+TH_Actions = S{'Stone', 'Aero', 'Fire', 'Water', 'Blizzard', 'Thunder', 'Dia', 'Dia II', 'Diaga'}
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
                 --  _____                  __      __        _       _     _
@@ -270,7 +293,7 @@ function get_sets()
 
     -- Fill this with your own JSE. 
     --Convokers
-    AF.Head     =   "Convoker's Horn +2"
+    AF.Head     =   "Convoker's Horn +3"
     AF.Body     =   "Con. Doublet +3"
     AF.Hands    =   "Convoker's Bracers +3"
     AF.Legs     =  	"Convo. Spats +2"
@@ -669,11 +692,7 @@ function get_sets()
 	--------------------------------------------------------------------------------------------------------------
 	
 	sets.avatar = {}
-	sets.avatar.Idle ={}
-	sets.avatar.Engaged = {}
-	sets.avatar.Idle.Engaged = {}
-	sets.avatar.Idle.Idle = {}
-	
+		
 	-- Pet out but not doing anything
 	sets.avatar.perp = {  -- Change this setname to sets.avatar.perp
 		main = "Nirvana",
@@ -693,10 +712,6 @@ function get_sets()
 		back = SMNCape.PetPDT
 	}
 	
-	--Need these because of how the logic of our Idle fucntion looks for sets.
-	sets.avatar.Idle.Idle.TP = sets.avatar.Idle.Idle
-	sets.avatar.Idle.Idle.DT= sets.avatar.Idle.Idle
-	
 	-- Have pet and it is doing all the work.  Note the capitalization of Idle and Engaged.  This is important as we are calling player and pet state.
 	sets.avatar.TP = { -- sets.avatar.TP
 		main = "Nirvana",
@@ -715,29 +730,9 @@ function get_sets()
 		right_ring = "Varar Ring +1",
 		back = SMNCape.Physical,
 	}
-	
-	-- Pet if fighting alone and we want that extra PDT
-	sets.avatar.Idle.Engaged.DT = { 
-		main = "Nirvana",
-		sub = "Elan Strap +1",
-		ammo = "Sancus Sachet +1",
-		head = "Beckoner's Horn +1",
-		body = RELIC.Body,
-		hands = RELIC.Hands,
-		legs = { name="Assid. Pants +1", augments={'Path: A',}},
-		feet = RELIC.Feet,
-		neck = { name="Smn. Collar +2", augments={'Path: A',}},
-		waist = "Isa Belt",
-		left_ear = "Handler's Earring",
-		right_ear = "Handler's Earring +1",
-		left_ring = "C. Palug Ring",
-		right_ring = "Varar Ring +1",
-		back = SMNCape.PetPDT,
-	}
-	
-	
+		
 	sets.avatar.DT = {
-		head = Telchine.Head.PetDT,
+		head = Apo.Head.D,
 		body = Telchine.Body.PetDT,
 		hands = Telchine.Hands.PetDT,
 		legs = Telchine.Legs.PetDT,
@@ -748,30 +743,6 @@ function get_sets()
 		back = SMNCape.PetPDT
 	}
 	
-	
-	-- Fighting next to our pet. MeleeSmn4Lyfe!  
-	sets.avatar.Engaged.Idle={
-		main = "Nirvana",
-		sub = "Elan Strap +1",
-		ammo = "Sancus Sachet +1",
-		head = "Nyame Helm",
-		body = RELIC.Body,
-		hands = RELIC.Hands,
-		legs = AF.Legs,
-		feet = "Nyame Sollerets",
-		neck = { name="Smn. Collar +2", augments={'Path: A',}},
-		waist = "Eschan Stone",
-		left_ear = "Gelos Earring",
-		right_ear = "Domes. Earring",
-		left_ring = "C. Palug Ring",
-		right_ring = "Varar Ring +1",
-		back = SMNCape.Physical
-	}
-	
-	-- Needs to exist due to how state checking works but will never melee while avatar is idle due to the avatar aggro mechanics
-	sets.avatar.Engaged.Engaged = sets.avatar.Engaged.Idle
-	sets.avatar.Engaged.Engaged.TP = sets.avatar.Engaged.Idle
-	sets.avatar.Engaged.Engaged.DT = sets.avatar.Engaged.Idle
 
 	--------------------------------------------------------------------------------------------------------------
 	--------------------------------------------- Hybrid Sets ----------------------------------------------------
@@ -795,10 +766,6 @@ function get_sets()
 		left_ring = "C. Palug Ring",
 		right_ring = "Hetairoi Ring",
 		back = SMNCape.PetPDT,
-	
-	
-	
-	
 	}
 	
 
@@ -806,7 +773,7 @@ function get_sets()
 	----------------------------------------------- Blood Pacts --------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------
 
-	sets.avatar.atk={
+	sets.avatar.atk = {
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -825,7 +792,7 @@ function get_sets()
 	}
 	
 	
-	sets.avatar.mab={
+	sets.avatar.mab = {
 		main = { name="Grioavolr", augments={'Blood Pact Dmg.+5','Pet: INT+12','Pet: "Mag.Atk.Bns."+25',}},
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -844,7 +811,7 @@ function get_sets()
 	}
 	
 	
-	sets.avatar.hybrid={
+	sets.avatar.hybrid = {
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -863,7 +830,7 @@ function get_sets()
 	}
 	
 	
-	sets.avatar.macc={
+	sets.avatar.macc = {
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -881,7 +848,7 @@ function get_sets()
 		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},
 	}
 	
-	sets.avatar.skill={
+	sets.avatar.skill = {
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
 		head = AF.Head,
@@ -943,6 +910,13 @@ function get_sets()
 	
 	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
+	
+	-- Because Treasure Hunter totally works just keep lying to yourself.
+	sets.TH = {
+		head = "Wh. Rarab Cap +1",
+		feet = Merl.Feet.Th,
+		waist = "Chaac Belt",
+	}
     ------------
     -- Aftercast
     ------------

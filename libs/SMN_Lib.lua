@@ -289,6 +289,10 @@ function midcast(spell)
         equip(sets.midcast.Helix)
     end
 	
+	if TH_Actions:contains(spell.name) and treasureHunter.current == 'ON' then
+		equip(sets.TH)
+	end
+	
 end
  
 --------------------------------------------------------------------------------------------------------------
@@ -393,9 +397,14 @@ end
 function pet_change(pet, gain)
     if (not (gain and pet_midaction())) then
 		-- When cast a summon
-		idle(pet)
 	end
+	if gain then
+		set_defaultBP()
+	end
+	idle(pet)
+	
 end
+
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------- Idle -----------------------------------------------------
@@ -409,7 +418,7 @@ function idle(pet)
 	if (not player.status) then
 		return
 	elseif pet.isvalid then --We have a pet out.
-        petMode = 'avatar'
+        petMode = 'avatar'	
     else -- We dont have a pet out
 		currentRage = ''
 		currentWard = ''
@@ -571,7 +580,9 @@ function self_command(command)
                 validateTextInformation() 
 			elseif commandArgs[2] == 'autoconvert' then
 				convertModes:cycle()
-            end
+            elseif commandArgs[2] == 'thMode' then
+                treasureHunter:cycle()
+			end		
         end
         
         if commandArgs[1]:lower() == 'scholar' then
@@ -634,7 +645,6 @@ function self_command(command)
 					oldAvatar = avatars.current
 				end
 				
-			
 			elseif (cmd == 'summon') then
 				
 				send_command('@input /ma "'..avatars.current..'"')
@@ -643,7 +653,6 @@ function self_command(command)
 				
 				handle_rage_cycle(cmd)
 
-				
 			elseif (cmd == 'cycleward' or cmd == 'cyclewarddown') then
 				
 				handle_ward_cycle(cmd)
@@ -908,6 +917,110 @@ function handle_ward_cycle(cmd)
 		end
 	end
 end
+
+
+--------------------------------------------------------------------------------------------------------------
+---------------------------------------------- Set Default BP ------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+
+function set_defaultBP()
+	if not pet.isvalid then
+		return
+	else
+		--Carby
+		if string.find(pet.name,'Carbuncle')then 
+			
+			carbuncle_rage:set(defaultbps[pet.name].Rage)
+			carbuncle_ward:set(defaultbps[pet.name].Ward)
+			currentRage = carbuncle_rage.current
+			currentWard = carbuncle_ward.current
+		end
+	
+		--Fenrir
+		if string.find(pet.name,'Fenrir')then 
+			fenrir_rage:set(defaultbps[pet.name].Rage)
+			fenrir_ward:set(defaultbps[pet.name].Ward)
+			currentRage = fenrir_rage.current
+			currentWard = fenrir_ward.current
+		end
+	
+		--Ifrit
+		if string.find(pet.name,'Ifrit')then 
+			ifrit_rage:set(defaultbps[pet.name].Rage)
+			ifrit_ward:set(defaultbps[pet.name].Ward)
+			currentRage = ifrit_rage.current
+			currentWard = ifrit_ward.current
+		end
+		
+		--Titan
+		if string.find(pet.name,'Titan')then 
+			titan_rage:set(defaultbps[pet.name].Rage)
+			titan_ward:set(defaultbps[pet.name].Ward)
+			currentRage = titan_rage.current
+			currentWard = titan_ward.current
+		end
+		
+		--Leviathan
+		if string.find(pet.name,'Leviathan')then 
+			leviathan_rage:set(defaultbps[pet.name].Rage)
+			leviathan_ward:set(defaultbps[pet.name].Ward)
+			currentRage = leviathan_rage.current
+			currentWard = leviathan_ward.current
+		end
+		
+		--Garuda
+		if string.find(pet.name,'Garuda')then 
+			garuda_rage:set(defaultbps[pet.name].Rage)
+			garuda_ward:set(defaultbps[pet.name].Ward)
+			currentRage = garuda_rage.current
+			currentWard = garuda_ward.current
+		end
+	
+		--Shiva
+		if string.find(pet.name,'Shiva')then 
+			shiva_rage:set(defaultbps[pet.name].Rage)
+			shiva_ward:set(defaultbps[pet.name].Ward)
+			currentRage = shiva_rage.current
+			currentWard = shiva_ward.current
+		end
+	
+		--Ramuh
+		if string.find(pet.name,'Ramuh')then 
+			ramuh_rage:set(defaultbps[pet.name].Rage)
+			ramuh_ward:set(defaultbps[pet.name].Ward)
+			currentRage = ramuh_rage.current
+			currentWard = ramuh_ward.current
+		end
+		
+		--Diabolos
+		if string.find(pet.name,'Diabolos')then 
+			diabolos_rage:set(defaultbps[pet.name].Rage)
+			diabolos_ward:set(defaultbps[pet.name].Ward)
+			currentRage = diabolos_rage.current
+			currentWard = diabolos_ward.current
+		end
+		
+		--Cait Sith
+		if string.find(pet.name,'Cait Sith')then 
+			cait_sith_rage:set(defaultbps[pet.name].Rage)
+			cait_sith_ward:set(defaultbps[pet.name].Ward)
+			currentRage = cait_sith_rage.current
+			currentWard = cait_sith_ward.current
+		end
+	
+		--Siren
+		if string.find(pet.name,'Siren')then 
+			siren_rage:set(defaultbps[pet.name].Rage)
+			siren_ward:set(defaultbps[pet.name].Ward)
+			currentRage = siren_rage.current
+			currentWard = siren_ward.current
+		end
+	end
+end
+
+
+
+
 
 --------------------------------------------------------------------------------------------------------------
 -------------------------------------------- Handle Siphoning ------------------------------------------------
