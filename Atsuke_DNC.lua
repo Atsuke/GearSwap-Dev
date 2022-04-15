@@ -545,4 +545,5 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.me = {} -- leave this empty
 	
 	sets.me.movespeed = {feet = "Tandava Crackows",}
+	sets.adoulin = {body = "Councilor's Garb",}
 end

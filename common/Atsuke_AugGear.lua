@@ -118,6 +118,7 @@
 	Merl.Feet.Th      	=   { name="Merlinic Crackows", augments={'STR+2','Pet: Accuracy+19 Pet: Rng. Acc.+19','"Treasure Hunter"+2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
 	Merl.Feet.WSD     	=   { name="Merlinic Crackows", augments={'Pet: "Regen"+1','STR+15','Weapon skill damage +7%','Accuracy+4 Attack+4','Mag. Acc.+14 "Mag.Atk.Bns."+14',}}
 	
+	Apo.Head.D			=	{ name="Apogee Crown +1", augments={'Pet: Accuracy+25','"Avatar perpetuation cost"+7','Pet: Damage taken -4%',}}
 	Apo.Body.A        	=   { name="Apo. Dalmatica +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}}
 	Apo.Feet.A        	=   { name="Apogee Pumps +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}}
 	Apo.Legs.A        	=   { name="Apogee Slacks +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}}
