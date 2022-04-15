@@ -58,19 +58,18 @@ function precast(spell)
 	--Check for Climactic Flourish
 	if spell.type == "WeaponSkill" then
         if buffactive['Climactic Flourish'] then
-			--equip(set_combine(set.midcast[spell.name], sets.buff['Climactic Flourish']))
 			equip(sets.buff['Climactic Flourish'])
         end
 	end
 	
 	-- Waltzes that heal us is a different set than waltzes for others
 	if spell.type == 'Waltz' and spell.target.type == 'SELF' then
-        equip(sets.precast.WaltzSelf)
+		equip(sets.precast.WaltzSelf)
     end   
 	
 	-- automatically change to DT mode when activating Fan Dance
 	if buffactive['Fan Dance'] then
-            meleeModes:set('DT')
+		meleeModes:set('DT')
     end
 	
 	--catchall for our various Jigs
@@ -87,6 +86,14 @@ function precast(spell)
 	if spell.name:contains('Utsusemi') then
 		equip(sets.precast['Utsusemi'])
 	end
+	
+	--In case we need to use warcry as a hate tool. 
+	if(enmityModes.current == 'Enmity') then
+		if spell.name:contains('Warcry') then
+			equip(sets.precast['Provoke'])
+		end
+	end
+	
 	-- We use a catch all here, if the set exists for an ability, 
 	-- use it. This way we don't need to write a load of different
 	-- code for different abilities, just make a set
