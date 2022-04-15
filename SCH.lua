@@ -261,7 +261,7 @@ function get_sets()
     AF.Feet     =   "Acad. Loafers +3"
 
     --Pedagogy
-    RELIC.Head  =   "Peda. Mortar +2"
+    RELIC.Head  =   "Peda. M.Board +3"
     RELIC.Body  =   "Peda. Gown +3"
     RELIC.Hands =   "Peda. Bracers +3"
     RELIC.Legs  =   "Peda. Pants +3"
@@ -370,7 +370,7 @@ function get_sets()
     }
     sets.me["Myrkr"] = {
 		ammo="Ghastly Tathlum +1",
-		head= RELIC.head,
+		head= RELIC.Head,
 		body= AF.Body,
 		hands= RELIC.hands,
 		legs= RELIC.Legs,
@@ -419,20 +419,20 @@ function get_sets()
     -- Generic Casting Set that all others take off of. Here you should add all your fast cast 
     -- Grimoire: 10(cap:25) / rdm: 15
     sets.precast.casting = {
-		main="Oranyan",
-		ammo="Sapience Orb",
-		head= Merl.Head.FC,
-		body="Zendik Robe",
-		hands= "Volte Gloves",
-		legs= Psycloth.Legs.FC,
-		feet= Merl.Feet.WSD,
-		neck="Voltsurge Torque",
-		waist="Embla Sash",
-		left_ear="Loquac. Earring",
-		right_ear="Malignance Earring",
-		left_ring="Prolix Ring",
-		right_ring="Kishar Ring",
-		back="Swith Cape",
+		main = "Oranyan",
+		ammo = "Sapience Orb",
+		head = Merl.Head.FC,
+		body = "Zendik Robe",
+		hands = "Volte Gloves",
+		legs = Psycloth.Legs.FC,
+		feet = Merl.Feet.WSD,
+		neck ="Voltsurge Torque",
+		waist ="Embla Sash",
+		left_ear = "Loquac. Earring",
+		right_ear = "Malignance Earring",
+		left_ring = "Prolix Ring",
+		right_ring = "Kishar Ring",
+		back = "Swith Cape",
     }
 
 	sets.precast["Stun"] = {
