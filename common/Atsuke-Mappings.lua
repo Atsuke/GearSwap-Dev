@@ -165,14 +165,14 @@ elements.storm_of = {['Light']="Aurorastorm", ['Dark']="Voidstorm", ['Fire']="Fi
 		['Ice']="Hailstorm II", ['Lightning']="Thunderstorm II"}
 
 spirits = S{"LightSpirit", "DarkSpirit", "FireSpirit", "EarthSpirit", "WaterSpirit", "AirSpirit", "IceSpirit", "ThunderSpirit"}
+
 elements.spirit_of = {['Light']="Light Spirit", ['Dark']="Dark Spirit", ['Fire']="Fire Spirit", ['Earth']="Earth Spirit",
         ['Water']="Water Spirit", ['Wind']="Air Spirit", ['Ice']="Ice Spirit", ['Lightning']="Thunder Spirit"}
 
 runes = S{'Lux', 'Tenebrae', 'Ignis', 'Gelus', 'Flabra', 'Tellus', 'Sulpor', 'Unda'}
+
 elements.rune_of = {['Light']='Lux', ['Dark']='Tenebrae', ['Fire']='Ignis', ['Ice']='Gelus', ['Wind']='Flabra',
      ['Earth']='Tellus', ['Lightning']='Sulpor', ['Water']='Unda'}
-
-
 
 avatars = M('Carbuncle', 'Fenrir', 'Ifrit', 'Titan', 'Leviathan', 'Garuda', 'Shiva', 'Ramuh', 'Diabolos', 'Cait Sith', 'Siren')
 
@@ -195,7 +195,7 @@ ramuh_ward = M('Rolling Thunder', 'Lightning Armor', 'Shock Squall')
 diabolos_rage = M('Ruinous Omen', 'Camisado', 'Nether Blast', 'Night Terror', 'Blindside')
 diabolos_ward = M('Somnolence', 'Nightmare', 'Ultimate Terror', 'Noctoshield', 'Dream Shroud', 'Pavor Nocturnus')
 cait_sith_rage = M('Regal Scratch', 'Level ? Holy', 'Regal Gash')
-cait_sith_ward = M('Altana\'s Favor', 'Raise II', 'Mewing Lulaby', 'Reraise II', 'Eerie Eye')
+cait_sith_ward = M('Altana\'s Favor', 'Raise II', 'Mewing Lullaby', 'Reraise II', 'Eerie Eye')
 siren_rage = M('Clarsach Call', 'Welt', 'Roundhouse', 'Sonic Buffet', 'Tornado II', 'Hysteric Assault')
 siren_ward = M('Lunatic Voice', 'Katabatic Blades', 'Chinook', 'Bitter Elegy', 'Wind\'s Blessing')
 alexander_ward = M('Perfect Defense')
@@ -277,8 +277,6 @@ skillchains = {
     [300] = {id=300,english='Detonation',elements={'Wind'}, color=Colors[3]},
     [301] = {id=301,english='Impaction',elements={'Lightning'}, color=Colors[7]}
 }
-
-
 
 avatarColors = {
 	["Carbuncle"] = Colors["Light"],
