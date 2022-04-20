@@ -21,7 +21,7 @@ oldAvatar = avatars.current
 currentRage = ''
 currentWard = ''
 mBurstOldValue = mBurst.value
-matchsc = M('OFF', 'AUTO', 'ON')
+matchsc = M('AUTO', 'ON','OFF')
 MB_Window = 0   
 time_start = 0
 autoConvert = true
@@ -491,9 +491,7 @@ function customizeSet()
 				end
 			end		
 		elseif(petMode == 'avatar' and Pet_State == 'Idle') then
-			Custom_Set = set_combine(sets.avatar.perp, sets.me[idleModes.value])
-		
-		
+			Custom_Set = set_combine(sets.avatar.perp, sets.me[idleModes.value])	
 		else
 			Custom_Set = sets.avatar.perp --Pet is out. It is not engaged. Max refresh gear. 
 		end
