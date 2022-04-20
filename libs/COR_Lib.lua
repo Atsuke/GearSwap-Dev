@@ -62,8 +62,7 @@ function precast(spell)
 	
 	-- CorsairRoll. Our bread and butter
 	if (spell.type == 'CorsairRoll' or spell.english == "Double-Up") then
-        --if player.status ~= 'Engaged' and state.WeaponLock.value == false then
-            
+       
 		if sets.precast.CorsairRoll[spell.name] then
 			equip(sets.precast.CorsairRoll[spell.name])        
 		else
@@ -138,9 +137,14 @@ end
 
 function midcast(spell)
     if spell.type == 'CorsairShot' then
-		equip(sets.midcast['CorsairShot'][quickDrawModes.value])
-		
-	    if (spell.english ~= 'Light Shot' and spell.english ~= 'Dark Shot') then
+		--We always want light and dark shots to have the best acc possible since they do no dmg anyway. 
+		if(spell.english == 'Light Shot' or spell.english == 'Dark Shot') then
+			equip(sets.midcast['CorsairShot'].ACC)
+		else
+			equip(sets.midcast['CorsairShot'][quickDrawModes.value])
+		end
+	    
+		if (spell.english ~= 'Light Shot' and spell.english ~= 'Dark Shot') then
             -- Matching double weather (w/o day conflict).
             if spell.element == world.weather_element and (get_weather_intensity() == 2 and spell.element ~= elements.weak_to[world.day_element]) then
                 equip({waist="Hachirin-no-Obi"})
