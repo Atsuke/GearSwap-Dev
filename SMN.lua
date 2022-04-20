@@ -331,12 +331,12 @@ function get_sets()
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
-		head = EMPY.Head,
+		head = AF.Head,
 		body = Apo.Body.A,
 		hands = { name="Asteria Mitts +1", augments={'Path: A',}},
 		legs = { name="Assid. Pants +1", augments={'Path: A',}},
 		feet = "Volte Gaiters",
-		neck = "Caller's Pendant",
+		neck = "Sibyl Scarf",
 		waist = "Lucidity Sash",
 		left_ear = "C. Palug Earring",
 		right_ear = { name="Moonshade Earring", augments={'Accuracy+4','Latent effect: "Refresh"+1',}},
@@ -345,6 +345,8 @@ function get_sets()
 		back = SMNCape.FC,
 		
     }
+	
+	sets.me.Pet = sets.me.Refresh
 
     -- Your idle Sublimation set combine from refresh or DT depening on mode.
     sets.me.sublimation = set_combine(sets.me.refresh,{

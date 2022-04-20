@@ -658,6 +658,11 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		back = Andartia.TP,
 	}
 	
+	------------
+    -- Aftercast
+    ------------
+      
+    -- I don't use aftercast sets, as we handle what to equip later depending on conditions using a function
 	
 	------------------------------------------------------------------------------------------------
     ----------------------------------------- Misc. Sets -------------------------------------------
@@ -669,7 +674,12 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.me = {} -- leave this empty
 	
+	-- Movespeedset
 	sets.me.movespeed = {feet = "Danzo Sune-Ate",}
+	
+	--Night time movement. 
 	sets.nightMovement = {feet = AF.Feet,}
+	
+	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
 end

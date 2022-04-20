@@ -34,8 +34,6 @@ version = "3.0"
 		gs c hud setcolor tools			Cycles colors for selection
 
 		Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
-        
-        
 --]]
 
 --------------------------------------------------------------------------------------------------------------
@@ -211,7 +209,9 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ JSE Sets --------------------------------------------
     ------------------------------------------------------------------------------------------------
+	
 	--define jse capes/armors below. Only have to update one spot as we reforge
+	
 	-- JSE
 	AF = {}         -- leave this empty
 	RELIC = {}      -- leave this empty
@@ -544,6 +544,9 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	sets.me = {} -- leave this empty
 	
+	-- Movespeedset
 	sets.me.movespeed = {feet = "Tandava Crackows",}
+	
+	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
 end

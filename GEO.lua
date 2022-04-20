@@ -265,8 +265,8 @@ function get_sets()
 	-- Fill this with your own JSE. 
     
 	--Geomancy
-	AF.Head     =   "Geo. Galero +1"
-	AF.Body     =   "Geo. Tunic +1"
+	AF.Head     =   "Geo. Galero +2"
+	AF.Body     =   "Geomancy Tunic +2"
 	AF.Hands    =   "Geo. Mitaines +3"
 	AF.Legs     =   "Geo. Pants +2"
 	AF.Feet     =   "Geo. Sandals +3"
@@ -300,12 +300,12 @@ function get_sets()
 		main = "Idris",
 		sub = "Genmei Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head = EMPY.Head,
-		body = "Mallquis Saio +2",
-		hands = AF.Hands,
+		head = "Befouled Crown",
+		body = AF.Body,
+		hands = "Volte Gloves",
 		legs = "Assid. Pants +1",
 		feet = RELIC.Feet,
-		neck = { name="Bagua Charm +2", augments={'Path: A',}},
+		neck = "Sibyl Scarf",
 		waist = "Isa Belt",
 		left_ear = "Odnowa Earring +1",
 		right_ear = "Etiolation Earring",
@@ -709,7 +709,15 @@ function get_sets()
     ------------
       
     -- I don't use aftercast sets, as we handle what to equip later depending on conditions using a function, eg, do we have a Luopan pan out?
-  -- Movespeed boots
+	
+	------------------------------------------------------------------------------------------------
+    ----------------------------------------- Misc. Sets -------------------------------------------
+	------------------------------------------------------------------------------------------------
+	
+	-- Movespeed boots
 	sets.me.movespeed = {feet = AF.Feet}
+	
+	
+	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
 end

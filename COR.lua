@@ -478,10 +478,11 @@ include('Kuvira_AugGear.lua')
 	
 	sets.midcast['CorsairShot']['ACC'] = set_combine(sets.midcast['CorsairShot'],{
 		head = AF.Head,
-		--body = "Malignance Tabard",
+		body = RELIC.Body,
 		hands = AF.Hands,
 		legs = "Ikenga's Trousers",
 		feet =  AF.Feet,
+		right_ear = "Gwati Earring",
 		right_ring = "Stikini Ring",
 	
 	})
