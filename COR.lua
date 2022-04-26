@@ -13,8 +13,7 @@ version = "3.0"
 	
 		gs c toggle idlemode            Change Idle Mode
 		gs c toggle runspeed 		    Toggles locking on / off Carmine Cuisses +1
-		gs c toggle meleemode           Change Idle Mode    
-		gs c toggle enmity			   	Toggle casting modes between regular and Enmity for Utsusemi
+		gs c toggle meleemode           Change Melee Mode    
 		gs c toggle melee			    Toggle Melee mode on / off and locking of weapons  
 		gs c toggle ranged            	Toggle Ranged attack modes
 		gs c dnc voke					Uses either Provoke or Animated Flourish depending on subjob

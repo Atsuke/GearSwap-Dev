@@ -40,6 +40,10 @@ version = "3.0"
         gs c nuke helix                 Cast helix nuke of saved element 
         gs c nuke storm                 Cast Storm buff of saved element  
 		
+		gs c summoner summon			Calls the selected avatar
+		gs c summoner siphon			Starts elemental siphon process
+		gs c summoner rage				Uses the currently selected rage
+		gs c summoner ward				Uses the currently selected ward
 		gs c summoner cycle             cycle through available avatars
 		gs c summoner cycledown         cycle through available avatars
 		gs c summoner cyclerage         cycle through avaialable rage bp's

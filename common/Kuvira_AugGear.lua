@@ -81,6 +81,12 @@
 	Telchine.Hands = {}
 	Telchine.Legs = {}
 	Telchine.Feet ={}
+	Psycloth = {}
+	Psycloth.Head = {}
+	Psycloth.Body = {}
+	Psycloth.Hands = {}
+	Psycloth.Legs = {}
+	Psycloth.Feet = {}
 --------------------------------------------------
 -- Augmented gear
 --------------------------------------------------   
@@ -108,6 +114,7 @@
 	Herc.Legs.WSD       =   { name="Herculean Trousers", augments={'Pet: "Mag.Atk.Bns."+4','DEX+7','Weapon skill damage +6%',}}
 	Herc.Legs.MAB 		= 	{ name="Herculean Trousers", augments={'"Mag.Atk.Bns."+17','Mag. crit. hit dmg. +10%','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
 	Herc.Feet.MAB       =   { name="Herculean Boots", augments={'"Mag.Atk.Bns."+23','MND+10',}}
+	Herc.Feet.TA		=	{ name="Herculean Boots", augments={'Accuracy+28','"Triple Atk."+3','DEX+3',}}
 	
 	
 	Carm.Hands.D		=   { name="Carmine Fin. Ga.", augments={'Rng.Atk.+15','"Mag.Atk.Bns."+10','"Store TP"+5',}}
@@ -132,3 +139,5 @@
 	Taeon.Hands.PetDT   =   { name="Taeon Gloves", augments={'Pet: Accuracy+23 Pet: Rng. Acc.+23','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
 	Taeon.Legs.PetDT    =   { name="Taeon Tights", augments={'Pet: Accuracy+20 Pet: Rng. Acc.+20','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
 	Taeon.Feet.PetDT    =   { name="Taeon Boots", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
+	
+	Psycloth.Head.FC 	=	{ name="Psycloth Tiara", augments={'Mag. Acc.+20','"Fast Cast"+10','INT+7',}}

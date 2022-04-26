@@ -120,7 +120,7 @@ toolColors:set('green')
 textHideMode:set(false)		-- Change to toggle default visibility of Mode section
 textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
 textHideJob:set(false)		-- Change to toggle default visibility of job Section
-textHideBattle:set(true)	-- Change to toggle default visibility for battle section
+textHideBattle:set(false)	-- Change to toggle default visibility for battle section
 textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
 useLightMode:set(false)		-- Change to toggle default setting for lite mode
 keybinds:set(true)			-- Change to toggle default setting for keybind visibility
