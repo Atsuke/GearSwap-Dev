@@ -154,7 +154,9 @@ ninjaNukes = {}
 ninjaNukes.t1 = {['Earth']="Doton: Ichi",      ['Water']="Suiton: Ichi",      ['Air']="Huton: Ichi",     ['Fire']="Katon: Ichi",    ['Ice']="Hyoton: Ichi",     ['Lightning']="Raiton: Ichi"}
 ninjaNukes.t2 = {['Earth']="Doton: Ni",        ['Water']="Suiton: Ni",        ['Air']="Huton: Ni",       ['Fire']="Katon: Ni",      ['Ice']="Hyoton: Ni",       ['Lightning']="Raiton: Ni"}
 ninjaNukes.t3 = {['Earth']="Doton: San",       ['Water']="Suiton: San",       ['Air']="Huton: San",      ['Fire']="Katon: San",     ['Ice']="Hyoton: San",      ['Lightning']="Raiton: San"}
- 
+
+no_skill_spells_list = S{'Haste', 'Refresh', 'Regen', 'Protect', 'Protectra', 'Shell', 'Shellra', 'Raise', 'Reraise', 'Sneak', 'Invisible', 'Deodorize'}
+
 
 storms = S{"Aurorastorm", "Voidstorm", "Firestorm", "Sandstorm", "Rainstorm", "Windstorm", "Hailstorm", "Thunderstorm",
 		"Aurorastorm II", "Voidstorm II", "Firestorm II", "Sandstorm II", "Rainstorm II", "Windstorm II", "Hailstorm II", "Thunderstorm II"}
@@ -312,6 +314,110 @@ tier2sc['Lightning'] = 'Fragmentation'
 tier2sc['Water'] = 'Distortion'
 tier2sc['Fire'] = 'Fusion'
 
+blue_magic_maps = {}
+
+    -- Mappings for gear sets to use for various blue magic spells.
+    -- While Str isn't listed for each, it's generally assumed as being at least
+    -- moderately signficant, even for spells with other mods.
+
+    -- Physical spells with no particular (or known) stat mods
+    blue_magic_maps.Physical = S{'Bilgestorm'}
+
+    -- Spells with heavy accuracy penalties, that need to prioritize accuracy first.
+    blue_magic_maps.PhysicalAcc = S{'Heavy Strike'}
+
+    -- Physical spells with Str stat mod
+    blue_magic_maps.PhysicalStr = S{'Battle Dance','Bloodrake','Death Scissors','Dimensional Death',
+        'Empty Thrash','Quadrastrike','Saurian Slide','Sinker Drill','Spinal Cleave','Sweeping Gouge',
+        'Uppercut','Vertical Cleave'}
+
+    -- Physical spells with Dex stat mod
+    blue_magic_maps.PhysicalDex = S{'Amorphic Spikes','Asuran Claws','Barbed Crescent','Claw Cyclone',
+        'Disseverment','Foot Kick','Frenetic Rip','Goblin Rush','Hysteric Barrage','Paralyzing Triad',
+        'Seedspray','Sickle Slash','Smite of Rage','Terror Touch','Thrashing Assault','Vanity Dive'}
+
+    -- Physical spells with Vit stat mod
+    blue_magic_maps.PhysicalVit = S{'Body Slam','Cannonball','Delta Thrust','Glutinous Dart','Grand Slam',
+        'Power Attack','Quad. Continuum','Sprout Smack','Sub-zero Smash'}
+
+    -- Physical spells with Agi stat mod
+    blue_magic_maps.PhysicalAgi = S{'Benthic Typhoon','Feather Storm','Helldive','Hydro Shot','Jet Stream',
+        'Pinecone Bomb','Spiral Spin','Wild Oats'}
+
+    -- Physical spells with Int stat mod
+    blue_magic_maps.PhysicalInt = S{'Mandibular Bite','Queasyshroom'}
+
+    -- Physical spells with Mnd stat mod
+    blue_magic_maps.PhysicalMnd = S{'Ram Charge','Screwdriver','Tourbillion'}
+
+    -- Physical spells with Chr stat mod
+    blue_magic_maps.PhysicalChr = S{'Bludgeon'}
+
+    -- Physical spells with HP stat mod
+    blue_magic_maps.PhysicalHP = S{'Final Sting'}
+
+    -- Magical spells with the typical Int mod
+    blue_magic_maps.Magical = S{'Anvil Lightning','Blastbomb','Blazing Bound','Bomb Toss','Cursed Sphere',
+        'Droning Whirlwind','Embalming Earth','Entomb','Firespit','Foul Waters','Ice Break','Leafstorm',
+        'Maelstrom','Molting Plumage','Nectarous Deluge','Regurgitation','Rending Deluge','Scouring Spate',
+        'Silent Storm','Spectral Floe','Subduction','Tem. Upheaval','Water Bomb'}
+
+    blue_magic_maps.MagicalDark = S{'Dark Orb','Death Ray','Eyes On Me','Evryone. Grudge','Palling Salvo',
+        'Tenebral Crush'}
+
+    blue_magic_maps.MagicalLight = S{'Blinding Fulgor','Diffusion Ray','Radiant Breath','Rail Cannon',
+        'Retinal Glare'}
+
+    -- Magical spells with a primary Mnd mod
+    blue_magic_maps.MagicalMnd = S{'Acrid Stream','Magic Hammer','Mind Blast'}
+
+    -- Magical spells with a primary Chr mod
+    blue_magic_maps.MagicalChr = S{'Mysterious Light'}
+
+    -- Magical spells with a Vit stat mod (on top of Int)
+    blue_magic_maps.MagicalVit = S{'Thermal Pulse'}
+
+    -- Magical spells with a Dex stat mod (on top of Int)
+    blue_magic_maps.MagicalDex = S{'Charged Whisker','Gates of Hades'}
+
+    -- Magical spells (generally debuffs) that we want to focus on magic accuracy over damage.
+    -- Add Int for damage where available, though.
+    blue_magic_maps.MagicAccuracy = S{'1000 Needles','Absolute Terror','Actinic Burst','Atra. Libations',
+        'Auroral Drape','Awful Eye', 'Blank Gaze','Blistering Roar','Blood Saber','Chaotic Eye',
+        'Cimicine Discharge','Cold Wave','Corrosive Ooze','Demoralizing Roar','Digest','Dream Flower',
+        'Enervation','Feather Tickle','Filamented Hold','Frightful Roar','Geist Wall','Hecatomb Wave',
+        'Infrasonics','Jettatura','Light of Penance','Lowing','Mind Blast','Mortal Ray','MP Drainkiss',
+        'Osmosis','Reaving Wind','Sandspin','Sandspray','Sheep Song','Soporific','Sound Blast',
+        'Stinking Gas','Sub-zero Smash','Venom Shell','Voracious Trunk','Yawn'}
+
+    -- Breath-based spells
+    blue_magic_maps.Breath = S{'Bad Breath','Flying Hip Press','Frost Breath','Heat Breath','Hecatomb Wave',
+        'Magnetite Cloud','Poison Breath','Self-Destruct','Thunder Breath','Vapor Spray','Wind Breath'}
+
+    -- Stun spells
+    blue_magic_maps.StunPhysical = S{'Frypan','Head Butt','Sudden Lunge','Tail slap','Whirl of Rage'}
+    blue_magic_maps.StunMagical = S{'Blitzstrahl','Temporal Shift','Thunderbolt'}
+
+    -- Healing spells
+    blue_magic_maps.Healing = S{'Healing Breeze','Magic Fruit','Plenilune Embrace','Pollen','Restoral',
+        'Wild Carrot'}
+
+    -- Buffs that depend on blue magic skill
+    blue_magic_maps.SkillBasedBuff = S{'Barrier Tusk','Diamondhide','Magic Barrier','Metallic Body',
+        'Plasma Charge','Pyric Bulwark','Reactor Cool','Occultation'}
+
+    -- Other general buffs
+    blue_magic_maps.Buff = S{'Amplification','Animating Wail','Carcharian Verve','Cocoon',
+        'Erratic Flutter','Exuviation','Fantod','Feather Barrier','Harden Shell','Memento Mori',
+        'Nat. Meditation','Orcish Counterstance','Refueling','Regeneration','Saline Coat','Triumphant Roar',
+        'Warm-Up','Winds of Promyvion','Zephyr Mantle'}
+
+    blue_magic_maps.Refresh = S{'Battery Charge'}
+
+    -- Spells that require Unbridled Learning to cast.
+    unbridled_spells = S{'Absolute Terror','Bilgestorm','Blistering Roar','Bloodrake','Carcharian Verve','Cesspool',
+        'Crashing Thunder','Cruel Joke','Droning Whirlwind','Gates of Hades','Harden Shell','Mighty Guard',
+        'Polar Roar','Pyric Bulwark','Tearing Gust','Thunderbolt','Tourbillion','Uproot'}
 
 areas = {}
 
