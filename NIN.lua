@@ -109,7 +109,7 @@ textHideTools:set(false)	-- Change to toggle the default setting of the tool cou
 
 
 -- Optional. Swap to your sch macro sheet / book
-set_macros(7,11) -- Sheet, Book   
+set_macros(2,11) -- Sheet, Book   
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
