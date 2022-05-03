@@ -33,11 +33,11 @@ function buff_change(buff,gain)
             disable('ring1','ring2','waist')
         else
             enable('ring1','ring2','waist')
-            
+			idle()
         end
     end
 	
-	idle()
+	
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -144,7 +144,6 @@ function midcast(spell)
             if spell_list:contains(spell.english) then
                 
 				equip(sets.midcast['Blue Magic'][category])
-				print(category)
 				if category == 'Magical' then
 					if spell.element == world.weather_element and (get_weather_intensity() == 2 and spell.element ~= elements.weak_to[world.day_element]) then
 						equip({waist="Hachirin-no-Obi"})
