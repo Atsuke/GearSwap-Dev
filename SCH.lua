@@ -155,10 +155,10 @@ set_macros(2,12) -- Sheet, Book
 -- to define sets for idle if you add more modes, name them: sets.me.idle.mymode and add 'mymode' in the group.
 -- to define sets for regen if you add more modes, name them: sets.midcast.regen.mymode and add 'mymode' in the group.
 -- Same idea for nuke modes. 
-idleModes = M('refresh', 'dt', 'mdt')
-regenModes = M('hybrid', 'duration', 'potency')
+idleModes = M('Refresh', 'DT', 'MDT')
+regenModes = M('Hybrid', 'Duration', 'Potency')
 -- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmodes
-nukeModes = M('normal', 'acc')
+nukeModes = M('Normal', 'Acc')
 convertModes = M('OFF', 'AUTO')
 
 -- Setup your Key Bindings here:
@@ -286,7 +286,7 @@ function get_sets()
 	}
 
     -- Your idle set
-    sets.me.idle.refresh = {
+    sets.me.idle.Refresh = {
 		main = "Daybreak",
 		sub = "Genmei Shield",
 		ammo = "Ghastly Tathlum +1",
@@ -305,7 +305,7 @@ function get_sets()
     }
 
     -- Your idle Sublimation set combine from refresh or DT depening on mode.
-    sets.me.idle.sublimation = set_combine(sets.me.idle.refresh,{
+    sets.me.idle.sublimation = set_combine(sets.me.idle.Refresh,{
     	sub = "Ammurapi Shield",
 		head = AF.Head,
 		body = RELIC.Body,
@@ -315,14 +315,14 @@ function get_sets()
 		left_ring = "Woltaris Ring",
     })   
     -- Your idle DT set
-    sets.me.idle.dt = set_combine(sets.me.idle[refreshType],{
+    sets.me.idle.DT = set_combine(sets.me.idle[refreshType],{
         main = "Malignance Pole",
-		sub = "Alber Strap",
+		sub = "Kaja Grip",
 		feet =  'Nyame Sollerets',
 		neck = "Warder's Charm +1",
 		waist = "Embla Sash",
     })  
-    sets.me.idle.mdt = set_combine(sets.me.idle[refreshType],{
+    sets.me.idle.MDT = set_combine(sets.me.idle.DT,{
         
     })  
 	-- Your MP Recovered Whilst Resting Set
@@ -511,7 +511,7 @@ function get_sets()
 
 	sets.midcast["Sublimation"] = {head= AF.Head, body= RELIC.Body}
     
-    sets.midcast.nuking.normal = {
+    sets.midcast.nuking.Normal = {
 		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		ammo = "Ghastly Tathlum +1",
@@ -531,16 +531,16 @@ function get_sets()
 	
     -- used with toggle, default: F10
     -- Pieces to swap from freen nuke to Magic Burst
-    sets.midcast.MB.normal = set_combine(sets.midcast.nuking.normal, {
+    sets.midcast.MB.Normal = set_combine(sets.midcast.nuking.Normal, {
 		main = { name="Akademos", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
 		sub = "Enki Strap",
     })
 	
-    sets.midcast.nuking.acc = {}
+    sets.midcast.nuking.Acc = {}
 	
     -- used with toggle, default: F10
     -- Pieces to swap from freen nuke to Magic Burst
-    sets.midcast.MB.acc = set_combine(sets.midcast.nuking.normal, {
+    sets.midcast.MB.Acc = set_combine(sets.midcast.nuking.Normal, {
 	   
     })	
 	
@@ -659,7 +659,7 @@ function get_sets()
     ------------	
 	sets.midcast.regen = {} 	-- leave this empty
 	-- Normal hybrid well rounded Regen
-    sets.midcast.regen.hybrid = {
+    sets.midcast.regen.Hybrid = {
 		main = "Bolelabunga",
 		sub = "Ammurapi Shield",
 		ammo = "Incantor Stone",
@@ -677,11 +677,11 @@ function get_sets()
 		back = SCHCape.NUKE,
     }
 	-- Focus on Regen Duration 	
-    sets.midcast.regen.duration = set_combine(sets.midcast.regen.hybrid,{
+    sets.midcast.regen.Duration = set_combine(sets.midcast.regen.Hybrid,{
 		head = Telchine.Head.en,
     }) 
 	-- Focus on Regen Potency 	
-    sets.midcast.regen.potency = set_combine(sets.midcast.regen.hybrid,{
+    sets.midcast.regen.Potency = set_combine(sets.midcast.regen.Hybrid,{
 		back = { name="Bookworm's Cape", augments={'INT+2','MND+4','"Regen" potency+9',}}
 
     }) 

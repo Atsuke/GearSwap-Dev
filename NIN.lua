@@ -263,6 +263,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	Andartia.TP     = { name="Andartia's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}}
 	Andartia.FC     = { name="Andartia's Mantle", augments={'Eva.+20 /Mag. Eva.+20','"Fast Cast"+10','Spell interruption rate down-10%',}}
 	Andartia.STRWSD = { name="Andartia's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}}
+	Andartia.NUKE	= { name="Andartia's Mantle", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%',}}
+	Andartia.AGI	= { name="Andartia's Mantle", augments={'AGI+20','Accuracy+20 Attack+20','AGI+4','Weapon skill damage +10%','Phys. dmg. taken-10%',}}
 	
 	------------------------------------------------------------------------------------------------
     ---------------------------------------- Precast Sets ------------------------------------------
@@ -425,6 +427,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Hermetic Earring",
 		left_ring = "Persis Ring",
 		right_ring = "Dingir Ring",
+		back = Andartia.NUKE,
 	}
 	
 	sets.midcast.nuking['Acc'] = sets.midcast.nuking['Normal']
@@ -514,7 +517,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Brutal Earring",
 		left_ring = "Hetairoi Ring",
 		right_ring = "Ilabrat Ring",
-		back = Andartia.TP,
+		back = Andartia.AGI,
 	}
 	
 	sets.precast['Blade: Teki'] = {

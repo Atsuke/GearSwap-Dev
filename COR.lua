@@ -279,9 +279,10 @@ include('Kuvira_AugGear.lua')
 	
 	Camulus.RATP     = { name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','"Store TP"+10',}}
 	Camulus.STRWSD   = { name="Camulus's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
-	Camulus.MeleeTP  = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
+	Camulus.MeleeTP  = { name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
 	Camulus.SnapShot = { name="Camulus's Mantle", augments={'"Snapshot"+10',}}
 	Camulus.AGIWSD   = { name="Camulus's Mantle", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}}
+	Camulus.LStand	 = { name="Camulus's Mantle", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','Weapon skill damage +10%','Phys. dmg. taken-10%',}}
 	
 	------------------------------------------------------------------------------------------------
 	---------------------------------------- Precast Sets ------------------------------------------
@@ -513,7 +514,9 @@ include('Kuvira_AugGear.lua')
 		back = Camulus.AGIWSD
 	}
 
-    sets.precast['Last Stand'] = sets.precast.WS
+    sets.precast['Last Stand'] = set_combine(set.precast.WS,{
+		back = Camulus.LStand,
+	})
 
 	
     sets.precast['Leaden Salute'] = set_combine(sets.precast.WS,{
@@ -578,7 +581,7 @@ include('Kuvira_AugGear.lua')
 		right_ear = "Hecate's Earring",
 		left_ring = "Dingir Ring",
 		right_ring = "Garuda Ring",
-		back = Camulus.AGIWSD,
+		back = Camulus.LStand,
 	}
 	
 	sets.precast['Evisceration'] = {

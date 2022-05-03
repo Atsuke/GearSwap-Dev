@@ -244,9 +244,10 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	Toetapper = {} -- leave this empty
 	
 	Toetapper.RF = { name="Toetapper Mantle", augments={'"Store TP"+4','"Dual Wield"+2','"Rev. Flourish"+29','Weapon skill damage +2%',}}
-	Senuna.DA =  { name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
+	Senuna.DA = { name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
 	Senuna.WSD = { name="Senuna's Mantle", augments={'DEX+20','DEX+10','Weapon skill damage +10%',}}
-	Senuna.AGI = { name="Senuna's Mantle", augments={'AGI+20','Accuracy+20 Attack+20','AGI+10','Weapon skill damage +10%',}}
+	Senuna.AGI = { name="Senuna's Mantle", augments={'AGI+20','Accuracy+20 Attack+20','AGI+10','"Dbl.Atk."+10','Damage taken-5%',}}
+	Senuna.CRIT = { name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Phys. dmg. taken-10%',}}
 
 	
 	
@@ -411,6 +412,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		feet = Herc.Feet.WSD,
 		neck = { name="Etoile Gorget +2", augments={'Path: A',}},
 		waist = "Grunfeld Rope",
+		back = Senuna.CRIT,
 	})
 
     sets.precast["Rudra's Storm"] = set_combine(sets.precast.WS,{

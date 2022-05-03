@@ -446,7 +446,7 @@ function get_sets()
 		right_ear = "Loquac. Earring",
 		left_ring = "Prolix Ring",
 		right_ring = "Kishar Ring",
-		back = Nantosuelta.FC,
+		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
     }   
 
     sets.precast.geomancy = set_combine(sets.precast.casting,{
@@ -482,7 +482,7 @@ function get_sets()
 		left_ear = "Mendi. Earring",
 		right_ear = "Loquac. Earring",
 		left_ring = "Prolix Ring",
-		back = Nantosuelta.FC,
+		
     })
     sets.precast.regen = set_combine(sets.precast.casting,{
 

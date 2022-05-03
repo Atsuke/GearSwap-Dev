@@ -95,7 +95,7 @@ textHideTools:set(false)	-- Change to toggle the default setting of the tool cou
 -- You can add or remove modes in the table below, they will get picked up in the cycle automatically. 
 -- Each mode needs to have a corresponding set in order to work.  ex: sets.idle.Regen
 
-idleModes   = M('Regain','DT')
+idleModes   = M('Regain','DT', 'Refresh')
 meleeModes  = M('TP', 'Hybrid', 'DT', 'Acc')
 
 	------------------------------------------------------------------------------------------------
@@ -210,23 +210,25 @@ include('Kuvira_AugGear.lua')
 	--Lanun
 	RELIC.Head  = { name="Luh. Keffiyeh +1", augments={'Enhances "Convergence" effect',}}
 	RELIC.Body  = { name="Luhlaza Jubbah +3", augments={'Enhances "Enchainment" effect',}}
-	RELIC.Hands = { name="Luhlaza Bazubands", augments={'Enhances "Azure Lore" effect',}}
+	RELIC.Hands = { name="Luh. Bazubands +1", augments={'Enhances "Azure Lore" effect',}}
 	RELIC.Legs  = { name="Luhlaza Shalwar +2", augments={'Enhances "Assimilation" effect',}}
-	RELIC.Feet  = ""
+	RELIC.Feet  = { name="Luhlaza Charuqs +1", augments={'Enhances "Diffusion" effect',}}
 	
 	--Chasseur
-	EMPY.Head  = "Hashishin Kavuk"
-	EMPY.Body  = "Hashishin Mintan"
-	EMPY.Hands = "Mv. Bazubands +1"
-	EMPY.Legs  = "Hashishin Tayt"
-	EMPY.Feet  = "Mavi Basmak +1"
+	EMPY.Head  = "Hashishin Kavuk +1"
+	EMPY.Body  = "Hashishin Mintan +1"
+	EMPY.Hands = "Hashi. Bazu. +1"
+	EMPY.Legs  = "Hashishin Tayt +1"
+	EMPY.Feet  = "Hashi. Basmak +1"
 	
 		
 	-- Define your JSE Capes here. 
 	Rosmerta = {} -- leave this empty
 	Cornflower = {} -- leave this empty
 	
-	Rosmerta.Nuke = { name="Rosmerta's Cape", augments={'INT+20','Magic Damage +8','"Mag.Atk.Bns."+10',}}
+	Rosmerta.Nuke = { name="Rosmerta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +8','"Mag.Atk.Bns."+10','Phys. dmg. taken-10%',}}
+	Rosmerta.TP   = { name="Rosmerta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10','Damage taken-5%',}}
+	Rosmerta.STR  = { name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}}
 	
 	
 	------------------------------------------------------------------------------------------------
@@ -242,7 +244,7 @@ include('Kuvira_AugGear.lua')
 		head = Psycloth.Head.FC,
 		body = RELIC.Body,
 		hands = { name="Leyline Gloves", augments={'Accuracy+14','Mag. Acc.+13','"Mag.Atk.Bns."+13','"Fast Cast"+2',}},
-		legs = "Aya. Cosciales +1",
+		legs = "Aya. Cosciales +2",
 		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
 		left_ear = "Loquac. Earring",
 		right_ear = "Etiolation Earring",
@@ -282,7 +284,7 @@ include('Kuvira_AugGear.lua')
         head = RELIC.Head,
         body = AF.Body,
         --hands = "Rawhide Gloves",
-        legs = EMPY.legs,
+        legs = EMPY.Legs,
         feet = RELIC.Feet,
         --neck = "Mirage Stole +2",
         right_ear = "Njordr Earring",
@@ -483,7 +485,7 @@ include('Kuvira_AugGear.lua')
 		right_ear = { name="Moonshade Earring", augments={'"Mag.Atk.Bns."+4','TP Bonus +250',}},
 		left_ring = "Ifrit Ring",
 		right_ring = "Apate Ring",
-		--back = { name="Rosmerta's Cape", augments={'INT+20','Magic Damage +8','"Mag.Atk.Bns."+10',}},
+		back = Rosmerta.STR,
 	}
 
 	sets.precast["Savage Blade"] = sets.precast.WS
@@ -567,21 +569,27 @@ include('Kuvira_AugGear.lua')
 		neck = "Sibyl Scarf",
 		right_ring = "Defending Ring",
 		right_ear = "Infused Earring",
-	
+		back = Rosmerta.TP
 	}
 	
 	sets.idle.DT = {
 		head = { name="Blistering Sallet +1", augments={'Path: A',}},
 		body = "Ayanmo Corazza +2",
 		hands = "Malignance Gloves",
-		legs = "Aya. Cosciales +1",
+		legs = "Aya. Cosciales +2",
 		feet = "Malignance Boots",
-		neck = "Loricate Torque +1",
 		neck = "Loricate Torque +1",
 		right_ring = "Defending Ring",
 		right_ear = "Infused Earring",
-		--back = 
+		back = Rosmerta.TP
 	}
+	
+	sets.idle.Refresh = set_combine(sets.idle.Regain,{
+		body = RELIC.Body,
+		legs = Rawhide.Legs.Refresh,
+		neck = "Sibyl Scarf",
+		
+	})
 
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Engaged Sets ------------------------------------------
@@ -603,7 +611,7 @@ include('Kuvira_AugGear.lua')
 		right_ear = "Suppanomimi",
 		left_ring = "Epona's Ring",
 		right_ring = "Petrov Ring",
-		--back = { name="Rosmerta's Cape", augments={'INT+20','Magic Damage +8','"Mag.Atk.Bns."+10',}},
+		back = Rosmerta.TP,
 	}
 	
 	sets.engaged.Hybrid = set_combine(sets.engaged.TP, {
@@ -620,7 +628,7 @@ include('Kuvira_AugGear.lua')
 		head = { name="Blistering Sallet +1", augments={'Path: A',}},
 		body = "Ayanmo Corazza +2",
 		hands = "Malignance Gloves",
-		legs = "Aya. Cosciales +1",
+		legs = "Aya. Cosciales +2",
 		feet = "Malignance Boots",
 		neck = "Loricate Torque +1",
 		waist = "Reiki Yotai",
@@ -628,7 +636,7 @@ include('Kuvira_AugGear.lua')
 		right_ear = "Suppanomimi",
 		left_ring = "Epona's Ring",
 		right_ring = "Defending Ring",
-		--back = 
+		back = Rosmerta.TP
 	}
 	
 	sets.engaged.Acc = set_combine(sets.engaged.TP,{})

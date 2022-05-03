@@ -322,7 +322,7 @@ function get_sets()
     -- Define JSE Capes
     SMNCape = {}
     SMNCape.FC       =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Fast Cast"+10','Phys. dmg. taken-10%',}}
-    SMNCape.Physical =   { name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Pet: Attack+10 Pet: Rng.Atk.+10','"Cure" potency +10%','Pet: Damage taken -5%',}}
+    SMNCape.Physical =   { name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Pet: Attack+10 Pet: Rng.Atk.+10','Pet: Haste+10','Pet: Damage taken -5%',}}
 	SMNCape.PetPDT   =   { name="Campestres's Cape", augments={'Pet: "Regen"+10','System: 1 ID: 1246 Val: 4',}}
 	SMNCape.MAB      =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Fast Cast"+10','Phys. dmg. taken-10%',}}
 
@@ -350,29 +350,27 @@ function get_sets()
 		
     }
 	
-	sets.me.Pet = sets.me.Refresh
+	sets.me.Pet = set_combine(sets.me.Refresh, {
+		neck = "Caller's Pendant",
+		
+	})
 
     -- Your idle Sublimation set combine from refresh or DT depening on mode.
-    sets.me.sublimation = set_combine(sets.me.refresh,{
-    	main = "Nirvana",
-		sub = "Ammurapi Shield",
-		head = "Acad. Mortar. +3",
-		body = RELIC.Body,
-		neck = "Loricate Torque",
+    sets.me.sublimation = set_combine(sets.me.Refresh,{
+    	
 		waist = "Embla Sash",
-		right_ear = "Odnowa Earring +1",
 		left_ring = "Woltaris Ring",
     })   
     -- Your idle DT set
     sets.me.DT = set_combine(sets.me.Idle[refreshType],{ --sets.me.DT
         main = "Malignance Pole",
-		sub = "Alber Strap",
+		sub = "Kaja Grip",
 		legs = "Nyame Flanchard",
 		feet = "Nyame Sollerets",
 		neck = { name="Smn. Collar +2", augments={'Path: A',}},
 		
     })  
-    sets.me.Idle.mdt = set_combine(sets.me.Idle[refreshType],{
+    sets.me.Idle.mdt = set_combine(sets.me.Idle.DT,{
         
     })  
 	-- Your MP Recovered Whilst Resting Set
@@ -389,7 +387,7 @@ function get_sets()
 	-- Combat Related Sets
     sets.me.Engaged = {
 		main = "Nirvana",
-		sub = "Elan Strap +1",
+		sub = "Kaja Grip",
 		ammo = "Sancus Sachet +1",
 		head = AF.Head,
 		body = AF.Body,
@@ -471,7 +469,6 @@ function get_sets()
     
     sets.precast.casting = {
 		main = "Nirvana",
-		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
 		head = Merl.Head.FC,
 		body = "Zendik Robe",
@@ -700,9 +697,9 @@ function get_sets()
 	sets.avatar = {}
 		
 	-- Pet out but not doing anything
-	sets.avatar.perp = {  -- Change this setname to sets.avatar.perp
+	sets.avatar.perp = { 
 		main = "Nirvana",
-		sub = "Elan Strap +1",
+		sub = "Kaja Grip",
 		ammo = "Sancus Sachet +1",
 		head = EMPY. Head,
 		body = Apo.Body.A,
@@ -721,7 +718,7 @@ function get_sets()
 	-- Have pet and it is doing all the work.  Note the capitalization of Idle and Engaged.  This is important as we are calling player and pet state.
 	sets.avatar.TP = { -- sets.avatar.TP
 		main = "Nirvana",
-		sub = "Elan Strap +1",
+		sub = "Kaja Grip",
 		ammo = "Sancus Sachet +1",
 		head = AF.Head,
 		body = RELIC.Body,
@@ -758,7 +755,7 @@ function get_sets()
 	sets.MasterPet.TP = {
 	
 		main = "Nirvana",
-		sub = "Elan Strap +1",
+		sub = "Kaja Grip",
 		ammo = "Sancus Sachet +1",
 		head = AF.Head,
 		body = AF.Body,
