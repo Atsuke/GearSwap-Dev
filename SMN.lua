@@ -23,7 +23,8 @@ version = "3.0"
         gs c toggle melee               Toggle Melee mode on / off and locking of weapons
         gs c toggle mb                  Toggles Magic Burst Mode on / off.
         gs c toggle runspeed            Toggles locking on / off Herald's Gaiters
-        gs c toggle idlemode            Toggles between Refresh and DT idle mode. Activating Sublimation JA will auto replace refresh set for sublimation set. DT set will superceed both.        
+        gs c toggle idlemode            Toggles between Refresh and DT idle mode. Activating Sublimation JA will auto replace refresh set for sublimation set. DT set will superceed both. 
+		gs c toggle petmode				Toggles pet modes 		
         gs c toggle regenmode           Toggles between Hybrid, Duration and Potency mode for regen set  
         gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
         gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
@@ -31,7 +32,7 @@ version = "3.0"
 		gs c toggle autoconvert			Toggles autoconvert modes
                 
         
-        Nukie Functions:
+        Nuke Functions:
         gs c nuke cycle                 Cycles element type for nuking & SC
         gs c nuke cycledown             Cycles element type for nuking & SC in reverse order    
         gs c nuke t1                    Cast tier 1 nuke of saved element 
@@ -150,7 +151,7 @@ tools_on['tool_4'] = ""
 tool_warning = 20
 
 
--- Optional. Swap to your sch macro sheet / book
+-- Optional. Swap to your smn macro sheet / book
 set_macros(2,13) -- Sheet, Book   
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
@@ -408,45 +409,6 @@ function get_sets()
 	sets.me.Engaged["Master+Pet"] = sets.me.Engaged
     -- Weapon Skills sets just add them by name.
 
-	------------------------------------------------------------------------------------------------
-	--------------------------------------- WeaponSkill Sets ---------------------------------------
-	------------------------------------------------------------------------------------------------
- 
-    sets.me["Shattersoul"] = {
-		
-		ammo = "Sancus Sachet +1",
-		head = "Nyame Helm",
-		body = "Nyame Mail",
-		hands = "Nyame Gauntlets",
-		legs = "Nyame Flanchard",
-		feet = "Nyame Sollerets",
-		neck = "Fotia Gorget",
-		waist = "Fotia Belt",
-		left_ear = "Malignance Earring",
-		right_ear = "Ishvara Earring",
-		left_ring = "Spiral Ring",
-		right_ring = "Persis Ring",
-		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},
-		
-    }
-    sets.me["Myrkr"] = {
-		ammo = "Ghastly Tathlum +1",
-		head = RELIC.head,
-		body = AF.Body,
-		hands = RELIC.hands,
-		legs = RELIC.Legs,
-		feet = EMPY.Feet,
-		neck = "Sanctity Necklace",
-		waist = "Fucho-no-Obi",
-		left_ear = "Evans Earring",
-		right_ear = "Etiolation Earring",
-		left_ring = "Persis Ring",
-		right_ring = "Zodiac Ring",
-		back = "Fi Follet Cape +1",
-    }
-    
-		  
-    -- Feel free to add new weapon skills, make sure you spell it the same as in game. These are the only two I ever use though
   
     ------------
     -- Buff Sets
@@ -689,6 +651,48 @@ function get_sets()
 		right_ring = "Evoker's Ring",
 		back = "Twilight Cape",
 	}
+	
+	------------------------------------------------------------------------------------------------
+	--------------------------------------- WeaponSkill Sets ---------------------------------------
+	------------------------------------------------------------------------------------------------
+ 
+    sets.precast["Shattersoul"] = {
+		
+		ammo = "Sancus Sachet +1",
+		head = "Nyame Helm",
+		body = "Nyame Mail",
+		hands = "Nyame Gauntlets",
+		legs = "Nyame Flanchard",
+		feet = "Nyame Sollerets",
+		neck = "Fotia Gorget",
+		waist = "Fotia Belt",
+		left_ear = "Malignance Earring",
+		right_ear = "Ishvara Earring",
+		left_ring = "Spiral Ring",
+		right_ring = "Persis Ring",
+		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},
+		
+    }
+	
+    sets.precast["Myrkr"] = {
+		ammo = "Ghastly Tathlum +1",
+		head = RELIC.head,
+		body = AF.Body,
+		hands = RELIC.hands,
+		legs = RELIC.Legs,
+		feet = EMPY.Feet,
+		neck = "Sanctity Necklace",
+		waist = "Fucho-no-Obi",
+		left_ear = "Evans Earring",
+		right_ear = "Etiolation Earring",
+		left_ring = "Persis Ring",
+		right_ring = "Zodiac Ring",
+		back = "Fi Follet Cape +1",
+    }
+    
+		  
+    -- Feel free to add new weapon skills, make sure you spell it the same as in game. These are the only two I ever use though
+	
 	
 	--------------------------------------------------------------------------------------------------------------
 	---------------------------------------------- Avatar Sets ---------------------------------------------------
