@@ -115,7 +115,7 @@ meleeModes  = M('TP', 'Hybrid', 'DT')
 	windower.send_command('bind f9 gs c toggle idlemode')			-- F9 to change Idle Mode
 	windower.send_command('bind !f9 gs c toggle runspeed')			-- Alt-F9 toggles locking on / off Herald's Gaiters
 	windower.send_command('bind f10 gs c toggle meleemode')			-- F9 to change Idle Mode    
-	windower.send_command('bind f11 gs c toggle enmity')			-- F11 Toggle casting modes between regular and Enmity
+	windower.send_command('bind delete gs c toggle enmity')			-- F11 Toggle casting modes between regular and Enmity
 	windower.send_command('bind f12 gs c toggle melee')				-- F12 Toggle Melee mode on / off and locking of weapons  
 	windower.send_command('bind ^end gs c hud keybinds')			-- CTRL-End to toggle Keybinds
 	
@@ -130,7 +130,7 @@ meleeModes  = M('TP', 'Hybrid', 'DT')
 keybinds_on = {}
 keybinds_on['key_bind_idle'] = '(F9) '
 keybinds_on['key_bind_melee'] = '(F10) '
-keybinds_on['key_bind_enmity'] = '(F11) '
+keybinds_on['key_bind_enmity'] = '(DELETE) '
 keybinds_on['key_bind_element_cycle'] = '(INSERT)'
 keybinds_on['key_bind_movespeed_lock'] = '(ALT-F9)'
 keybinds_on['key_bind_lock_weapon'] = '(F12) '
@@ -138,20 +138,15 @@ keybinds_on['key_bind_lock_weapon'] = '(F12) '
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
-	send_command('unbind insert')
-	send_command('unbind !insert')
 	send_command('unbind delete')
 	send_command('unbind !delete')
 	send_command('unbind f9')
 	send_command('unbind !f9')
 	send_command('unbind f10')
 	send_command('unbind f12')
-	send_command('unbind home')
-	send_command('unbind !home')
-	send_command('unbind end')
+	send_command('unbind ^end')
 	send_command('unbind !end')
 	send_command('unbind !f10')	
-	send_command('unbind `f10')
    	      	
 end
 

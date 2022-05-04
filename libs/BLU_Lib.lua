@@ -65,8 +65,12 @@ function precast(spell)
 	
 	
 	-- Waltzes that heal us is a different set than waltzes for others
-	if spell.type == 'Waltz' and spell.target.type == 'SELF' then
-        equip(sets.precast.WaltzSelf)
+	if spell.type == 'Waltz' then
+		if  spell.target.type == 'SELF' then
+			equip(sets.precast.WaltzSelf)
+		else
+			equip(sets.precast.Waltz)
+		end
     end   
 	
 	if spell.type == 'WhiteMagic' or spell.type == 'BlackMagic' then

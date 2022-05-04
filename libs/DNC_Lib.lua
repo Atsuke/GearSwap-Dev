@@ -63,8 +63,12 @@ function precast(spell)
 	end
 	
 	-- Waltzes that heal us is a different set than waltzes for others
-	if spell.type == 'Waltz' and spell.target.type == 'SELF' then
-		equip(sets.precast.WaltzSelf)
+	if spell.type == 'Waltz' then
+		if  spell.target.type == 'SELF' then
+			equip(sets.precast.WaltzSelf)
+		else
+			equip(sets.precast.Waltz)
+		end
     end   
 	
 	-- automatically change to DT mode when activating Fan Dance
@@ -229,16 +233,12 @@ function self_command(command)
 			
 			-- cycles through your available idle modes
             elseif commandArgs[2] == 'idlemode' then
-                idleModes:cycle()
-                --idle()
-			
+                idleModes:cycle()			
 			-- cycles through your available "Engaged" modes
             elseif commandArgs[2] == 'meleemode' then
-                meleeModes:cycle()                 
-				--idle()
+                meleeModes:cycle() 
 			elseif commandArgs[2] == 'enmity' then
-                enmityModes:cycle()                 
-				--idle()
+                enmityModes:cycle()       
 			end		
 		
 		elseif commandArgs[1] == 'dnc' then
