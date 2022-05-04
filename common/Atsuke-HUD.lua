@@ -191,7 +191,6 @@ function construct_HUD_Categories( useLightMode )
 			hud_avatar = [[        ${keybinds_color}${key_bind_avatar}${options_color}Avatar:\cr ${avatar_element_color}${toggle_avatar|Unset}]]
 			hud_rage =   [[        ${keybinds_color}${key_bind_rage_cycle}${options_color}Rage:\cr ${avatar_element_color}${current_rage|Unset}]]
 			hud_ward =   [[        ${keybinds_color}${key_bind_ward_cycle}${options_color}Ward:\cr ${avatar_element_color}${current_ward|Unset}]]
-			hud_pet_mode=[[        ${keybinds_color}${key_bind_petModes}${options_color}Pet Mode:\cr ${selection_color}${current_pet_mode|Unset}]]
 			hud_nukingMode = ''
 			hud_handleSkillchains = ''
 		else
@@ -199,7 +198,10 @@ function construct_HUD_Categories( useLightMode )
 			hud_rage = ''
 			hud_ward = ''
 		end		
-				
+		
+		if player.main_job == 'SMN' or player.main_job == 'PUP' or player.main_job == 'BST' then
+			hud_pet_mode=[[        ${keybinds_color}${key_bind_petModes}${options_color}Pet Mode:\cr ${selection_color}${current_pet_mode|Unset}]]
+		end
 		if player.main_job == 'RDM' then
 			hud_Enspell = [[        ${keybinds_color}${key_bind_enspell_cycle}${options_color}Enspell:\cr ${enspell_color}${toggle_enspell_cycle|Unset}]]
 		else
@@ -221,7 +223,6 @@ function construct_HUD_Categories( useLightMode )
 			hud_roll_2= ''
 		end		
 		
-		
 		if player.main_job == 'GEO' then
 			hud_geoCycle = [[        ${keybinds_color}${key_bind_geo_cycle}${options_color}Geo-Spell:\cr ${selection_color}${toggle_geo_cycle|Unset}]]
 			hud_indiCycle = [[        ${keybinds_color}${key_bind_indi_cycle}${options_color}Indi-Spell:\cr ${selection_color}${toggle_indi_cycle|Unset}]]
@@ -233,6 +234,10 @@ function construct_HUD_Categories( useLightMode )
 			hud_entrustCycle = ''
 			hud_cardinalChant = ''
 		end
+		
+		if player.main_job == 'DNC' or player.main_job == 'THF' or player.main_job == 'COR' or player.main_job == 'BST' then 
+			hud_handleSkillchains = ''
+		end	
 	
 	----------------------------------------------------
 	---------      HUD FULL MODE OPTIONS      ----------
@@ -366,8 +371,7 @@ function construct_HUD_Categories( useLightMode )
 			        ${keybinds_color}${key_bind_rage_cycle}${options_color}Rage:\cr ${avatar_element_color}${current_rage|Unset}]]
 			hud_ward = [[\cr 
 			        ${keybinds_color}${key_bind_ward_cycle}${options_color}Ward:\cr ${avatar_element_color}${current_ward|Unset}]]
-			hud_pet_mode=[[\cr
-			        ${keybinds_color}${key_bind_petModes}${options_color}Pet Mode:\cr ${selection_color}${current_pet_mode|Unset}]]
+			
 			hud_bp_mode=[[\cr
 			        ${keybinds_color}${key_bind_bpMode}${options_color}AFAC Mode:\cr ${selection_color}${current_bp_mode|Unset}]]
 			hud_handleSkillchains = ''
@@ -377,6 +381,11 @@ function construct_HUD_Categories( useLightMode )
 			hud_rage = ''
 			hud_ward = ''
 		end	
+		
+		if player.main_job == 'SMN' or player.main_job == 'PUP' or player.main_job == 'BST' then
+			hud_pet_mode=[[\cr
+			        ${keybinds_color}${key_bind_petModes}${options_color}Pet Mode:\cr ${selection_color}${current_pet_mode|Unset}]]
+		end
 		
 		if player.main_job == 'COR' then
 			hud_nukingElement = [[\cr
@@ -395,7 +404,7 @@ function construct_HUD_Categories( useLightMode )
 			hud_roll_2= ''
 		end		
 		
-		if player.main_job == 'DNC' or player.main_job == 'THF' or player.main_job == 'COR' then 
+		if player.main_job == 'DNC' or player.main_job == 'THF' or player.main_job == 'COR' or player.main_job == 'BST' then 
 			hud_handleSkillchains = ''
 			
 		end	
@@ -435,7 +444,7 @@ function buildHUD( useLightMode )
 	if useLightMode then
 		hud_mode = [[        ${sections_color}Modes:]]..hud_idleMode..hud_meleeMode..hud_ranged_mode..hud_enmityMode..hud_nukingMode..hud_endofline
 	else
-		hud_mode = [[${sections_color}Modes:]]..hud_idleMode..hud_meleeMode..hud_ranged_mode..hud_enmityMode..hud_pet_mode..hud_nukingMode..hud_quickdraw_mode..hud_endofline
+		hud_mode = [[${sections_color}Modes:]]..hud_idleMode..hud_meleeMode..hud_ranged_mode..hud_pet_mode..hud_nukingMode..hud_quickdraw_mode..hud_enmityMode..hud_endofline
 	end
 	hud_options = [[${sections_color}Options:]]..hud_handleSkillchains..hud_lockWeapons..hud_lockMovespeed..hud_endofline
 		
@@ -531,6 +540,10 @@ function validateTextInformation()
     if enspellElements ~= nil then 
     	main_text_hud.toggle_enspell_cycle = enspellElements.current
     end
+	if petModes ~= nil then
+		main_text_hud.current_pet_mode = petModes.current
+	end
+	
     if player.main_job == "GEO" then
 	    main_text_hud.toggle_geo_cycle = geomancy.current
 	    main_text_hud.toggle_indi_cycle = indicolure.current
@@ -542,7 +555,6 @@ function validateTextInformation()
 		main_text_hud.toggle_avatar = avatars.current
 		main_text_hud.current_rage = currentRage
 		main_text_hud.current_ward = currentWard
-		main_text_hud.current_pet_mode = petModes.current
 		main_text_hud.current_bp_mode = bpModes.current
 	end
 	if player.main_job == 'COR' then
