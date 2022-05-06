@@ -319,22 +319,19 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     
 	sets.precast.Waltz = { 
 		
-		ammo = "Yamarang",
+		ammo = "Yamarang", --5
 		head = "Mummu Bonnet +2",
-		-- body = AF.Body,
+		body = "Nyame Mail",
 		hands = "Nyame Gauntlets",
-		legs = "Nyame Flanchard",
-		feet = "Rawhide Boots",
-		-- neck = { name = "Etoile Gorget +2", augments={'Path: A',}},
-		-- waist = "Chaac Belt",
-		-- left_ear = "Odnowa Earring +1",
-		-- right_ear = "Etiolation Earring",
+		legs = "Dashing Subligar",  --10
+		feet = "Rawhide Boots", --8
+		left_ear = "Odnowa Earring +1",
+		right_ear = "Etiolation Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Gelatinous Ring +1",
-		-- back=Senuna.DA,
 	}
 	
-    -- sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
+    sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
     	
 	sets.precast['Violent Flourish'] = {
 		
@@ -442,6 +439,17 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.midcast['Utsusemi'].Normal = {feet = EMPY.Feet, back = Andartia.TP,}
 	sets.midcast['Utsusemi'].Enmity = set_combine(sets.precast['Provoke'], sets.midcast['Utsusemi'].Normal)
     
+	
+	--------------------------------------------------------------------------------------------------------------
+	------------------------------------------------ Buff Sets ---------------------------------------------------
+	--------------------------------------------------------------------------------------------------------------
+	
+	sets.buff.Doom = {
+		neck = "Nicander's Necklace",
+		left_ring = "Blenmot's Ring",
+		waist = "Gishdubar Sash",
+	}
+	
 	------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------

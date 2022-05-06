@@ -202,7 +202,7 @@ include('Kuvira_AugGear.lua')
 	-- Fill this with your own JSE. 
     --Laksamana
 	AF.Head  = "Assim. Keffiyeh +1"
-	AF.Body  = "Assim. Jubbah +1"
+	AF.Body  = "Assim. Jubbah +2"
 	AF.Hands = "Assim. Bazu. +1"
 	AF.Legs  = "Assim. Shalwar +1"
 	AF.Feet  = "Assim. Charuqs +1"

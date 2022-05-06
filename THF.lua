@@ -278,19 +278,19 @@ include('Atsuke_AugGear.lua')
 	
 	sets.precast.Waltz = { 
 		
-		ammo = "Yamarang",
+		ammo = "Yamarang", --5
 		head = "Mummu Bonnet +2",
-		-- body = AF.Body,
+		body = "Nyame Mail",
 		hands = "Nyame Gauntlets",
-		legs = "Nyame Flanchard",
-		feet = "Rawhide Boots",
+		legs = "Dashing Subligar",  --10
+		feet = "Rawhide Boots", --8
 		left_ear = "Odnowa Earring +1",
 		right_ear = "Etiolation Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Gelatinous Ring +1",
 	}
 	
-    -- sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
+    sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
 	
 	sets.precast['Violent Flourish'] = {
 		
@@ -364,6 +364,17 @@ include('Atsuke_AugGear.lua')
 	sets.buff['Sneak Attack'] = {hands = EMPY.Hands}
 	sets.buff['Trick Attack'] = {hands= AF.Hands}
 
+
+	--------------------------------------------------------------------------------------------------------------
+	------------------------------------------------ Buff Sets ---------------------------------------------------
+	--------------------------------------------------------------------------------------------------------------
+	
+	sets.buff.Doom = {
+		neck = "Nicander's Necklace",
+		left_ring = "Blenmot's Ring",
+		waist = "Gishdubar Sash",
+	}
+	
     ------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------

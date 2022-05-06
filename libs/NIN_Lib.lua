@@ -26,8 +26,20 @@ setupTextWindow()
 --validateTextInformation()
 
 -- Called every time we gain or lose a buff.
-function buff_change(buff,gain)
+function buff_change(name,gain,buff_details)
     
+	if buff == "doom" then
+        if gain then
+            equip(sets.buff.Doom)
+            send_command('@input /p Doomed.')
+            disable('ring1','ring2','waist')
+        else
+            enable('ring1','ring2','waist')
+			idle()
+        end
+    end
+    
+	validateTextInformation()
 end
 
 --------------------------------------------------------------------------------------------------------------

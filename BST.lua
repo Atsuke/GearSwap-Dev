@@ -108,20 +108,20 @@ textHideBattle:set(true)	-- Change to toggle default visibility for battle secti
 textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
 useLightMode:set(false)		-- Change to toggle default setting for lite mode
 keybinds:set(true)			-- Change to toggle default setting for keybind visibility
-textHideTools:set(true)		-- Change to toggle the default setting of the tool counter
+textHideTools:set(false)		-- Change to toggle the default setting of the tool counter
 
 -- Set the tools you would like to track while tool tracker is set to on. 
 -- Tools can be in inventory or wardrobe.  
 -- Set value to empty string if you dont want to track a tool.  Ex. tool_4 = ''
 
-tool_1 = "Shihei"
+tool_1 = "Pet Food Theta"
 tool_2 = ""
 tool_3 = ""
 tool_4 = ""
 
 -- Set these values for the text displayed in the hud
 tools_on = {}
-tools_on['tool_1'] = 'Shihei: '
+tools_on['tool_1'] = 'Pet Food Theta: '
 tools_on['tool_2'] = ""
 tools_on['tool_3'] = ""
 tools_on['tool_4'] = ""
@@ -417,6 +417,7 @@ function get_sets()
 	
 	sets.buff.Doom = {
 		neck = "Nicander's Necklace",
+		left_ring = "Blenmot's Ring",
 		waist = "Gishdubar Sash",
 	}
 	sets.buff['Killer Instinct'] = {body = EMPY.Body}
@@ -452,16 +453,14 @@ function get_sets()
 	
 	sets.precast.Waltz = {
 		head = AF.Head,
-		body = "Gleti's Cuirass",
+		body = "Nyame Mail",
 		hands = "Nyame Gauntlets",
-		legs = "Dashing Subligar",
-		feet = "Malignance Boots",
-		neck = "Unmoving Collar +1",
-		waist = "Chaac Belt",
-		left_ear = "Handler's Earring",
-		right_ear= " Handler's Earring +1",
-		left_ring = "Persis Ring",
-		right_ring = "Regal Ring",
+		legs = "Dashing Subligar",  --10
+		feet = "Nyame Sollerets",
+		left_ear = "Odnowa Earring +1",
+		right_ear = "Etiolation Earring",
+		left_ring = "Defending Ring",
+		right_ring = "Gelatinous Ring +1",
 	
 	}
 	

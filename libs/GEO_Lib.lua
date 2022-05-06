@@ -24,6 +24,23 @@ luopanMode = 'me'         -- me or pan (me = no luopan, pan = luopan is out)
 
 setupTextWindow()
  
+function buff_change(name,gain,buff_details)
+    
+	if buff == "doom" then
+        if gain then
+            equip(sets.buff.Doom)
+            send_command('@input /p Doomed.')
+            disable('ring1','ring2','waist')
+        else
+            enable('ring1','ring2','waist')
+			idle()
+        end
+    end
+    
+	validateTextInformation()
+end
+ 
+ 
 function precast(spell)
     if meleeing.value == "AUTO" then
         if player.tp >= lockWeaponTP then

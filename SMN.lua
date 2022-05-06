@@ -410,11 +410,16 @@ function get_sets()
     -- Weapon Skills sets just add them by name.
 
   
-    ------------
-    -- Buff Sets
-    ------------	
-    -- Gear that needs to be worn to **actively** enhance a current player buff.
-    -- Fill up following with your avaible pieces.
+	--------------------------------------------------------------------------------------------------------------
+	------------------------------------------------ Buff Sets ---------------------------------------------------
+	--------------------------------------------------------------------------------------------------------------
+	sets.buff ={}
+	
+	sets.buff.Doom = {
+		neck = "Nicander's Necklace",
+		left_ring = "Blenmot's Ring",
+		waist = "Gishdubar Sash",
+	}
    
 	
 	--------------------------------------------------------------------------------------------------------------

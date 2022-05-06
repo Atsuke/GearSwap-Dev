@@ -289,22 +289,22 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     
 	sets.precast.Waltz = { 
 
-		ammo = "Yamarang",
-		head = RELIC.Head,
-		body = AF.Body,
+		ammo = "Yamarang", --5
+		head = "Nyame Helm",
+		body = AF.Body, --19
 		hands = "Nyame Gauntlets",
-		legs = "Nyame Flanchard",
+		legs = "Dashing Subligar",  --10
 		feet = "Nyame Sollerets",
-		neck = { name = "Etoile Gorget +2", augments={'Path: A',}},
+		neck = { name = "Etoile Gorget +2", augments={'Path: A',}}, --10
 		waist = "Chaac Belt",
-		left_ear = "Odnowa Earring +1",
+		left_ear = "Roundel Earring", --5
 		right_ear = "Etiolation Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Gelatinous Ring +1",
-		back=Senuna.DA,
+		back = Senuna.DA,
 	}
 	
-    sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
+    sets.precast.WaltzSelf = set_combine(sets.precast.Waltz ,{head = "Mummu Bonnet +2",})
     
 	sets.precast.Samba = {
 
@@ -360,6 +360,17 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		back = Toetapper.RF,
 	}
 
+	--------------------------------------------------------------------------------------------------------------
+	------------------------------------------------ Buff Sets ---------------------------------------------------
+	--------------------------------------------------------------------------------------------------------------
+	
+	sets.buff.Doom = {
+		neck = "Nicander's Necklace",
+		left_ring = "Blenmot's Ring",
+		waist = "Gishdubar Sash",
+	}
+	
+	
     ------------------------------------------------------------------------------------------------
     ------------------------------------- Weapon Skill Sets ----------------------------------------
     ------------------------------------------------------------------------------------------------
