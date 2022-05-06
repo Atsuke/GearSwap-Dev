@@ -88,6 +88,17 @@ function buff_change(name,gain,buff_details)
     -- Update SCH statagems when a buff is gained or lost.
     update_active_strategems()
     --update_sublimation()
+	if buff == "doom" then
+        if gain then
+            equip(sets.buff.Doom)
+            send_command('@input /p Doomed.')
+            disable('ring1','ring2','waist')
+        else
+            enable('ring1','ring2','waist')
+			idle()
+        end
+    end
+	
     validateTextInformation()
 end
 

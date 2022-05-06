@@ -25,7 +25,18 @@ setupTextWindow()
 
 -- Called every time we gain or lose a buff.
 function buff_change(buff,gain)
-    idle()
+    if buff == "doom" then
+        if gain then
+            equip(sets.buff.Doom)
+            send_command('@input /p Doomed.')
+            disable('ring1','ring2','waist')
+        else
+            enable('ring1','ring2','waist')
+			idle()
+        end
+    end
+    
+	validateTextInformation()
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -195,7 +206,9 @@ end
 
 function idle()
     
-    if player.status == 'Engaged' then -- We're engaged. Weapons out in a hostile manner
+	if (not player.status) then
+		return
+    elseif player.status == 'Engaged' then -- We're engaged. Weapons out in a hostile manner
 	
 		equip(sets.engaged[meleeModes.value])
 				

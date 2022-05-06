@@ -37,7 +37,7 @@ function buff_change(buff,gain)
         end
     end
 	
-	
+	validateTextInformation()
 end
 
 --------------------------------------------------------------------------------------------------------------

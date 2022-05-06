@@ -35,13 +35,18 @@ function buff_change(buff,gain)
 		equip(sets.buff['Trick Attack'])
 	end
 	
-	-- if (buff == 'Sneak Attack' and gain) then
-		-- equip(sets.buff['Sneak Attack'])
-	-- end
+	if buff == "doom" then
+        if gain then
+            equip(sets.buff.Doom)
+            send_command('@input /p Doomed.')
+            disable('ring1','ring2','waist')
+        else
+            enable('ring1','ring2','waist')
+			idle()
+        end
+    end
 	
-	-- if (buff == 'Trick Attack' and gain) then
-		-- equip(sets.buff['Trick Attack'])
-	-- end
+	validateTextInformation()
 end
 
 --------------------------------------------------------------------------------------------------------------
