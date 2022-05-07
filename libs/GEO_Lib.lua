@@ -165,7 +165,7 @@ function midcast(spell)
     
 		else
     
-		equip(sets.midcast.nuking[nukeModes.current])
+			equip(sets.midcast.nuking[nukeModes.current])
         
 		end
     
@@ -199,22 +199,22 @@ function midcast(spell)
     
 	-- Remember those WS Sets we defined? :) sets.me["Insert Weaponskill"] are basically how I define any non-magic spells sets, aka, WS, JA, Idles, etc.
     elseif sets.me[spell.name] then
-        equip(sets.me[spell.name])
+		equip(sets.me[spell.name])
     end
     
     -- Obi up for matching weather / day
-    if spell.element == world.weather_element and spellMap ~= 'Helix'then
-        equip(sets.midcast.Obi)
+    if spell.element == world.weather_element and spellMap ~= 'Helix' then
+		equip(sets.midcast.Obi)
     end
     
-	if spell.element == world.day_element and spellMap ~= 'Helix'then
-        equip(sets.midcast.Obi)
+	if spell.element == world.day_element and spellMap ~= 'Helix' then
+		equip(sets.midcast.Obi)
     end
     
 	-- This needs to be here for if you cast stoneskin on earthsday if doesnt swap to obi --___--;
-    if spell.name:match('Stoneskin') then
-            equip(sets.midcast.stoneskin)
-    end
+	if spell.name:match('Stoneskin') then
+		equip(sets.midcast.stoneskin)
+	end
 	
 end
  

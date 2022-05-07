@@ -287,9 +287,6 @@ function midcast(spell)
     elseif sets.midcast[spellMap] then
         equip(sets.midcast[spellMap])
     
-	-- Remember those WS Sets we defined? :) sets.me["Insert Weaponskill"] are basically how I define any non-magic spells sets, aka, WS, JA, Idles, etc.
-    elseif sets.me[spell.name] then
-        equip(sets.me[spell.name])
     end
     
     -- Dark based Helix gets "pixie hairpin +1"
