@@ -472,11 +472,11 @@ function get_sets()
       
     -- Curing Precast, Cure Spell Casting time -
     sets.precast.cure = set_combine(sets.precast.casting,{
-		main = "Daybreak",
+		main = "Daybreak", 
 		sub = "Ammurapi Shield",
 		head = Van.Head.C,
 		legs = "Doyen Pants",
-		feet = Merl.Feet.MAB,
+		feet =Van.Feet.D,
 		neck = "Incanter's Torque",
 		waist = "Embla Sash",
 		left_ear = "Mendi. Earring",
@@ -524,6 +524,8 @@ function get_sets()
 		right_ring = "Fenrir Ring",
 		back = Nantosuelta.MAB,
     }
+	
+	
 	
 	---------------------
 	-- Geo Spells
@@ -672,24 +674,31 @@ function get_sets()
 	-- Cures
 	---------------------
 	sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
-        main = "Daybreak",
+        main = "Daybreak", --30
 		sub = "Genmei Shield",
-		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head = Van.Head.ConMP,
-		body = Merl.Body.FC,
-		hands ="Jhakri Cuffs +2",
-		legs = "Doyen Pants",
-		feet = "Vanya Clogs",
-		neck = "Nodens Gorget",
+		ammo = "Hydrocera",
+		head = Van.Head.C, --10
+		body = Amal.Body.D,
+		hands = Van.Hands.C ,
+		legs = Van.Legs.C,
+		feet = Van.Feet.D, --10
+		neck = "Incanter's Torque",
 		waist = "Austerity Belt",
 		left_ear = "Gifted Earring",
-		right_ear = "Mendi. Earring",
-		left_ring = "Stikini Ring",
-		right_ring = "Kishar Ring",
+		right_ear = "Mendi. Earring", --5
+		left_ring = "Fortified Ring",
+		right_ring = "Defending Ring",
 		back = Nantosuelta.FC,
     })
     
-	sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{waist="Hachirin-no-Obi",})    
+	sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{
+		main = "Iridal Staff", --10
+		sub = "Enki Strap",
+		body="Vrikodara Jupon", --13
+		neck="Nodens Gorget", --5
+		waist="Hachirin-no-Obi",
+			
+	})    
     
 	-- Regen
 	sets.midcast.regen = set_combine(sets.midcast.enhancing,{

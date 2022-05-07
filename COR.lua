@@ -641,6 +641,7 @@ include('Kuvira_AugGear.lua')
 		hands = "Meg. Gloves +2",
 		legs = "Meg. Chausses +2",
 		feet = "Meg. Jam. +2",
+		waist = "Lycopodium Sash",
 		neck = "Sanctity Necklace",
 		left_ring = "Woltaris Ring",
 	}

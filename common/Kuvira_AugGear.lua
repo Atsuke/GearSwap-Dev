@@ -111,8 +111,12 @@
 	Merl.Body.FC		=	{ name="Merlinic Jubbah", augments={'"Fast Cast"+6','INT+1','Mag. Acc.+13','"Mag.Atk.Bns."+15',}}
 	Merl.Legs.MB		=	{ name="Merlinic Shalwar", augments={'Mag. Acc.+28','Magic burst dmg.+9%','INT+2','"Mag.Atk.Bns."+15',}}
 	Merl.Feet.MAB       =   { name="Merlinic Crackows", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+7%','CHR+2','Mag. Acc.+5','"Mag.Atk.Bns."+2',}}
-	Van.Head.ConMP      =   { name="Vanya Hood", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
+	
+	
+	Van.Head.C		    =   { name="Vanya Hood", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
 	Van.Hands.C         =   { name="Vanya Cuffs", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
+	Van.Legs.C			=	{ name="Vanya Slops", augments={'MND+10','Spell interruption rate down +15%','"Conserve MP"+6',}}
+	Van.Feet.D			=	{ name="Vanya Clogs", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}}
 	
 	Herc.Head.WSD		=   { name="Herculean Helm", augments={'Accuracy+1','MND+9','Weapon skill damage +7%','Accuracy+5 Attack+5','Mag. Acc.+9 "Mag.Atk.Bns."+9',}}
 	Herc.Head.MAB		=   { name="Herculean Helm", augments={'"Mag.Atk.Bns."+23','STR+5','Damage taken-1%','Accuracy+17 Attack+17','Mag. Acc.+16 "Mag.Atk.Bns."+16',}}
@@ -139,7 +143,8 @@
 	
 	Ryuo.Hands.A		=	{ name="Ryuo Tekko +1", augments={'STR+12','DEX+12','Accuracy+20',}}
 	Ryuo.Feet.D			=	{ name="Ryuo Sune-Ate +1", augments={'STR+12','Attack+25','Crit. hit rate+4%',}}
-
+	
+	
 	Taeon.Head.PetDT    =   { name="Taeon Chapeau", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
 	Taeon.Body.PetDT    =   { name="Taeon Tabard", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
 	Taeon.Hands.PetDT   =   { name="Taeon Gloves", augments={'Pet: Accuracy+23 Pet: Rng. Acc.+23','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}}
