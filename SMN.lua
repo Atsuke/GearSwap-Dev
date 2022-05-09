@@ -322,7 +322,7 @@ function get_sets()
 
     -- Define JSE Capes
     SMNCape = {}
-    SMNCape.FC       =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Fast Cast"+10','Phys. dmg. taken-10%',}}
+    SMNCape.PETMAB       =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Cure" potency +10%','Phys. dmg. taken-10%',}}
     SMNCape.Physical =   { name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Pet: Attack+10 Pet: Rng.Atk.+10','Pet: Haste+10','Pet: Damage taken -5%',}}
 	SMNCape.PetPDT   =   { name="Campestres's Cape", augments={'Pet: "Regen"+10','System: 1 ID: 1246 Val: 4',}}
 	SMNCape.MAB      =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Fast Cast"+10','Phys. dmg. taken-10%',}}
@@ -347,12 +347,13 @@ function get_sets()
 		right_ear = { name="Moonshade Earring", augments={'Accuracy+4','Latent effect: "Refresh"+1',}},
 		left_ring = "Defending Ring",
 		right_ring = "Woltaris Ring",
-		back = SMNCape.FC,
+		back = SMNCape.PETMAB,
 		
     }
 	
 	sets.me.Pet = set_combine(sets.me.Refresh, {
 		neck = "Caller's Pendant",
+		back = SMNCape.PetPDT, 
 		
 	})
 
@@ -401,7 +402,7 @@ function get_sets()
 		right_ear = "Telos Earring",
 		left_ring = "Cacoethic Ring",
 		right_ring = "Defending Ring",
-		back = SMNCape.FC,
+		back = SMNCape.PETMAB,
     }
      
 	sets.me.Engaged.refresh = sets.me.Idle.refresh
@@ -448,12 +449,12 @@ function get_sets()
 		right_ear = "Loquac. Earring",
 		left_ring = "Prolix Ring",
 		right_ring = "Kishar Ring",
-		back = SMNCape.FC,
+		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
     }
 
 	sets.precast.summoning = set_combine(sets.precast.casting,{
 	
-		body="Baayami Robe",
+		body = "Baayami Robe",
 	
 	})
 	
@@ -538,20 +539,20 @@ function get_sets()
 	sets.midcast["Sublimation"] = {}
     
     sets.midcast.nuking.normal = {
-		main="Daybreak",
-		sub="Ammurapi Shield",
-		ammo="Sancus Sachet +1",
-		head=Merl.Head.FC,
-		body=Merl.Body.MAB,
-		hands=Merl.Hands.MAB,
-		legs=Merl.Legs.MAB,
-		feet=Merl.Feet.TH,
-		neck="Sanctity Necklace",
-		waist="Eschan Stone",
-		left_ear="Malignance Earring",
-		right_ear="Friomisi Earring",
-		left_ring="Persis Ring",
-		right_ring="Kishar Ring",
+		main = "Daybreak",
+		sub = "Ammurapi Shield",
+		ammo = "Sancus Sachet +1",
+		head = Merl.Head.FC,
+		body = Merl.Body.MAB,
+		hands = Merl.Hands.MAB,
+		legs = Merl.Legs.MAB,
+		feet = Merl.Feet.TH,
+		neck = "Sanctity Necklace",
+		waist = "Eschan Stone",
+		left_ear = "Malignance Earring",
+		right_ear = "Friomisi Earring",
+		left_ring = "Persis Ring",
+		right_ring = "Kishar Ring",
 		
     }
     -- used with toggle, default: F10
@@ -589,14 +590,14 @@ function get_sets()
 		right_ear = "Andoaa Earring",
 		left_ring = "Prolix Ring",
 		right_ring = "Kishar Ring",
-		back = "Fi Follet Cape +1",
+		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
     })
     sets.midcast.storm = sets.midcast.enhancing    
     
 	-- Stoneskin
     sets.midcast.stoneskin = set_combine(sets.midcast.enhancing,{
 		neck = "Nodens Gorget",
-		waist ="Siegel Sash",
+		waist = "Siegel Sash",
 		left_ear = "Earthcry Earring",
     })
 	
@@ -607,8 +608,8 @@ function get_sets()
         --head="Pixie Hairpin +1",
 		
 		feet = Merl.Feet.Th,
-		neck ="Erra Pendant",
-		waist ="Fucho-no-Obi",
+		neck = "Erra Pendant",
+		waist = "Fucho-no-Obi",
     })
 	
     sets.midcast["Aspir"] = sets.midcast["Drain"]
@@ -617,26 +618,23 @@ function get_sets()
     
 	-- Cure Potency
     sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
-		main = "Daybreak",
-		sub = "Sors Shield",
 		head = Vanya.Head.A,
-		body = EMPY.body,
-		hands = RELIC.Hands,
-		legs = AF.legs,
+		body = "Nyame Mail",
+		hands = "Nyame Gauntlets",
+		legs = "Nyame Flanchard",
 		feet = Vanya.Feet.D,
-		neck = "Incanter's Torque",
+		neck = "Phalaina Locket",
 		waist = "Porous Rope",
 		left_ear = "Mendi. Earring",
-		right_ear = "Genmei Earring",
-		left_ring = "Haoma's Ring",
-		right_ring = "Persis Ring",
+		right_ear = "Roundel Earring",
+		left_ring = "Persis Ring",
+		right_ring = "Defending Ring",
+		back = SMNCape.PETMAB
     })
     
 	sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{
 		main = "Chatoyant Staff",
 		waist = "Hachirin-no-Obi",
-		back = "Twilight Cape",
-
     })    
 	
 	sets.midcast["Elemental Siphon"]={
@@ -838,7 +836,7 @@ function get_sets()
 		right_ear = "Domes. Earring",
 		left_ring = "Varar Ring +1",
 		right_ring = "Varar Ring +1",
-		back = SMNCape.FC,
+		back = SMNCape.PETMAB,
 	}
 	
 	
