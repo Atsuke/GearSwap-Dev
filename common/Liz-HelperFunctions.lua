@@ -528,6 +528,65 @@ function get_current_strategem_count()
     return currentCharges
 end
 
+--------------------------------------------------------------------------------------------------------------
+---------------------------------------------- Handle Provoke ------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+
+-- Function to allow one macro for Provoke or Animated Flourish
+-- Tries for Provoke first due to higher enmity value
+
+function handle_voke()
+	
+	local ability_recasts = windower.ffxi.get_ability_recasts()
+	
+	if player.sub_job == 'WAR' then --Are you /WAR?
+	
+		spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
+	
+	if ability_recasts[5] > 0 then --Is Provoke Ready?
+        --It wasn't. Bummer.
+	    add_to_chat(8, '****** ['..spell..' CANCELED - Provoke on Cooldown] ******')
+	else --Provoke was ready. Woohoo! Lets poke the angry monster
+		send_command('@input /ja "'..spell..'"')
+	end
+	
+	elseif player.sub_job == "DNC" then
+		spell = 'Animated Flourish'
+		if ((buffactive[381] or buffactive[382] or buffactive[383] or buffactive[384] or buffactive[385] or buffactive[588]) and ability_recasts[221] == 0) then
+				send_command('@input /ja "'..spell..'"') --We had finishing moves. Yay! Lets make the monster mad at us.
+		else
+			add_to_chat(8, '****** ['..spell..' CANCELED - Animated Flourish on Cooldown.] ******') -- No dice on Animated Flourish either.
+		end   
+	end	
+end
+
+-- function check_gear()
+    -- if no_swap_gear:contains(player.equipment.left_ring) then
+        -- disable("ring1")
+    -- else
+        -- enable("ring1")
+    -- end
+    -- if no_swap_gear:contains(player.equipment.right_ring) then
+        -- disable("ring2")
+    -- else
+        -- enable("ring2")
+    -- end
+-- end
+
+-- windower.register_event('zone change',
+    -- function()
+        -- if no_swap_gear:contains(player.equipment.left_ring) then
+            -- enable("ring1")
+            -- equip(sets.idle)
+        -- end
+        -- if no_swap_gear:contains(player.equipment.right_ring) then
+            -- enable("ring2")
+            -- equip(sets.idle)
+        -- end
+    -- end
+-- )
+
+
 function tool_tracker()
 	
 	if tool_1 ~= '' then
