@@ -371,7 +371,7 @@ function get_sets()
 		ammo = "Ghastly Tathlum +1",
 		head = RELIC.Head,
 		body = AF.Body,
-		hands = RELIC.hands,
+		hands = RELIC.Hands,
 		legs = RELIC.Legs,
 		feet = EMPY.Feet,
 		neck = "Sanctity Necklace",
@@ -427,7 +427,7 @@ function get_sets()
 		right_ear = "Malignance Earring",
 		left_ring = "Prolix Ring",
 		right_ring = "Kishar Ring",
-		back = "Swith Cape",
+		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
     }
 
 	sets.precast["Stun"] = {}
@@ -462,7 +462,7 @@ function get_sets()
     -- Ability Precasting
     ---------------------
 
-    sets.precast["Tabula Rasa"] = {legs= RELIC.pants}
+    sets.precast["Tabula Rasa"] = {legs= RELIC.Pants}
     sets.precast["Enlightenment"] = {body= RELIC.Body}	 
     sets.precast["Sublimation"] = {head= AF.Head, body= RELIC.Body}	 
 
@@ -494,7 +494,7 @@ function get_sets()
 		body = "Mallquis Saio +2",
 		hands = Merl.Hands.MAB,
 		legs = RELIC.Legs,
-		feet = RELIC.feet,
+		feet = RELIC.Feet,
 		neck = { name="Argute Stole +1", augments={'Path: A',}},
 		waist = "Eschan Stone",
 		left_ear = "Regal Earring",
@@ -518,7 +518,7 @@ function get_sets()
 		head = RELIC.Head,
 		body = Merl.Body.MAB,
 		hands = Merl.Hands.MAB,
-		legs = RELIC.legs,
+		legs = RELIC.Legs,
 		feet = RELIC.Feet,
 		neck = { name="Argute Stole +1", augments={'Path: A',}},
 		waist = "Eschan Stone",
@@ -553,8 +553,8 @@ function get_sets()
 		ammo = "Ghastly Tathlum +1",
 		head = AF.Head,
 		body="Mallquis Saio +2",
-		hands = RELIC.hands,
-		legs = RELIC.legs,
+		hands = RELIC.Hands,
+		legs = RELIC.Legs,
 		feet = AF.Feet,
 		neck = { name="Argute Stole +1", augments={'Path: A',}},
 		waist = "Eschan Stone",
@@ -571,8 +571,8 @@ function get_sets()
 		ammo = "Ghastly Tathlum +1",
 		head = AF.Head,
 		body = "Mallquis Saio +2",
-		hands = RELIC.hands,
-		legs = RELIC.legs,
+		hands = RELIC.Hands,
+		legs = RELIC.Legs,
 		feet = AF.Feet,
 		neck = { name="Argute Stole +1", augments={'Path: A',}},
 		waist = "Eschan Stone",
@@ -621,7 +621,7 @@ function get_sets()
 	
     sets.midcast["Drain"] = set_combine(sets.midcast.nuking, {
         --head="Pixie Hairpin +1",
-		legs = RELIC.pants,
+		legs = RELIC.Pants,
 		feet = Merl.Feet.Th,
 		neck = "Erra Pendant",
 		waist = "Fucho-no-Obi",
@@ -633,19 +633,20 @@ function get_sets()
     
 	-- Cure Potency
 	sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
-		main = "Daybreak",
-		sub = "Sors Shield",
-		head = Vanya.Head.A,
-		body = EMPY.body,
+		main = "Malignance Pole",
+		sub = "Kaja Grip",
+		head = Vanya.Head.A, --17
+		body = EMPY.Body,
 		hands = RELIC.Hands,
-		legs = AF.legs,
-		feet = Vanya.Feet.D,
-		neck = "Incanter's Torque",
+		legs = AF.Legs, --15
+		feet = Vanya.Feet.D, --10
+		neck = "Phalaina Locket", --4
 		waist = "Porous Rope",
-		left_ear = "Mendi. Earring",
-		right_ear = "Genmei Earring",
+		left_ear = "Mendi. Earring", --5
+		right_ear = "Regal Earring",
 		left_ring = "Haoma's Ring",
-		right_ring = "Persis Ring",
+		right_ring = "Defending Ring",
+		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
     })
     sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{
 		main = "Chatoyant Staff",
