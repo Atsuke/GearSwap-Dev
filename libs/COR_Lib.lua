@@ -29,9 +29,9 @@ function buff_change(buff,gain)
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')
-            disable('ring1','ring2','waist')
+            disable('ring1','ring2','waist', 'neck')
         else
-            enable('ring1','ring2','waist')
+            enable('ring1','ring2','waist', 'neck')
 			idle()
         end
     end
@@ -131,7 +131,7 @@ function precast(spell)
 	
 	--Catchall for the various Utsusem Spells
 	if spell.name:contains('Utsusemi') then
-			equip(sets.precast['Utsusemi'])
+		equip(sets.precast['Utsusemi'])
 	end
 	-- We use a catch all here, if the set exists for an ability, 
 	-- use it. This way we don't need to write a load of different

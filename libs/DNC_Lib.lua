@@ -35,9 +35,9 @@ function buff_change(buff,gain)
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')
-            disable('ring1','ring2','waist')
+            disable('ring1','ring2','waist', 'neck')
         else
-            enable('ring1','ring2','waist')
+            enable('ring1','ring2','waist', 'neck')
 			idle()
         end
     end
@@ -165,45 +165,6 @@ function idle()
 	validateTextInformation() -- updates the HUD
 end 
 
---------------------------------------------------------------------------------------------------------------
----------------------------------------------- Handle Provoke ------------------------------------------------
---------------------------------------------------------------------------------------------------------------
-
--- Function to allow one macro for Provoke or Animated Flourish
--- Tries for Provoke first due to higher enmity value
-
-function handle_voke()
-	
-	local ability_recasts = windower.ffxi.get_ability_recasts()
-	
-	
-	if player.sub_job == 'WAR' then --Are you /WAR?
-
-	spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
-	
-	if ability_recasts[5] > 0 then --Is Provoke Ready?
-        --It wasn't. Bummer.
-	    add_to_chat(8, '****** ['..spell..' CANCELED - Provoke on Cooldown, Trying Animated Flourish] ******')
-		
-		spell = 'Animated Flourish'  -- Fine then. We have other options. 
-		
-		--Check every possible combination of Finishing Moves because they are each their own buff. Good design choices SE. 
-		if ((buffactive[381] or buffactive[382] or buffactive[383] or buffactive[384] or buffactive[385] or buffactive[588]) and ability_recasts[221] == 0) then
-				send_command('@input /ja "'..spell..'"') --We had finishing moves. Yay! Lets make the monster mad at us.
-		else
-			add_to_chat(8, '****** ['..spell..' CANCELED - Animated Flourish on Cooldown, try stabbing it.] ******') -- No dice on Animated Flourish either. Give it the old climactic/Rudra's. That always pulls hate
-		end   
-	
-	else --Provoke was ready. Woohoo! Lets poke the angry monster
-		send_command('@input /ja "'..spell..'"')
-	end
-		--return
-	elseif player.sub_job ~= 'WAR' then -- You are not /WAR.  You're one of them bandwagon /DRG's aren't you?
-		spell = 'Animated Flourish'
-		send_command('@input /ja "'..spell..'"') --Don't need to check for Finishing moves here because if you arent /WAR you only have the one voke and you are watching your Finishing Moves anyway right? 
-	end
-	
-end
 
 --------------------------------------------------------------------------------------------------------------
 ---------------------------------------------- Status Change -------------------------------------------------

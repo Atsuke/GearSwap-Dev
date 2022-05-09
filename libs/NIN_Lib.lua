@@ -32,9 +32,9 @@ function buff_change(name,gain,buff_details)
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')
-            disable('ring1','ring2','waist')
+            disable('ring1','ring2','waist', 'neck')
         else
-            enable('ring1','ring2','waist')
+            enable('ring1','ring2','waist', 'neck')
 			idle()
         end
     end
@@ -170,37 +170,6 @@ function idle()
     validateTextInformation() -- updates the HUD
 end 
 
---------------------------------------------------------------------------------------------------------------
----------------------------------------------- Handle Provoke ------------------------------------------------
---------------------------------------------------------------------------------------------------------------
-
--- Function to allow one macro for Provoke or Animated Flourish
--- Tries for Provoke first due to higher enmity value
-
-function handle_voke()
-	
-	local ability_recasts = windower.ffxi.get_ability_recasts()
-	
-	if player.sub_job == 'WAR' then --Are you /WAR?
-	
-	spell = 'Provoke' --YOU ARE! GREAT! Lets lead with Provoke
-	
-	if ability_recasts[5] > 0 then --Is Provoke Ready?
-        --It wasn't. Bummer.
-	    add_to_chat(8, '****** ['..spell..' CANCELED - Provoke on Cooldown] ******')
-	else --Provoke was ready. Woohoo! Lets poke the angry monster
-		send_command('@input /ja "'..spell..'"')
-	end
-	
-	elseif player.sub_job == "DNC" then
-		spell = 'Animated Flourish'
-		if ((buffactive[381] or buffactive[382] or buffactive[383] or buffactive[384] or buffactive[385] or buffactive[588]) and ability_recasts[221] == 0) then
-				send_command('@input /ja "'..spell..'"') --We had finishing moves. Yay! Lets make the monster mad at us.
-		else
-			add_to_chat(8, '****** ['..spell..' CANCELED - Animated Flourish on Cooldown.] ******') -- No dice on Animated Flourish either.
-		end   
-	end	
-end
 
 --------------------------------------------------------------------------------------------------------------
 ---------------------------------------------- Status Change -------------------------------------------------

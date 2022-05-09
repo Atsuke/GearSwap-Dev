@@ -30,9 +30,9 @@ function buff_change(name,gain,buff_details)
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')
-            disable('ring1','ring2','waist')
+            disable('ring1','ring2','waist', 'neck')
         else
-            enable('ring1','ring2','waist')
+            enable('ring1','ring2','waist', 'neck')
 			idle()
         end
     end
