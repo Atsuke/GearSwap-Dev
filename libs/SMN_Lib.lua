@@ -92,14 +92,14 @@ function buff_change(name,gain,buff_details)
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')
-            disable('ring1','ring2','waist')
+            disable('ring1','ring2','waist', 'neck')
         else
-            enable('ring1','ring2','waist')
-			idle()
+            enable('ring1','ring2','waist', 'neck')
+			
         end
     end
-	
-    validateTextInformation()
+	idle(pet)
+    --validateTextInformation()
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -378,9 +378,9 @@ function aftercast(spell)
     if not (spell.type == 'BloodPactRage' or spell.type == 'BloodPactWard') then
 	
 	update_active_strategems()
-    
-    idle(pet)
+        
 	end
+	idle(pet)
 end
 
 function pet_aftercast(spell)
@@ -391,8 +391,7 @@ function pet_aftercast(spell)
         -- temp_spell = spell.name
 		-- coroutine.schedule(AFAC_Helper, 1)
 		send_command('input /ja "%s" <t>':format(spell.name))
-        --return
-		
+        --return	
     end
      
     idle(pet)
@@ -409,8 +408,8 @@ function pet_change(pet, gain)
 	if gain then
 		set_defaultBP()
 	end
-	idle(pet)
 	
+	idle(pet)
 end
 
 
@@ -433,9 +432,9 @@ function idle(pet)
         petMode = 'me' 
    
 	end
+	
 	equip(customizeSet())
 	validateTextInformation()
-	
 end
 
 --------------------------------------------------------------------------------------------------------------
@@ -446,16 +445,15 @@ function status_change(new,old)
     if new == 'Engaged' then  
         -- If we engage check our meleeing status
 		Master_State = new
-        idle(pet)
-         
+                 
     elseif new == 'Resting' then
      
         -- We're resting
         equip(sets.me.resting)          
     else
-        idle(pet)
+       
     end
-	
+	 idle(pet)
 end
 
 function pet_status_change(new, old)
@@ -464,7 +462,6 @@ function pet_status_change(new, old)
 		Pet_State = new
 	end
 	idle(pet)
-   --equip(sets[petMode][player.status][pet.status][petModes.value])
    
 end
 
@@ -528,11 +525,8 @@ function customizeSet()
 				elseif petModes.current == 'DT' then
 					Custom_Set = set_combine(sets.MasterPet.TP, sets.me.DT, sets.avatar.DT) 
 				end
-				
 			end
-		
 		end
-	
 	end
 	
 	return Custom_Set
@@ -676,12 +670,10 @@ function self_command(command)
 			elseif (cmd == 'autobp') then
 				bpModes:cycle()
 			end
-			
-		validateTextInformation()
-		
 		end
     end
 	idle(pet)
+	--validateTextInformation()
 end
 
 --------------------------------------------------------------------------------------------------------------
