@@ -478,7 +478,7 @@ include('Kuvira_AugGear.lua')
 	
 	sets.midcast['CorsairShot']['ACC'] = set_combine(sets.midcast['CorsairShot'],{
 		head = AF.Head,
-		body = RELIC.Body,
+		--body = RELIC.Body,
 		hands = AF.Hands,
 		legs = "Ikenga's Trousers",
 		feet =  AF.Feet,
@@ -486,12 +486,11 @@ include('Kuvira_AugGear.lua')
 		right_ring = "Stikini Ring",
 	
 	})
-	
-	sets.midcast['CorsairShot']['TH'] = set_combine(sets.precast['Corsairshot'], {
+		
+	sets.midcast['CorsairShot']['TH'] = set_combine(sets.midcast['CorsairShot'],{
 		head = "Wh. Rarab Cap +1",
 		waist = "Chaac Belt",
 	})
-	
 	
 	--------------------------------------------------------------------------------------------------------------
 	------------------------------------------------ Buff Sets ---------------------------------------------------
@@ -601,7 +600,7 @@ include('Kuvira_AugGear.lua')
 		body = "Meg. Cuirie +2",
 		hands = "Mummu Wrists +2",
 		legs = "Meg. Chausses +2",
-		feet = "Mummu Gamash. +1",
+		feet = "Mummu Gamash. +2",
 		neck = "Fotia Gorget",
 		waist = "Fotia Belt",
 		left_ear = "Odr Earring",
