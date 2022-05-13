@@ -34,7 +34,7 @@ setupTextWindow()
 
 function buff_change(name,gain,buff_details)
     
-	if buff == "doom" then
+	if buff == "Doom" then
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')
