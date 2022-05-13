@@ -1062,7 +1062,7 @@ function handle_siphoning()
             -- If the current weather matches the current avatar's element (being used to reduce
             -- perpetuation), don't change it; just accept the penalty on Siphon.
             
-			if world.weather_element == elements.weak_to[world.day_element] and (not pet.isvalid or world.weather_element ~= pet.element) then
+			if world.weather_element == element.weak_to[world.day_element] and (not pet.isvalid or world.weather_element ~= pet.element) then
   
 				stormElementToUse = world.day_element
             
@@ -1076,7 +1076,7 @@ function handle_siphoning()
     -- If we decided to use a storm, set that as the spirit element to cast.
     if stormElementToUse then
         siphonElement = stormElementToUse
-    elseif world.weather_element ~= 'None' and (get_weather_intensity() == 2 or world.weather_element ~= elements.weak_to[world.day_element]) then
+    elseif world.weather_element ~= 'None' and (get_weather_intensity() == 2 or world.weather_element ~= element.weak_to[world.day_element]) then
         siphonElement = world.weather_element
     else
         siphonElement = world.day_element
