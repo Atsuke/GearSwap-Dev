@@ -31,7 +31,7 @@ function buff_change(buff,gain)
 		equip(sets.buff['Climactic Flourish'])
 	end
 	
-	if buff == "doom" then
+	if buff == "Doom" then
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')

@@ -88,7 +88,7 @@ function buff_change(name,gain,buff_details)
     -- Update SCH statagems when a buff is gained or lost.
     update_active_strategems()
     --update_sublimation()
-	if buff == "doom" then
+	if buff == "Doom" then
         if gain then
             equip(sets.buff.Doom)
             send_command('@input /p Doomed.')
