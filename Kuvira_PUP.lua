@@ -357,6 +357,7 @@ include("kuvira_AugGear.lua")
         neck = "Buffoon's Collar +1",
         body = EMPY.Body,
         hands = AF.Hands,
+		right_ear = "Burana Earring",
     }
 
     sets.precast.JA["Activate"] = {
@@ -587,7 +588,16 @@ include("kuvira_AugGear.lua")
 
         Idle Mode = Idle
     ]]
-    sets.idle.Pet = set_combine(sets.idle, {})
+    sets.idle.Pet = set_combine(sets.idle, {
+		head = AF.Head,
+		body = "Foire Tobe +2",
+		neck = "Empath Necklace",
+		waist = "Isa Belt",
+		left_ear = "Infused Earring",
+		right_ear = "Burana Earring",
+		back = Visucius.PetTank,
+	
+	})
 
     --[[
         If pet is active and you are idle and pet is idle

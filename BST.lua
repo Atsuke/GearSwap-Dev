@@ -316,7 +316,7 @@ function get_sets()
     AF.Feet     =   "Tot. Gaiters +2"
 
     --Glyphic
-    RELIC.Head  =   { name="Ankusa Helm +1", augments={'Enhances "Killer Instinct" effect',}}
+    RELIC.Head  =   { name="Ankusa Helm +3", augments={'Enhances "Killer Instinct" effect',}}
     RELIC.Body  =   { name="An. Jackcoat +1", augments={'Enhances "Feral Howl" effect',}}
     RELIC.Hands =   { name="Ankusa Gloves +1", augments={'Enhances "Beast Affinity" effect',}}
     RELIC.Legs  =   { name="Ankusa Trousers +1", augments={'Enhances "Familiar" effect',}}
@@ -556,7 +556,7 @@ function get_sets()
  
     sets.precast["Decimation"] = {
 		ammo = "Focal Orb",
-		head = "Gleti's Mask",
+		head = RELIC.Head,
 		body = "Gleti's Cuirass",
 		hands = "Gleti's Gauntlets",
 		legs = "Gleti's Breeches",
@@ -663,17 +663,17 @@ function get_sets()
 	
 	sets.MasterPet.TP = {
 		ammo = "Focal Orb",
-		head = "Gleti's Mask",
-		body = "Gleti's Cuirass",
-		hands = "Gleti's Gauntlets",
-		legs = "Gleti's Breeches",
-		feet = "Gleti's Boots",
+		head = "Malignance Chapeau",
+		body = "Malignance Tabard",
+		hands = "Malignance Gloves",
+		legs = "Malignance Tights",
+		feet = "Malignance Boots",
 		neck = "Shulmanu Collar",
-		waist = { name="Sailfi Belt +1", augments={'Path: A',}},
+		waist = "Reiki Yotai",
 		left_ear = "Enmerkar Earring",
 		right_ear = "Suppanomimi",
-		left_ring = "Meghanada Ring",
-		right_ring = "Defending Ring",
+		left_ring = "Hetairoi Ring",
+		right_ring = "Epona's Ring",
 		back = Artio.TP
 	}
 	
@@ -690,8 +690,8 @@ function get_sets()
 		feet = "Gleti's Boots",
 		neck = "Shulmanu Collar",
 		waist = "Incarnation Sash",
-		left_ear = "Domes. Earring",
-		right_ear = "Enmerkar Earring",
+		left_ear = "Enmerkar Earring",
+		right_ear = "Domes. Earring",
 		left_ring = "Varar Ring +1",
 		right_ring = "C. Palug Ring",
 	}

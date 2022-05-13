@@ -264,8 +264,8 @@ include('Kuvira_AugGear.lua')
 		neck = "Unmoving Collar +1",
 		left_ear = "Genmei Earring",
 		right_ear = "Friomisi Earring",
-		left_ring = "Defending Ring",
-		right_ring = "Provocare Ring",
+		left_ring = "Provocare Ring",
+		right_ring = "Defending Ring", 
 	}
     
 	sets.precast['Animated Flourish'] = sets.precast['Provoke']
