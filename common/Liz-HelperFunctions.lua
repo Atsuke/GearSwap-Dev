@@ -561,26 +561,37 @@ function handle_voke()
 end
 
 -- function check_gear()
-    -- if no_swap_gear:contains(player.equipment.left_ring) then
-        -- disable("ring1")
-    -- else
-        -- enable("ring1")
-    -- end
-    -- if no_swap_gear:contains(player.equipment.right_ring) then
-        -- disable("ring2")
-    -- else
-        -- enable("ring2")
-    -- end
+    -- -- if no_swap_gear:contains(player.equipment.left_ring) then
+        -- -- disable("left_ring")
+    -- -- else
+        -- -- enable("left_ring")
+    -- -- end
+    -- -- if no_swap_gear:contains(player.equipment.right_ring) then
+        -- -- disable("right_ring")
+    -- -- else
+        -- -- enable("right_ring")
+    -- -- end
+	-- for slot, item in pairs(player.equipment) do
+		-- if no_swap_gear:contains(item) then	
+			-- disable(slot)
+		-- elseif (slot == runspeedslot and runspeed.value == 'ON') then
+			-- --Leave it alone
+		-- else	
+			-- enable(slot)
+		-- end
+		-- --print(item)
+	-- end
+	
 -- end
 
 -- windower.register_event('zone change',
     -- function()
         -- if no_swap_gear:contains(player.equipment.left_ring) then
-            -- enable("ring1")
+            -- enable("right_ring")
             -- equip(sets.idle)
         -- end
         -- if no_swap_gear:contains(player.equipment.right_ring) then
-            -- enable("ring2")
+            -- enable("right_ring")
             -- equip(sets.idle)
         -- end
     -- end

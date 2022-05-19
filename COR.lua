@@ -635,7 +635,7 @@ include('Kuvira_AugGear.lua')
 	sets.idle.Regen = {
 		
 		ammo = "Chrono Bullet",
-		head="Meghanada Visor +2",
+		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
 		legs = "Meg. Chausses +2",
@@ -718,12 +718,12 @@ include('Kuvira_AugGear.lua')
 		ammo = "Chrono Bullet",
 		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
-		hands = "Malignance Gloves",
+		hands={ name="Gazu Bracelet +1", augments={'Path: A',}},
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Lissome Necklace",
 		waist = "Kentarch Belt",
-		--left_ear = "Telos Earring",
+		left_ear = "Telos Earring",
 		right_ear = "Odr Earring",
 		left_ring = "Cacoethic Ring",
 		right_ring = "Cacoethic Ring +1",

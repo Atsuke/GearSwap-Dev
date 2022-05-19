@@ -275,7 +275,7 @@ function get_sets()
 	RELIC.Head  =   "Bagua Galero +3"
 	RELIC.Body  =   "Bagua Tunic +3"
 	RELIC.Hands =   "Bagua Mitaines +1"
-	RELIC.Legs  =   "RELIC.Legs"
+	RELIC.Legs  =   "Bagua Pants +3"
 	RELIC.Feet  =   "Bagua Sandals +1"
 
 	--Azimuth

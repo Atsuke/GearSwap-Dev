@@ -91,6 +91,9 @@ hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
 include('Atsuke-Includes.lua')
 --------------------------------------------------------------------------------------------------------------
+no_swap_gear = S{"Warp Ring", "Dim. Ring (Dem)", "Dim. Ring (Holla)", "Dim. Ring (Mea)",
+              "Trizek Ring", "Echad Ring", "Facility Ring", "Capacity Ring"}
+
 --------------------------------------------------------------------------------------------------------------
 -- Customize HUD looks and content
 -- Colors: ('red', 'blue', 'green', 'white', 'yellow', 'cyan', 'magenta', 'black', 'orange')
@@ -140,7 +143,7 @@ set_macros(2,27) -- Sheet, Book
 -- to define sets for regen if you add more modes, name them: sets.midcast.regen.mymode and add 'mymode' in the group.
 -- Same idea for nuke modes. 
 idleModes = M('Regen','DT', 'Pet', 'Regain')
-meleeModes = M('TP', 'DT', 'Pet')
+meleeModes = M('TP', 'DT', 'Pet', 'Master + Pet')
 petModes = M('TP', 'DT', 'Regen')
 convertModes = M('OFF', 'AUTO')
 treasureHunter = M('OFF', 'ON')
@@ -267,6 +270,7 @@ call_beast_cancel = S{'Vis. Broth','Ferm. Broth','Bubbly Broth','Windy Greens','
 enmity_plus_moves = S{'Provoke','Berserk','Warcry','Aggressor','Holy Circle','Sentinel','Last Resort',
     'Souleater','Vallation','Swordplay', 'Animated Flourish'}
 
+
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
                 --  _____                  __      __        _       _     _
@@ -311,16 +315,16 @@ function get_sets()
     --Convokers
     AF.Head     =   "Totemic Helm +2"
     AF.Body     =   "Tot. Jackcoat +2"
-    AF.Hands    =   "Totemic Gloves +2"
+    AF.Hands    =   "Totemic Gloves +3"
     AF.Legs     =  	"Tot. Trousers +2"
     AF.Feet     =   "Tot. Gaiters +2"
 
     --Glyphic
     RELIC.Head  =   { name="Ankusa Helm +3", augments={'Enhances "Killer Instinct" effect',}}
-    RELIC.Body  =   { name="An. Jackcoat +1", augments={'Enhances "Feral Howl" effect',}}
+    RELIC.Body  =   { name="An. Jackcoat +3", augments={'Enhances "Feral Howl" effect',}}
     RELIC.Hands =   { name="Ankusa Gloves +1", augments={'Enhances "Beast Affinity" effect',}}
-    RELIC.Legs  =   { name="Ankusa Trousers +1", augments={'Enhances "Familiar" effect',}}
-    RELIC.Feet  =   { name="Ankusa Gaiters +1", augments={'Enhances "Beast Healer" effect',}}
+    RELIC.Legs  =   { name="Ankusa Trousers +2", augments={'Enhances "Familiar" effect',}}
+    RELIC.Feet  =   { name="Ankusa Gaiters +3", augments={'Enhances "Beast Healer" effect',}}
 
     --Beckoners
     EMPY.Head   =   "Nuk. Cabasset +1"
@@ -335,7 +339,9 @@ function get_sets()
     Artio = {}
     Artio.TP = { name="Artio's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+3','"Dbl.Atk."+10','Damage taken-5%',}}
 	Artio.STRDA = { name="Artio's Mantle", augments={'STR+20','Accuracy+20 Attack+20','"Dbl.Atk."+10',}}
-
+	Artio.REWARD= { name="Artio's Mantle", augments={'MND+20','Pet: "Regen"+10','Pet: "Regen"+5',}}
+	Artio.MNDWSD= { name="Artio's Mantle", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%',}}
+	
 	------------------------------------------------------------------------------------------------
 	----------------------------------------- Idle Sets --------------------------------------------
 	------------------------------------------------------------------------------------------------
@@ -351,6 +357,7 @@ function get_sets()
 		neck = "Sanctity Necklace",
 		left_ring = "Meghanada Ring",
 		right_ring = "Defending Ring",
+		back = Artio.REWARD,
 	}
 	
 
@@ -371,6 +378,7 @@ function get_sets()
 		hands = "Gleti's Gauntlets",
 		legs = "Gleti's Breeches",
 		feet = "Gleti's Boots",
+		back = Artio.REWARD,
 	}
 	
 	--Pet regen for when we are both Idle
@@ -378,7 +386,7 @@ function get_sets()
 		head = { name="Anwig Salade", augments={'Attack+3','Pet: "Regen"+1','Attack+3','Pet: Damage taken -10%',}},
 		neck = "Empath Necklace",
 		waist = "Isa Belt",
-		--back = Artio.PETREGEN
+		back = Artio.REWARD
 	}
 	-- Your MP Recovered Whilst Resting Set
     sets.me.resting = { 
@@ -392,8 +400,10 @@ function get_sets()
 	------------------------------------------------------------------------------------------------
    
 	-- Combat Related Sets
-    sets.me.Engaged = {
-		ammo = "Focal Orb",
+	sets.me.Engaged = {}
+	
+    sets.me.Engaged.TP = {
+		
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
@@ -408,7 +418,7 @@ function get_sets()
 		back = Artio.TP
     }
      
-	sets.me.Engaged.DT = set_combine(sets.me.Engaged, {right_ring="Defending Ring"})
+	sets.me.Engaged.DT = set_combine(sets.me.Engaged.TP, {right_ring="Defending Ring"})
 	
 
 	--------------------------------------------------------------------------------------------------------------
@@ -420,6 +430,7 @@ function get_sets()
 		left_ring = "Blenmot's Ring",
 		waist = "Gishdubar Sash",
 	}
+	
 	sets.buff['Killer Instinct'] = {body = EMPY.Body}
    
 	
@@ -453,7 +464,7 @@ function get_sets()
 	
 	sets.precast.Waltz = {
 		head = AF.Head,
-		body = "Nyame Mail",
+		body = "Gleti's Cuirass", --10
 		hands = "Nyame Gauntlets",
 		legs = "Dashing Subligar",  --10
 		feet = "Nyame Sollerets",
@@ -503,9 +514,9 @@ function get_sets()
 	}
 	
 	sets.precast['Reward'] = {
-		ammo = "Pet Food Theta",
+		
 		head = "Bison Warbonnet",
-		body = "Tot. Jackcoat +2",
+		body = AF.Body,
 		hands = "Malignance Gloves",
 		legs = RELIC.Legs,
 		feet = RELIC.Feet,
@@ -513,7 +524,7 @@ function get_sets()
 		waist = "Engraved Belt",
 		left_ring = "Persis Ring",
 		right_ring = "Karka Ring",
-		back = "Artio's Mantle"
+		back = Artio.REWARD
 	}
 	
 	
@@ -559,7 +570,7 @@ function get_sets()
 		head = RELIC.Head,
 		body = "Gleti's Cuirass",
 		hands = "Gleti's Gauntlets",
-		legs = "Gleti's Breeches",
+		legs = Valorous.Legs.DA,
 		feet = "Gleti's Boots",
 		neck = "Fotia Gorget",
 		waist = "Fotia Belt",
@@ -572,14 +583,22 @@ function get_sets()
 	
     sets.precast["Ruinator"] = sets.precast['Decimation']
     
-	sets.precast["Onslaught"] = {
+	sets.precast["Onslaught"] = {} -- does anybody actually make Guttler?	  
 	
-    }	  
-	
-	sets.precast["Rampage"] = set_combine(sets.precast['Decimation'],{
-		--head 'Blistering Sallet +1'
+	sets.precast["Rampage"] = {
+		--head 'Blistering Sallet +1',
+		body = "Gleti's Cuirass",
+		hands = "Gleti's Gauntlets",
+		legs = "Gleti's Breeches",
+		feet = "Gleti's Boots",
+		neck = "Fotia Gorget",
+		waist = "Fotia Belt",
+		left_ear = "Sherida Earring",
+		right_ear = "Brutal Earring",
+		left_ring = "Regal Ring",
+		right_ring = "Epona's Ring",
 		--back = Artio.STRCRIT
-	})
+	}
 	
 	sets.precast["Calamityy"] = {
 		ammo = "Focal Orb",
@@ -611,7 +630,7 @@ function get_sets()
 		right_ear = "Thrud Earring",
 		left_ring = "Karka Ring",
 		right_ring = "Persis Ring",
-		--back = Artio.MNDWSD
+		back = Artio.MNDWSD
     }
 	
 	sets.precast["Cloudsplitter"] = sets.precast['Primal Rend']
@@ -627,7 +646,7 @@ function get_sets()
 		head = { name="Anwig Salade", augments={'Attack+3','Pet: "Regen"+1','Attack+3','Pet: Damage taken -10%',}},
 		neck = "Empath Necklace",
 		waist = "Isa Belt",
-		--back = Artio.PETREGEN
+		back = Artio.REWARD
 	}
 	
 	-- Have pet and it is doing all the work.  Note the capitalization of Idle and Engaged.  This is important as we are calling player and pet state.
@@ -646,13 +665,14 @@ function get_sets()
 	}
 		
 	sets.pet.DT = {
-		head = { name="Anwig Salade", augments={'Attack+3','Pet: "Regen"+1','Attack+3','Pet: Damage taken -10%',}},
-		body = AF.Head,
-		hands = "Gleti's Gauntlets",
+		--head = { name="Anwig Salade", augments={'Attack+3','Pet: "Regen"+1','Attack+3','Pet: Damage taken -10%',}},
+		body = AF.Body, --10
+		hands = "Gleti's Gauntlets", --8
+		feet = RELIC.Feet,
 		neck = "Empath Necklace",
-		waist = "Isa Belt",
-		left_ear = "Enmerkar Earring",
-		right_ear = "Handler's Earring +1",
+		waist = "Isa Belt", --3
+		left_ear = "Enmerkar Earring", --3
+		right_ear = "Handler's Earring +1", --4
 	}
 	
 
@@ -662,15 +682,15 @@ function get_sets()
 	sets.MasterPet = {} -- Leave this empty
 	
 	sets.MasterPet.TP = {
-		ammo = "Focal Orb",
-		head = "Malignance Chapeau",
+		
+		head = "Heyoka Cap",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
 		legs = "Malignance Tights",
 		feet = "Malignance Boots",
 		neck = "Shulmanu Collar",
 		waist = "Reiki Yotai",
-		left_ear = "Enmerkar Earring",
+		left_ear = "Telos Earring",
 		right_ear = "Suppanomimi",
 		left_ring = "Hetairoi Ring",
 		right_ring = "Epona's Ring",
@@ -700,8 +720,8 @@ function get_sets()
 	sets.pet.magic_atk = {
 		head = "Nyame Helm",
 		body = Valorous.Body.PETATK,
-		hands = "Nyame Gauntlets",
-		legs = "Nyame Flanchard",
+		hands = EMPY.Hands,
+		legs = Valorous.Legs.PetMAB,
 		feet = "Nyame Sollerets",
 		neck = "Adad Amulet",
 		waist = "Incarnation Sash",
@@ -729,7 +749,7 @@ function get_sets()
 		head = Emicho.Head.PetATK,
 		body = Valorous.Body.PETATK,
 		hands = EMPY.Hands,
-		legs = "Gleti's Breeches",
+		legs = Emicho.Legs.PetATK,
 		feet = "Gleti's Boots",
 		neck = "Shulmanu Collar",
 		waist = "Incarnation Sash",

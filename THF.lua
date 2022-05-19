@@ -280,7 +280,7 @@ include('Atsuke_AugGear.lua')
 		
 		ammo = "Yamarang", --5
 		head = "Mummu Bonnet +2",
-		body = "Nyame Mail",
+		body = "Gleti's Cuirass", --10
 		hands = "Nyame Gauntlets",
 		legs = "Dashing Subligar",  --10
 		feet = "Rawhide Boots", --8

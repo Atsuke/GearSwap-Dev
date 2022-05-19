@@ -173,5 +173,11 @@
 	Samnuha.Legs        =   { name="Samnuha Tights", augments={'STR+7','"Dbl.Atk."+2','"Triple Atk."+1',}}
 	
 	Valorous.Body.PETATK=	{ name="Valorous Mail", augments={'Pet: "Mag.Atk.Bns."+2','Pet: "Dbl. Atk."+4','Pet: STR+6','Pet: Accuracy+15 Pet: Rng. Acc.+15','Pet: Attack+10 Pet: Rng.Atk.+10',}}
+	Valorous.Legs.MAB	=	{ name="Valorous Hose", augments={'Mag. Acc.+5','"Mag.Atk.Bns."+25','Phalanx +3','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
+	Valorous.Legs.DA	=	{ name="Valorous Hose", augments={'Accuracy+1','"Dbl.Atk."+3','VIT+2','Attack+7',}}
+    Valorous.Feet.PetMAB=	{ name="Valorous Greaves", augments={'Pet: "Mag.Atk.Bns."+30','MND+10',}}
+	
+	
 	
 	Emicho.Head.PetATK  =	{ name="Emicho Coronet", augments={'Pet: Accuracy+15','Pet: Attack+15','Pet: "Dbl. Atk."+3',}}
+	Emicho.Legs.PetATK	=	{ name="Emicho Hose", augments={'Pet: Accuracy+15','Pet: Attack+15','Pet: "Dbl. Atk."+3',}}

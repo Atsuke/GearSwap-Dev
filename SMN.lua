@@ -322,7 +322,7 @@ function get_sets()
 
     -- Define JSE Capes
     SMNCape = {}
-    SMNCape.PETMAB       =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Cure" potency +10%','Phys. dmg. taken-10%',}}
+    SMNCape.PETMAB   =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Cure" potency +10%','Phys. dmg. taken-10%',}}
     SMNCape.Physical =   { name="Campestres's Cape", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Pet: Attack+10 Pet: Rng.Atk.+10','Pet: Haste+10','Pet: Damage taken -5%',}}
 	SMNCape.PetPDT   =   { name="Campestres's Cape", augments={'Pet: "Regen"+10','System: 1 ID: 1246 Val: 4',}}
 	SMNCape.MAB      =   { name="Campestres's Cape", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Pet: Magic Damage+10','"Fast Cast"+10','Phys. dmg. taken-10%',}}
@@ -365,11 +365,11 @@ function get_sets()
     })   
     -- Your idle DT set
     sets.me.DT = set_combine(sets.me.Idle[refreshType],{ --sets.me.DT
-        main = "Malignance Pole",
-		sub = "Kaja Grip",
-		legs = "Nyame Flanchard",
-		feet = "Nyame Sollerets",
-		neck = { name="Smn. Collar +2", augments={'Path: A',}},
+        main = "Malignance Pole", -- 20
+		sub = "Kaja Grip", --5
+		legs = "Nyame Flanchard", --8
+		feet = "Nyame Sollerets", --7
+		neck = { name="Smn. Collar +2", augments={'Path: A',}}, --5
 		
     })  
     sets.me.Idle.mdt = set_combine(sets.me.Idle.DT,{
@@ -742,15 +742,15 @@ function get_sets()
 	}
 		
 	sets.avatar.DT = {
-		head = Apo.Head.D,
-		body = Telchine.Body.PetDT,
-		hands = Telchine.Hands.PetDT,
-		legs = Telchine.Legs.PetDT,
-		feet = Telchine.Feet.PetDT,
-		waist = "Isa Belt",
-		left_ear = "Handler's Earring",
-		right_ear = "Handler's Earring +1",
-		back = SMNCape.PetPDT
+		head = Apo.Head.D, --4
+		body = Telchine.Body.PetDT, --4
+		hands = Telchine.Hands.PetDT, --4
+		legs = Telchine.Legs.PetDT, --4
+		feet = Telchine.Feet.PetDT, --4
+		waist = "Isa Belt", --3
+		left_ear = "Handler's Earring", --3
+		right_ear = "Handler's Earring +1", --4
+		back = SMNCape.PetPDT --5
 	}
 	
 
