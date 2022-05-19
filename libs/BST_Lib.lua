@@ -232,13 +232,6 @@ end
 	end
 end
 
-function AFAC_Helper(spell)
-	
-	send_command('input /ja "'..temp_spell..'" <t>;')
-end
- 
-
-
 
 --------------------------------------------------------------------------------------------------------------
 ----------------------------------------------- After Cast ---------------------------------------------------
@@ -285,8 +278,6 @@ function idle(pet)
 	elseif pet.isvalid then --We have a pet out.
         petMode = 'pet'	
     else -- We dont have a pet out
-		currentRage = ''
-		currentWard = ''
         petMode = 'me' 
    
 	end
@@ -300,19 +291,19 @@ end
 --------------------------------------------------------------------------------------------------------------
 
 function status_change(new,old)
-    if new == 'Engaged' then  
+   
+	if new == 'Engaged' then  
         -- If we engage check our meleeing status
 		Master_State = new
-        idle(pet)
+        --idle(pet)
          
     elseif new == 'Resting' then
-     
         -- We're resting
         equip(sets.me.resting)          
     else
-        idle(pet)
+        --idle(pet)
     end
-	
+	idle(pet)
 end
 
 function pet_status_change(new, old)
@@ -321,7 +312,6 @@ function pet_status_change(new, old)
 		Pet_State = new
 	end
 	idle(pet)
-   
    
 end
 
@@ -341,19 +331,11 @@ function customizeSet()
 		
 		elseif(petMode == 'pet' and Pet_State == 'Engaged') then -- We have a pet and it is engaged
 			
-			if idleModes.current == 'Regen' then
-				Custom_Set = sets.me.Regen
-				Hybrid_State = 'Master'
-			elseif idleModes.current == 'Pet' then
+			if idleModes.current == 'Pet' then
 				Custom_Set = sets.pet[petModes.value]
 				Hybrid_State = 'Pet Only'
-			elseif idleModes.current == 'DT' then -- priority given to Master DT
-				Hybrid_State = 'Master + Pet'
-				if petModes.current == 'TP' then
-					Custom_Set = set_combine(sets.pet.TP, sets.me.DT)
-				elseif petModes.current == 'DT' then
-					Custom_Set = set_combine(sets.pet.DT, sets.me.DT)
-				end
+			else
+				Custom_Set = sets.me[idleModes.value]
 			end		
 		elseif(petMode == 'pet' and Pet_State == 'Idle') then
 			-- if idleModes.value == 'Pet' then
@@ -366,28 +348,17 @@ function customizeSet()
 	elseif (player.status == "Engaged" and player.hp > 0) then
 		
 		if PetMode == 'me' then -- Seriously why are you engaged without a pet? You are a pet job dummy and a squishy one at that. 
-			Custom_Set = sets.me.Engaged --You are so screwed. Good luck!
+			Custom_Set = sets.me.Engaged[meleeModes.value] --You are so screwed. Good luck!
 			Hybrid_State = 'Master'
-		elseif(petMode == 'pet') then --No need to check pet state. It will engage as soon as you have aggro. Good pet.
+		elseif(petMode == 'pet') then 
 			
 			if meleeModes.current == 'Pet' then -- Priority given to pet 
 				Custom_Set = sets.pet[petModes.value]
 				Hybrid_State = 'Pet'
-			elseif meleeModes.current == 'TP' then -- priority given to master
-				if petModes.current == 'TP' then
-					Hybrid_State = 'Master + Pet'
-					Custom_Set = sets.MasterPet.TP
-				elseif petModes.current == 'DT' then
-					Custom_Set = set_combine(sets.MasterPet.TP, sets.pet.DT)
-				end
-			elseif meleeModes.current == 'DT' then -- priority given to master
-				if petModes.current == 'TP' then
-					Hybrid_State = 'Master + Pet'
-					Custom_Set = set_combine(sets.MasterPet.TP, sets.me.DT) -- 
-				elseif petModes.current == 'DT' then
-					Custom_Set = set_combine(sets.MasterPet.TP, sets.me.DT, sets.pet.DT) 
-				end
-				
+			elseif meleeModes.current == 'Master + Pet' then
+				Custom_Set = sets.MasterPet.TP
+			else
+				Custom_Set = sets.me.Engaged[meleeModes.value]
 			end
 		
 		end
@@ -431,10 +402,8 @@ function self_command(command)
                 idleModes:cycle()
             elseif commandArgs[2] == 'meleemode' then
                 meleeModes:cycle()
-				validateTextInformation()
 			elseif commandArgs[2] == 'petmode' then
                 petModes:cycle()                 
-                validateTextInformation() 
 			elseif commandArgs[2] == 'autoconvert' then
 				convertModes:cycle()
             elseif commandArgs[2] == 'thMode' then
@@ -460,13 +429,12 @@ function self_command(command)
                     oldElement = elements.current
                 end         
                 updateSC(elements.current, scTier2.value)                    
-                validateTextInformation()
 
             elseif (nuke == 'air' or nuke == 'ice' or nuke == 'fire' or nuke == 'water' or nuke == 'lightning' or nuke == 'earth' or nuke == 'light' or nuke == 'dark') then
                 local newType = commandArgs[2]
                 elements:set(newType)
                 updateSC(elements.current, scTier2.value)                
-                validateTextInformation()
+                
             elseif not nukes[nuke] then
                 windower.add_to_chat(123,'Unknown element type: '..tostring(commandArgs[2]))
                 return              
@@ -488,5 +456,6 @@ function self_command(command)
 		
 		end
 	end
+	validateTextInformation()
 	idle(pet)
 end

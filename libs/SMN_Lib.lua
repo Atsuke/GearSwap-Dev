@@ -425,7 +425,8 @@ function idle(pet)
 	if (not player.status) then
 		return
 	elseif pet.isvalid then --We have a pet out.
-        petMode = 'avatar'	
+        petMode = 'avatar'
+		Pet_State = pet.status
     else -- We dont have a pet out
 		currentRage = ''
 		currentWard = ''
