@@ -124,7 +124,7 @@ function midcast(spell)
 		if spell.element == world.weather_element or spell.element == world.day_element then
 			equip(sets.midcast.cure.weather)
         else
-			equip(sets.midcast.cure.normal)
+			equip(sets.midcast.cure.Normal)
         end
     
 	elseif spell.skill == 'Enhancing Magic' then
