@@ -153,20 +153,20 @@ nukeModes = M('Normal', 'ACC')
 convertModes = M('OFF', 'AUTO')
 
 -- Defults when you load the job / lua
-geomancy:set('Geo-Frailty')			-- Geo Spell Default        (when you first load lua / change jobs the saved spells is this one)
-indicolure:set('Indi-Fury')			-- Indi Spell Default       (when you first load lua / change jobs the saved spells is this one)
-entrustindi:set('Indi-Haste')		-- Enttrust Spell Default   (when you first load lua / change jobs the saved spells is this one)
+geomancy:set('Geo-Frailty')      -- Geo Spell Default        (when you first load lua / change jobs the saved spells is this one)
+indicolure:set('Indi-Fury')      -- Indi Spell Default       (when you first load lua / change jobs the saved spells is this one)
+entrustindi:set('Indi-Haste')    -- Enttrust Spell Default   (when you first load lua / change jobs the saved spells is this one)
 
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 -- Setup your Key Bindings here:  
 	windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
 	windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order   
-    windower.send_command('bind end gs c geo geocycle')					-- END Cycles Geomancy Spell
+	windower.send_command('bind end gs c geo geocycle')					-- END Cycles Geomancy Spell
 	windower.send_command('bind !end gs c geo geocycledown')			-- ALT+END Cycles Geomancy Spell in reverse order	
-    windower.send_command('bind home gs c geo indicycle')				-- Home Cycles IndiColure Spell
+	windower.send_command('bind home gs c geo indicycle')				-- Home Cycles IndiColure Spell
 	windower.send_command('bind !home gs c geo indicycledown')			-- ALT+Home Cycles IndiColure Spell in reverse order	
-    windower.send_command('bind delete gs c geo entrustcycle')			-- DELETE Cycles Entrust IndiColure Spell
+	windower.send_command('bind delete gs c geo entrustcycle')			-- DELETE Cycles Entrust IndiColure Spell
 	windower.send_command('bind !delete gs c geo entrustcledown')		-- ALT-DELETE Cycles Entrust IndiColure Spell in reverse order	
 	windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters	
 	windower.send_command('bind !f10 gs c toggle nukemode')				-- Alt-F10 to change Nuking Mode
@@ -199,20 +199,20 @@ keybinds_on['key_bind_convert_mode'] = '(PgDwn)'
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
-    send_command('unbind insert')
+	send_command('unbind insert')
 	send_command('unbind !insert')
-    send_command('unbind end')
-    send_command('unbind !end')
+	send_command('unbind end')
+	send_command('unbind !end')
 	send_command('unbind @end')
 	send_command('unbind ^end')
 	send_command('unbind home')
 	send_command('unbind !home')
 	send_command('unbind delete')
 	send_command('unbind !delete')
-    send_command('unbind f9')
-    send_command('unbind !f9')
+	send_command('unbind f9')
+	send_command('unbind !f9')
 	send_command('unbind f10')
-    send_command('unbind !f10')
+	send_command('unbind !f10')
 	send_command('unbind f12')
 	send_command('unbind ^PAGEDOWN')
 end
@@ -376,18 +376,18 @@ function get_sets()
 	sets.pan.melee = set_combine(sets.pan.idle[idleMode],{
     
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-        head = "Jhakri Coronal +1",
-        body = "Jhakri Robe +2",
-        hands = "Jhakri Cuffs +2",
-        legs = "Jhakri Slops +2",
-        feet = "Jhakri Pigaches +2",
-        neck = "Sanctity Necklace",
-        waist = "Windbuffet Belt +1",
-        left_ear = "Mache Earring +1",
-        right_ear = "Telos Earring",
-        left_ring = "Jhakri Ring",
-        right_ring = "Supershear Ring",
-        back =  Nantosuelta.PetRegen,
+		head = "Jhakri Coronal +1",
+		body = "Jhakri Robe +2",
+		hands = "Jhakri Cuffs +2",
+		legs = "Jhakri Slops +2",
+		feet = "Jhakri Pigaches +2",
+		neck = "Sanctity Necklace",
+		waist = "Windbuffet Belt +1",
+		left_ear = "Mache Earring +1",
+		right_ear = "Telos Earring",
+		left_ring = "Jhakri Ring",
+		right_ring = "Supershear Ring",
+		back =  Nantosuelta.PetRegen,
     }) 
     
 	------------------------------------------------------------------------------------------------
@@ -395,9 +395,7 @@ function get_sets()
 	------------------------------------------------------------------------------------------------
 	-- Example:
 
-	sets.me["Realmrazer"] = {
-
-    }
+	sets.me["Realmrazer"] = {}
 	
 	sets.me["Flash Nova"] = {
 	
@@ -447,7 +445,7 @@ function get_sets()
       
     -- Generic Casting Set that all others take off of. Here you should add all your fast cast  
     sets.precast.casting = {
-        main = "Idris",
+		main = "Idris",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head = "Welkin Crown",
 		body = Merl.Body.FC,
@@ -463,13 +461,12 @@ function get_sets()
 		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
     }   
 
-    sets.precast.geomancy = set_combine(sets.precast.casting,{
-        
-    })
-    -- Enhancing Magic, eg. Siegal Sash, etc
+    sets.precast.geomancy = set_combine(sets.precast.casting,{})
+    
+	-- Enhancing Magic, eg. Siegal Sash, etc
     sets.precast.enhancing = set_combine(sets.precast.casting,{
 		waist = "Siegel Sash",
-        neck = "Incanter's Torque",
+		neck = "Incanter's Torque",
     })
 	
 	sets.precast.nuke = set_combine(sets.precast.casting,{
@@ -539,13 +536,12 @@ function get_sets()
 		back = Nantosuelta.MAB,
     }
 	
-	
-	
+
 	---------------------
 	-- Geo Spells
 	---------------------
     sets.midcast.geo = set_combine(sets.midcast.casting,{
-        main = "Idris",
+		main = "Idris",
 		sub = "Genmei Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head = Van.Head.C,
@@ -570,7 +566,7 @@ function get_sets()
 	-- For Entrusted Indi Spells
     sets.midcast.entrust = set_combine(sets.midcast.indi,{
 		main = "Solstice",
-        legs = RELIC.Legs,
+		legs = RELIC.Legs,
     })
 
 	sets.midcast.Obi = {waist = "Hachirin-no-Obi",}
@@ -579,7 +575,7 @@ function get_sets()
 	-- Nuking
 	---------------------
 	sets.midcast.nuking.Normal = set_combine(sets.midcast.casting,{
-        main = "Daybreak",
+		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head = RELIC.Head,
@@ -602,8 +598,7 @@ function get_sets()
 		legs = "Ea Slops",
 		neck = "Mizu. Kubikazari",
 		right_ring = "Mujin Band",
-		
-        
+		  
 	})
     sets.midcast.nuking.ACC = set_combine(sets.midcast.nuking.Normal,{
 
@@ -616,7 +611,7 @@ function get_sets()
 	-- Enfeebling
 	---------------------
 	sets.midcast.IntEnfeebling = set_combine(sets.midcast.casting,{
-        main = "Daybreak",
+		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head = RELIC.Head,
@@ -640,12 +635,12 @@ function get_sets()
 	-- Enhancing
 	---------------------
     sets.midcast.enhancing = set_combine(sets.midcast.casting,{
-        main = "Daybreak",
-        head = Telchine.Head.en ,
+		main = "Daybreak",
+		head = Telchine.Head.en ,
 		body = Merl.Body.FC,
 		hands = RELIC.Hands,
 		legs = Telchine.Legs.en,
-		feet = Telchine.Feet.en,
+		feet = Telchine.Feet.en,	
 		neck = "Incanter's Torque",
 		waist = "Embla Sash",
 		left_ear = "Andoaa Earring",
@@ -688,7 +683,7 @@ function get_sets()
 	-- Cures
 	---------------------
 	sets.midcast.cure.Normal = set_combine(sets.midcast.casting,{
-        main = "Daybreak", --30
+		main = "Daybreak", --30
 		sub = "Genmei Shield",
 		ammo = "Hydrocera",
 		head = Van.Head.C, --10

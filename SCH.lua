@@ -8,72 +8,71 @@ version = "3.0"
 
 --[[
         Custom commands:
-        Shorthand versions for each strategem type that uses the version appropriate for
-        the current Arts.
+		Shorthand versions for each strategem type that uses the version appropriate for the current Arts.
                                         Light Arts              Dark Arts
-        gs c scholar light              Light Arts/Addendum
-        gs c scholar dark                                       Dark Arts/Addendum
-        gs c scholar cost               Penury                  Parsimony
-        gs c scholar speed              Celerity                Alacrity
-        gs c scholar aoe                Accession               Manifestation
-        gs c scholar power              Rapture                 Ebullience
-        gs c scholar duration           Perpetuance
-        gs c scholar accuracy           Altruism                Focalization
-        gs c scholar enmity             Tranquility             Equanimity
-        gs c scholar skillchain                                 Immanence
-        gs c scholar addendum           Addendum: White         Addendum: Black
+		gs c scholar light              Light Arts/Addendum
+		gs c scholar dark                                       Dark Arts/Addendum
+		gs c scholar cost               Penury                  Parsimony
+		gs c scholar speed              Celerity                Alacrity
+		gs c scholar aoe                Accession               Manifestation
+		gs c scholar power              Rapture                 Ebullience
+		gs c scholar duration           Perpetuance
+		gs c scholar accuracy           Altruism                Focalization
+		gs c scholar enmity             Tranquility             Equanimity
+		gs c scholar skillchain                                 Immanence
+		gs c scholar addendum           Addendum: White         Addendum: Black
     
-        Toggle Function: 
-        gs c toggle melee               Toggle Melee mode on / off and locking of weapons
-        gs c toggle mb                  Toggles Magic Burst Mode on / off.
-        gs c toggle runspeed            Toggles locking on / off Herald's Gaiters
-        gs c toggle idlemode            Toggles between Refresh and DT idle mode. Activating Sublimation JA will auto replace refresh set for sublimation set. DT set will superceed both.        
-        gs c toggle regenmode           Toggles between Hybrid, Duration and Potency mode for regen set  
-        gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
-        gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
+		Toggle Function: 
+		gs c toggle melee               Toggle Melee mode on / off and locking of weapons
+		gs c toggle mb                  Toggles Magic Burst Mode on / off.
+		gs c toggle runspeed            Toggles locking on / off Herald's Gaiters
+		gs c toggle idlemode            Toggles between Refresh and DT idle mode. Activating Sublimation JA will auto replace refresh set for sublimation set. DT set will superceed both.        
+		gs c toggle regenmode           Toggles between Hybrid, Duration and Potency mode for regen set  
+		gs c toggle nukemode            Toggles between Normal and Accuracy mode for midcast Nuking sets (MB included)  
+		gs c toggle matchsc             Toggles auto swapping element to match the last SC that just happenned.
 		gs c toggle autoconvert			Toggles autoconvert modes
                 
-        Casting functions:
-        these are to set fewer macros (1 cycle, 5 cast) to save macro space when playing lazily with controler
+		Casting functions:
+		these are to set fewer macros (1 cycle, 5 cast) to save macro space when playing lazily with controler
         
-        gs c nuke cycle                 Cycles element type for nuking & SC
-        gs c nuke cycledown             Cycles element type for nuking & SC in reverse order    
-        gs c nuke t1                    Cast tier 1 nuke of saved element 
-        gs c nuke t2                    Cast tier 2 nuke of saved element 
-        gs c nuke t3                    Cast tier 3 nuke of saved element 
-        gs c nuke t4                    Cast tier 4 nuke of saved element 
-        gs c nuke t5                    Cast tier 5 nuke of saved element 
-        gs c nuke helix2                Cast helix2 nuke of saved element 
-        gs c nuke storm2                Cast Storm II buff of saved element  
+		gs c nuke cycle                 Cycles element type for nuking & SC
+		gs c nuke cycledown             Cycles element type for nuking & SC in reverse order    
+		gs c nuke t1                    Cast tier 1 nuke of saved element 
+		gs c nuke t2                    Cast tier 2 nuke of saved element 
+		gs c nuke t3                    Cast tier 3 nuke of saved element 
+		gs c nuke t4                    Cast tier 4 nuke of saved element 
+		gs c nuke t5                    Cast tier 5 nuke of saved element 
+		gs c nuke helix2                Cast helix2 nuke of saved element 
+		gs c nuke storm2                Cast Storm II buff of saved element  
                     
-        gs c sc tier                    Cycles SC Tier (1 & 2)
-        gs c sc castsc                  Cast All the stuff to create a SC burstable by the nuke element set with '/console gs c nuke element'.
+		gs c sc tier                    Cycles SC Tier (1 & 2)
+		gs c sc castsc                  Cast All the stuff to create a SC burstable by the nuke element set with '/console gs c nuke element'.
 
-        HUD Functions:
-        gs c hud hide                   Toggles the Hud entirely on or off
-        gs c hud hidemode               Toggles the Modes section of the HUD on or off
-        gs c hud hidejob                Toggles the job section of the HUD on or off
-        gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		HUD Functions:
+		gs c hud hide                   Toggles the Hud entirely on or off
+		gs c hud hidemode               Toggles the Modes section of the HUD on or off
+		gs c hud hidejob                Toggles the job section of the HUD on or off
+		gs c hud hidebattle             Toggles the Battle section of the HUD on or off
 		gs c hud hidetools				Toggles the Tools section of the HUD on or off
-        gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
-        gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
-        gs c hud setcolor sections      Cycles colors for sections
-        gs c hud setcolor options       Cycles colors for options
-        gs c hud setcolor keybinds      Cycles colors for keybinds
-        gs c hud setcolor selection     Cycles colors for selection
+		gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
+		gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
+		gs c hud setcolor sections      Cycles colors for sections
+		gs c hud setcolor options       Cycles colors for options
+		gs c hud setcolor keybinds      Cycles colors for keybinds
+		gs c hud setcolor selection     Cycles colors for selection
 		gs c hud setcolor tools     	Cycles colors for selection
 		
-        Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
+		Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
         
-        // OPTIONAL IF YOU WANT / NEED to skip the cycles...  
-        gs c nuke Ice                   Set Element Type to Ice DO NOTE the Element needs a Capital letter. 
-        gs c nuke Air                   Set Element Type to Air DO NOTE the Element needs a Capital letter. 
-        gs c nuke Dark                  Set Element Type to Dark DO NOTE the Element needs a Capital letter. 
-        gs c nuke Light                 Set Element Type to Light DO NOTE the Element needs a Capital letter. 
-        gs c nuke Earth                 Set Element Type to Earth DO NOTE the Element needs a Capital letter. 
-        gs c nuke Lightning             Set Element Type to Lightning DO NOTE the Element needs a Capital letter. 
-        gs c nuke Water                 Set Element Type to Water DO NOTE the Element needs a Capital letter. 
-        gs c nuke Fire                  Set Element Type to Fire DO NOTE the Element needs a Capital letter. 
+		// OPTIONAL IF YOU WANT / NEED to skip the cycles...  
+		gs c nuke Ice                   Set Element Type to Ice DO NOTE the Element needs a Capital letter. 
+		gs c nuke Air                   Set Element Type to Air DO NOTE the Element needs a Capital letter. 
+		gs c nuke Dark                  Set Element Type to Dark DO NOTE the Element needs a Capital letter. 
+		gs c nuke Light                 Set Element Type to Light DO NOTE the Element needs a Capital letter. 
+		gs c nuke Earth                 Set Element Type to Earth DO NOTE the Element needs a Capital letter. 
+		gs c nuke Lightning             Set Element Type to Lightning DO NOTE the Element needs a Capital letter. 
+		gs c nuke Water                 Set Element Type to Water DO NOTE the Element needs a Capital letter. 
+		gs c nuke Fire                  Set Element Type to Fire DO NOTE the Element needs a Capital letter. 
 --]]
 
 --------------------------------------------------------------------------------------------------------------
@@ -162,18 +161,18 @@ nukeModes = M('Normal', 'Acc')
 convertModes = M('OFF', 'AUTO')
 
 -- Setup your Key Bindings here:
-    windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
-    windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order 
-    windower.send_command('bind f9 gs c toggle idlemode')				-- F9 to change Idle Mode    
-    windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters
-    windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons
-    windower.send_command('bind !` input /ma Stun <t>')					-- Alt-` Quick Stun Shortcut.
-    windower.send_command('bind home gs c sc tier')						-- home to change SC tier between Level 1 or Level 2 SC
-    windower.send_command('bind delete gs c toggle regenmode')			-- Delete to change Regen Mode	
-    windower.send_command('bind !f10 gs c toggle nukemode')				-- Alt-F10 to change Nuking Mode
-    windower.send_command('bind F10 gs c toggle matchsc')				-- F10 to change Match SC Mode          	
-    windower.send_command('bind !end gs c hud lite')					-- Alt-End to toggle light hud version       
-    windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
+	windower.send_command('bind insert gs c nuke cycle')				-- Insert Cycles Nuke element
+	windower.send_command('bind !insert gs c nuke cycledown')			-- ALT+Insert Cycles Nuke element in reverse order 
+	windower.send_command('bind f9 gs c toggle idlemode')				-- F9 to change Idle Mode    
+	windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off Herald's Gaiters
+	windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons
+	windower.send_command('bind !` input /ma Stun <t>')					-- Alt-` Quick Stun Shortcut.
+	windower.send_command('bind home gs c sc tier')						-- home to change SC tier between Level 1 or Level 2 SC
+	windower.send_command('bind delete gs c toggle regenmode')			-- Delete to change Regen Mode	
+	windower.send_command('bind !f10 gs c toggle nukemode')				-- Alt-F10 to change Nuking Mode
+	windower.send_command('bind F10 gs c toggle matchsc')				-- F10 to change Match SC Mode          	
+	windower.send_command('bind !end gs c hud lite')					-- Alt-End to toggle light hud version       
+	windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
 	windower.send_command('bind PAGEDOWN gs c toggle autoconvert')		-- PAGEDOWN to toggle Convert Mode
 
 --[[
@@ -194,18 +193,18 @@ keybinds_on['key_bind_convert_mode'] = '(PgDwn)'
 
 -- Remember to unbind your keybinds on job change.
 function user_unload()
-    send_command('unbind insert')
-    send_command('unbind delete')	
-    send_command('unbind f9')
-    send_command('unbind f10')
-    send_command('unbind f12')
-    send_command('unbind !`')
-    send_command('unbind home')
-    send_command('unbind delete')
-    send_command('unbind !f10')	
-    send_command('unbind `f10')
-    send_command('unbind !f9')	
-    send_command('unbind !end')
+	send_command('unbind insert')
+	send_command('unbind delete')	
+	send_command('unbind f9')
+	send_command('unbind f10')
+	send_command('unbind f12')
+	send_command('unbind !`')
+	send_command('unbind home')
+	send_command('unbind delete')
+	send_command('unbind !f10')	
+	send_command('unbind `f10')
+	send_command('unbind !f9')	
+	send_command('unbind !end')
 	send_command('unbind PAGEDOWN')
 end
 --------------------------------------------------------------------------------------------------------------
@@ -280,13 +279,10 @@ function get_sets()
     --SCHCape.FC = { name="Lugh's Cape", augments={'MND+10','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Mag. Evasion+12',}}
     SCHCape.NUKE = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}}
 	
-	-- For running faster in Adoulin
-	sets.adoulinmovement = { 
-		body = "Councilor's Garb"
-	}
 
     -- Your idle set
     sets.me.idle.Refresh = {
+		
 		main = "Daybreak",
 		sub = "Genmei Shield",
 		ammo = "Homiliary",
@@ -306,7 +302,8 @@ function get_sets()
 
     -- Your idle Sublimation set combine from refresh or DT depening on mode.
     sets.me.idle.sublimation = set_combine(sets.me.idle.Refresh,{
-    	sub = "Ammurapi Shield",
+		
+		sub = "Ammurapi Shield",
 		head = AF.Head,
 		body = RELIC.Body,
 		neck = "Loricate Torque",
@@ -316,7 +313,8 @@ function get_sets()
     })   
     -- Your idle DT set
     sets.me.idle.DT = set_combine(sets.me.idle[refreshType],{
-        main = "Malignance Pole",
+		
+		main = "Malignance Pole",
 		sub = "Kaja Grip",
 		feet =  'Nyame Sollerets',
 		neck = "Warder's Charm +1",
@@ -326,14 +324,13 @@ function get_sets()
         
     })  
 	-- Your MP Recovered Whilst Resting Set
-    sets.me.resting = { 
-		
-    }
+    sets.me.resting = {}
     
     sets.me.latent_refresh = {waist="Fucho-no-obi"}     
     
 	-- Combat Related Sets
     sets.me.melee = set_combine(sets.me.idle[idleModes.current],{
+		
 		main = "Malignance Pole",
 		sub = "Alber Strap",
 		ammo = "Ghastly Tathlum +1",
@@ -353,6 +350,7 @@ function get_sets()
     -- Weapon Skills sets just add them by name.
     
     sets.me["Shattersoul"] = {
+		
 		ammo = "Ghastly Tathlum +1",
 		head = "Nyame Helm",
 		body = "Nyame Mail",
@@ -369,6 +367,7 @@ function get_sets()
     }
 	
     sets.me["Myrkr"] = {
+		
 		ammo = "Ghastly Tathlum +1",
 		head = RELIC.Head,
 		body = AF.Body,
@@ -407,14 +406,15 @@ function get_sets()
 	------------------------------------------------------------------------------------------------
     
 	sets.precast = {}   		-- Leave this empty  
-    sets.midcast = {}    		-- Leave this empty  
-    sets.aftercast = {}  		-- Leave this empty  
+	sets.midcast = {}    		-- Leave this empty  
+	sets.aftercast = {}  		-- Leave this empty  
 	sets.midcast.nuking = {}	-- leave this empty
 	sets.midcast.MB	= {}		-- leave this empty
       
     -- Generic Casting Set that all others take off of. Here you should add all your fast cast 
     -- Grimoire: 10(cap:25) / rdm: 15
     sets.precast.casting = {
+		
 		main = "Oranyan",
 		ammo = "Sapience Orb",
 		head = Merl.Head.FC,
@@ -437,6 +437,7 @@ function get_sets()
     -- Dont set_combine here, as this is the last step of the precast, it will have sorted all the needed pieces already based on type of spell.
     -- Then only swap in what under this set after everything else. 
     sets.precast.grimoire = {
+		
 		head = RELIC.Head,
 		feet = AF.Feet,
     }
@@ -444,17 +445,20 @@ function get_sets()
 	
     -- Enhancing Magic, eg. Siegal Sash, etc
     sets.precast.enhancing = set_combine(sets.precast.casting,{
+		
 		waist="Siegel Sash",
         
     })
   
     -- Stoneskin casting time -, works off of enhancing -
     sets.precast.stoneskin = set_combine(sets.precast.enhancing,{
+		
 		waist="Siegel Sash",
     })
       
     -- Curing Precast, Cure Spell Casting time -
     sets.precast.cure = set_combine(sets.precast.casting,{
+		
 		legs = "Doyen Pants",	
 		feet = Vanya.Feet.D,
     })
@@ -472,9 +476,7 @@ function get_sets()
 	------------------------------------------------------------------------------------------------
 	
     -- Just go make it, inventory will thank you and making rules for each is meh.
-    sets.midcast.Obi = {
-    	waist = "Hachirin-no-Obi",
-    }
+    sets.midcast.Obi = { waist = "Hachirin-no-Obi",}
 	
 	-----------------------------------------------------------------------------------------------
 	-- Helix sets automatically derives from casting sets. SO DONT PUT ANYTHING IN THEM other than:
@@ -488,6 +490,7 @@ function get_sets()
     
 	-- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.Helix = {
+		
 		main = "Daybreak",
 		sub = "Culminus",
 		ammo = "Ghastly Tathlum +1",
@@ -506,13 +509,12 @@ function get_sets()
     }	
 
     -- Whatever you want to equip mid-cast as a catch all for all spells, and we'll overwrite later for individual spells
-    sets.midcast.casting = {
-		
-    }
+    sets.midcast.casting = {}
 
 	sets.midcast["Sublimation"] = {head= AF.Head, body= RELIC.Body}
     
     sets.midcast.nuking.Normal = {
+		
 		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		ammo = "Ghastly Tathlum +1",
@@ -533,6 +535,7 @@ function get_sets()
     -- used with toggle, default: F10
     -- Pieces to swap from freen nuke to Magic Burst
     sets.midcast.MB.Normal = set_combine(sets.midcast.nuking.Normal, {
+		
 		main = { name="Akademos", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
 		sub = "Enki Strap",
     })
@@ -549,6 +552,7 @@ function get_sets()
 	sets.midcast["Stun"] = {} --should fill this	
     
 	sets.midcast.IntEnfeebling = {
+		
 		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		ammo = "Ghastly Tathlum +1",
@@ -567,6 +571,7 @@ function get_sets()
     }
     
 	sets.midcast.MndEnfeebling = {
+		
 		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		ammo = "Ghastly Tathlum +1",
@@ -585,6 +590,7 @@ function get_sets()
 	
     -- Enhancing
     sets.midcast.enhancing = set_combine(sets.midcast.casting,{
+		
 		main = { name="Gada", augments={'Enh. Mag. eff. dur. +5','VIT+5','"Mag.Atk.Bns."+6',}},
 		sub = "Ammurapi Shield",
 		ammo = "Sapience Orb",
@@ -603,12 +609,14 @@ function get_sets()
     })
     
 	sets.midcast.storm = set_combine(sets.midcast.enhancing,{
+		
 		feet= RELIC.Feet,
 		right_ring = "Kishar Ring",
     })       
     
 	-- Stoneskin
     sets.midcast.stoneskin = set_combine(sets.midcast.enhancing,{
+		
 		neck = "Nodens Gorget",
 		waist = "Siegel Sash",
 		left_ear = "Earthcry Earring",
@@ -621,19 +629,21 @@ function get_sets()
     sets.midcast.aquaveil = sets.midcast.refresh
 	
     sets.midcast["Drain"] = set_combine(sets.midcast.nuking, {
-        --head="Pixie Hairpin +1",
+        
+		--head="Pixie Hairpin +1",
 		legs = RELIC.Pants,
 		feet = Merl.Feet.Th,
 		neck = "Erra Pendant",
 		waist = "Fucho-no-Obi",
     })
 	
-    sets.midcast["Aspir"] = sets.midcast["Drain"]
+	sets.midcast["Aspir"] = sets.midcast["Drain"]
  	
- 	sets.midcast.cure = {} -- Leave This Empty
+	sets.midcast.cure = {} -- Leave This Empty
     
 	-- Cure Potency
-	sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
+	sets.midcast.cure.normal = {
+		
 		main = "Malignance Pole",
 		sub = "Kaja Grip",
 		head = Vanya.Head.A, --17
@@ -648,8 +658,10 @@ function get_sets()
 		left_ring = "Haoma's Ring",
 		right_ring = "Defending Ring",
 		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
-    })
+    }
+	
     sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{
+		
 		main = "Chatoyant Staff",
 		waist = "Hachirin-no-Obi",
 		back = "Twilight Cape",
@@ -659,9 +671,12 @@ function get_sets()
     ------------
     -- Regen
     ------------	
+	
 	sets.midcast.regen = {} 	-- leave this empty
+	
 	-- Normal hybrid well rounded Regen
-    sets.midcast.regen.Hybrid = {
+	sets.midcast.regen.Hybrid = {
+		
 		main = "Bolelabunga",
 		sub = "Ammurapi Shield",
 		ammo = "Incantor Stone",
@@ -678,12 +693,14 @@ function get_sets()
 		right_ring = "Kishar Ring",
 		back = SCHCape.NUKE,
     }
+	
 	-- Focus on Regen Duration 	
-    sets.midcast.regen.Duration = set_combine(sets.midcast.regen.Hybrid,{
+	sets.midcast.regen.Duration = set_combine(sets.midcast.regen.Hybrid,{
 		head = Telchine.Head.en,
     }) 
+	
 	-- Focus on Regen Potency 	
-    sets.midcast.regen.Potency = set_combine(sets.midcast.regen.Hybrid,{
+	sets.midcast.regen.Potency = set_combine(sets.midcast.regen.Hybrid,{
 		back = { name="Bookworm's Cape", augments={'INT+2','MND+4','"Regen" potency+9',}}
 
     }) 
