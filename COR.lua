@@ -431,6 +431,8 @@ include('Kuvira_AugGear.lua')
 		
 		head = "Ikenga's Hat",
 		legs = "Ikenga's Trousers",
+		left_ring = "Chirich Ring",
+		right_ring = "Chirich Ring",
 	})
 	
 	sets.midcast.RA['ACC'] = set_combine(sets.midcast.RA, {
@@ -641,8 +643,9 @@ include('Kuvira_AugGear.lua')
 		legs = "Meg. Chausses +2",
 		feet = "Meg. Jam. +2",
 		waist = "Lycopodium Sash",
-		neck = "Sanctity Necklace",
-		left_ring = "Woltaris Ring",
+		neck = "Bathy Choker +1",
+		left_ring = "Chirich Ring",
+		right_ring = "Chirich Ring",
 	}
 	
 	sets.idle.DT = {
@@ -718,7 +721,7 @@ include('Kuvira_AugGear.lua')
 		ammo = "Chrono Bullet",
 		head = "Meghanada Visor +2",
 		body = "Meg. Cuirie +2",
-		hands={ name="Gazu Bracelet +1", augments={'Path: A',}},
+		hands = { name="Gazu Bracelet +1", augments={'Path: A',}},
 		legs = "Meg. Chausses +2",
 		feet = "Malignance Boots",
 		neck = "Lissome Necklace",

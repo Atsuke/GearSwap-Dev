@@ -201,11 +201,11 @@ include('Kuvira_AugGear.lua')
 	
 	-- Fill this with your own JSE. 
     --Laksamana
-	AF.Head  = "Assim. Keffiyeh +1"
+	AF.Head  = "Assim. Keffiyeh +2"
 	AF.Body  = "Assim. Jubbah +2"
-	AF.Hands = "Assim. Bazu. +1"
-	AF.Legs  = "Assim. Shalwar +1"
-	AF.Feet  = "Assim. Charuqs +1"
+	AF.Hands = "Assim. Bazu. +2"
+	AF.Legs  = "Assim. Shalwar +2"
+	AF.Feet  = "Assim. Charuqs +2"
 
 	--Lanun
 	RELIC.Head  = { name="Luh. Keffiyeh +1", augments={'Enhances "Convergence" effect',}}
@@ -566,7 +566,7 @@ include('Kuvira_AugGear.lua')
 		hands = "Gleti's Gauntlets",
 		legs = "Gleti's Breeches",
 		feet = "Gleti's Boots",
-		neck = "Sibyl Scarf",
+		neck = "Bathy Choker +1",
 		right_ring = "Defending Ring",
 		right_ear = "Infused Earring",
 		back = Rosmerta.TP

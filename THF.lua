@@ -458,7 +458,7 @@ include('Atsuke_AugGear.lua')
 	
 		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
-		neck = "Sanctity Necklace",
+		neck = "Bathy Choker +1",
 		left_ring = "Woltaris Ring",
 	})
 	
@@ -564,7 +564,7 @@ include('Atsuke_AugGear.lua')
 		hands = RELIC.Hands, --4
 		body = Herc.Body.TH, -- 1
 		legs = "Volte Hose", -- 1
-		feet = "Skulk. Poulaines +1", --3
+		feet = EMPY.Feet, --3
 		waist = "Chaac Belt", -- 1
 	}
 	

@@ -289,7 +289,7 @@ function get_sets()
     sets.me.idle.Refresh = {
 		main = "Daybreak",
 		sub = "Genmei Shield",
-		ammo = "Ghastly Tathlum +1",
+		ammo = "Homiliary",
 		head = "Befouled Crown",
 		body = "Shamash Robe",
 		hands = "Volte Gloves",
@@ -367,6 +367,7 @@ function get_sets()
 		right_ring = "Hetairoi Ring",
 		back = SCHCape.NUKE,
     }
+	
     sets.me["Myrkr"] = {
 		ammo = "Ghastly Tathlum +1",
 		head = RELIC.Head,

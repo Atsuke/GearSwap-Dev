@@ -570,7 +570,7 @@ function get_sets()
 		head = RELIC.Head,
 		body = "Gleti's Cuirass",
 		hands = "Gleti's Gauntlets",
-		legs = Valorous.Legs.DA,
+		legs = "Meg. Chausses +2",
 		feet = "Gleti's Boots",
 		neck = "Fotia Gorget",
 		waist = "Fotia Belt",

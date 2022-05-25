@@ -464,7 +464,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 		body = "Meg. Cuirie +2",
 		hands = "Meg. Gloves +2",
-		neck = "Sanctity Necklace",
+		neck = "Bathy Choker +1",
 		left_ring = "Woltaris Ring",
 	
 	})

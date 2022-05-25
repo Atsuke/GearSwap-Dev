@@ -301,7 +301,7 @@ function get_sets()
     AF.Head     =   "Convoker's Horn +3"
     AF.Body     =   "Con. Doublet +3"
     AF.Hands    =   "Convoker's Bracers +3"
-    AF.Legs     =  	"Convo. Spats +2"
+    AF.Legs     =  	"Convo. Spats +3"
     AF.Feet     =   "Convo. Pigaches +3"
 
     --Glyphic
@@ -400,8 +400,8 @@ function get_sets()
 		waist = "Grunfeld Rope",
 		left_ear = "C. Palug Earring",
 		right_ear = "Telos Earring",
-		left_ring = "Cacoethic Ring",
-		right_ring = "Defending Ring",
+		left_ring = "Defending Ring",
+		right_ring = "Cacoethic Ring",
 		back = SMNCape.PETMAB,
     }
      
@@ -436,20 +436,20 @@ function get_sets()
     -- Generic Casting Set that all others take off of. Here you should add all your fast cast 
     
     sets.precast.casting = {
-		main = "Nirvana",
+		main = "Oranyan",
 		ammo = "Sancus Sachet +1",
-		head = Merl.Head.FC,
-		body = "Zendik Robe",
-		hands = "Volte Gloves",
-		legs = Psycloth.Legs.FC,
-		feet = Merl.Feet.Th,
-		neck = "Voltsurge Torque",
-		waist = "Witful Belt",
-		left_ear = "Malignance Earring",
-		right_ear = "Loquac. Earring",
-		left_ring = "Prolix Ring",
-		right_ring = "Kishar Ring",
-		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
+		head = Merl.Head.FC, --12
+		body = "Zendik Robe", --13
+		hands = "Volte Gloves", --6
+		legs = Psycloth.Legs.FC, --7
+		feet = Merl.Feet.Th, --5 
+		neck = "Voltsurge Torque", --4 
+		waist = "Witful Belt", --3
+		left_ear = "Malignance Earring", --4
+		right_ear = "Loquac. Earring", --2
+		left_ring = "Prolix Ring", --2
+		right_ring = "Kishar Ring", --4
+		back = { name="Fi Follet Cape +1", augments={'Path: A',}}, --10
     }
 
 	sets.precast.summoning = set_combine(sets.precast.casting,{
@@ -627,8 +627,8 @@ function get_sets()
 		waist = "Porous Rope",
 		left_ear = "Mendi. Earring",
 		right_ear = "Roundel Earring",
-		left_ring = "Persis Ring",
-		right_ring = "Defending Ring",
+		left_ring = "Defending Ring",
+		right_ring = "Persis Ring",
 		back = SMNCape.PETMAB
     })
     

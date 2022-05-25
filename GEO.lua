@@ -147,9 +147,9 @@ set_macros(1,5) -- Sheet, Book
 -- to define sets for idle if you add more modes, name them: sets.me.idle.mymode and add 'mymode' in the group.
 -- to define sets for regen if you add more modes, name them: sets.midcast.regen.mymode and add 'mymode' in the group.
 -- Same idea for nuke modes. 
-idleModes = M('normal', 'dt', 'mdt')
+idleModes = M('Normal', 'DT', 'MDT')
 -- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmode
-nukeModes = M('normal', 'acc')
+nukeModes = M('Normal', 'ACC')
 convertModes = M('OFF', 'AUTO')
 
 -- Defults when you load the job / lua
@@ -295,7 +295,7 @@ function get_sets()
 	
 
 	-- Your idle set when you DON'T have a luopan out
-	sets.me.idle.normal = {
+	sets.me.idle.Normal = {
 		
 		main = "Idris",
 		sub = "Genmei Shield",
@@ -315,10 +315,10 @@ function get_sets()
     }
 	
     -- Your idle MasterDT set (Notice the sets.me, means no Luopan is out)
-    sets.me.idle.dt = set_combine(sets.me.idle.normal,{
+    sets.me.idle.DT = set_combine(sets.me.idle.Normal,{
      
     })
-    sets.me.idle.mdt = set_combine(sets.me.idle.normal,{
+    sets.me.idle.MDT = set_combine(sets.me.idle.Normal,{
      
 	})	
     -- Your MP Recovered Whilst Resting Set
@@ -334,7 +334,7 @@ function get_sets()
       
 	-- Luopan's Out --  notice sets.pan 
 	-- This is the base for all perpetuation scenarios, as seen below
-	sets.pan.idle.normal = {
+	sets.pan.idle.Normal = {
     
 		main = "Idris",
 		sub = "Genmei Shield",
@@ -354,11 +354,11 @@ function get_sets()
     }
 	
 	-- This is when you have a Luopan out but want to sacrifice some slot for master DT, put those slots in.
-    sets.pan.idle.dt = set_combine(sets.pan.idle.normal,{
+    sets.pan.idle.DT = set_combine(sets.pan.idle.Normal,{
        
     })   
     
-	sets.pan.idle.mdt = set_combine(sets.pan.idle.normal,{
+	sets.pan.idle.MDT = set_combine(sets.pan.idle.Normal,{
         
     })   
     
@@ -367,7 +367,7 @@ function get_sets()
 	-- Melee
 	-- Anything you equip here will overwrite the perpetuation/refresh in that slot.
 	-- No Luopan out
-	-- they end in [idleMode] so it will derive from either the normal or the dt set depending in which mode you are then add the pieces filled in below.
+	-- they end in [idleMode] so it will derive from either the Normal or the DT set depending in which mode you are then add the pieces filled in below.
 	sets.me.melee = set_combine(sets.me.idle[idleMode],{
        
     })
@@ -394,20 +394,34 @@ function get_sets()
 	-------------------------------------- Weaponskill Sets ----------------------------------------
 	------------------------------------------------------------------------------------------------
 	-- Example:
-	sets.me["Flash Nova"] = {
-
-    }
 
 	sets.me["Realmrazer"] = {
 
     }
+	
+	sets.me["Flash Nova"] = {
+	
+		head = RELIC.Head,
+		body = RELIC.Body,
+		hands = "Jhakri Cuffs +2",
+		legs = RELIC.Legs,
+		feet = RELIC.Feet,
+		neck = "Fotia Gorget",
+		waist = "Fotia Belt",
+		left_ear = "Malignance Earring",
+		right_ear = "Friomisi Earring",
+		left_ring = "Fenrir Ring",
+		right_ring = "Jhakri Ring",
+		back = Nantosuelta.MAB,
+	
+	}
 	
 	sets.me["Exudation"] = {
 	
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head = "Jhakri Coronal +1",
 		body = "Mallquis Saio +2",
-		hands =  AF.Hands,
+		hands = AF.Hands,
 		legs = RELIC.Legs,
 		feet = Merl.Feet.MAB,
 		neck = "Erra Pendant",
@@ -564,7 +578,7 @@ function get_sets()
 	---------------------
 	-- Nuking
 	---------------------
-	sets.midcast.nuking.normal = set_combine(sets.midcast.casting,{
+	sets.midcast.nuking.Normal = set_combine(sets.midcast.casting,{
         main = "Daybreak",
 		sub = "Ammurapi Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
@@ -582,7 +596,7 @@ function get_sets()
 		back = Nantosuelta.MAB,
     })
 	
-	sets.midcast.MB.normal = set_combine(sets.midcast.nuking.normal, {
+	sets.midcast.MB.Normal = set_combine(sets.midcast.nuking.Normal, {
 		
 		body = "Ea Houppelande",
 		legs = "Ea Slops",
@@ -591,10 +605,10 @@ function get_sets()
 		
         
 	})
-    sets.midcast.nuking.acc = set_combine(sets.midcast.nuking.normal,{
+    sets.midcast.nuking.ACC = set_combine(sets.midcast.nuking.Normal,{
 
     })
-    sets.midcast.MB.acc = set_combine(sets.midcast.MB.normal, {
+    sets.midcast.MB.ACC = set_combine(sets.midcast.MB.Normal, {
 
     })
 
@@ -673,7 +687,7 @@ function get_sets()
 	---------------------
 	-- Cures
 	---------------------
-	sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
+	sets.midcast.cure.Normal = set_combine(sets.midcast.casting,{
         main = "Daybreak", --30
 		sub = "Genmei Shield",
 		ammo = "Hydrocera",
@@ -691,7 +705,7 @@ function get_sets()
 		back = Nantosuelta.FC,
     })
     
-	sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{
+	sets.midcast.cure.weather = set_combine(sets.midcast.cure.Normal,{
 		main = "Iridal Staff", --10
 		sub = "Enki Strap",
 		body="Vrikodara Jupon", --13

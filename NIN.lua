@@ -248,7 +248,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     RELIC.Body  = { name="Mochi. Chainmail +3", augments={'Enhances "Sange" effect',}}
     RELIC.Hands = { name="Mochizuki Tekko +1", augments={'Enh. "Ninja Tool Expertise" effect',}}
     RELIC.Legs  = { name="Mochi. Hakama +3", augments={'Enhances "Mijin Gakure" effect',}}
-    RELIC.Feet  = { name="Mochi. Kyahan +2", augments={'Enh. Ninj. Mag. Acc/Cast Time Red.',}}
+    RELIC.Feet  = { name="Mochi. Kyahan +3", augments={'Enh. Ninj. Mag. Acc/Cast Time Red.',}}
 	
     --Hattori
     EMPY.Head  = "Hattori Zukin +1"
@@ -591,7 +591,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 
 	sets.idle.Regen = set_combine(sets.idle.DT,{
 	
-		neck = "Sanctity Necklace",
+		neck = "Bathy Choker +1",
 		left_ring = "Woltaris Ring",
 	})
 	
@@ -658,8 +658,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
-		legs = "Nyame Flanchard",
-		feet = "Nyame Sollerets",
+		legs = "Malignance Tights",
+		feet = "Malignance Boots",
 		neck = "Warder's Charm +1",
 		waist = "Engraved Belt",
 		left_ear = "Telos Earring",
