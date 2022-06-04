@@ -12,24 +12,24 @@ version = "3.0"
 		Can bind these to keys or use in macros ex: /console gs c toggle melee
 	
 		gs c toggle idlemode            Change Idle Mode
-		gs c toggle runspeed 		    Toggles locking on / off Carmine Cuisses +1
-		gs c toggle meleemode           Change Melee Mode    
-		gs c toggle melee			    Toggle Melee mode on / off and locking of weapons  
+		gs c toggle runspeed			Toggles locking on / off Carmine Cuisses +1
+		gs c toggle meleemode			Change Melee Mode    
+		gs c toggle melee				Toggle Melee mode on / off and locking of weapons  
 		gs c dnc voke					Uses either Provoke or Animated Flourish depending on subjob
 		
 		HUD Functions:
-		gs c hud hide                   Toggles the Hud entirely on or off
-		gs c hud hidemode               Toggles the Modes section of the HUD on or off
-		gs c hud hidejob                Toggles the job section of the HUD on or off
-		gs c hud hidebattle             Toggles the Battle section of the HUD on or off
+		gs c hud hide					Toggles the Hud entirely on or off
+		gs c hud hidemode				Toggles the Modes section of the HUD on or off
+		gs c hud hidejob				Toggles the job section of the HUD on or off
+		gs c hud hidebattle				Toggles the Battle section of the HUD on or off
 		gs c hud hidetools				Toggles the Tools section of the HUD on or off
 		gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
-		gs c hud keybinds               Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
-		gs c hud setcolor sections      Cycles colors for sections
-		gs c hud setcolor options       Cycles colors for options
-		gs c hud setcolor keybinds      Cycles colors for keybinds
-		gs c hud setcolor selection     Cycles colors for selection
-		gs c hud setcolor tools     	Cycles colors for selection
+		gs c hud keybinds				Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
+		gs c hud setcolor sections		Cycles colors for sections
+		gs c hud setcolor options		Cycles colors for options
+		gs c hud setcolor keybinds		Cycles colors for keybinds
+		gs c hud setcolor selection		Cycles colors for selection
+		gs c hud setcolor tools			Cycles colors for selection
 		
 		Alternatively you can also add the color after those command like: //gs c hud setcolor options blue
         
@@ -56,11 +56,11 @@ lockWeaponTP = 500 -- TP treshold where weapons gets locked.
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1150    --important to update these if you have a smaller screen
-hud_y_pos = 50      --important to update these if you have a smaller screen
+hud_x_pos = 1150    	--important to update these if you have a smaller screen
+hud_y_pos = 50      	--important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150 	--a value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -104,10 +104,10 @@ meleeModes  = M('TP', 'Hybrid', 'DT', 'Acc')
 	
 	-- Setup your Key Bindings here:
     
-	windower.send_command('bind f9 gs c toggle idlemode')              -- F9 to change Idle Mode
-	windower.send_command('bind !f9 gs c toggle runspeed') 		       -- Alt-F9 toggles locking on / off runspeed gear
-	windower.send_command('bind f10 gs c toggle meleemode')            -- F10 to change engaged Mode    
-	windower.send_command('bind f12 gs c toggle melee')			       -- F12 Toggle Melee mode on / off and locking of weapons  
+	windower.send_command('bind f9 gs c toggle idlemode')				-- F9 to change Idle Mode
+	windower.send_command('bind !f9 gs c toggle runspeed')				-- Alt-F9 toggles locking on / off runspeed gear
+	windower.send_command('bind f10 gs c toggle meleemode')				-- F10 to change engaged Mode    
+	windower.send_command('bind f12 gs c toggle melee')					-- F12 Toggle Melee mode on / off and locking of weapons  
 	
 
 	--[[

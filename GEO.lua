@@ -292,7 +292,7 @@ function get_sets()
 	Nantosuelta.PetRegen    = { name="Nantosuelta's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Pet: "Regen"+10','Phys. dmg. taken-10%',}}
 	Nantosuelta.MAB         = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}}
 	Nantosuelta.FC          = { name="Nantosuelta's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}}
-	
+	Nantosuelta.TP			= { name="Nantosuelta's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
 
 	-- Your idle set when you DON'T have a luopan out
 	sets.me.idle.Normal = {
@@ -369,25 +369,36 @@ function get_sets()
 	-- No Luopan out
 	-- they end in [idleMode] so it will derive from either the Normal or the DT set depending in which mode you are then add the pieces filled in below.
 	sets.me.melee = set_combine(sets.me.idle[idleMode],{
-       
+		
+		head = { name="Blistering Sallet +1", augments={'Path: A',}},
+		body = RELIC.Body,
+		hands = { name="Gazu Bracelet +1", augments={'Path: A',}},
+		legs = RELIC.Legs,
+		feet = "Jhakri Pigaches +1",
+		neck = "Lissome Necklace",
+		waist = "Cetl Belt",
+		left_ear = "Telos Earring",
+		right_ear = "Brutal Earring",
+		left_ring = "Petrov Ring",
+		right_ring = "Chirich Ring",
+		back = Nantosuelta.TP,
     })
 	
 	-- Luopan is out
 	sets.pan.melee = set_combine(sets.pan.idle[idleMode],{
-    
-		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-		head = "Jhakri Coronal +1",
-		body = "Jhakri Robe +2",
-		hands = "Jhakri Cuffs +2",
-		legs = "Jhakri Slops +2",
-		feet = "Jhakri Pigaches +2",
-		neck = "Sanctity Necklace",
-		waist = "Windbuffet Belt +1",
-		left_ear = "Mache Earring +1",
-		right_ear = "Telos Earring",
-		left_ring = "Jhakri Ring",
-		right_ring = "Supershear Ring",
-		back =  Nantosuelta.PetRegen,
+		
+		head = { name="Blistering Sallet +1", augments={'Path: A',}},
+		body = RELIC.Body,
+		hands = { name="Gazu Bracelet +1", augments={'Path: A',}},
+		legs = RELIC.Legs,
+		feet = "Jhakri Pigaches +1",
+		neck = "Lissome Necklace",
+		waist = "Cetl Belt",
+		left_ear = "Telos Earring",
+		right_ear = "Brutal Earring",
+		left_ring = "Petrov Ring",
+		right_ring = "Chirich Ring",
+		back = Nantosuelta.TP,
     }) 
     
 	------------------------------------------------------------------------------------------------
@@ -424,8 +435,8 @@ function get_sets()
 		feet = Merl.Feet.MAB,
 		neck = "Erra Pendant",
 		waist = "Grunfeld Rope",
-		left_ear = "Malignance Earring",
-		right_ear = "Telos Earring",
+		left_ear = "Telos Earring",
+		right_ear = "Malignance Earring",
 		left_ring = "Excelsis Ring",
 		right_ring = "Evanescence Ring",
 		back = Nantosuelta.MAB,
