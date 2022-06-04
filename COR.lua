@@ -70,11 +70,11 @@ lockWeaponTP = 500 -- TP treshold where weapons gets locked.
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1150    --important to update these if you have a smaller screen
-hud_y_pos = 50      --important to update these if you have a smaller screen
+hud_x_pos = 1150    	-- Important to update these if you have a smaller screen
+hud_y_pos = 50      	-- Important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150	-- A value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -746,11 +746,11 @@ include('Kuvira_AugGear.lua')
 		--ammo = "Per. Lucky Egg",
 		head = "Wh. Rarab Cap +1",
 		waist = "Chaac Belt",
-    
 	}
 	
 	sets.me = {} -- leave this empty
 	
 	sets.me.movespeed = {legs = "Carmine Cuisses +1",}
 	sets.adoulin = {body = "Councilor's Garb",}
+
 end

@@ -11,7 +11,7 @@ version = "3.0"
        
 		Can bind these to keys or use in macros ex: /console gs c toggle melee
 	
-		gs c toggle idlemode            Change Idle Mode
+		gs c toggle idlemode			Change Idle Mode
 		gs c toggle runspeed			Toggles locking on / off Carmine Cuisses +1
 		gs c toggle meleemode			Change Melee Mode    
 		gs c toggle melee				Toggle Melee mode on / off and locking of weapons  
@@ -23,7 +23,7 @@ version = "3.0"
 		gs c hud hidejob				Toggles the job section of the HUD on or off
 		gs c hud hidebattle				Toggles the Battle section of the HUD on or off
 		gs c hud hidetools				Toggles the Tools section of the HUD on or off
-		gs c hud lite                   Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
+		gs c hud lite					Toggles the HUD in lightweight style for less screen estate usage. Also on ALT-END
 		gs c hud keybinds				Toggles Display of the HUD keybindings (my defaults) You can change just under the binds in the Gearsets file.
 		gs c hud setcolor sections		Cycles colors for sections
 		gs c hud setcolor options		Cycles colors for options
@@ -60,7 +60,7 @@ hud_x_pos = 1150    	--important to update these if you have a smaller screen
 hud_y_pos = 50      	--important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 	--a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150 	--A value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -80,11 +80,11 @@ toolColors:set('green')
 textHideMode:set(false)		-- Change to toggle default visibility of Mode section
 textHideOptions:set(false)	-- Change to toggle defautl visibility of Options sections
 textHideJob:set(false)		-- Change to toggle default visibility of job Section
-textHideBattle:set(true)	-- Change to toggle default visibility for battle section
+textHideBattle:set(true)    -- Change to toggle default visibility for battle section
 textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
 useLightMode:set(false)		-- Change to toggle default setting for lite mode
 keybinds:set(true)			-- Change to toggle default setting for keybind visibility
-textHideTools:set(false)	-- Change to toggle the default setting of the tool counter
+textHideTools:set(false)    -- Change to toggle the default setting of the tool counter
 
 -- Optional. Swap to your BLU macro sheet / book
  set_macros(2,22) -- Sheet, Book   
@@ -95,8 +95,8 @@ textHideTools:set(false)	-- Change to toggle the default setting of the tool cou
 -- You can add or remove modes in the table below, they will get picked up in the cycle automatically. 
 -- Each mode needs to have a corresponding set in order to work.  ex: sets.idle.Regen
 
-idleModes   = M('Regain','DT', 'Refresh')
-meleeModes  = M('TP', 'Hybrid', 'DT', 'Acc')
+idleModes = M('Regain','DT', 'Refresh')
+meleeModes = M('TP', 'Hybrid', 'DT', 'Acc')
 
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ Keybinds --------------------------------------------
@@ -272,23 +272,24 @@ include('Kuvira_AugGear.lua')
 	
 	sets.precast.Waltz = {}
 	
-    sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
+	sets.precast.WaltzSelf = set_combine(sets.precast.Waltz)
 	
 	------------------------------------------------------------------------------------------------
 	---------------------------------------- Midcast Sets ------------------------------------------
 	------------------------------------------------------------------------------------------------
 	sets.midcast = {} --Leave this empty
+	
 	sets.midcast['Blue Magic'] = {
 		
 		ammo = "Mavi Tathlum",
-        head = RELIC.Head,
-        body = AF.Body,
-        --hands = "Rawhide Gloves",
-        legs = EMPY.Legs,
-        feet = RELIC.Feet,
-        --neck = "Mirage Stole +2",
-        right_ear = "Njordr Earring",
-        left_ring = "Stikini Ring",
+		head = RELIC.Head,
+		body = AF.Body,
+		--hands = "Rawhide Gloves",
+		legs = EMPY.Legs,
+		feet = RELIC.Feet,
+		--neck = "Mirage Stole +2",
+		right_ear = "Njordr Earring",
+		left_ring = "Stikini Ring",
 	
 	}
 
@@ -369,18 +370,18 @@ include('Kuvira_AugGear.lua')
 
     sets.midcast['Blue Magic'].MagicAccuracy = {
 		--ammo = "Pemphredo Tathlum",
-        head = AF.Head,
-        body = Amal.Body.D,
-        hands = "Malignance Gloves",
-        legs = AF.Legs,
-        feet = "Malignance Boots",
-        neck = "Sanctity Necklace",
-        left_ear = "Regal Earring",
-        right_ear = "Gwati Earring",
-        left_ring = "Stikini Ring",
-        right_ring = "Kishar Ring",
-        back = "Kumbira Cape",
-        waist = "Luminary Sash",
+		head = AF.Head,
+		body = Amal.Body.D,
+		hands = "Malignance Gloves",
+		legs = AF.Legs,
+		feet = "Malignance Boots",
+		neck = "Sanctity Necklace",
+		left_ear = "Regal Earring",
+		right_ear = "Gwati Earring",
+		left_ring = "Stikini Ring",
+		right_ring = "Kishar Ring",
+		back = "Kumbira Cape",
+		waist = "Luminary Sash",
 	}
 
     sets.midcast['Blue Magic'].Breath = set_combine(sets.midcast['Blue Magic'].Magical, {head = RELIC.Head})
@@ -401,7 +402,7 @@ include('Kuvira_AugGear.lua')
     sets.midcast['Blue Magic']['White Wind'] = set_combine(sets.midcast['Blue Magic'].Healing, {
 
 		neck="Sanctity Necklace",
-        ear2="Etiolation Earring",
+		ear2="Etiolation Earring",
 	
 	})
 
@@ -412,7 +413,7 @@ include('Kuvira_AugGear.lua')
     sets.midcast['Blue Magic']['Occultation'] = set_combine(sets.midcast['Blue Magic'], {
 		
 		hands = EMPY.Hands,
-        left_ear = "Njordr Earring",
+		left_ear = "Njordr Earring",
 	
 	}) -- 1 shadow per 50 skill
 
@@ -517,24 +518,24 @@ include('Kuvira_AugGear.lua')
 		right_ear = "Telos Earring",
 		left_ring = "Epona's Ring",
 		right_ring = "Ilabrat Ring",
-		--back={ name="Rosmerta's Cape", augments={'INT+20','Magic Damage +8','"Mag.Atk.Bns."+10',}},
+		back=Rosmerta.Nuke,
 	
 	}
 	
 	sets.precast['Sanguine Blade'] = {
 		ammo = "Ghastly Tathlum +1",
-        head = "Pixie Hairpin +1",
-        body = Amal.Body.D,
-        hands = Amal.Hands.D,
-        legs = RELIC.Legs,
-        feet = Herc.Feet.MAB,
-        neck = "Sanctity Necklace",
-        waist = "Eschan Stone",
+		head = "Pixie Hairpin +1",
+		body = Amal.Body.D,
+		hands = Amal.Hands.D,
+		legs = RELIC.Legs,
+		feet = Herc.Feet.MAB,
+		neck = "Sanctity Necklace",
+		waist = "Eschan Stone",
 		left_ear = "Moonshade Earring",
-        right_ear = "Regal Earring",
-        left_ring = "Arvina Ringlet +1",
-        right_ring = "Archon Ring",
-        back = Rosmerta.Nuke,
+		right_ear = "Regal Earring",
+		left_ring = "Arvina Ringlet +1",
+		right_ring = "Archon Ring",
+		back = Rosmerta.Nuke,
         	
 	}
 	

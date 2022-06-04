@@ -111,7 +111,7 @@ textHideBattle:set(true)	-- Change to toggle default visibility for battle secti
 textHideHUD:set(false)		-- Change to toggle default setting for hud visibility
 useLightMode:set(false)		-- Change to toggle default setting for lite mode
 keybinds:set(true)			-- Change to toggle default setting for keybind visibility
-textHideTools:set(false)		-- Change to toggle the default setting of the tool counter
+textHideTools:set(false)	-- Change to toggle the default setting of the tool counter
 
 -- Set the tools you would like to track while tool tracker is set to on. 
 -- Tools can be in inventory or wardrobe.  
@@ -160,7 +160,7 @@ enmityModes = M('Normal', 'Enmity')
     windower.send_command('bind ^end gs c hud keybinds')				-- CTRL-End to toggle Keybinds
 	windower.send_command('bind PAGEDOWN gs c toggle autoconvert')		-- PAGEDOWN to toggle Convert Mode
 	windower.send_command('bind !t gs c toggle thMode')					-- ALT+T to toggle Treasure Hunter Mode
-	windower.send_command('bind delete gs c toggle enmity')					-- DELETE to toggle enmity Mode
+	windower.send_command('bind delete gs c toggle enmity')				-- DELETE to toggle enmity Mode
 	
 
 --[[
@@ -312,21 +312,21 @@ function get_sets()
 
 
     -- Fill this with your own JSE. 
-    --Convokers
+    -- Totemic
     AF.Head     =   "Totemic Helm +2"
     AF.Body     =   "Tot. Jackcoat +2"
     AF.Hands    =   "Totemic Gloves +3"
     AF.Legs     =  	"Tot. Trousers +2"
     AF.Feet     =   "Tot. Gaiters +2"
 
-    --Glyphic
+    -- Ankusa
     RELIC.Head  =   { name="Ankusa Helm +3", augments={'Enhances "Killer Instinct" effect',}}
     RELIC.Body  =   { name="An. Jackcoat +3", augments={'Enhances "Feral Howl" effect',}}
     RELIC.Hands =   { name="Ankusa Gloves +1", augments={'Enhances "Beast Affinity" effect',}}
     RELIC.Legs  =   { name="Ankusa Trousers +2", augments={'Enhances "Familiar" effect',}}
     RELIC.Feet  =   { name="Ankusa Gaiters +3", augments={'Enhances "Beast Healer" effect',}}
 
-    --Beckoners
+    -- Nukumi
     EMPY.Head   =   "Nuk. Cabasset +1"
     EMPY.Body   =   "Nukumi Gausape +1"
     EMPY.Hands  =   "Nukumi Manoplas +1"

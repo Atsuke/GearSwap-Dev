@@ -58,11 +58,11 @@ lockWeaponTP = 500
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1150    --important to update these if you have a smaller screen
-hud_y_pos = 50      --important to update these if you have a smaller screen
+hud_x_pos = 1150    	-- Important to update these if you have a smaller screen
+hud_y_pos = 50      	-- Important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150 	-- A value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ meleeModes  = M('TP', 'Hybrid', 'DT')
 
 -- No point in enmity modes for Utsusemi if we aren't /NIN
 
-	enmityModes = M('Normal', 'Enmity')
+enmityModes = M('Normal', 'Enmity')
 	
 	------------------------------------------------------------------------------------------------
     ------------------------------------------ Keybinds --------------------------------------------
@@ -239,11 +239,11 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	Senuna = {} -- leave this empty
 	Toetapper = {} -- leave this empty
 	
-	Toetapper.RF = { name="Toetapper Mantle", augments={'"Store TP"+4','"Dual Wield"+2','"Rev. Flourish"+29','Weapon skill damage +2%',}}
-	Senuna.DA = { name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
-	Senuna.WSD = { name="Senuna's Mantle", augments={'DEX+20','DEX+10','Weapon skill damage +10%',}}
-	Senuna.AGI = { name="Senuna's Mantle", augments={'AGI+20','Accuracy+20 Attack+20','AGI+10','"Dbl.Atk."+10','Damage taken-5%',}}
-	Senuna.CRIT = { name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Phys. dmg. taken-10%',}}
+	Toetapper.RF 	= { name="Toetapper Mantle", augments={'"Store TP"+4','"Dual Wield"+2','"Rev. Flourish"+29','Weapon skill damage +2%',}}
+	Senuna.DA 		= { name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
+	Senuna.WSD		= { name="Senuna's Mantle", augments={'DEX+20','DEX+10','Weapon skill damage +10%',}}
+	Senuna.AGI		= { name="Senuna's Mantle", augments={'AGI+20','Accuracy+20 Attack+20','AGI+10','"Dbl.Atk."+10','Damage taken-5%',}}
+	Senuna.CRIT 	= { name="Senuna's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Phys. dmg. taken-10%',}}
 
 	
 	
@@ -423,6 +423,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	})
 
     sets.precast["Rudra's Storm"] = set_combine(sets.precast.WS,{
+		
 		body = Herc.Body.WSD,
 		neck = { name="Etoile Gorget +2", augments={'Path: A',}},
 		waist = "Grunfeld Rope",
@@ -431,6 +432,7 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	sets.precast['Shark Bite'] = sets.precast["Rudra's Storm"]
 
     sets.precast['Aeolian Edge'] = set_combine(sets.precast.WS,{ 
+		
 		body = Herc.Body.MAB,
 		hands = "Meg. Gloves +2",
 		legs = RELIC.Legs,
@@ -466,10 +468,10 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		hands = "Meg. Gloves +2",
 		neck = "Bathy Choker +1",
 		left_ring = "Woltaris Ring",
-	
 	})
 	
 	sets.idle.DT = {
+		
 		head = "Malignance Chapeau",
 		body = "Malignance Tabard",
 		hands = "Malignance Gloves",
@@ -481,7 +483,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Sherida Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Warden's Ring",
-	
 	}
 
 
@@ -558,4 +559,5 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
+	
 end

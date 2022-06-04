@@ -60,11 +60,11 @@ lockWeaponTP = 500 -- TP treshold where weapons gets locked.
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1150    --important to update these if you have a smaller screen
-hud_y_pos = 50      --important to update these if you have a smaller screen
+hud_x_pos = 1150    	-- Important to update these if you have a smaller screen
+hud_y_pos = 50      	-- Important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150 	-- A value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -222,7 +222,8 @@ include('Atsuke_AugGear.lua')
     EMPY = {}       -- leave this empty
 	
 	-- Fill this with your own JSE. 
-    --Pillager's
+    
+	--Pillager's
     AF.Head  = "Pill. Bonnet +1"
     AF.Body  = "Pillager's Vest +1"
     AF.Hands = "Pill. Armlets +1"
@@ -230,24 +231,24 @@ include('Atsuke_AugGear.lua')
     AF.Feet  = "Pill. Poulaines +1"
 
     --Plunderer's
-    RELIC.Head  ={ name="Plun. Bonnet +1", augments={'Enhances "Aura Steal" effect',}}
-    RELIC.Body  ={ name="Plunderer's Vest +1", augments={'Enhances "Ambush" effect',}}
-    RELIC.Hands ={ name="Plun. Armlets +3", augments={'Enhances "Perfect Dodge" effect',}}
-    RELIC.Legs  ={ name="Plun. Culottes +1", augments={'Enhances "Feint" effect',}}
-    RELIC.Feet  ={ name="Plun. Poulaines +3", augments={'Enhances "Assassin\'s Charge" effect',}}
+    RELIC.Head  = { name="Plun. Bonnet +1", augments={'Enhances "Aura Steal" effect',}}
+    RELIC.Body  = { name="Plunderer's Vest +1", augments={'Enhances "Ambush" effect',}}
+    RELIC.Hands = { name="Plun. Armlets +3", augments={'Enhances "Perfect Dodge" effect',}}
+    RELIC.Legs  = { name="Plun. Culottes +1", augments={'Enhances "Feint" effect',}}
+    RELIC.Feet  = { name="Plun. Poulaines +3", augments={'Enhances "Assassin\'s Charge" effect',}}
 	
     --Skulker
-    EMPY.Head  ="Skulker's Bonnet +1"
-    EMPY.Body  ="Skulker's Vest +1"
-    EMPY.Hands ="Skulk. Armlets +1"
-    EMPY.Legs  ="Skulk. Culottes +1"
-    EMPY.Feet  ="Skulk. Poulaines +1"
+    EMPY.Head  = "Skulker's Bonnet +1"
+    EMPY.Body  = "Skulker's Vest +1"
+    EMPY.Hands = "Skulk. Armlets +1"
+    EMPY.Legs  = "Skulk. Culottes +1"
+    EMPY.Feet  = "Skulk. Poulaines +1"
 	
 	-- Define your JSE Capes here. 
 	Toutatis = {} -- leave this empty
 	
-	Toutatis.TP  ={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Damage taken-5%',}}
-	Toutatis.WSD ={ name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}}
+	Toutatis.TP  = { name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Damage taken-5%',}}
+	Toutatis.WSD = { name="Toutatis's Cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}}
 	
 	
 	------------------------------------------------------------------------------------------------
@@ -406,7 +407,6 @@ include('Atsuke_AugGear.lua')
 		right_ear = "Brutal Earring",
 		right_ear = "Sherida Earring",
 		left_ring = "Regal Ring",
-		
 	})
 
     sets.precast['Evisceration'] = set_combine(sets.precast.WS,{
@@ -572,4 +572,5 @@ include('Atsuke_AugGear.lua')
 	
 	sets.me.movespeed = {feet = AF.Feet,}
 	sets.adoulin = {body = "Councilor's Garb",}
+	
 end

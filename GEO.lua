@@ -262,6 +262,7 @@ function get_sets()
 	AF = {}         -- leave this empty
 	RELIC = {}      -- leave this empty
 	EMPY = {}       -- leave this empty
+	
 	-- Fill this with your own JSE. 
     
 	--Geomancy
@@ -354,13 +355,9 @@ function get_sets()
     }
 	
 	-- This is when you have a Luopan out but want to sacrifice some slot for master DT, put those slots in.
-    sets.pan.idle.DT = set_combine(sets.pan.idle.Normal,{
-       
-    })   
+    sets.pan.idle.DT = set_combine(sets.pan.idle.Normal,{})   
     
-	sets.pan.idle.MDT = set_combine(sets.pan.idle.Normal,{
-        
-    })   
+	sets.pan.idle.MDT = set_combine(sets.pan.idle.Normal,{})   
     
 	-- Combat Related Sets
       
@@ -422,7 +419,6 @@ function get_sets()
 		left_ring = "Fenrir Ring",
 		right_ring = "Jhakri Ring",
 		back = Nantosuelta.MAB,
-	
 	}
 	
 	sets.me["Exudation"] = {
@@ -456,6 +452,7 @@ function get_sets()
       
     -- Generic Casting Set that all others take off of. Here you should add all your fast cast  
     sets.precast.casting = {
+		
 		main = "Idris",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
 		head = "Welkin Crown",
@@ -476,6 +473,7 @@ function get_sets()
     
 	-- Enhancing Magic, eg. Siegal Sash, etc
     sets.precast.enhancing = set_combine(sets.precast.casting,{
+		
 		waist = "Siegel Sash",
 		neck = "Incanter's Torque",
     })
@@ -484,7 +482,8 @@ function get_sets()
 	
 		hands = RELIC.Hands,
 	})
-    -- Stoneskin casting time -, works off of enhancing -
+    
+	-- Stoneskin casting time -, works off of enhancing -
     sets.precast.stoneskin = set_combine(sets.precast.enhancing,{
 		head = "Umuthi Hat",
 		legs = "Doyen Pants",
@@ -494,6 +493,7 @@ function get_sets()
       
     -- Curing Precast, Cure Spell Casting time -
     sets.precast.cure = set_combine(sets.precast.casting,{
+		
 		main = "Daybreak", 
 		sub = "Ammurapi Shield",
 		head = Van.Head.C,
@@ -506,6 +506,7 @@ function get_sets()
 		left_ring = "Prolix Ring",
 		
     })
+	
     sets.precast.regen = set_combine(sets.precast.casting,{
 
     })   
@@ -552,6 +553,7 @@ function get_sets()
 	-- Geo Spells
 	---------------------
     sets.midcast.geo = set_combine(sets.midcast.casting,{
+		
 		main = "Idris",
 		sub = "Genmei Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
@@ -576,6 +578,7 @@ function get_sets()
 	
 	-- For Entrusted Indi Spells
     sets.midcast.entrust = set_combine(sets.midcast.indi,{
+		
 		main = "Solstice",
 		legs = RELIC.Legs,
     })
@@ -586,6 +589,7 @@ function get_sets()
 	-- Nuking
 	---------------------
 	sets.midcast.nuking.Normal = set_combine(sets.midcast.casting,{
+		
 		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
@@ -611,17 +615,16 @@ function get_sets()
 		right_ring = "Mujin Band",
 		  
 	})
-    sets.midcast.nuking.ACC = set_combine(sets.midcast.nuking.Normal,{
-
-    })
-    sets.midcast.MB.ACC = set_combine(sets.midcast.MB.Normal, {
-
-    })
+    
+	sets.midcast.nuking.ACC = set_combine(sets.midcast.nuking.Normal,{})
+    
+	sets.midcast.MB.ACC = set_combine(sets.midcast.MB.Normal, {})
 
 	---------------------
 	-- Enfeebling
 	---------------------
 	sets.midcast.IntEnfeebling = set_combine(sets.midcast.casting,{
+		
 		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		range = { name="Dunna", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
@@ -638,14 +641,14 @@ function get_sets()
 		right_ring = "Stikini Ring",
 		back = Nantosuelta.FC,
     })
-	sets.midcast.MndEnfeebling = set_combine(sets.midcast.IntEnfeebling,{
-        
-    })
+	
+	sets.midcast.MndEnfeebling = set_combine(sets.midcast.IntEnfeebling,{})
 	
 	---------------------
 	-- Enhancing
 	---------------------
     sets.midcast.enhancing = set_combine(sets.midcast.casting,{
+		
 		main = "Daybreak",
 		head = Telchine.Head.en ,
 		body = Merl.Body.FC,
@@ -663,27 +666,26 @@ function get_sets()
 	
     -- Stoneskin
     sets.midcast.stoneskin = set_combine(sets.midcast.enhancing,{
+		
 		legs = "Doyen Pants",
 		neck = "Nodens Gorget",
 		waist = "Siegel Sash",
     })
     
 	-- Refresh
-	sets.midcast.refresh = set_combine(sets.midcast.enhancing,{
-		
-    })
+	sets.midcast.refresh = set_combine(sets.midcast.enhancing,{})
     
 	-- Aquaveil
 	sets.midcast.aquaveil = sets.midcast.refresh
 	
 	-- Drain
 	sets.midcast["Drain"] = set_combine(sets.midcast.IntEnfeebling, {		
+		
 		head = "Pixie Hairpin +1",
 		neck = "Erra Pendant",
 		waist = "Fucho-no-Obi",
 		left_ring = "Excelsis Ring",
 		right_ring = "Evanescence Ring",
-        
 	})
 
 	sets.midcast["Aspir"] = sets.midcast["Drain"]
@@ -694,6 +696,7 @@ function get_sets()
 	-- Cures
 	---------------------
 	sets.midcast.cure.Normal = set_combine(sets.midcast.casting,{
+		
 		main = "Daybreak", --30
 		sub = "Genmei Shield",
 		ammo = "Hydrocera",
@@ -712,25 +715,25 @@ function get_sets()
     })
     
 	sets.midcast.cure.weather = set_combine(sets.midcast.cure.Normal,{
+		
 		main = "Iridal Staff", --10
 		sub = "Enki Strap",
 		body="Vrikodara Jupon", --13
 		neck="Nodens Gorget", --5
-		waist="Hachirin-no-Obi",
-			
+		waist="Hachirin-no-Obi",	
 	})    
     
 	-- Regen
 	sets.midcast.regen = set_combine(sets.midcast.enhancing,{
-        main = "Bolelabunga",
+        
+		main = "Bolelabunga",
         sub = "Ammurapi Shield",
         head = Telchine.Head.en,
         --body = Telchine.Body.en,
         hands = Telchine.Hands.en,
         legs = Telchine.Legs.en,
         feet = Telchine.Feet.en,
-        neck = "Incanter's Torque",
-        
+        neck = "Incanter's Torque", 
     }) 
    
     ------------
@@ -746,7 +749,7 @@ function get_sets()
 	-- Movespeed boots
 	sets.me.movespeed = {feet = AF.Feet}
 	
-	
 	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
+	
 end

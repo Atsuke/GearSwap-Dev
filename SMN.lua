@@ -101,11 +101,11 @@ lockWeaponTP = 500
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1150    --important to update these if you have a smaller screen
-hud_y_pos = 50     --important to update these if you have a smaller screen
+hud_x_pos = 1150    	-- Important to update these if you have a smaller screen
+hud_y_pos = 50     		-- Important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150	-- A value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -297,7 +297,8 @@ function get_sets()
 
 
     -- Fill this with your own JSE. 
-    --Convokers
+    
+	--Convokers
     AF.Head     =   "Convoker's Horn +3"
     AF.Body     =   "Con. Doublet +3"
     AF.Hands    =   "Convoker's Bracers +3"
@@ -333,6 +334,7 @@ function get_sets()
 
     -- Your idle set
     sets.me.Refresh = {
+		
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -348,13 +350,12 @@ function get_sets()
 		left_ring = "Defending Ring",
 		right_ring = "Woltaris Ring",
 		back = SMNCape.PETMAB,
-		
     }
 	
 	sets.me.Pet = set_combine(sets.me.Refresh, {
+		
 		neck = "Caller's Pendant",
 		back = SMNCape.PetPDT, 
-		
 	})
 
     -- Your idle Sublimation set combine from refresh or DT depening on mode.
@@ -365,20 +366,18 @@ function get_sets()
     })   
     -- Your idle DT set
     sets.me.DT = set_combine(sets.me.Idle[refreshType],{ --sets.me.DT
-        main = "Malignance Pole", -- 20
+      
+		main = "Malignance Pole", -- 20
 		sub = "Kaja Grip", --5
 		legs = "Nyame Flanchard", --8
 		feet = "Nyame Sollerets", --7
 		neck = { name="Smn. Collar +2", augments={'Path: A',}}, --5
-		
     })  
-    sets.me.Idle.mdt = set_combine(sets.me.Idle.DT,{
-        
-    })  
+	
+    sets.me.Idle.mdt = set_combine(sets.me.Idle.DT,{})  
+	
 	-- Your MP Recovered Whilst Resting Set
-    sets.me.resting = { 
-		
-    }
+    sets.me.resting = {}
     
     sets.me.latent_refresh = {waist="Fucho-no-obi"}     
 
@@ -388,6 +387,7 @@ function get_sets()
    
 	-- Combat Related Sets
     sets.me.Engaged = {
+		
 		main = "Nirvana",
 		sub = "Kaja Grip",
 		ammo = "Sancus Sachet +1",
@@ -405,7 +405,7 @@ function get_sets()
 		back = SMNCape.PETMAB,
     }
      
-	sets.me.Engaged.refresh = sets.me.Idle.refresh
+	sets.me.Engaged.refresh = sets.me.refresh
 	sets.me.Engaged.DT = sets.me.Engaged
 	sets.me.Engaged["Master+Pet"] = sets.me.Engaged
     -- Weapon Skills sets just add them by name.
@@ -417,6 +417,7 @@ function get_sets()
 	sets.buff ={}
 	
 	sets.buff.Doom = {
+		
 		neck = "Nicander's Necklace",
 		left_ring = "Blenmot's Ring",
 		waist = "Gishdubar Sash",
@@ -436,6 +437,7 @@ function get_sets()
     -- Generic Casting Set that all others take off of. Here you should add all your fast cast 
     
     sets.precast.casting = {
+		
 		main = "Oranyan",
 		ammo = "Sancus Sachet +1",
 		head = Merl.Head.FC, --12
@@ -452,13 +454,10 @@ function get_sets()
 		back = { name="Fi Follet Cape +1", augments={'Path: A',}}, --10
     }
 
-	sets.precast.summoning = set_combine(sets.precast.casting,{
-	
-		body = "Baayami Robe",
-	
-	})
+	sets.precast.summoning = set_combine(sets.precast.casting,{body = "Baayami Robe",})
 	
 	sets.precast.bp= {
+		
 		main = "Nirvana",
 		sub ="Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -476,24 +475,17 @@ function get_sets()
 		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},
 	}	
 
-	sets.precast["Stun"] = {
-		
-	}
+	sets.precast["Stun"] = {}
 	
     -- Enhancing Magic, eg. Siegal Sash, etc
-    sets.precast.enhancing = set_combine(sets.precast.casting,{
-		waist = "Siegel Sash",
-        
-    })
+    sets.precast.enhancing = set_combine(sets.precast.casting,{waist = "Siegel Sash",})
   
     -- Stoneskin casting time -, works off of enhancing -
-    sets.precast.stoneskin = set_combine(sets.precast.enhancing,{
-		waist = "Siegel Sash",
-		legs = "Doyen Pants",
-    })
+    sets.precast.stoneskin = set_combine(sets.precast.enhancing,{legs = "Doyen Pants",})
       
     -- Curing Precast, Cure Spell Casting time -
     sets.precast.cure = set_combine(sets.precast.casting,{
+		
 		legs = "Doyen Pants",	
 		feet = Vanya.Feet.D,
     })
@@ -539,6 +531,7 @@ function get_sets()
 	sets.midcast["Sublimation"] = {}
     
     sets.midcast.nuking.normal = {
+		
 		main = "Daybreak",
 		sub = "Ammurapi Shield",
 		ammo = "Sancus Sachet +1",
@@ -553,9 +546,9 @@ function get_sets()
 		right_ear = "Friomisi Earring",
 		left_ring = "Persis Ring",
 		right_ring = "Kishar Ring",
-		
     }
-    -- used with toggle, default: F10
+    
+	-- used with toggle, default: F10
     -- Pieces to swap from freen nuke to Magic Burst
     sets.midcast.MB.normal = {}
 	
@@ -563,19 +556,16 @@ function get_sets()
 	
     -- used with toggle, default: F10
     -- Pieces to swap from freen nuke to Magic Burst
-    sets.midcast.MB.acc = set_combine(sets.midcast.nuking.normal, {
-	   
-    })	
+    sets.midcast.MB.acc = set_combine(sets.midcast.nuking.normal, {})	
 	
     -- Enfeebling
-	sets.midcast["Stun"] = {
-		
-	}	
+	sets.midcast["Stun"] = {}	
     sets.midcast.IntEnfeebling =  sets.midcast.nuking.normal
     sets.midcast.MndEnfeebling =  sets.midcast.nuking.normal
 	
     -- Enhancing
     sets.midcast.enhancing = set_combine(sets.midcast.casting,{
+		
 		main = { name="Gada", augments={'Enh. Mag. eff. dur. +5','VIT+5','"Mag.Atk.Bns."+6',}},
 		sub = "Ammurapi Shield",
 		ammo = "Sapience Orb",
@@ -592,10 +582,12 @@ function get_sets()
 		right_ring = "Kishar Ring",
 		back = { name="Fi Follet Cape +1", augments={'Path: A',}},
     })
+	
     sets.midcast.storm = sets.midcast.enhancing    
     
 	-- Stoneskin
     sets.midcast.stoneskin = set_combine(sets.midcast.enhancing,{
+		
 		neck = "Nodens Gorget",
 		waist = "Siegel Sash",
 		left_ear = "Earthcry Earring",
@@ -605,8 +597,8 @@ function get_sets()
     sets.midcast.aquaveil = sets.midcast.refresh
 	
     sets.midcast["Drain"] = set_combine(sets.midcast.nuking, {
-        --head="Pixie Hairpin +1",
-		
+        
+		--head="Pixie Hairpin +1",
 		feet = Merl.Feet.Th,
 		neck = "Erra Pendant",
 		waist = "Fucho-no-Obi",
@@ -618,6 +610,7 @@ function get_sets()
     
 	-- Cure Potency
     sets.midcast.cure.normal = set_combine(sets.midcast.casting,{
+		
 		head = Vanya.Head.A,
 		body = "Nyame Mail",
 		hands = "Nyame Gauntlets",
@@ -633,11 +626,13 @@ function get_sets()
     })
     
 	sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal,{
+		
 		main = "Chatoyant Staff",
 		waist = "Hachirin-no-Obi",
     })    
 	
 	sets.midcast["Elemental Siphon"]={
+		
 		main = "Chatoyant Staff",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -673,11 +668,11 @@ function get_sets()
 		right_ear = "Ishvara Earring",
 		left_ring = "Spiral Ring",
 		right_ring = "Persis Ring",
-		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},
-		
+		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},	
     }
 	
     sets.precast["Myrkr"] = {
+		
 		ammo = "Ghastly Tathlum +1",
 		head = RELIC.head,
 		body = AF.Body,
@@ -696,7 +691,6 @@ function get_sets()
 		  
     -- Feel free to add new weapon skills, make sure you spell it the same as in game. These are the only two I ever use though
 	
-	
 	--------------------------------------------------------------------------------------------------------------
 	---------------------------------------------- Avatar Sets ---------------------------------------------------
 	--------------------------------------------------------------------------------------------------------------
@@ -705,6 +699,7 @@ function get_sets()
 		
 	-- Pet out but not doing anything
 	sets.avatar.perp = { 
+		
 		main = "Nirvana",
 		sub = "Kaja Grip",
 		ammo = "Sancus Sachet +1",
@@ -724,6 +719,7 @@ function get_sets()
 	
 	-- Have pet and it is doing all the work.  Note the capitalization of Idle and Engaged.  This is important as we are calling player and pet state.
 	sets.avatar.TP = { -- sets.avatar.TP
+		
 		main = "Nirvana",
 		sub = "Kaja Grip",
 		ammo = "Sancus Sachet +1",
@@ -742,6 +738,7 @@ function get_sets()
 	}
 		
 	sets.avatar.DT = {
+		
 		head = Apo.Head.D, --4
 		body = Telchine.Body.PetDT, --4
 		hands = Telchine.Hands.PetDT, --4
@@ -784,6 +781,7 @@ function get_sets()
 	--------------------------------------------------------------------------------------------------------------
 
 	sets.avatar.atk = {
+		
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -803,6 +801,7 @@ function get_sets()
 	
 	
 	sets.avatar.mab = {
+		
 		main = { name="Grioavolr", augments={'Blood Pact Dmg.+5','Pet: INT+12','Pet: "Mag.Atk.Bns."+25',}},
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -822,6 +821,7 @@ function get_sets()
 	
 	
 	sets.avatar.hybrid = {
+		
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -841,6 +841,7 @@ function get_sets()
 	
 	
 	sets.avatar.macc = {
+		
 		main = "Nirvana",
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
@@ -859,6 +860,7 @@ function get_sets()
 	}
 	
 	sets.avatar.skill = {
+		
 		sub = "Elan Strap +1",
 		ammo = "Sancus Sachet +1",
 		head = AF.Head,
@@ -875,10 +877,7 @@ function get_sets()
 		back = { name="Conveyance Cape", augments={'Summoning magic skill +1','Pet: Enmity+11','Blood Pact Dmg.+4',}},
 	}	
 	
-	sets.avatar.MB = set_combine(sets.avatar.mab, {
-	
-		hands = { name="Asteria Mitts +1", augments={'Path: A',}},
-	})
+	sets.avatar.MB = set_combine(sets.avatar.mab, {hands = { name="Asteria Mitts +1", augments={'Path: A',}},})
 	
 	sets.avatar.buff = sets.avatar.skill
 	
@@ -888,8 +887,10 @@ function get_sets()
 	--------------------------------------------------------------------------------------------------------------
  
 	sets.midcast.regen = {} 	-- leave this empty
+	
 	-- Normal hybrid well rounded Regen
     sets.midcast.regen.hybrid = {
+		
 		main = "Bolelabunga",
 		sub = "Ammurapi Shield",
 		ammo = "Incantor Stone",
@@ -906,27 +907,26 @@ function get_sets()
 		right_ring = "Kishar Ring",
 		
     }
+	
 	-- Focus on Regen Duration 	
-    sets.midcast.regen.duration = set_combine(sets.midcast.regen.hybrid,{
-		
-    }) 
+    sets.midcast.regen.duration = set_combine(sets.midcast.regen.hybrid,{}) 
 	-- Focus on Regen Potency 	
-    sets.midcast.regen.potency = set_combine(sets.midcast.regen.hybrid,{
-
-    }) 
+    sets.midcast.regen.potency = set_combine(sets.midcast.regen.hybrid,{}) 
   
 	-- Movespeedset
-    sets.me.movespeed = {feet="Herald's Gaiters",}
+    sets.me.movespeed = {feet = "Herald's Gaiters",}
 	
 	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
 	
 	-- Because Treasure Hunter totally works just keep lying to yourself.
 	sets.TH = {
+		
 		head = "Wh. Rarab Cap +1",
 		feet = Merl.Feet.Th,
 		waist = "Chaac Belt",
 	}
+	
     ------------
     -- Aftercast
     ------------

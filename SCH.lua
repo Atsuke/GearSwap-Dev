@@ -272,13 +272,11 @@ function get_sets()
     EMPY.Legs   =   "Arbatel Pants +1"
     EMPY.Feet   =   "Arbatel Loafers +1"
 
-
-
     -- Define JSE Capes
     SCHCape = {}
-    --SCHCape.FC = { name="Lugh's Cape", augments={'MND+10','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Mag. Evasion+12',}}
+    
+	--SCHCape.FC = { name="Lugh's Cape", augments={'MND+10','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Mag. Evasion+12',}}
     SCHCape.NUKE = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}}
-	
 
     -- Your idle set
     sets.me.idle.Refresh = {
@@ -311,6 +309,7 @@ function get_sets()
 		right_ear = "Odnowa Earring +1",
 		left_ring = "Woltaris Ring",
     })   
+	
     -- Your idle DT set
     sets.me.idle.DT = set_combine(sets.me.idle[refreshType],{
 		
@@ -320,9 +319,9 @@ function get_sets()
 		neck = "Warder's Charm +1",
 		waist = "Embla Sash",
     })  
-    sets.me.idle.MDT = set_combine(sets.me.idle.DT,{
-        
-    })  
+    
+	sets.me.idle.MDT = set_combine(sets.me.idle.DT,{})  
+	
 	-- Your MP Recovered Whilst Resting Set
     sets.me.resting = {}
     
@@ -388,7 +387,8 @@ function get_sets()
     ------------
     -- Buff Sets
     ------------	
-    -- Gear that needs to be worn to **actively** enhance a current player buff.
+    
+	-- Gear that needs to be worn to **actively** enhance a current player buff.
     -- Fill up following with your avaible pieces.
     sets.buff['Rapture'] = {head= EMPY.Head}
     sets.buff['Perpetuance'] = {hands= EMPY.Hands}
@@ -446,14 +446,13 @@ function get_sets()
     -- Enhancing Magic, eg. Siegal Sash, etc
     sets.precast.enhancing = set_combine(sets.precast.casting,{
 		
-		waist="Siegel Sash",
-        
+		waist = "Siegel Sash",
     })
   
     -- Stoneskin casting time -, works off of enhancing -
     sets.precast.stoneskin = set_combine(sets.precast.enhancing,{
 		
-		waist="Siegel Sash",
+		waist = "Siegel Sash",
     })
       
     -- Curing Precast, Cure Spell Casting time -
@@ -467,9 +466,9 @@ function get_sets()
     -- Ability Precasting
     ---------------------
 
-    sets.precast["Tabula Rasa"] = {legs= RELIC.Pants}
+    sets.precast["Tabula Rasa"] = {legs= RELIC.Legs}
     sets.precast["Enlightenment"] = {body= RELIC.Body}	 
-    sets.precast["Sublimation"] = {head= AF.Head, body= RELIC.Body}	 
+    sets.precast["Sublimation"] = {head= AF.Head, body = RELIC.Body}	 
 
 	------------------------------------------------------------------------------------------------
 	---------------------------------------- Mid Cast Sets -----------------------------------------
@@ -544,9 +543,7 @@ function get_sets()
 	
     -- used with toggle, default: F10
     -- Pieces to swap from freen nuke to Magic Burst
-    sets.midcast.MB.Acc = set_combine(sets.midcast.nuking.Normal, {
-	   
-    })	
+    sets.midcast.MB.Acc = set_combine(sets.midcast.nuking.Normal, {})	
 	
     -- Enfeebling
 	sets.midcast["Stun"] = {} --should fill this	
@@ -665,7 +662,6 @@ function get_sets()
 		main = "Chatoyant Staff",
 		waist = "Hachirin-no-Obi",
 		back = "Twilight Cape",
-
     })    
 
     ------------
@@ -701,8 +697,8 @@ function get_sets()
 	
 	-- Focus on Regen Potency 	
 	sets.midcast.regen.Potency = set_combine(sets.midcast.regen.Hybrid,{
+		
 		back = { name="Bookworm's Cape", augments={'INT+2','MND+4','"Regen" potency+9',}}
-
     }) 
 	
 	------------
@@ -720,4 +716,5 @@ function get_sets()
 	
 	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}	
+	
 end

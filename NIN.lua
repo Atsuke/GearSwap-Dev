@@ -77,11 +77,11 @@ lockWeaponTP = 500
 -- HUD Initial setup and Positioning
 --------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
-hud_x_pos = 1150    --important to update these if you have a smaller screen
-hud_y_pos = 50      --important to update these if you have a smaller screen
+hud_x_pos = 1150    	-- Important to update these if you have a smaller screen
+hud_y_pos = 50      	-- Important to update these if you have a smaller screen
 hud_draggable = true
 hud_font_size = 9
-hud_transparency = 150 -- a value of 0 (invisible) to 255 (no transparency at all)
+hud_transparency = 150	-- A value of 0 (invisible) to 255 (no transparency at all)
 hud_font = 'Impact'
 hud_padding = 10
 --------------------------------------------------------------------------------------------------------------
@@ -216,7 +216,7 @@ include('/libs/NIN_Lib.lua')            -- leave this as is. NO TOUCHEY!
 
 -- Setup your Gear Sets below:
 function get_sets()
---select_default_macro_book()
+
 include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file since it's shared across many jobs. 
   
 	----------------------------------------------------------
@@ -236,7 +236,8 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
     EMPY = {}       -- leave this empty
 	
 	-- Fill this with your own JSE. 
-    --Hachiya
+    
+	--Hachiya
     AF.Head  = "Hachi. Hatsu. +3"
     AF.Body  = "Hachi. Chain. +1"
     AF.Hands = "Hachiya Tekko +1"
@@ -289,14 +290,12 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ring = "Kishar Ring",
 		right_ring = "Prolix Ring",
 		back = Andartia.FC
-	
 	}
    
    sets.precast['Utsusemi'] = set_combine(sets.precast.casting,{
 				
 		body = RELIC.Body,
 		neck = "Magoraga Beads",
-		
 	})
 	
 	sets.precast['Provoke'] = {
@@ -314,7 +313,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ring = "Defending Ring",
 		right_ring = "Provocare Ring",
 		back = "Reiki Cloak",
-		
 	}
     
 	sets.precast.Waltz = { 
@@ -346,7 +344,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Hermetic Earring",
 		left_ring = "Defending Ring",
 		right_ring = "Warden's Ring",
-		
 	}
 	
 	sets.precast.Step = {
@@ -362,7 +359,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		right_ear = "Odr Earring",
 		left_ring = "Cacoethic Ring",
 		right_ring = "Varar Ring +1",
-		
 	}   
     
 	sets.precast['Animated Flourish'] = sets.precast['Provoke']
@@ -385,7 +381,6 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	--JA Precasts
 	
 	sets.precast['Mijin Gakure'] = {legs = RELIC.Legs}
-	
 	
 	------------------------------------------------------------------------------------------------
 	---------------------------------------- Mid Cast Sets -----------------------------------------
@@ -485,13 +480,12 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 		left_ring = "Regal Ring",
 		right_ring = "Epona's Ring",
 		back = Andartia.STRWSD,
-		
 	})
 
 	sets.precast['Blade: Metsu'] = set_combine(sets.precast['Blade: Ten'],{
+		
 		ammo = "C. Palug Stone",
 		right_ear = "Odr Earring",
-	
 	})
 	
     sets.precast['Blade: Shun'] = {
@@ -693,4 +687,5 @@ include('Atsuke_AugGear.lua') -- I list all my Augmented gears in a sidecar file
 	
 	-- For running faster in Adoulin
 	sets.adoulin = {body = "Councilor's Garb",}
+	
 end
